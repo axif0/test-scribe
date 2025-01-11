@@ -1,0 +1,46 @@
+# MARK: OS Files
+
+.DS_Store
+.vscode/*
+!.vscode/extensions.json
+.ipynb_checkpoints
+*wiki_dump
+*wiki_partitions
+*wiki.ndjson
+
+# MARK: Python Files
+
+# setup.py working directory
+build
+# setup.py dist directory
+dist
+# Egg metadata
+*.egg-info
+# Caches
+__pycache__
+# Test coverage output
+.coverage
+# Virtual environment
+venv
+.venv
+
+# MARK: NPM Files
+
+node_modules
+package-lock.json
+
+# MARK: Intermerdiary Files
+
+**/*_queried.json
+
+# MARK: Test Files
+
+tests_output
+scribe_data_csv_export/*
+scribe_data_json_export/*
+scribe_data_sqlite_export/*
+scribe_data_tsv_export/*
+
+# MARK: Wiki Dumps
+
+*.json.bz2

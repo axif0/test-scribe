@@ -1,0 +1,54 @@
+name: Create Automated PR
+on:
+  push:
+    branches:
+      - main # Triggers on any branch starting with 'feature/'
+
+jobs:
+  create-pull-request:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Fetch all history for all branches
+
+      # Debug steps to understand the state
+      - name: Debug Info
+        run: |
+          echo "Current branch: $(git branch --show-current)"
+          echo "List of changes:"
+          git status
+
+      # Make some changes (example)
+      - name: Make changes
+        run: |
+          echo "# Test Change" >> README.md
+          git config --global user.email "muhamadasif570@gmail.com"
+          git config --global user.name "axif0"
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          title: 'Automated PR from feature branch'
+          body: |
+            This PR was automatically created by a GitHub Action.
+
+            Changes included in this PR:
+            - Please review the changes and provide feedback
+          base: master
+          branch: automated-pr
+          delete-branch: true
+          draft: false
+          commit-message: '[create-pull-request] automated change'
+          committer: GitHub <noreply@github.com>
+          author: axif0 <axif0@users.noreply.github.com>
+
+      # Debug step to verify PR creation attempt
+      - name: Check PR Creation
+        run: |
+          echo "Checking if PR was created..."
+          gh pr list
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
