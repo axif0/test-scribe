@@ -23,10 +23,11 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
           pip install rich requests tqdm
+          pip install -e .
 
       - name: Run download_wd.py
         run: |
-          python src/scribe_data/check/download_wd.py
+          PYTHONPATH=$PYTHONPATH:$(pwd)/src python src/scribe_data/check/download_wd.py
           echo "Download path: ${{ env.DEFAULT_DUMP_EXPORT_DIR }}"
           ls -la ${{ env.DEFAULT_DUMP_EXPORT_DIR }}
 
