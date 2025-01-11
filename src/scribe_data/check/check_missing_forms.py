@@ -189,96 +189,97 @@ def get_missing_features(result_sparql, result_dump, languages, data_types):
     return None
 
 
-# Example: Get unique grammatical features for English nouns and verbs
-input_file = Path(__file__).parent / "wikidata" / "language_data_extraction" / "bengali" / "nouns" / "query_nouns.sparql"  # Change this to your input file path
+if __name__ == "__main__":
+    import sys
+    
+    # Get the dump file path from command line argument
+    dump_file = sys.argv[1] if len(sys.argv) > 1 else None
+    if not dump_file:
+        print("Error: Please provide the path to the dump file")
+        sys.exit(1)
 
-try:
-    # Read the query file
-    query_text = read_query_file(input_file)
+    try:
+        # Read the query file
+        input_file = Path(__file__).parent / "wikidata" / "language_data_extraction" / "bengali" / "nouns" / "query_nouns.sparql"
+        query_text = read_query_file(input_file)
+        result_sparql = parse_sparql_query(query_text)
+        print(json.dumps(result_sparql, indent=2))
 
-    # Parse the query
-    result_sparql = parse_sparql_query(query_text)
+    except Exception as e:
+        print(f"Error processing query: {str(e)}")
 
-    print(json.dumps(result_sparql, indent=2))
-
-except Exception as e:
-    print(f"Error processing query: {str(e)}")
-
-print("Extracting unique grammatical features")
-result_dump = extract_unique_grammatical_features(
-    languages=["bengali"],
-    data_types=["nouns"],
-    file_path=Path(__file__).parent / "scribe_data_wikidata_dumps_export" / "latest-lexemes.json.bz2",
-)
-
-# Print the result with indentation
-# print(json.dumps(result_dump, indent=2))
-
-missing_features = get_missing_features(
-    result_sparql, result_dump, languages="Q9610", data_types="Q1084"
-)
-
-if missing_features:
-    language_qid = next(iter(missing_features.keys()))
-    data_type_qid = next(iter(missing_features[language_qid].keys()))
-
-    # Find the language entry by QID
-    language_entry = next(
-        (name, data)
-        for name, data in language_metadata.items()
-        if data.get("qid") == language_qid
-    )
-    language = language_entry[0]  # The language name
-
-    data_type = next(
-        name for name, qid in data_type_metadata.items() if qid == data_type_qid
+    print("Extracting unique grammatical features")
+    result_dump = extract_unique_grammatical_features(
+        languages=["bengali"],
+        data_types=["nouns"],
+        file_path=dump_file  # Use the provided file path
     )
 
-    iso_code = language_metadata[language]["iso"]
+    missing_features = get_missing_features(
+        result_sparql, result_dump, languages="Q9610", data_types="Q1084"
+    )
 
-    # Create a QID to label mapping from the metadata
-    qid_to_label = {}
-    for category in lexeme_form_metadata.values():
-        for item in category.values():
-            qid_to_label[item["qid"]] = item["label"]
+    if missing_features:
+        language_qid = next(iter(missing_features.keys()))
+        data_type_qid = next(iter(missing_features[language_qid].keys()))
 
-    forms_query = []
-    for form_qids in missing_features[language_qid][data_type_qid]:
-        # Convert QIDs to labels and join them together
-        labels = [qid_to_label.get(qid, qid) for qid in form_qids]
-        concatenated_label = "".join(labels)
-        # Make first letter lowercase
-        concatenated_label = concatenated_label[0].lower() + concatenated_label[1:]
-        # Create a dictionary with both label and QIDs
-        forms_query.append({"label": concatenated_label, "qids": form_qids})
+        # Find the language entry by QID
+        language_entry = next(
+            (name, data)
+            for name, data in language_metadata.items()
+            if data.get("qid") == language_qid
+        )
+        language = language_entry[0]  # The language name
 
-    main_body = f"""
-    # tool: scribe-data
-    # All {language} ({language_qid}) {data_type} ({data_type_qid}) and the given forms.
-    # Enter this query at https://query.wikidata.org/.
+        data_type = next(
+            name for name, qid in data_type_metadata.items() if qid == data_type_qid
+        )
 
-    SELECT
-    (REPLACE(STR(?lexeme), "http://www.wikidata.org/entity/", "") AS ?lexemeID)
-    ?{data_type}
-    """ + "\n  ".join(f'?{form["label"]}' for form in forms_query)
+        iso_code = language_metadata[language]["iso"]
 
-    where_clause = f"""
+        # Create a QID to label mapping from the metadata
+        qid_to_label = {}
+        for category in lexeme_form_metadata.values():
+            for item in category.values():
+                qid_to_label[item["qid"]] = item["label"]
 
-    WHERE {{
-    ?lexeme dct:language wd:{language_qid} ;
-        wikibase:lexicalCategory wd:{data_type_qid} ;
-        wikibase:lemma ?{data_type} .
-        FILTER(lang(?{data_type}) = "{iso_code}")
-    """
+        forms_query = []
+        for form_qids in missing_features[language_qid][data_type_qid]:
+            # Convert QIDs to labels and join them together
+            labels = [qid_to_label.get(qid, qid) for qid in form_qids]
+            concatenated_label = "".join(labels)
+            # Make first letter lowercase
+            concatenated_label = concatenated_label[0].lower() + concatenated_label[1:]
+            # Create a dictionary with both label and QIDs
+            forms_query.append({"label": concatenated_label, "qids": form_qids})
 
-    optional_clause = ""
-    for i, form in enumerate(forms_query):
-        qids = ", ".join(f"wd:{qid}" for qid in form["qids"])
-        optional_clause += f"""
-        OPTIONAL {{
-            ?lexeme ontolex:lexicalForm ?{form['label']}Form .
-            ?{form['label']}Form ontolex:representation ?{form['label']} ;
-                wikibase:grammaticalFeature {qids} .
-        }}"""
+        main_body = f"""
+        # tool: scribe-data
+        # All {language} ({language_qid}) {data_type} ({data_type_qid}) and the given forms.
+        # Enter this query at https://query.wikidata.org/.
 
-    print(main_body + where_clause + optional_clause + "\n}")
+        SELECT
+        (REPLACE(STR(?lexeme), "http://www.wikidata.org/entity/", "") AS ?lexemeID)
+        ?{data_type}
+        """ + "\n  ".join(f'?{form["label"]}' for form in forms_query)
+
+        where_clause = f"""
+
+        WHERE {{
+        ?lexeme dct:language wd:{language_qid} ;
+            wikibase:lexicalCategory wd:{data_type_qid} ;
+            wikibase:lemma ?{data_type} .
+            FILTER(lang(?{data_type}) = "{iso_code}")
+        """
+
+        optional_clause = ""
+        for i, form in enumerate(forms_query):
+            qids = ", ".join(f"wd:{qid}" for qid in form["qids"])
+            optional_clause += f"""
+            OPTIONAL {{
+                ?lexeme ontolex:lexicalForm ?{form['label']}Form .
+                ?{form['label']}Form ontolex:representation ?{form['label']} ;
+                    wikibase:grammaticalFeature {qids} .
+            }}"""
+
+        print(main_body + where_clause + optional_clause + "\n}")
