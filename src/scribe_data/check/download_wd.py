@@ -67,6 +67,7 @@ def wd_lexeme_dump_download(wikidata_dump=None, output_dir=None):
  
 
 if __name__ == "__main__":
- 
-    wd_lexeme_dump_download()
+    output_path = wd_lexeme_dump_download()
+    if output_path:
+        print(f"DOWNLOAD_PATH={output_path}")
  
