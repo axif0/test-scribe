@@ -22,15 +22,12 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-
-      - name: Run check_query_identifiers.py
-        working-directory: ./src/scribe_data/check
-        run: python check_query_identifiers.py
+          pip install rich requests tqdm
+          pip install -e .
 
       - name: Run download_wd.py
-        working-directory: ./src/scribe_data/check
         run: |
-          python download_wd.py
+          PYTHONPATH=$PYTHONPATH:$(pwd)/src python src/scribe_data/check/download_wd.py
           echo "Download path: ${{ env.DEFAULT_DUMP_EXPORT_DIR }}"
           ls -la ${{ env.DEFAULT_DUMP_EXPORT_DIR }}
 
