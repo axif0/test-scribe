@@ -194,19 +194,19 @@ if __name__ == "__main__":
     
     # Get the dump file path from command line argument
     dump_file = sys.argv[1] if len(sys.argv) > 1 else None
-    if not dump_file:
-        print("Error: Please provide the path to the dump file")
-        sys.exit(1)
+    # if not dump_file:
+    #     print("Error: Please provide the path to the dump file")
+    #     sys.exit(1)
 
-    try:
+    # try:
         # Read the query file
-        input_file = Path(__file__).parent / "wikidata" / "language_data_extraction" / "bengali" / "nouns" / "query_nouns.sparql"
-        query_text = read_query_file(input_file)
-        result_sparql = parse_sparql_query(query_text)
-        print(json.dumps(result_sparql, indent=2))
+    input_file = Path(__file__).parent / "wikidata" / "language_data_extraction" / "bengali" / "nouns" / "query_nouns.sparql"
+    query_text = read_query_file(input_file)
+    result_sparql = parse_sparql_query(query_text)
+    print(json.dumps(result_sparql, indent=2))
 
-    except Exception as e:
-        print(f"Error processing query: {str(e)}")
+    # except Exception as e:
+    #     print(f"Error processing query: {str(e)}")
 
     print("Extracting unique grammatical features")
     result_dump = extract_unique_grammatical_features(
