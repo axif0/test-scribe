@@ -1,7 +1,7 @@
 import json
 from scribe_data.wiktionary.parse_dump import LexemeProcessor
 import re
-
+from pathlib import Path
 from scribe_data.utils import (
     lexeme_form_metadata,
     language_metadata,
@@ -190,7 +190,7 @@ def get_missing_features(result_sparql, result_dump, languages, data_types):
 
 
 # Example: Get unique grammatical features for English nouns and verbs
-input_file = "/media/asif/Mahbub1/Scribe-Data/src/scribe_data/wikidata/language_data_extraction/bengali/nouns/query_nouns.sparql"  # Change this to your input file path
+input_file = Path(__file__).parent / "wikidata" / "language_data_extraction" / "bengali" / "nouns" / "query_nouns.sparql"  # Change this to your input file path
 
 try:
     # Read the query file
@@ -208,7 +208,7 @@ print("Extracting unique grammatical features")
 result_dump = extract_unique_grammatical_features(
     languages=["bengali"],
     data_types=["nouns"],
-    file_path="/media/asif/Mahbub1/Scribe-Data/src/scribe_data/check/scribe_data_wikidata_dumps_export/latest-lexemes.json.bz2",
+    file_path=Path(__file__).parent / "scribe_data_wikidata_dumps_export" / "latest-lexemes.json.bz2",
 )
 
 # Print the result with indentation

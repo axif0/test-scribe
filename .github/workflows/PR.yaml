@@ -32,6 +32,11 @@ jobs:
           echo "Download path: ${DOWNLOAD_PATH}"
           if [ -n "${DOWNLOAD_PATH}" ]; then
             ls -la "$(dirname "${DOWNLOAD_PATH}")"
+            echo "Running check_missing_forms.py..."
+            PYTHONPATH=$PYTHONPATH:$(pwd)/src python src/scribe_data/check/check_missing_forms.py
+          else
+            echo "Download path not found, skipping check_missing_forms.py"
+            exit 1
           fi
 
       # Debug steps to understand the state
