@@ -192,27 +192,30 @@ def get_missing_features(result_sparql, result_dump, languages, data_types):
 if __name__ == "__main__":
     import sys
     
-    # Get the dump file path from command line argument
-    dump_file = sys.argv[1] if len(sys.argv) > 1 else None
-    # if not dump_file:
-    #     print("Error: Please provide the path to the dump file")
-    #     sys.exit(1)
+    # Get both file paths from command line arguments
+    if len(sys.argv) < 3:
+        print("Error: Please provide both dump file path and query file path")
+        print("Usage: python check_missing_forms.py <dump_file> <query_file>")
+        sys.exit(1)
+        
+    dump_file = sys.argv[1]
+    query_file = sys.argv[2]
 
-    # try:
-        # Read the query file
-    input_file = Path(__file__).parent / "wikidata" / "language_data_extraction" / "bengali" / "nouns" / "query_nouns.sparql"
-    query_text = read_query_file(input_file)
-    result_sparql = parse_sparql_query(query_text)
-    print(json.dumps(result_sparql, indent=2))
+    try:
+        # Read the query file using the provided path
+        query_text = read_query_file(query_file)
+        result_sparql = parse_sparql_query(query_text)
+        print(json.dumps(result_sparql, indent=2))
 
-    # except Exception as e:
-    #     print(f"Error processing query: {str(e)}")
+    except Exception as e:
+        print(f"Error processing query: {str(e)}")
+        sys.exit(1)
 
     print("Extracting unique grammatical features")
     result_dump = extract_unique_grammatical_features(
         languages=["bengali"],
         data_types=["nouns"],
-        file_path=dump_file  # Use the provided file path
+        file_path=dump_file
     )
 
     missing_features = get_missing_features(

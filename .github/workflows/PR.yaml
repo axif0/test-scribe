@@ -25,17 +25,24 @@ jobs:
           pip install rich requests tqdm
           pip install -e .
 
-      - name: Run download_wd.py
+      - name: Run download_wd.py and check_missing_forms.py
         run: |
-          PYTHONPATH=$PYTHONPATH:$(pwd)/src python src/scribe_data/check/download_wd.py | tee output.txt
-          DOWNLOAD_PATH=$(grep "DOWNLOAD_PATH=" output.txt | cut -d'=' -f2)
-          echo "Download path: ${DOWNLOAD_PATH}"
-          if [ -n "${DOWNLOAD_PATH}" ]; then
-            ls -la "$(dirname "${DOWNLOAD_PATH}")"
+          # Set up paths
+          DUMP_PATH=$(PYTHONPATH=$PYTHONPATH:$(pwd)/src python src/scribe_data/check/download_wd.py | grep "DOWNLOAD_PATH=" | cut -d'=' -f2)
+          QUERY_PATH="$(pwd)/src/scribe_data/wikidata/language_data_extraction/bengali/nouns/query_nouns.sparql"
+          
+          echo "Dump path: ${DUMP_PATH}"
+          echo "Query path: ${QUERY_PATH}"
+          
+          # Check if paths exist
+          if [ -n "${DUMP_PATH}" ] && [ -f "${QUERY_PATH}" ]; then
+            ls -la "$(dirname "${DUMP_PATH}")"
             echo "Running check_missing_forms.py..."
-            PYTHONPATH=$PYTHONPATH:$(pwd)/src python src/scribe_data/check/check_missing_forms.py "${DOWNLOAD_PATH}"
+            PYTHONPATH=$PYTHONPATH:$(pwd)/src python src/scribe_data/check/check_missing_forms.py "${DUMP_PATH}" "${QUERY_PATH}"
           else
-            echo "Download path not found, skipping check_missing_forms.py"
+            echo "Required files not found:"
+            echo "Dump path exists: $([ -n "${DUMP_PATH}" ] && echo "Yes" || echo "No")"
+            echo "Query path exists: $([ -f "${QUERY_PATH}" ] && echo "Yes" || echo "No")"
             exit 1
           fi
 
