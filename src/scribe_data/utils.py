@@ -32,6 +32,7 @@ from pathlib import Path
 from typing import Any, Optional
 
 import questionary
+import requests
 from rich import print as rprint
 
 # MARK: Utils Variables
@@ -42,6 +43,7 @@ DEFAULT_CSV_EXPORT_DIR = "scribe_data_csv_export"
 DEFAULT_TSV_EXPORT_DIR = "scribe_data_tsv_export"
 DEFAULT_SQLITE_EXPORT_DIR = "scribe_data_sqlite_export"
 DEFAULT_DUMP_EXPORT_DIR = "scribe_data_wikidata_dumps_export"
+DEFAULT_MEDIAWIKI_EXPORT_DIR = "scribe_data_mediawiki_export"
 
 LANGUAGE_DATA_EXTRACTION_DIR = (
     Path(__file__).parent / "wikidata" / "language_data_extraction"
@@ -53,6 +55,9 @@ DATA_TYPE_METADATA_FILE = (
 )
 LEXEME_FORM_METADATA_FILE = (
     Path(__file__).parent / "resources" / "lexeme_form_metadata.json"
+)
+WIKIDATA_QIDS_PIDS_FILE = (
+    Path(__file__).parent / "resources" / "wikidata_qids_pids.json"
 )
 DATA_DIR = Path(DEFAULT_JSON_EXPORT_DIR)
 
@@ -77,6 +82,13 @@ try:
 
 except (IOError, json.JSONDecodeError) as e:
     print(f"Error reading lexeme form metadata: {e}")
+
+try:
+    with WIKIDATA_QIDS_PIDS_FILE.open("r", encoding="utf-8") as file:
+        wikidata_qids_pids = json.load(file)
+
+except (IOError, json.JSONDecodeError) as e:
+    print(f"Error reading language metadata: {e}")
 
 
 language_map = {}
@@ -702,6 +714,18 @@ def check_lexeme_dump_prompt_download(output_dir: str):
                 rprint("[bold red]No valid dumps found.[/bold red]")
                 return None
 
+        elif user_input == "Download new version":
+            # Rename existing latest dump if it exists
+            latest_dump = Path(output_dir) / "latest-lexemes.json.bz2"
+            if latest_dump.exists():
+                timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+                backup_name = f"old_latest-lexemes_{timestamp}.json.bz2"
+                latest_dump.rename(Path(output_dir) / backup_name)
+                rprint(
+                    f"[bold green]Renamed existing dump to {backup_name}[/bold green]"
+                )
+            return False
+
         else:
             rprint("[bold blue]Skipping download.[/bold blue]")
             return True
@@ -736,3 +760,72 @@ def check_index_exists(index_path: Path, overwrite_all: bool = False) -> bool:
         return choice == "Skip process"
 
     return False
+
+
+def check_qid_is_language(qid: str):
+    """
+    Parameters
+    ----------
+    qid : str
+        The QID to check Wikidata to see if it's a language and return its English label.
+
+    Outputs
+    -------
+    str
+        The English label of the Wikidata language entity.
+
+    Raises
+    ------
+    ValueError
+        An invalid QID that's not a language has been passed.
+    """
+    api_endpoint = "https://www.wikidata.org/w/rest.php/wikibase/v0"
+    request_string = f"{api_endpoint}/entities/items/{qid}"
+
+    request = requests.get(request_string, timeout=5)
+    request_result = request.json()
+
+    if request_result["statements"][wikidata_qids_pids["instance_of"]]:
+        instance_of_values = request_result["statements"][
+            wikidata_qids_pids["instance_of"]
+        ]
+        for val in instance_of_values:
+            if val["value"]["content"] == "Q34770":
+                print(f"{request_result['labels']['en']} ({qid}) is a language.\n")
+                return request_result["labels"]["en"]
+
+    raise ValueError("The passed Wikidata QID is not a language.")
+
+
+def get_language_iso_code(qid: str):
+    """
+    Parameters
+    ----------
+    qid : str
+        Get the ISO code of a language given its Wikidata QID.
+
+    Outputs
+    -------
+    str
+        The ISO code of the language.
+
+    Raises
+    ------
+    ValueError
+        An invalid QID that's not a language has been passed.
+    KeyError
+        The ISO code for the language is not available.
+    """
+
+    api_endpoint = f"https://www.wikidata.org/w/api.php?action=wbgetentities&ids={qid}&props=claims&format=json"
+    response = requests.get(api_endpoint)
+    data = response.json()
+    try:
+        return data["entities"][qid]["claims"][wikidata_qids_pids["ietf_language_tag"]][
+            0
+        ]["mainsnak"]["datavalue"]["value"]
+
+    except ValueError:
+        raise ValueError("The passed Wikidata QID is not a language.")
+    except KeyError:
+        return KeyError("The ISO code for the language is not available.")
