@@ -6,8 +6,8 @@ from collections import defaultdict
 from scribe_data.utils import (
     lexeme_form_metadata,
     language_metadata,
-    data_type_metadata
-)
+    data_type_metadata,
+) 
 from pathlib import Path
 iso_to_qid = {
     lang_data["iso"]: lang_data["qid"]
@@ -15,8 +15,6 @@ iso_to_qid = {
     if "iso" in lang_data and "qid" in lang_data
 }
 # print(iso_to_qid)
-# language_data_extraction = Path(__file__).parent/ 'wikidata'/ 'language_data_extraction'
-language_data_extraction = Path('/media/asif/Mahbub1/test-scribe/src/scribe_data/wikidata/language_data_extraction')
  
  
 def get_missing_features(result_sparql, result_dump):
@@ -57,7 +55,7 @@ print("Extracting Wiki lexeme dump")
 result_dump = extract_dump_forms(
     languages=list(language_metadata.keys()),
     data_types=list(data_type_metadata.keys()),
-    file_path="/media/asif/Mahbub1/test-scribe/scribe_data_wikidata_dumps_export/latest-lexemes.json.bz2"
+    file_path=Path(__file__).parent/ 'wikidata'/ 'scribe_data_wikidata_dumps_export'/ 'latest-lexemes.json.bz2'
 )
 
 # Convert result_dump to a JSON string and print it beautifully

@@ -2,10 +2,10 @@ from scribe_data.utils import (
     lexeme_form_metadata,
     language_metadata,
     data_type_metadata,
+    language_data_extraction
 )
-from pathlib import Path
+ 
 import os
-language_data_extraction = Path('/media/asif/Mahbub1/test-scribe/src/scribe_data/wikidata/language_data_extraction')
  
 def generate_query(missing_features):
     language_qid = next(iter(missing_features.keys()))
