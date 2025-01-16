@@ -3,6 +3,7 @@ from scribe_data.cli.download import download_wd_lexeme_dump
 from scribe_data.utils import DEFAULT_DUMP_EXPORT_DIR
 import requests
 import os
+import sys
 
 
 def wd_lexeme_dump_download(wikidata_dump=None, output_dir=None):
@@ -38,10 +39,10 @@ def wd_lexeme_dump_download(wikidata_dump=None, output_dir=None):
     print(f"Downloading dump to {output_path}...")
 
     try:
-        print(f"Starting download from URL: {dump_url}")
+        print(f"Starting download from URL: {dump_url}", file=sys.stderr)
         response = requests.get(dump_url, stream=True)
         total_size = int(response.headers.get("content-length", 0))
-        print(f"Total file size to download: {total_size / (1024*1024):.1f} MB")
+        print(f"Total file size to download: {total_size / (1024*1024):.1f} MB", file=sys.stderr)
         downloaded_size = 0
 
         with open(output_path, "wb") as f:
@@ -52,16 +53,16 @@ def wd_lexeme_dump_download(wikidata_dump=None, output_dir=None):
                     # Print progress percentage every 50MB
                     if total_size and downloaded_size % (50 * 1024 * 1024) < 8192:
                         progress = (downloaded_size / total_size) * 100
-                        print(f"Download progress: {progress:.1f}%")
+                        print(f"Download progress: {progress:.1f}%", file=sys.stderr)
 
-        print("Download completed successfully!")
+        print("Download completed successfully!", file=sys.stderr)
+        # Print only the path on stdout for capture
+        print(output_path)
         return output_path
 
-    except requests.exceptions.RequestException as e:
-        print(f"Error downloading dump: {e}")
-
     except Exception as e:
-        print(f"An error occurred: {e}")
+        print(f"An error occurred: {e}", file=sys.stderr)
+        return None
  
 
 if __name__ == "__main__":

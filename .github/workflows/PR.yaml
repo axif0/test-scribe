@@ -47,8 +47,18 @@ jobs:
       - name: Download Wikidata dump
         id: download
         run: |
-          DUMP_PATH=$(PYTHONPATH=$PYTHONPATH:$(pwd)/src python src/scribe_data/check/check_missing_forms/download_wd.py)
+          # Capture the last line only which should be the path
+          DUMP_PATH=$(PYTHONPATH=$PYTHONPATH:$(pwd)/src python src/scribe_data/check/check_missing_forms/download_wd.py | tail -n1)
           echo "dump_path=${DUMP_PATH}" >> "$GITHUB_OUTPUT"
+          
+          # Debug output
+          echo "Captured dump path: ${DUMP_PATH}"
+          if [ -f "${DUMP_PATH}" ]; then
+            echo "File exists at the path"
+            ls -l "${DUMP_PATH}"
+          else
+            echo "File does not exist at the path"
+          fi
 
   process-data:
     needs: setup
