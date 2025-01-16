@@ -1,13 +1,8 @@
 from pathlib import Path
 from scribe_data.cli.download import download_wd_lexeme_dump
 from scribe_data.utils import DEFAULT_DUMP_EXPORT_DIR
-
-
 import requests
-from rich import print as rprint
-from tqdm import tqdm
 import os
- 
 
 
 def wd_lexeme_dump_download(wikidata_dump=None, output_dir=None):
@@ -25,7 +20,7 @@ def wd_lexeme_dump_download(wikidata_dump=None, output_dir=None):
     dump_url = download_wd_lexeme_dump(wikidata_dump or "latest-lexemes")
 
     if not dump_url:
-        rprint("[bold red]No dump URL found.[/bold red]")
+        print("No dump URL found.")
         return False
 
     output_dir = output_dir or DEFAULT_DUMP_EXPORT_DIR
@@ -36,34 +31,37 @@ def wd_lexeme_dump_download(wikidata_dump=None, output_dir=None):
 
     # Check if the file already exists
     if os.path.exists(output_path):
-        rprint(f"[bold yellow]File already exists: {output_path}. Skipping download.[/bold yellow]")
+        print(f"File already exists: {output_path}. Skipping download.")
         return output_path
 
     # Proceed with the download if the file does not exist
-    rprint(f"[bold blue]Downloading dump to {output_path}...[/bold blue]")
+    print(f"Downloading dump to {output_path}...")
 
     try:
+        print(f"Starting download from URL: {dump_url}")
         response = requests.get(dump_url, stream=True)
         total_size = int(response.headers.get("content-length", 0))
+        print(f"Total file size to download: {total_size / (1024*1024):.1f} MB")
+        downloaded_size = 0
 
         with open(output_path, "wb") as f:
-            with tqdm(
-                total=total_size, unit="iB", unit_scale=True, desc=output_path
-            ) as pbar:
-                for chunk in response.iter_content(chunk_size=8192):
-                    if chunk:
-                        f.write(chunk)
-                        pbar.update(len(chunk))
+            for chunk in response.iter_content(chunk_size=8192):
+                if chunk:
+                    f.write(chunk)
+                    downloaded_size += len(chunk)
+                    # Print progress percentage every 50MB
+                    if total_size and downloaded_size % (50 * 1024 * 1024) < 8192:
+                        progress = (downloaded_size / total_size) * 100
+                        print(f"Download progress: {progress:.1f}%")
 
-        print("[bold green]Download completed successfully![/bold green]")
-
+        print("Download completed successfully!")
         return output_path
 
     except requests.exceptions.RequestException as e:
-        print(f"[bold red]Error downloading dump: {e}[/bold red]")
+        print(f"Error downloading dump: {e}")
 
     except Exception as e:
-        print(f"[bold red]An error occurred: {e}[/bold red]")
+        print(f"An error occurred: {e}")
  
 
 if __name__ == "__main__":
