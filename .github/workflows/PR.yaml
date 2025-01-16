@@ -69,7 +69,6 @@ jobs:
           echo "List of changes:"
           git status
 
-      # Make some changes (example)
       - name: Make changes
         run: |
           git add src/scribe_data/wikidata/language_data_extraction/**/*.sparql
@@ -80,31 +79,37 @@ jobs:
         id: pr-body
         run: |
           # Get list of changed files
-          CHANGED_FILES=$(git diff --name-only)
+          CHANGED_FILES=$(git status --porcelain | grep "^??" | cut -d' ' -f2-)
           
-          # Initialize PR body
-          echo "body<<EOF" >> $GITHUB_OUTPUT
-          echo "This PR was automatically created by a GitHub Action." >> $GITHUB_OUTPUT
-          echo "" >> $GITHUB_OUTPUT
-          echo "### Changed Files Summary" >> $GITHUB_OUTPUT
-          echo "| Language | Category | File |" >> $GITHUB_OUTPUT
-          echo "|----------|-----------|------|" >> $GITHUB_OUTPUT
-          
-          # Process each changed file
-          while IFS= read -r file; do
-            if [[ $file == src/scribe_data/wikidata/language_data_extraction/* ]]; then
-              # Extract components from path
-              IFS='/' read -ra PARTS <<< "$file"
-              LANG="${PARTS[5]}"
-              CATEGORY="${PARTS[6]}"
-              FILENAME="${PARTS[7]}"
-              echo "| ${LANG} | ${CATEGORY} | ${FILENAME} |" >> $GITHUB_OUTPUT
-            fi
-          done <<< "$CHANGED_FILES"
-          
-          echo "" >> $GITHUB_OUTPUT
-          echo "Please review the changes and provide feedback." >> $GITHUB_OUTPUT
-          echo "EOF" >> $GITHUB_OUTPUT
+          # Initialize PR body with delimiter
+          {
+            echo "body<<EOF"
+            echo "This PR was automatically created by a GitHub Action."
+            echo ""
+            echo "### Changed Files Summary"
+            echo "| Language | Category | File |"
+            echo "|----------|-----------|------|"
+            
+            # Process each changed file
+            while IFS= read -r file; do
+              if [[ $file == src/scribe_data/wikidata/language_data_extraction/* ]]; then
+                # Extract components from path using string manipulation
+                lang=$(echo "$file" | cut -d'/' -f6)
+                category=$(echo "$file" | cut -d'/' -f7)
+                filename=$(echo "$file" | cut -d'/' -f8)
+                echo "| $lang | $category | $filename |"
+              fi
+            done <<< "$CHANGED_FILES"
+            
+            echo ""
+            echo "Total files changed: $(echo "$CHANGED_FILES" | wc -l)"
+            echo ""
+            echo "Please review the changes and provide feedback."
+            echo "EOF"
+          } >> $GITHUB_OUTPUT
+
+          # Debug output
+          cat $GITHUB_OUTPUT
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
