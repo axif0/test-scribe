@@ -5,6 +5,22 @@ on:
       - master
 
 jobs:
+
+  check-repository:
+    runs-on: ubuntu-latest
+    outputs:
+      is_correct_repo: ${{ steps.check.outputs.is_correct_repo }}
+    steps:
+      - name: Check repository
+        id: check
+        run: |
+          if [ "$GITHUB_REPOSITORY" = "axif0/test-scribe" ]; then
+            echo "is_correct_repo=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "is_correct_repo=false" >> "$GITHUB_OUTPUT"
+            echo "::warning::This workflow should only run in scribe-org/Scribe-Data repository."
+          fi
+
   create-pull-request:
     runs-on: ubuntu-latest
     steps:
@@ -60,18 +76,44 @@ jobs:
           git config --global user.email "muhamadasif570@gmail.com"
           git config --global user.name "axif0"
 
+      - name: Generate PR Body
+        id: pr-body
+        run: |
+          # Get list of changed files
+          CHANGED_FILES=$(git diff --name-only)
+          
+          # Initialize PR body
+          echo "body<<EOF" >> $GITHUB_OUTPUT
+          echo "This PR was automatically created by a GitHub Action." >> $GITHUB_OUTPUT
+          echo "" >> $GITHUB_OUTPUT
+          echo "### Changed Files Summary" >> $GITHUB_OUTPUT
+          echo "| Language | Category | File |" >> $GITHUB_OUTPUT
+          echo "|----------|-----------|------|" >> $GITHUB_OUTPUT
+          
+          # Process each changed file
+          while IFS= read -r file; do
+            if [[ $file == src/scribe_data/wikidata/language_data_extraction/* ]]; then
+              # Extract components from path
+              IFS='/' read -ra PARTS <<< "$file"
+              LANG="${PARTS[5]}"
+              CATEGORY="${PARTS[6]}"
+              FILENAME="${PARTS[7]}"
+              echo "| ${LANG} | ${CATEGORY} | ${FILENAME} |" >> $GITHUB_OUTPUT
+            fi
+          done <<< "$CHANGED_FILES"
+          
+          echo "" >> $GITHUB_OUTPUT
+          echo "Please review the changes and provide feedback." >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          title: 'Automated PR from feature branch'
-          body: |
-            This PR was automatically created by a GitHub Action.
-
-            Changes included in this PR:
-            - Please review the changes and provide feedback
+          title: 'Automated PR: Updated Language Data Files'
+          body: ${{ steps.pr-body.outputs.body }}
           base: master
-          branch: automated-pr
+          branch: automated-missing-forms
           delete-branch: true
           draft: false
           commit-message: '[create-pull-request] automated change'
