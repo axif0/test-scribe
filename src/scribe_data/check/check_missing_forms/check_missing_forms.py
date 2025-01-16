@@ -53,10 +53,10 @@ if __name__ == "__main__":
         sys.exit(1)
 
     dump_path = Path(sys.argv[1])
-    query_dir = Path(sys.argv[2])
+    # query_dir = Path(sys.argv[2])
 
     # Read the query file using the provided path
-    result_sparql = parse_sparql_files(query_dir)
+    result_sparql = parse_sparql_files()
     print(result_sparql)
     
     print("Extracting Wiki lexeme dump")
