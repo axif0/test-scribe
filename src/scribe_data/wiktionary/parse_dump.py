@@ -194,7 +194,7 @@ class LexemeProcessor:
         """
         lexeme_id = lexeme["id"]
         forms_data = {}
-
+        
         # Pre-compute form data structure.
         forms_dict = forms_data.setdefault(lexeme_id, {})
         lang_dict = forms_dict.setdefault(lang_code, {})
@@ -610,4 +610,4 @@ def parse_dump(
     #                 readable_features = [f"Q{qid}" for qid in feature_set]
     #                 print(f"    {i}. {readable_features}")
 
-    # print_unique_forms(processor.unique_forms)
+    # print(dict(processor.unique_forms) 
