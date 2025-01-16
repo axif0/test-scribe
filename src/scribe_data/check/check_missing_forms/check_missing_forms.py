@@ -14,7 +14,13 @@ iso_to_qid = {
     for lang, lang_data in language_metadata.items()
     if "iso" in lang_data and "qid" in lang_data
 }
-# print(iso_to_qid)
+
+# Add sub-languages to iso_to_qid
+for lang, lang_data in language_metadata.items():
+    if "sub_languages" in lang_data:
+        for sub_lang, sub_lang_data in lang_data["sub_languages"].items():
+            if "iso" in sub_lang_data and "qid" in sub_lang_data:
+                iso_to_qid[sub_lang_data["iso"]] = sub_lang_data["qid"]
  
  
 def get_missing_features(result_sparql, result_dump):
