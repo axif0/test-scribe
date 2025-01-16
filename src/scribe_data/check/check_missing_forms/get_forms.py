@@ -1,9 +1,10 @@
 from scribe_data.wiktionary.parse_dump import LexemeProcessor
 import re
-from pathlib import Path
+
 from scribe_data.utils import (
     language_metadata,
     data_type_metadata,
+    LANGUAGE_DATA_EXTRACTION_DIR as language_data_extraction   
 )
 from collections import defaultdict
 # from check_missing_forms.check_missing_forms import language_data_extraction 
@@ -13,7 +14,7 @@ iso_to_qid = {
     if "iso" in lang_data and "qid" in lang_data
 }
 # print(iso_to_qid)
-language_data_extraction = Path('/media/asif/Mahbub1/test-scribe/src/scribe_data/wikidata/language_data_extraction')
+# language_data_extraction = Path('/media/asif/Mahbub1/test-scribe/src/scribe_data/wikidata/language_data_extraction')
  
 
 all_forms = defaultdict(lambda: defaultdict(list))

@@ -2,7 +2,7 @@ from scribe_data.utils import (
     lexeme_form_metadata,
     language_metadata,
     data_type_metadata,
-    language_data_extraction
+    LANGUAGE_DATA_EXTRACTION_DIR as language_data_extraction   
 )
  
 import os
