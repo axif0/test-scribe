@@ -5,6 +5,7 @@ on:
       - master
 
 jobs:
+
   check-repository:
     runs-on: ubuntu-latest
     outputs:
@@ -20,12 +21,8 @@ jobs:
             echo "::warning::This workflow should only run in scribe-org/Scribe-Data repository."
           fi
 
-  setup:
-    needs: check-repository
-    if: needs.check-repository.outputs.is_correct_repo == 'true'
+  create-pull-request:
     runs-on: ubuntu-latest
-    outputs:
-      dump_path: ${{ steps.download.outputs.dump_path }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -41,85 +38,50 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-          pip install requests
+          pip install rich requests tqdm
           pip install -e .
 
-      - name: Download Wikidata dump
-        id: download
+      - name: Run download_wd.py and check_missing_forms.py
         run: |
-          # Capture the last line only which should be the path
-          DUMP_PATH=$(PYTHONPATH=$PYTHONPATH:$(pwd)/src python src/scribe_data/check/check_missing_forms/download_wd.py | tail -n1)
-          echo "dump_path=${DUMP_PATH}" >> "$GITHUB_OUTPUT"
-          
-          # Debug output
-          echo "Captured dump path: ${DUMP_PATH}"
-          if [ -f "${DUMP_PATH}" ]; then
-            echo "File exists at the path"
-            ls -l "${DUMP_PATH}"
-          else
-            echo "File does not exist at the path"
-          fi
-
-  process-data:
-    needs: setup
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v4
-        with:
-          python-version: '3.x'
-
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-          pip install -e .
-
-      - name: Run check_missing_forms.py
-        run: |
+          # Set up paths
+          DUMP_PATH=$(PYTHONPATH=$PYTHONPATH:$(pwd)/src python src/scribe_data/check/check_missing_forms/download_wd.py | grep "DOWNLOAD_PATH=" | cut -d'=' -f2)
           QUERY_DIR="$(pwd)/src/scribe_data/wikidata/language_data_extraction"
           
-          if [ -d "${QUERY_DIR}" ]; then
+          echo "Dump path: ${DUMP_PATH}"
+          echo "Query directory: ${QUERY_DIR}"
+          
+          # Check if paths exist
+          if [ -n "${DUMP_PATH}" ] && [ -d "${QUERY_DIR}" ]; then
+            ls -la "$(dirname "${DUMP_PATH}")"
             echo "Running check_missing_forms.py..."
-            PYTHONPATH=$PYTHONPATH:$(pwd)/src python src/scribe_data/check/check_missing_forms/check_missing_forms.py "${{ needs.setup.outputs.dump_path }}" "${QUERY_DIR}"
+            PYTHONPATH=$PYTHONPATH:$(pwd)/src python src/scribe_data/check/check_missing_forms/check_missing_forms.py "${DUMP_PATH}" "${QUERY_DIR}"
           else
-            echo "Query directory not found"
+            echo "Required paths not found:"
+            echo "Dump path exists: $([ -n "${DUMP_PATH}" ] && echo "Yes" || echo "No")"
+            echo "Query directory exists: $([ -d "${QUERY_DIR}" ] && echo "Yes" || echo "No")"
             exit 1
           fi
 
-  create-pr:
-    needs: process-data
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Configure Git
+      # Debug steps to understand the state
+      - name: Debug Info
         run: |
+          echo "Current branch: $(git branch --show-current)"
+          echo "List of changes:"
+          git status
+
+      - name: Make changes
+        run: |
+          git add src/scribe_data/wikidata/language_data_extraction/**/*.sparql
           git config --global user.email "muhamadasif570@gmail.com"
           git config --global user.name "axif0"
 
-      - name: Stage and check changes
-        id: check-changes
-        run: |
-          # Add all potential new files
-          git add -A src/scribe_data/wikidata/language_data_extraction/
-
-          # Check if there are any changes
-          if [[ -n "$(git status --porcelain)" ]]; then
-            echo "has_changes=true" >> $GITHUB_OUTPUT
-          else
-            echo "has_changes=false" >> $GITHUB_OUTPUT
-          fi
-
       - name: Generate PR Body
-        if: steps.check-changes.outputs.has_changes == 'true'
         id: pr-body
         run: |
-          # Get list of changed/added files
-          CHANGED_FILES=$(git diff --cached --name-only)
+          # Get list of changed files
+          CHANGED_FILES=$(git status --porcelain | grep "^??" | cut -d' ' -f2-)
           
+          # Initialize PR body with delimiter
           {
             echo "body<<EOF"
             echo "This PR was automatically created by a GitHub Action."
@@ -128,8 +90,10 @@ jobs:
             echo "| Language | Category | File |"
             echo "|----------|-----------|------|"
             
+            # Process each changed file
             while IFS= read -r file; do
               if [[ $file == src/scribe_data/wikidata/language_data_extraction/* ]]; then
+                # Extract components from path using string manipulation
                 lang=$(echo "$file" | cut -d'/' -f6)
                 category=$(echo "$file" | cut -d'/' -f7)
                 filename=$(echo "$file" | cut -d'/' -f8)
@@ -145,27 +109,26 @@ jobs:
           } >> $GITHUB_OUTPUT
 
           # Debug output
-          echo "Changes detected:"
-          git diff --cached --name-status
+          cat $GITHUB_OUTPUT
 
       - name: Create Pull Request
-        if: steps.check-changes.outputs.has_changes == 'true'
         uses: peter-evans/create-pull-request@v5
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           title: 'Automated PR: Updated Language Data Files'
           body: ${{ steps.pr-body.outputs.body }}
           base: master
-          branch: automated-missing-forms
+          branch: automated-missing-forms-pr
           delete-branch: true
+          draft: false
           commit-message: '[create-pull-request] automated change'
           committer: GitHub <noreply@github.com>
           author: axif0 <axif0@users.noreply.github.com>
 
-      - name: Check PR Creation Result
-        if: steps.check-changes.outputs.has_changes == 'true'
+      # Debug step to verify PR creation attempt
+      - name: Check PR Creation
         run: |
-          echo "Changes were detected and PR creation was attempted"
-          echo "Current branch: $(git branch --show-current)"
-          echo "Git status:"
-          git status
+          echo "Checking if PR was created..."
+          gh pr list
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
