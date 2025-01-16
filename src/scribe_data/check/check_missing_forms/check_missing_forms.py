@@ -6,6 +6,7 @@ from collections import defaultdict
 from scribe_data.utils import (
     lexeme_form_metadata,
     language_metadata,
+    data_type_metadata
 )
 from pathlib import Path
 iso_to_qid = {
@@ -54,8 +55,8 @@ print(result_sparql)
  
 print("Extracting Wiki lexeme dump")
 result_dump = extract_dump_forms(
-    languages=['all'],
-    data_types=['all'],
+    languages=list(language_metadata.keys()),
+    data_types=list(data_type_metadata.keys()),
     file_path="/media/asif/Mahbub1/test-scribe/scribe_data_wikidata_dumps_export/latest-lexemes.json.bz2"
 )
 
