@@ -6,8 +6,9 @@ from scribe_data.utils import (
 )
  
 import os
- 
-def generate_query(missing_features):
+from pathlib import Path
+
+def generate_query(missing_features, query_dir=None):
     language_qid = next(iter(missing_features.keys()))
     data_type_qid = next(iter(missing_features[language_qid].keys()))
 
@@ -95,11 +96,14 @@ SELECT
                 return new_path
             counter += 1
     
-    # Create base filename
-    base_file_name = f"{language_data_extraction}/{language}/{data_type}/query_{data_type}.sparql"
+    # Create base filename using the provided query_dir or default
+    if query_dir:
+        base_file_name = Path(query_dir) / language / data_type / f"query_{data_type}.sparql"
+    else:
+        base_file_name = f"{language_data_extraction}/{language}/{data_type}/query_{data_type}.sparql"
     
     # Get the next available filename
-    file_name = get_available_filename(base_file_name)
+    file_name = get_available_filename(str(base_file_name))
     
     # Create directory if it doesn't exist
     os.makedirs(os.path.dirname(file_name), exist_ok=True)
@@ -109,4 +113,5 @@ SELECT
         file.write(final_query)
     
     print(f"Query file created: {file_name}")
+    return file_name
 

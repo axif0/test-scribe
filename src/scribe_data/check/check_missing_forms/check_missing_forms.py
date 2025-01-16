@@ -1,5 +1,5 @@
 import json
- 
+import sys
 from get_forms import parse_sparql_files, extract_dump_forms 
 from generate_query import generate_query
 from collections import defaultdict
@@ -47,28 +47,36 @@ def get_missing_features(result_sparql, result_dump):
 
     return missing_by_lang_type if missing_by_lang_type else None
  
-# Read the query file using the provided path
-result_sparql = parse_sparql_files()
-print(result_sparql)
- 
-print("Extracting Wiki lexeme dump")
-result_dump = extract_dump_forms(
-    languages=list(language_metadata.keys()),
-    data_types=list(data_type_metadata.keys()),
-    file_path=Path(__file__).parent/ 'wikidata'/ 'scribe_data_wikidata_dumps_export'/ 'latest-lexemes.json.bz2'
-)
+if __name__ == "__main__":
+    if len(sys.argv) != 3:
+        print("Usage: python check_missing_forms.py <dump_path> <query_dir>")
+        sys.exit(1)
 
-# Convert result_dump to a JSON string and print it beautifully
-print(json.dumps(result_dump, indent=4, ensure_ascii=False))
+    dump_path = Path(sys.argv[1])
+    query_dir = Path(sys.argv[2])
 
-missing_features = get_missing_features(
-    result_sparql, result_dump
-)
+    # Read the query file using the provided path
+    result_sparql = parse_sparql_files(query_dir)
+    print(result_sparql)
+    
+    print("Extracting Wiki lexeme dump")
+    result_dump = extract_dump_forms(
+        languages=list(language_metadata.keys()),
+        data_types=list(data_type_metadata.keys()),
+        file_path=dump_path
+    )
+
+    # Convert result_dump to a JSON string and print it beautifully
+    print(json.dumps(result_dump, indent=4, ensure_ascii=False))
+
+    missing_features = get_missing_features(
+        result_sparql, result_dump
+    )
  
-if missing_features:
-    for language, data_types in missing_features.items():
-        # Create and process one language at a time
-        language_entry = defaultdict(lambda: defaultdict(list))
-        language_entry[language] = data_types  # Keep the entire data structure for this language
-        generate_query(language_entry)
+    if missing_features:
+        for language, data_types in missing_features.items():
+            # Create and process one language at a time
+            language_entry = defaultdict(lambda: defaultdict(list))
+            language_entry[language] = data_types  # Keep the entire data structure for this language
+            generate_query(language_entry)
             

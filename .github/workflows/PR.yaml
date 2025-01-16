@@ -28,21 +28,21 @@ jobs:
       - name: Run download_wd.py and check_missing_forms.py
         run: |
           # Set up paths
-          DUMP_PATH=$(PYTHONPATH=$PYTHONPATH:$(pwd)/src python src/scribe_data/check/download_wd.py | grep "DOWNLOAD_PATH=" | cut -d'=' -f2)
-          QUERY_PATH="$(pwd)/src/scribe_data/wikidata/language_data_extraction/bengali/nouns/query_nouns.sparql"
+          DUMP_PATH=$(PYTHONPATH=$PYTHONPATH:$(pwd)/src python src/scribe_data/check/check_missing_forms/download_wd.py | grep "DOWNLOAD_PATH=" | cut -d'=' -f2)
+          QUERY_DIR="$(pwd)/src/scribe_data/wikidata/language_data_extraction"
           
           echo "Dump path: ${DUMP_PATH}"
-          echo "Query path: ${QUERY_PATH}"
+          echo "Query directory: ${QUERY_DIR}"
           
           # Check if paths exist
-          if [ -n "${DUMP_PATH}" ] && [ -f "${QUERY_PATH}" ]; then
+          if [ -n "${DUMP_PATH}" ] && [ -d "${QUERY_DIR}" ]; then
             ls -la "$(dirname "${DUMP_PATH}")"
             echo "Running check_missing_forms.py..."
-            PYTHONPATH=$PYTHONPATH:$(pwd)/src python src/scribe_data/check/check_missing_forms.py "${DUMP_PATH}" "${QUERY_PATH}"
+            PYTHONPATH=$PYTHONPATH:$(pwd)/src python src/scribe_data/check/check_missing_forms/check_missing_forms.py "${DUMP_PATH}" "${QUERY_DIR}"
           else
-            echo "Required files not found:"
+            echo "Required paths not found:"
             echo "Dump path exists: $([ -n "${DUMP_PATH}" ] && echo "Yes" || echo "No")"
-            echo "Query path exists: $([ -f "${QUERY_PATH}" ] && echo "Yes" || echo "No")"
+            echo "Query directory exists: $([ -d "${QUERY_DIR}" ] && echo "Yes" || echo "No")"
             exit 1
           fi
 
@@ -56,7 +56,7 @@ jobs:
       # Make some changes (example)
       - name: Make changes
         run: |
-          echo "# Test Change" >> README.md
+          git add src/scribe_data/wikidata/language_data_extraction/**/*.sparql
           git config --global user.email "muhamadasif570@gmail.com"
           git config --global user.name "axif0"
 
