@@ -90,10 +90,12 @@ jobs:
           {
             echo "body<<EOF"
             echo "$PR_BODY_CONTENT"
+            echo "$PR_BODY_CONTENT"
             echo "EOF"
           } >> $GITHUB_OUTPUT
 
           # Debug output
+          echo "$PR_BODY_CONTENT"
           echo "$PR_BODY_CONTENT"
 
       - name: Create Pull Request
