@@ -41,7 +41,7 @@ def pr_body(missing_features):
     return pr_body_content
 
 if __name__ == "__main__":
-    # Load missing features from a JSON file
+    # Load missing f eatures from a JSON file
     with open(sys.argv[1], 'r') as f:
         missing_features = json.load(f)
     
