@@ -1,0 +1,51 @@
+
+# tool: scribe-data
+# All japanese (Q5287) verbs (Q24905) and their forms.
+# Enter this query at https://query.wikidata.org/.
+
+SELECT
+   (REPLACE(STR(?lexeme), "http://www.wikidata.org/entity/", "") AS ?lexemeID)
+    ?verbs
+    ?negative
+  ?conjunctive
+  ?negative
+  ?conjunctive
+  ?conjunctive
+  ?conjunctive
+  WHERE {
+    ?lexeme dct:language wd:Q5287 ;
+        wikibase:lexicalCategory wd:Q24905 ;
+        wikibase:lemma ?verbs .
+        FILTER(lang(?verbs) = "ja")
+    
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?negativeForm .
+            ?negativeForm ontolex:representation ?negative ;
+                wikibase:grammaticalFeature wd:Q15737187 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?conjunctiveForm .
+            ?conjunctiveForm ontolex:representation ?conjunctive ;
+                wikibase:grammaticalFeature wd:Q2888577 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?negativeForm .
+            ?negativeForm ontolex:representation ?negative ;
+                wikibase:grammaticalFeature wd:Q15737187 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?conjunctiveForm .
+            ?conjunctiveForm ontolex:representation ?conjunctive ;
+                wikibase:grammaticalFeature wd:Q2888577 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?conjunctiveForm .
+            ?conjunctiveForm ontolex:representation ?conjunctive ;
+                wikibase:grammaticalFeature wd:Q2888577 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?conjunctiveForm .
+            ?conjunctiveForm ontolex:representation ?conjunctive ;
+                wikibase:grammaticalFeature wd:Q2888577 .
+        }
+}
