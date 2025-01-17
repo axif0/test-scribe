@@ -80,8 +80,13 @@ if __name__ == "__main__":
         result_sparql, result_dump
     )
     # Save the missing features to a JSON file
-    with open('missing_features.json', 'w') as f:
-        json.dump(missing_features, f)
+    try:
+        with open('missing_features.json', 'w') as f:
+            json.dump(missing_features, f, indent=4)
+        print("Missing features data has been saved to missing_features.json")
+    except Exception as e:
+        print(f"An error occurred while saving missing features: {e}")
+        exit(1)
 
     if missing_features:
          
