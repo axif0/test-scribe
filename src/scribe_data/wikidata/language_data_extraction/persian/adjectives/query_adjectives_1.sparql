@@ -1,0 +1,189 @@
+
+# tool: scribe-data
+# All persian (Q9168) adjectives (Q34698) and their forms.
+# Enter this query at https://query.wikidata.org/.
+
+SELECT
+   (REPLACE(STR(?lexeme), "http://www.wikidata.org/entity/", "") AS ?lexemeID)
+    ?adjectives
+    ?comparative
+  ?feminine
+  ?animate
+  ?superlative
+  ?positive
+  ?animate
+  ?feminine
+  ?positive
+  ?feminine
+  ?superlative
+  ?feminine
+  ?positive
+  ?comparative
+  ?feminine
+  ?animate
+  ?feminine
+  ?superlative
+  ?plural
+  ?animate
+  ?positive
+  ?feminine
+  ?positive
+  ?animate
+  ?positive
+  ?comparative
+  ?animate
+  ?comparative
+  ?superlative
+  ?animate
+  WHERE {
+    ?lexeme dct:language wd:Q9168 ;
+        wikibase:lexicalCategory wd:Q34698 ;
+        wikibase:lemma ?adjectives .
+        FILTER(lang(?adjectives) = "fa")
+    
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?comparativeForm .
+            ?comparativeForm ontolex:representation ?comparative ;
+                wikibase:grammaticalFeature wd:Q14169499 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?feminineForm .
+            ?feminineForm ontolex:representation ?feminine ;
+                wikibase:grammaticalFeature wd:Q1775415 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?animateForm .
+            ?animateForm ontolex:representation ?animate ;
+                wikibase:grammaticalFeature wd:Q51927507 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?superlativeForm .
+            ?superlativeForm ontolex:representation ?superlative ;
+                wikibase:grammaticalFeature wd:Q1817208 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?positiveForm .
+            ?positiveForm ontolex:representation ?positive ;
+                wikibase:grammaticalFeature wd:Q3482678 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?animateForm .
+            ?animateForm ontolex:representation ?animate ;
+                wikibase:grammaticalFeature wd:Q51927507 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?feminineForm .
+            ?feminineForm ontolex:representation ?feminine ;
+                wikibase:grammaticalFeature wd:Q1775415 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?positiveForm .
+            ?positiveForm ontolex:representation ?positive ;
+                wikibase:grammaticalFeature wd:Q3482678 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?feminineForm .
+            ?feminineForm ontolex:representation ?feminine ;
+                wikibase:grammaticalFeature wd:Q1775415 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?superlativeForm .
+            ?superlativeForm ontolex:representation ?superlative ;
+                wikibase:grammaticalFeature wd:Q1817208 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?feminineForm .
+            ?feminineForm ontolex:representation ?feminine ;
+                wikibase:grammaticalFeature wd:Q1775415 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?positiveForm .
+            ?positiveForm ontolex:representation ?positive ;
+                wikibase:grammaticalFeature wd:Q3482678 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?comparativeForm .
+            ?comparativeForm ontolex:representation ?comparative ;
+                wikibase:grammaticalFeature wd:Q14169499 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?feminineForm .
+            ?feminineForm ontolex:representation ?feminine ;
+                wikibase:grammaticalFeature wd:Q1775415 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?animateForm .
+            ?animateForm ontolex:representation ?animate ;
+                wikibase:grammaticalFeature wd:Q51927507 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?feminineForm .
+            ?feminineForm ontolex:representation ?feminine ;
+                wikibase:grammaticalFeature wd:Q1775415 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?superlativeForm .
+            ?superlativeForm ontolex:representation ?superlative ;
+                wikibase:grammaticalFeature wd:Q1817208 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?pluralForm .
+            ?pluralForm ontolex:representation ?plural ;
+                wikibase:grammaticalFeature wd:Q146786 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?animateForm .
+            ?animateForm ontolex:representation ?animate ;
+                wikibase:grammaticalFeature wd:Q51927507 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?positiveForm .
+            ?positiveForm ontolex:representation ?positive ;
+                wikibase:grammaticalFeature wd:Q3482678 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?feminineForm .
+            ?feminineForm ontolex:representation ?feminine ;
+                wikibase:grammaticalFeature wd:Q1775415 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?positiveForm .
+            ?positiveForm ontolex:representation ?positive ;
+                wikibase:grammaticalFeature wd:Q3482678 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?animateForm .
+            ?animateForm ontolex:representation ?animate ;
+                wikibase:grammaticalFeature wd:Q51927507 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?positiveForm .
+            ?positiveForm ontolex:representation ?positive ;
+                wikibase:grammaticalFeature wd:Q3482678 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?comparativeForm .
+            ?comparativeForm ontolex:representation ?comparative ;
+                wikibase:grammaticalFeature wd:Q14169499 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?animateForm .
+            ?animateForm ontolex:representation ?animate ;
+                wikibase:grammaticalFeature wd:Q51927507 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?comparativeForm .
+            ?comparativeForm ontolex:representation ?comparative ;
+                wikibase:grammaticalFeature wd:Q14169499 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?superlativeForm .
+            ?superlativeForm ontolex:representation ?superlative ;
+                wikibase:grammaticalFeature wd:Q1817208 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?animateForm .
+            ?animateForm ontolex:representation ?animate ;
+                wikibase:grammaticalFeature wd:Q51927507 .
+        }
+}
