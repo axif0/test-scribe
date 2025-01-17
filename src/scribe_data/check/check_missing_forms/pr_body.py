@@ -10,8 +10,11 @@ def pr_body(missing_features):
     pr_body_content = "## Automated PR: Missing Features\n\n"
     pr_body_content += "This PR was automatically created by a GitHub Action.\n\n"
     pr_body_content += "### Missing Features Summary\n"
-    pr_body_content += "| **Language** | **Feature Type** | **Details** |\n"
-    pr_body_content += "|--------------|------------------|-------------|\n"
+    pr_body_content += "| **Language** | **Feature Type** |\n"
+    pr_body_content += "|--------------|------------------|\n"
+    
+    # Create a dictionary to group features by language
+    grouped_features = {}
     
     # Iterate over the missing features to populate the table
     for entity, features in missing_features.items():
@@ -32,15 +35,18 @@ def pr_body(missing_features):
         # Default to entity if no name is found
         language_name = language_name or entity
 
-        for feature, details in features.items():
+        # Group features by language
+        if language_name not in grouped_features:
+            grouped_features[language_name] = set()
+            
+        for feature in features.keys():
             feature_name = next((name for name, qid in data_type_metadata.items() if qid == feature), feature)
-            
-            # Debugging: Print details to understand the structure
-            # print(f"Processing details for {language_name} - {feature_name}: {details}")
-            
-            # Safely format details
-            details_str = ', '.join([f"[{d[0]}, {d[1]}]" for d in details if len(d) >= 2])
-            pr_body_content += f"| **{language_name}** | *{feature_name}* | {details_str} |\n"
+            grouped_features[language_name].add(feature_name)
+    
+    # Add grouped features to the PR body
+    for language, features in sorted(grouped_features.items()):
+        feature_list = ', '.join(sorted(features))
+        pr_body_content += f"| **{language}** | {feature_list} |\n"
     
     pr_body_content += "\nPlease review the changes and provide feedback.\n"
     
