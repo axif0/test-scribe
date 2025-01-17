@@ -75,16 +75,6 @@ jobs:
           git config --global user.email "muhamadasif570@gmail.com"
           git config --global user.name "axif0"
 
-      - name: Generate Missing Features Data
-        run: |
-          # Generate or retrieve the missing features data
-          python src/scribe_data/check/check_missing_forms/check_missing_forms.py > missing_features.json
-
-      - name: Debug Missing Features Data
-        run: |
-          # Print the contents of the missing features JSON file
-          echo "Contents of missing_features.json:"
-          cat missing_features.json
 
       - name: Generate PR Body
         id: pr-body
