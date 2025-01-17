@@ -34,7 +34,12 @@ def pr_body(missing_features):
 
         for feature, details in features.items():
             feature_name = next((name for name, qid in data_type_metadata.items() if qid == feature), feature)
-            details_str = ', '.join([f"[{d[0]}, {d[1]}]" for d in details])
+            
+            # Debugging: Print details to understand the structure
+            print(f"Processing details for {language_name} - {feature_name}: {details}")
+            
+            # Safely format details
+            details_str = ', '.join([f"[{d[0]}, {d[1]}]" for d in details if len(d) >= 2])
             pr_body_content += f"| **{language_name}** | *{feature_name}* | {details_str} |\n"
     
     pr_body_content += "\nPlease review the changes and provide feedback.\n"
