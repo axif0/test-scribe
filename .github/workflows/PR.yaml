@@ -51,8 +51,8 @@ jobs:
           
           # Check if paths exist
           if [ -n "${DUMP_PATH}" ] && [ -d "${QUERY_DIR}" ]; then
-            # Generate the missing features data
-            PYTHONPATH=$PYTHONPATH:$(pwd)/src python src/scribe_data/check/check_missing_forms/check_missing_forms.py "${DUMP_PATH}" "${QUERY_DIR}"
+            # Generate the missing features data for all child keys
+            PYTHONPATH=$PYTHONPATH:$(pwd)/src python src/scribe_data/check/check_missing_forms/check_missing_forms.py "${DUMP_PATH}" "${QUERY_DIR}" --process-all-keys
           else
             echo "Required paths not found:"
             echo "Dump path exists: $([ -n "${DUMP_PATH}" ] && echo "Yes" || echo "No")"
