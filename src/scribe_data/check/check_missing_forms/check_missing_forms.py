@@ -81,11 +81,14 @@ if __name__ == "__main__":
     )
     # Save the missing features to a JSON file
     try:
+        print("Generated missing features:", missing_features)
+
+        # Save the missing features to a JSON file
         with open('missing_features.json', 'w') as f:
             json.dump(missing_features, f, indent=4)
         print("Missing features data has been saved to missing_features.json")
     except Exception as e:
-        print(f"An error occurred while saving missing features: {e}")
+        print(f"An error occurred: {e}")
         exit(1)
 
     if missing_features:

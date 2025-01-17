@@ -77,8 +77,8 @@ jobs:
 
       - name: Generate Missing Features Data
         run: |
-          # Generate or retrieve the missing features data
-          python src/scribe_data/check/check_missing_forms/check_missing_forms.py > missing_features.json
+          # Generate the missing features data
+          python src/scribe_data/check/check_missing_forms/check_missing_forms.py
 
       - name: Debug Missing Features Data
         run: |
