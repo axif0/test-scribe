@@ -78,6 +78,7 @@ def main():
     print("Extracting Wiki lexeme dump...")
     result_dump = extract_dump_forms(
         languages=languages,
+        languages=languages,
         data_types=list(data_type_metadata.keys()),
         file_path=dump_path
     )
