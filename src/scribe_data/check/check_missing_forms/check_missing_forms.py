@@ -50,7 +50,7 @@ def get_missing_features(result_sparql, result_dump):
  
     # Print results for debugging
     print("Missing features by language and type:")
-    print(json.dumps(missing_by_lang_type, indent=2))
+    # print(json.dumps(missing_by_lang_type, indent=2))
 
     return missing_by_lang_type if missing_by_lang_type else None
  
@@ -64,7 +64,7 @@ if __name__ == "__main__":
 
     # Read the query file using the provided path
     result_sparql = parse_sparql_files()
-    print(result_sparql)
+    # print(result_sparql)
     
     print("Extracting Wiki lexeme dump")
     result_dump = extract_dump_forms(
@@ -74,7 +74,7 @@ if __name__ == "__main__":
     )
 
     # Convert result_dump to a JSON string and print it beautifully
-    print(json.dumps(result_dump, indent=4, ensure_ascii=False))
+    # print(json.dumps(result_dump, indent=4, ensure_ascii=False))
 
     missing_features = get_missing_features(
         result_sparql, result_dump
