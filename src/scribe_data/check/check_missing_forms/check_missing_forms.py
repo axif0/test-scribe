@@ -28,7 +28,7 @@ def get_all_languages():
     
     return languages
 
-def get_missing_features(result_sparql, result_dump, process_all_keys=False):
+def get_missing_features(result_sparql, result_dump):
     missing_by_lang_type = defaultdict(lambda: defaultdict(list))
 
     # Extract all QIDs from the metadata
@@ -47,19 +47,15 @@ def get_missing_features(result_sparql, result_dump, process_all_keys=False):
                     dump_values = set(tuple(item) for item in result_dump[lang][dt])
                     unique_dump_values = dump_values - sparql_values
 
-                    # Process all nested keys if flag is set
-                    if process_all_keys:
-                        for item in unique_dump_values:
-                            if isinstance(item, (list, tuple)):
-                                for subitem in item:
-                                    if all(qid in all_qids for qid in ([subitem] if isinstance(subitem, str) else subitem)):
-                                        missing_by_lang_type[lang][dt].append([subitem] if isinstance(subitem, str) else list(subitem))
-                    else:
-                        # Original behavior - process only first key
-                        for item in unique_dump_values:
-                            if all(qid in all_qids for qid in item):
-                                missing_by_lang_type[lang][dt].append(list(item))
+                    # Filter and store valid missing features
+                    for item in unique_dump_values:
+                        if all(qid in all_qids for qid in item):
+                            missing_by_lang_type[lang][dt].append(list(item))
  
+    # Print results for debugging
+    # print("Missing features by language and type:")
+    # print(json.dumps(missing_by_lang_type, indent=2))
+
     return missing_by_lang_type if missing_by_lang_type else None
 
 def process_missing_features(missing_features, query_dir):
