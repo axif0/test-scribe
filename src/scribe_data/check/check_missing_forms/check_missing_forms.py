@@ -62,6 +62,25 @@ def get_missing_features(result_sparql, result_dump, process_all_keys=False):
  
     return missing_by_lang_type if missing_by_lang_type else None
 
+def process_missing_features(missing_features, query_dir):
+    """Process all data types for each language when generating queries."""
+    if not missing_features:
+        return
+
+    for language, data_types in missing_features.items():
+        print(f"Processing language: {language}")
+        print(f"Data types: {list(data_types.keys())}")
+        
+        # Create a separate entry for each data type
+        for data_type, features in data_types.items():
+            language_entry = {
+                language: {
+                    data_type: features
+                }
+            }
+            print(f"Generating query for {language} - {data_type}")
+            generate_query(language_entry, query_dir)
+
 def main():
     parser = argparse.ArgumentParser(description='Check missing forms in Wikidata')
     parser.add_argument('dump_path', type=str, help='Path to the dump file')
@@ -106,11 +125,8 @@ def main():
         print("Missing features data has been saved to missing_features.json")
 
         if missing_features:
-            for language, data_types in missing_features.items():
-                # Create and process one language at a time
-                language_entry = defaultdict(lambda: defaultdict(list))
-                language_entry[language] = data_types
-                generate_query(language_entry, query_dir)
+            # Process all data types for each language
+            process_missing_features(missing_features, query_dir)
 
     except Exception as e:
         print(f"An error occurred: {e}")

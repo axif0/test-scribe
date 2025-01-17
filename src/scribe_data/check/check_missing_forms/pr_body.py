@@ -44,7 +44,7 @@ def pr_body(missing_features):
     
     pr_body_content += "\nPlease review the changes and provide feedback.\n"
     
-    # print(pr_body_content)
+    print(pr_body_content)
     return pr_body_content
 
 if __name__ == "__main__":
