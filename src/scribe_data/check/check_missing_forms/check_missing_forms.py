@@ -1,5 +1,6 @@
 import json
 import sys
+import argparse
 from pathlib import Path
 from get_forms import parse_sparql_files, extract_dump_forms 
 from generate_query import generate_query
@@ -27,7 +28,7 @@ def get_all_languages():
     
     return languages
 
-def get_missing_features(result_sparql, result_dump):
+def get_missing_features(result_sparql, result_dump, process_all_keys=False):
     missing_by_lang_type = defaultdict(lambda: defaultdict(list))
 
     # Extract all QIDs from the metadata
@@ -46,20 +47,32 @@ def get_missing_features(result_sparql, result_dump):
                     dump_values = set(tuple(item) for item in result_dump[lang][dt])
                     unique_dump_values = dump_values - sparql_values
 
-                    # Filter and store valid missing features
-                    for item in unique_dump_values:
-                        if all(qid in all_qids for qid in item):
-                            missing_by_lang_type[lang][dt].append(list(item))
+                    # Process all nested keys if flag is set
+                    if process_all_keys:
+                        for item in unique_dump_values:
+                            if isinstance(item, (list, tuple)):
+                                for subitem in item:
+                                    if all(qid in all_qids for qid in ([subitem] if isinstance(subitem, str) else subitem)):
+                                        missing_by_lang_type[lang][dt].append([subitem] if isinstance(subitem, str) else list(subitem))
+                    else:
+                        # Original behavior - process only first key
+                        for item in unique_dump_values:
+                            if all(qid in all_qids for qid in item):
+                                missing_by_lang_type[lang][dt].append(list(item))
  
     return missing_by_lang_type if missing_by_lang_type else None
 
 def main():
-    if len(sys.argv) != 3:
-        print("Usage: python check_missing_forms.py <dump_path> <query_dir>")
-        sys.exit(1)
+    parser = argparse.ArgumentParser(description='Check missing forms in Wikidata')
+    parser.add_argument('dump_path', type=str, help='Path to the dump file')
+    parser.add_argument('query_dir', type=str, help='Path to the query directory')
+    parser.add_argument('--process-all-keys', action='store_true', 
+                       help='Process all nested keys in the missing features')
+    
+    args = parser.parse_args()
 
-    dump_path = Path(sys.argv[1])
-    query_dir = Path(sys.argv[2])
+    dump_path = Path(args.dump_path)
+    query_dir = Path(args.query_dir)
 
     if not dump_path.exists():
         print(f"Error: Dump path does not exist: {dump_path}")
@@ -82,7 +95,7 @@ def main():
         file_path=dump_path
     )
 
-    missing_features = get_missing_features(result_sparql, result_dump)
+    missing_features = get_missing_features(result_sparql, result_dump, args.process_all_keys)
 
     try:
         print("Generated missing features:", missing_features)
