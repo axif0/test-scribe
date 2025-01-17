@@ -5,7 +5,6 @@ on:
       - master
 
 jobs:
-
   check-repository:
     runs-on: ubuntu-latest
     outputs:
@@ -41,7 +40,7 @@ jobs:
           pip install rich requests tqdm
           pip install -e .
 
-      - name: Run download_wd.py and check_missing_forms.py
+      - name: Generate Missing Features Data
         run: |
           # Set up paths
           DUMP_PATH=$(PYTHONPATH=$PYTHONPATH:$(pwd)/src python src/scribe_data/check/check_missing_forms/download_wd.py | grep "DOWNLOAD_PATH=" | cut -d'=' -f2)
@@ -52,8 +51,7 @@ jobs:
           
           # Check if paths exist
           if [ -n "${DUMP_PATH}" ] && [ -d "${QUERY_DIR}" ]; then
-            ls -la "$(dirname "${DUMP_PATH}")"
-            echo "Running check_missing_forms.py..."
+            # Generate the missing features data
             PYTHONPATH=$PYTHONPATH:$(pwd)/src python src/scribe_data/check/check_missing_forms/check_missing_forms.py "${DUMP_PATH}" "${QUERY_DIR}"
           else
             echo "Required paths not found:"
