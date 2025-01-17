@@ -110,7 +110,7 @@ def main():
         file_path=dump_path
     )
 
-    missing_features = get_missing_features(result_sparql, result_dump, args.process_all_keys)
+    missing_features = get_missing_features(result_sparql, result_dump)
 
     try:
         print("Generated missing features:", missing_features)
