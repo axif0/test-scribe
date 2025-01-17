@@ -80,23 +80,34 @@ jobs:
           # Generate or retrieve the missing features data
           python src/scribe_data/check/check_missing_forms/check_missing_forms.py > missing_features.json
 
+      - name: Debug Missing Features Data
+        run: |
+          # Print the contents of the missing features JSON file
+          echo "Contents of missing_features.json:"
+          cat missing_features.json
+
       - name: Generate PR Body
         id: pr-body
         run: |
           # Run the pr_body.py script with the missing features data
           PR_BODY_CONTENT=$(python src/scribe_data/check/check_missing_forms/pr_body.py missing_features.json)
           
+          # Debug output
+          echo "PR Body Content:"
+          echo "$PR_BODY_CONTENT"
+          
           # Initialize PR body with delimiter
           {
             echo "body<<EOF"
             echo "$PR_BODY_CONTENT"
-            echo "$PR_BODY_CONTENT"
             echo "EOF"
           } >> $GITHUB_OUTPUT
 
-          # Debug output
-          echo "$PR_BODY_CONTENT"
-          echo "$PR_BODY_CONTENT"
+      - name: Debug PR Body Output
+        run: |
+          # Print the PR body content from the output
+          echo "PR Body from GITHUB_OUTPUT:"
+          cat $GITHUB_OUTPUT
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
