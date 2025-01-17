@@ -79,10 +79,12 @@ if __name__ == "__main__":
     missing_features = get_missing_features(
         result_sparql, result_dump
     )
-
+    # Save the missing features to a JSON file
+    with open('missing_features.json', 'w') as f:
+        json.dump(missing_features, f)
 
     if missing_features:
-        pr_body(missing_features)
+         
         for language, data_types in missing_features.items():
             # Create and process one language at a time
             language_entry = defaultdict(lambda: defaultdict(list))
