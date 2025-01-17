@@ -78,38 +78,18 @@ jobs:
       - name: Generate PR Body
         id: pr-body
         run: |
-          # Get list of changed files
-          CHANGED_FILES=$(git status --porcelain | grep "^??" | cut -d' ' -f2-)
+          # Run the pr_body.py script and capture its output
+          PR_BODY_CONTENT=$(python src/scribe_data/check/check_missing_forms/pr_body.py)
           
           # Initialize PR body with delimiter
           {
             echo "body<<EOF"
-            echo "This PR was automatically created by a GitHub Action."
-            echo ""
-            echo "### Changed Files Summary"
-            echo "| Language | Category | File |"
-            echo "|----------|-----------|------|"
-            
-            # Process each changed file
-            while IFS= read -r file; do
-              if [[ $file == src/scribe_data/wikidata/language_data_extraction/* ]]; then
-                # Extract components from path using string manipulation
-                lang=$(echo "$file" | cut -d'/' -f6)
-                category=$(echo "$file" | cut -d'/' -f7)
-                filename=$(echo "$file" | cut -d'/' -f8)
-                echo "| $lang | $category | $filename |"
-              fi
-            done <<< "$CHANGED_FILES"
-            
-            echo ""
-            echo "Total files changed: $(echo "$CHANGED_FILES" | wc -l)"
-            echo ""
-            echo "Please review the changes and provide feedback."
+            echo "$PR_BODY_CONTENT"
             echo "EOF"
           } >> $GITHUB_OUTPUT
 
           # Debug output
-          cat $GITHUB_OUTPUT
+          echo "$PR_BODY_CONTENT"
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5

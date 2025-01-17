@@ -8,6 +8,7 @@ from scribe_data.utils import (
     language_metadata,
     data_type_metadata,
 ) 
+from pr_body import pr_body
 from pathlib import Path
 iso_to_qid = {
     lang_data["iso"]: lang_data["qid"]
@@ -78,8 +79,10 @@ if __name__ == "__main__":
     missing_features = get_missing_features(
         result_sparql, result_dump
     )
- 
+
+
     if missing_features:
+        pr_body(missing_features)
         for language, data_types in missing_features.items():
             # Create and process one language at a time
             language_entry = defaultdict(lambda: defaultdict(list))
