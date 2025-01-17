@@ -1,0 +1,1863 @@
+
+# tool: scribe-data
+# All slovak (Q9058) adjectives (Q34698) and their forms.
+# Enter this query at https://query.wikidata.org/.
+
+SELECT
+   (REPLACE(STR(?lexeme), "http://www.wikidata.org/entity/", "") AS ?lexemeID)
+    ?adjectives
+    ?singular
+  ?comparative
+  ?accusative
+  ?masculineAnimate
+  ?singular
+  ?dative
+  ?feminine
+  ?positive
+  ?singular
+  ?nominative
+  ?neuter
+  ?superlative
+  ?singular
+  ?genitive
+  ?neuter
+  ?superlative
+  ?accusative
+  ?plural
+  ?superlative
+  ?masculinePersonal
+  ?plural
+  ?locative
+  ?positive
+  ?singular
+  ?feminine
+  ?superlative
+  ?locative
+  ?singular
+  ?dative
+  ?neuter
+  ?positive
+  ?singular
+  ?dative
+  ?superlative
+  ?masculine
+  ?plural
+  ?superlative
+  ?locative
+  ?singular
+  ?accusative
+  ?feminine
+  ?positive
+  ?singular
+  ?comparative
+  ?accusative
+  ?masculineInanimate
+  ?nominative
+  ?plural
+  ?superlative
+  ?masculinePersonal
+  ?singular
+  ?nominative
+  ?feminine
+  ?superlative
+  ?nominative
+  ?plural
+  ?positive
+  ?notMasculinePersonal
+  ?dative
+  ?plural
+  ?superlative
+  ?singular
+  ?feminine
+  ?superlative
+  ?instrumental
+  ?singular
+  ?comparative
+  ?neuter
+  ?locative
+  ?singular
+  ?comparative
+  ?accusative
+  ?feminine
+  ?singular
+  ?locative
+  ?positive
+  ?masculine
+  ?singular
+  ?genitive
+  ?feminine
+  ?superlative
+  ?singular
+  ?feminine
+  ?locative
+  ?positive
+  ?accusative
+  ?plural
+  ?positive
+  ?notMasculinePersonal
+  ?singular
+  ?accusative
+  ?neuter
+  ?positive
+  ?singular
+  ?feminine
+  ?instrumental
+  ?positive
+  ?plural
+  ?instrumental
+  ?positive
+  ?superlative
+  ?singular
+  ?comparative
+  ?neuter
+  ?instrumental
+  ?singular
+  ?nominative
+  ?positive
+  ?masculine
+  ?singular
+  ?dative
+  ?neuter
+  ?superlative
+  ?singular
+  ?comparative
+  ?feminine
+  ?locative
+  ?singular
+  ?nominative
+  ?comparative
+  ?feminine
+  ?nominative
+  ?comparative
+  ?plural
+  ?masculinePersonal
+  ?singular
+  ?nominative
+  ?neuter
+  ?positive
+  ?singular
+  ?comparative
+  ?genitive
+  ?feminine
+  ?comparative
+  ?plural
+  ?locative
+  ?singular
+  ?genitive
+  ?positive
+  ?masculine
+  ?comparative
+  ?accusative
+  ?plural
+  ?notMasculinePersonal
+  ?plural
+  ?superlative
+  ?instrumental
+  ?singular
+  ?comparative
+  ?instrumental
+  ?masculine
+  ?nominative
+  ?plural
+  ?masculinePersonal
+  ?positive
+  ?singular
+  ?comparative
+  ?dative
+  ?feminine
+  ?singular
+  ?comparative
+  ?feminine
+  ?instrumental
+  ?singular
+  ?nominative
+  ?comparative
+  ?neuter
+  ?genitive
+  ?plural
+  ?superlative
+  ?singular
+  ?comparative
+  ?genitive
+  ?neuter
+  ?comparative
+  ?plural
+  ?instrumental
+  ?accusative
+  ?plural
+  ?superlative
+  ?notMasculinePersonal
+  ?singular
+  ?neuter
+  ?instrumental
+  ?positive
+  ?singular
+  ?dative
+  ?feminine
+  ?superlative
+  ?singular
+  ?comparative
+  ?accusative
+  ?neuter
+  ?singular
+  ?accusative
+  ?neuter
+  ?superlative
+  ?singular
+  ?accusative
+  ?positive
+  ?masculineInanimate
+  ?singular
+  ?neuter
+  ?superlative
+  ?locative
+  ?singular
+  ?comparative
+  ?dative
+  ?neuter
+  ?singular
+  ?genitive
+  ?feminine
+  ?positive
+  ?singular
+  ?instrumental
+  ?positive
+  ?masculine
+  ?nominative
+  ?plural
+  ?superlative
+  ?notMasculinePersonal
+  ?singular
+  ?nominative
+  ?superlative
+  ?masculine
+  ?comparative
+  ?genitive
+  ?plural
+  ?singular
+  ?nominative
+  ?comparative
+  ?masculine
+  ?singular
+  ?genitive
+  ?neuter
+  ?positive
+  ?singular
+  ?comparative
+  ?locative
+  ?masculine
+  ?singular
+  ?comparative
+  ?genitive
+  ?masculine
+  ?singular
+  ?accusative
+  ?positive
+  ?masculineAnimate
+  ?singular
+  ?accusative
+  ?feminine
+  ?superlative
+  ?singular
+  ?superlative
+  ?locative
+  ?masculine
+  ?singular
+  ?superlative
+  ?instrumental
+  ?masculine
+  ?singular
+  ?neuter
+  ?superlative
+  ?instrumental
+  ?singular
+  ?genitive
+  ?superlative
+  ?masculine
+  ?singular
+  ?accusative
+  ?superlative
+  ?masculineAnimate
+  ?comparative
+  ?dative
+  ?plural
+  ?singular
+  ?neuter
+  ?locative
+  ?positive
+  ?singular
+  ?comparative
+  ?dative
+  ?masculine
+  ?singular
+  ?dative
+  ?positive
+  ?masculine
+  ?singular
+  ?nominative
+  ?feminine
+  ?positive
+  ?accusative
+  ?plural
+  ?masculinePersonal
+  ?positive
+  ?singular
+  ?accusative
+  ?superlative
+  ?masculineInanimate
+  ?nominative
+  ?comparative
+  ?plural
+  ?notMasculinePersonal
+  ?comparative
+  ?accusative
+  ?plural
+  ?masculinePersonal
+  ?positive
+  WHERE {
+    ?lexeme dct:language wd:Q9058 ;
+        wikibase:lexicalCategory wd:Q34698 ;
+        wikibase:lemma ?adjectives .
+        FILTER(lang(?adjectives) = "sk")
+    
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?singularForm .
+            ?singularForm ontolex:representation ?singular ;
+                wikibase:grammaticalFeature wd:Q110786 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?comparativeForm .
+            ?comparativeForm ontolex:representation ?comparative ;
+                wikibase:grammaticalFeature wd:Q14169499 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?accusativeForm .
+            ?accusativeForm ontolex:representation ?accusative ;
+                wikibase:grammaticalFeature wd:Q146078 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?masculineAnimateForm .
+            ?masculineAnimateForm ontolex:representation ?masculineAnimate ;
+                wikibase:grammaticalFeature wd:Q54020116 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?singularForm .
+            ?singularForm ontolex:representation ?singular ;
+                wikibase:grammaticalFeature wd:Q110786 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?dativeForm .
+            ?dativeForm ontolex:representation ?dative ;
+                wikibase:grammaticalFeature wd:Q145599 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?feminineForm .
+            ?feminineForm ontolex:representation ?feminine ;
+                wikibase:grammaticalFeature wd:Q1775415 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?positiveForm .
+            ?positiveForm ontolex:representation ?positive ;
+                wikibase:grammaticalFeature wd:Q3482678 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?singularForm .
+            ?singularForm ontolex:representation ?singular ;
+                wikibase:grammaticalFeature wd:Q110786 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?nominativeForm .
+            ?nominativeForm ontolex:representation ?nominative ;
+                wikibase:grammaticalFeature wd:Q131105 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?neuterForm .
+            ?neuterForm ontolex:representation ?neuter ;
+                wikibase:grammaticalFeature wd:Q1775461 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?superlativeForm .
+            ?superlativeForm ontolex:representation ?superlative ;
+                wikibase:grammaticalFeature wd:Q1817208 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?singularForm .
+            ?singularForm ontolex:representation ?singular ;
+                wikibase:grammaticalFeature wd:Q110786 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?genitiveForm .
+            ?genitiveForm ontolex:representation ?genitive ;
+                wikibase:grammaticalFeature wd:Q146233 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?neuterForm .
+            ?neuterForm ontolex:representation ?neuter ;
+                wikibase:grammaticalFeature wd:Q1775461 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?superlativeForm .
+            ?superlativeForm ontolex:representation ?superlative ;
+                wikibase:grammaticalFeature wd:Q1817208 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?accusativeForm .
+            ?accusativeForm ontolex:representation ?accusative ;
+                wikibase:grammaticalFeature wd:Q146078 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?pluralForm .
+            ?pluralForm ontolex:representation ?plural ;
+                wikibase:grammaticalFeature wd:Q146786 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?superlativeForm .
+            ?superlativeForm ontolex:representation ?superlative ;
+                wikibase:grammaticalFeature wd:Q1817208 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?masculinePersonalForm .
+            ?masculinePersonalForm ontolex:representation ?masculinePersonal ;
+                wikibase:grammaticalFeature wd:Q27918551 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?pluralForm .
+            ?pluralForm ontolex:representation ?plural ;
+                wikibase:grammaticalFeature wd:Q146786 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?locativeForm .
+            ?locativeForm ontolex:representation ?locative ;
+                wikibase:grammaticalFeature wd:Q202142 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?positiveForm .
+            ?positiveForm ontolex:representation ?positive ;
+                wikibase:grammaticalFeature wd:Q3482678 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?singularForm .
+            ?singularForm ontolex:representation ?singular ;
+                wikibase:grammaticalFeature wd:Q110786 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?feminineForm .
+            ?feminineForm ontolex:representation ?feminine ;
+                wikibase:grammaticalFeature wd:Q1775415 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?superlativeForm .
+            ?superlativeForm ontolex:representation ?superlative ;
+                wikibase:grammaticalFeature wd:Q1817208 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?locativeForm .
+            ?locativeForm ontolex:representation ?locative ;
+                wikibase:grammaticalFeature wd:Q202142 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?singularForm .
+            ?singularForm ontolex:representation ?singular ;
+                wikibase:grammaticalFeature wd:Q110786 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?dativeForm .
+            ?dativeForm ontolex:representation ?dative ;
+                wikibase:grammaticalFeature wd:Q145599 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?neuterForm .
+            ?neuterForm ontolex:representation ?neuter ;
+                wikibase:grammaticalFeature wd:Q1775461 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?positiveForm .
+            ?positiveForm ontolex:representation ?positive ;
+                wikibase:grammaticalFeature wd:Q3482678 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?singularForm .
+            ?singularForm ontolex:representation ?singular ;
+                wikibase:grammaticalFeature wd:Q110786 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?dativeForm .
+            ?dativeForm ontolex:representation ?dative ;
+                wikibase:grammaticalFeature wd:Q145599 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?superlativeForm .
+            ?superlativeForm ontolex:representation ?superlative ;
+                wikibase:grammaticalFeature wd:Q1817208 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?masculineForm .
+            ?masculineForm ontolex:representation ?masculine ;
+                wikibase:grammaticalFeature wd:Q499327 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?pluralForm .
+            ?pluralForm ontolex:representation ?plural ;
+                wikibase:grammaticalFeature wd:Q146786 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?superlativeForm .
+            ?superlativeForm ontolex:representation ?superlative ;
+                wikibase:grammaticalFeature wd:Q1817208 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?locativeForm .
+            ?locativeForm ontolex:representation ?locative ;
+                wikibase:grammaticalFeature wd:Q202142 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?singularForm .
+            ?singularForm ontolex:representation ?singular ;
+                wikibase:grammaticalFeature wd:Q110786 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?accusativeForm .
+            ?accusativeForm ontolex:representation ?accusative ;
+                wikibase:grammaticalFeature wd:Q146078 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?feminineForm .
+            ?feminineForm ontolex:representation ?feminine ;
+                wikibase:grammaticalFeature wd:Q1775415 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?positiveForm .
+            ?positiveForm ontolex:representation ?positive ;
+                wikibase:grammaticalFeature wd:Q3482678 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?singularForm .
+            ?singularForm ontolex:representation ?singular ;
+                wikibase:grammaticalFeature wd:Q110786 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?comparativeForm .
+            ?comparativeForm ontolex:representation ?comparative ;
+                wikibase:grammaticalFeature wd:Q14169499 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?accusativeForm .
+            ?accusativeForm ontolex:representation ?accusative ;
+                wikibase:grammaticalFeature wd:Q146078 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?masculineInanimateForm .
+            ?masculineInanimateForm ontolex:representation ?masculineInanimate ;
+                wikibase:grammaticalFeature wd:Q52943434 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?nominativeForm .
+            ?nominativeForm ontolex:representation ?nominative ;
+                wikibase:grammaticalFeature wd:Q131105 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?pluralForm .
+            ?pluralForm ontolex:representation ?plural ;
+                wikibase:grammaticalFeature wd:Q146786 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?superlativeForm .
+            ?superlativeForm ontolex:representation ?superlative ;
+                wikibase:grammaticalFeature wd:Q1817208 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?masculinePersonalForm .
+            ?masculinePersonalForm ontolex:representation ?masculinePersonal ;
+                wikibase:grammaticalFeature wd:Q27918551 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?singularForm .
+            ?singularForm ontolex:representation ?singular ;
+                wikibase:grammaticalFeature wd:Q110786 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?nominativeForm .
+            ?nominativeForm ontolex:representation ?nominative ;
+                wikibase:grammaticalFeature wd:Q131105 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?feminineForm .
+            ?feminineForm ontolex:representation ?feminine ;
+                wikibase:grammaticalFeature wd:Q1775415 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?superlativeForm .
+            ?superlativeForm ontolex:representation ?superlative ;
+                wikibase:grammaticalFeature wd:Q1817208 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?nominativeForm .
+            ?nominativeForm ontolex:representation ?nominative ;
+                wikibase:grammaticalFeature wd:Q131105 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?pluralForm .
+            ?pluralForm ontolex:representation ?plural ;
+                wikibase:grammaticalFeature wd:Q146786 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?positiveForm .
+            ?positiveForm ontolex:representation ?positive ;
+                wikibase:grammaticalFeature wd:Q3482678 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?notMasculinePersonalForm .
+            ?notMasculinePersonalForm ontolex:representation ?notMasculinePersonal ;
+                wikibase:grammaticalFeature wd:Q54152717 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?dativeForm .
+            ?dativeForm ontolex:representation ?dative ;
+                wikibase:grammaticalFeature wd:Q145599 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?pluralForm .
+            ?pluralForm ontolex:representation ?plural ;
+                wikibase:grammaticalFeature wd:Q146786 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?superlativeForm .
+            ?superlativeForm ontolex:representation ?superlative ;
+                wikibase:grammaticalFeature wd:Q1817208 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?singularForm .
+            ?singularForm ontolex:representation ?singular ;
+                wikibase:grammaticalFeature wd:Q110786 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?feminineForm .
+            ?feminineForm ontolex:representation ?feminine ;
+                wikibase:grammaticalFeature wd:Q1775415 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?superlativeForm .
+            ?superlativeForm ontolex:representation ?superlative ;
+                wikibase:grammaticalFeature wd:Q1817208 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?instrumentalForm .
+            ?instrumentalForm ontolex:representation ?instrumental ;
+                wikibase:grammaticalFeature wd:Q192997 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?singularForm .
+            ?singularForm ontolex:representation ?singular ;
+                wikibase:grammaticalFeature wd:Q110786 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?comparativeForm .
+            ?comparativeForm ontolex:representation ?comparative ;
+                wikibase:grammaticalFeature wd:Q14169499 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?neuterForm .
+            ?neuterForm ontolex:representation ?neuter ;
+                wikibase:grammaticalFeature wd:Q1775461 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?locativeForm .
+            ?locativeForm ontolex:representation ?locative ;
+                wikibase:grammaticalFeature wd:Q202142 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?singularForm .
+            ?singularForm ontolex:representation ?singular ;
+                wikibase:grammaticalFeature wd:Q110786 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?comparativeForm .
+            ?comparativeForm ontolex:representation ?comparative ;
+                wikibase:grammaticalFeature wd:Q14169499 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?accusativeForm .
+            ?accusativeForm ontolex:representation ?accusative ;
+                wikibase:grammaticalFeature wd:Q146078 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?feminineForm .
+            ?feminineForm ontolex:representation ?feminine ;
+                wikibase:grammaticalFeature wd:Q1775415 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?singularForm .
+            ?singularForm ontolex:representation ?singular ;
+                wikibase:grammaticalFeature wd:Q110786 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?locativeForm .
+            ?locativeForm ontolex:representation ?locative ;
+                wikibase:grammaticalFeature wd:Q202142 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?positiveForm .
+            ?positiveForm ontolex:representation ?positive ;
+                wikibase:grammaticalFeature wd:Q3482678 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?masculineForm .
+            ?masculineForm ontolex:representation ?masculine ;
+                wikibase:grammaticalFeature wd:Q499327 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?singularForm .
+            ?singularForm ontolex:representation ?singular ;
+                wikibase:grammaticalFeature wd:Q110786 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?genitiveForm .
+            ?genitiveForm ontolex:representation ?genitive ;
+                wikibase:grammaticalFeature wd:Q146233 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?feminineForm .
+            ?feminineForm ontolex:representation ?feminine ;
+                wikibase:grammaticalFeature wd:Q1775415 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?superlativeForm .
+            ?superlativeForm ontolex:representation ?superlative ;
+                wikibase:grammaticalFeature wd:Q1817208 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?singularForm .
+            ?singularForm ontolex:representation ?singular ;
+                wikibase:grammaticalFeature wd:Q110786 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?feminineForm .
+            ?feminineForm ontolex:representation ?feminine ;
+                wikibase:grammaticalFeature wd:Q1775415 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?locativeForm .
+            ?locativeForm ontolex:representation ?locative ;
+                wikibase:grammaticalFeature wd:Q202142 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?positiveForm .
+            ?positiveForm ontolex:representation ?positive ;
+                wikibase:grammaticalFeature wd:Q3482678 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?accusativeForm .
+            ?accusativeForm ontolex:representation ?accusative ;
+                wikibase:grammaticalFeature wd:Q146078 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?pluralForm .
+            ?pluralForm ontolex:representation ?plural ;
+                wikibase:grammaticalFeature wd:Q146786 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?positiveForm .
+            ?positiveForm ontolex:representation ?positive ;
+                wikibase:grammaticalFeature wd:Q3482678 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?notMasculinePersonalForm .
+            ?notMasculinePersonalForm ontolex:representation ?notMasculinePersonal ;
+                wikibase:grammaticalFeature wd:Q54152717 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?singularForm .
+            ?singularForm ontolex:representation ?singular ;
+                wikibase:grammaticalFeature wd:Q110786 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?accusativeForm .
+            ?accusativeForm ontolex:representation ?accusative ;
+                wikibase:grammaticalFeature wd:Q146078 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?neuterForm .
+            ?neuterForm ontolex:representation ?neuter ;
+                wikibase:grammaticalFeature wd:Q1775461 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?positiveForm .
+            ?positiveForm ontolex:representation ?positive ;
+                wikibase:grammaticalFeature wd:Q3482678 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?singularForm .
+            ?singularForm ontolex:representation ?singular ;
+                wikibase:grammaticalFeature wd:Q110786 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?feminineForm .
+            ?feminineForm ontolex:representation ?feminine ;
+                wikibase:grammaticalFeature wd:Q1775415 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?instrumentalForm .
+            ?instrumentalForm ontolex:representation ?instrumental ;
+                wikibase:grammaticalFeature wd:Q192997 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?positiveForm .
+            ?positiveForm ontolex:representation ?positive ;
+                wikibase:grammaticalFeature wd:Q3482678 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?pluralForm .
+            ?pluralForm ontolex:representation ?plural ;
+                wikibase:grammaticalFeature wd:Q146786 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?instrumentalForm .
+            ?instrumentalForm ontolex:representation ?instrumental ;
+                wikibase:grammaticalFeature wd:Q192997 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?positiveForm .
+            ?positiveForm ontolex:representation ?positive ;
+                wikibase:grammaticalFeature wd:Q3482678 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?superlativeForm .
+            ?superlativeForm ontolex:representation ?superlative ;
+                wikibase:grammaticalFeature wd:Q1817208 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?singularForm .
+            ?singularForm ontolex:representation ?singular ;
+                wikibase:grammaticalFeature wd:Q110786 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?comparativeForm .
+            ?comparativeForm ontolex:representation ?comparative ;
+                wikibase:grammaticalFeature wd:Q14169499 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?neuterForm .
+            ?neuterForm ontolex:representation ?neuter ;
+                wikibase:grammaticalFeature wd:Q1775461 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?instrumentalForm .
+            ?instrumentalForm ontolex:representation ?instrumental ;
+                wikibase:grammaticalFeature wd:Q192997 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?singularForm .
+            ?singularForm ontolex:representation ?singular ;
+                wikibase:grammaticalFeature wd:Q110786 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?nominativeForm .
+            ?nominativeForm ontolex:representation ?nominative ;
+                wikibase:grammaticalFeature wd:Q131105 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?positiveForm .
+            ?positiveForm ontolex:representation ?positive ;
+                wikibase:grammaticalFeature wd:Q3482678 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?masculineForm .
+            ?masculineForm ontolex:representation ?masculine ;
+                wikibase:grammaticalFeature wd:Q499327 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?singularForm .
+            ?singularForm ontolex:representation ?singular ;
+                wikibase:grammaticalFeature wd:Q110786 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?dativeForm .
+            ?dativeForm ontolex:representation ?dative ;
+                wikibase:grammaticalFeature wd:Q145599 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?neuterForm .
+            ?neuterForm ontolex:representation ?neuter ;
+                wikibase:grammaticalFeature wd:Q1775461 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?superlativeForm .
+            ?superlativeForm ontolex:representation ?superlative ;
+                wikibase:grammaticalFeature wd:Q1817208 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?singularForm .
+            ?singularForm ontolex:representation ?singular ;
+                wikibase:grammaticalFeature wd:Q110786 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?comparativeForm .
+            ?comparativeForm ontolex:representation ?comparative ;
+                wikibase:grammaticalFeature wd:Q14169499 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?feminineForm .
+            ?feminineForm ontolex:representation ?feminine ;
+                wikibase:grammaticalFeature wd:Q1775415 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?locativeForm .
+            ?locativeForm ontolex:representation ?locative ;
+                wikibase:grammaticalFeature wd:Q202142 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?singularForm .
+            ?singularForm ontolex:representation ?singular ;
+                wikibase:grammaticalFeature wd:Q110786 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?nominativeForm .
+            ?nominativeForm ontolex:representation ?nominative ;
+                wikibase:grammaticalFeature wd:Q131105 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?comparativeForm .
+            ?comparativeForm ontolex:representation ?comparative ;
+                wikibase:grammaticalFeature wd:Q14169499 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?feminineForm .
+            ?feminineForm ontolex:representation ?feminine ;
+                wikibase:grammaticalFeature wd:Q1775415 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?nominativeForm .
+            ?nominativeForm ontolex:representation ?nominative ;
+                wikibase:grammaticalFeature wd:Q131105 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?comparativeForm .
+            ?comparativeForm ontolex:representation ?comparative ;
+                wikibase:grammaticalFeature wd:Q14169499 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?pluralForm .
+            ?pluralForm ontolex:representation ?plural ;
+                wikibase:grammaticalFeature wd:Q146786 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?masculinePersonalForm .
+            ?masculinePersonalForm ontolex:representation ?masculinePersonal ;
+                wikibase:grammaticalFeature wd:Q27918551 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?singularForm .
+            ?singularForm ontolex:representation ?singular ;
+                wikibase:grammaticalFeature wd:Q110786 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?nominativeForm .
+            ?nominativeForm ontolex:representation ?nominative ;
+                wikibase:grammaticalFeature wd:Q131105 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?neuterForm .
+            ?neuterForm ontolex:representation ?neuter ;
+                wikibase:grammaticalFeature wd:Q1775461 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?positiveForm .
+            ?positiveForm ontolex:representation ?positive ;
+                wikibase:grammaticalFeature wd:Q3482678 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?singularForm .
+            ?singularForm ontolex:representation ?singular ;
+                wikibase:grammaticalFeature wd:Q110786 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?comparativeForm .
+            ?comparativeForm ontolex:representation ?comparative ;
+                wikibase:grammaticalFeature wd:Q14169499 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?genitiveForm .
+            ?genitiveForm ontolex:representation ?genitive ;
+                wikibase:grammaticalFeature wd:Q146233 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?feminineForm .
+            ?feminineForm ontolex:representation ?feminine ;
+                wikibase:grammaticalFeature wd:Q1775415 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?comparativeForm .
+            ?comparativeForm ontolex:representation ?comparative ;
+                wikibase:grammaticalFeature wd:Q14169499 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?pluralForm .
+            ?pluralForm ontolex:representation ?plural ;
+                wikibase:grammaticalFeature wd:Q146786 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?locativeForm .
+            ?locativeForm ontolex:representation ?locative ;
+                wikibase:grammaticalFeature wd:Q202142 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?singularForm .
+            ?singularForm ontolex:representation ?singular ;
+                wikibase:grammaticalFeature wd:Q110786 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?genitiveForm .
+            ?genitiveForm ontolex:representation ?genitive ;
+                wikibase:grammaticalFeature wd:Q146233 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?positiveForm .
+            ?positiveForm ontolex:representation ?positive ;
+                wikibase:grammaticalFeature wd:Q3482678 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?masculineForm .
+            ?masculineForm ontolex:representation ?masculine ;
+                wikibase:grammaticalFeature wd:Q499327 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?comparativeForm .
+            ?comparativeForm ontolex:representation ?comparative ;
+                wikibase:grammaticalFeature wd:Q14169499 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?accusativeForm .
+            ?accusativeForm ontolex:representation ?accusative ;
+                wikibase:grammaticalFeature wd:Q146078 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?pluralForm .
+            ?pluralForm ontolex:representation ?plural ;
+                wikibase:grammaticalFeature wd:Q146786 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?notMasculinePersonalForm .
+            ?notMasculinePersonalForm ontolex:representation ?notMasculinePersonal ;
+                wikibase:grammaticalFeature wd:Q54152717 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?pluralForm .
+            ?pluralForm ontolex:representation ?plural ;
+                wikibase:grammaticalFeature wd:Q146786 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?superlativeForm .
+            ?superlativeForm ontolex:representation ?superlative ;
+                wikibase:grammaticalFeature wd:Q1817208 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?instrumentalForm .
+            ?instrumentalForm ontolex:representation ?instrumental ;
+                wikibase:grammaticalFeature wd:Q192997 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?singularForm .
+            ?singularForm ontolex:representation ?singular ;
+                wikibase:grammaticalFeature wd:Q110786 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?comparativeForm .
+            ?comparativeForm ontolex:representation ?comparative ;
+                wikibase:grammaticalFeature wd:Q14169499 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?instrumentalForm .
+            ?instrumentalForm ontolex:representation ?instrumental ;
+                wikibase:grammaticalFeature wd:Q192997 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?masculineForm .
+            ?masculineForm ontolex:representation ?masculine ;
+                wikibase:grammaticalFeature wd:Q499327 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?nominativeForm .
+            ?nominativeForm ontolex:representation ?nominative ;
+                wikibase:grammaticalFeature wd:Q131105 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?pluralForm .
+            ?pluralForm ontolex:representation ?plural ;
+                wikibase:grammaticalFeature wd:Q146786 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?masculinePersonalForm .
+            ?masculinePersonalForm ontolex:representation ?masculinePersonal ;
+                wikibase:grammaticalFeature wd:Q27918551 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?positiveForm .
+            ?positiveForm ontolex:representation ?positive ;
+                wikibase:grammaticalFeature wd:Q3482678 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?singularForm .
+            ?singularForm ontolex:representation ?singular ;
+                wikibase:grammaticalFeature wd:Q110786 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?comparativeForm .
+            ?comparativeForm ontolex:representation ?comparative ;
+                wikibase:grammaticalFeature wd:Q14169499 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?dativeForm .
+            ?dativeForm ontolex:representation ?dative ;
+                wikibase:grammaticalFeature wd:Q145599 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?feminineForm .
+            ?feminineForm ontolex:representation ?feminine ;
+                wikibase:grammaticalFeature wd:Q1775415 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?singularForm .
+            ?singularForm ontolex:representation ?singular ;
+                wikibase:grammaticalFeature wd:Q110786 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?comparativeForm .
+            ?comparativeForm ontolex:representation ?comparative ;
+                wikibase:grammaticalFeature wd:Q14169499 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?feminineForm .
+            ?feminineForm ontolex:representation ?feminine ;
+                wikibase:grammaticalFeature wd:Q1775415 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?instrumentalForm .
+            ?instrumentalForm ontolex:representation ?instrumental ;
+                wikibase:grammaticalFeature wd:Q192997 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?singularForm .
+            ?singularForm ontolex:representation ?singular ;
+                wikibase:grammaticalFeature wd:Q110786 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?nominativeForm .
+            ?nominativeForm ontolex:representation ?nominative ;
+                wikibase:grammaticalFeature wd:Q131105 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?comparativeForm .
+            ?comparativeForm ontolex:representation ?comparative ;
+                wikibase:grammaticalFeature wd:Q14169499 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?neuterForm .
+            ?neuterForm ontolex:representation ?neuter ;
+                wikibase:grammaticalFeature wd:Q1775461 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?genitiveForm .
+            ?genitiveForm ontolex:representation ?genitive ;
+                wikibase:grammaticalFeature wd:Q146233 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?pluralForm .
+            ?pluralForm ontolex:representation ?plural ;
+                wikibase:grammaticalFeature wd:Q146786 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?superlativeForm .
+            ?superlativeForm ontolex:representation ?superlative ;
+                wikibase:grammaticalFeature wd:Q1817208 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?singularForm .
+            ?singularForm ontolex:representation ?singular ;
+                wikibase:grammaticalFeature wd:Q110786 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?comparativeForm .
+            ?comparativeForm ontolex:representation ?comparative ;
+                wikibase:grammaticalFeature wd:Q14169499 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?genitiveForm .
+            ?genitiveForm ontolex:representation ?genitive ;
+                wikibase:grammaticalFeature wd:Q146233 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?neuterForm .
+            ?neuterForm ontolex:representation ?neuter ;
+                wikibase:grammaticalFeature wd:Q1775461 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?comparativeForm .
+            ?comparativeForm ontolex:representation ?comparative ;
+                wikibase:grammaticalFeature wd:Q14169499 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?pluralForm .
+            ?pluralForm ontolex:representation ?plural ;
+                wikibase:grammaticalFeature wd:Q146786 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?instrumentalForm .
+            ?instrumentalForm ontolex:representation ?instrumental ;
+                wikibase:grammaticalFeature wd:Q192997 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?accusativeForm .
+            ?accusativeForm ontolex:representation ?accusative ;
+                wikibase:grammaticalFeature wd:Q146078 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?pluralForm .
+            ?pluralForm ontolex:representation ?plural ;
+                wikibase:grammaticalFeature wd:Q146786 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?superlativeForm .
+            ?superlativeForm ontolex:representation ?superlative ;
+                wikibase:grammaticalFeature wd:Q1817208 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?notMasculinePersonalForm .
+            ?notMasculinePersonalForm ontolex:representation ?notMasculinePersonal ;
+                wikibase:grammaticalFeature wd:Q54152717 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?singularForm .
+            ?singularForm ontolex:representation ?singular ;
+                wikibase:grammaticalFeature wd:Q110786 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?neuterForm .
+            ?neuterForm ontolex:representation ?neuter ;
+                wikibase:grammaticalFeature wd:Q1775461 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?instrumentalForm .
+            ?instrumentalForm ontolex:representation ?instrumental ;
+                wikibase:grammaticalFeature wd:Q192997 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?positiveForm .
+            ?positiveForm ontolex:representation ?positive ;
+                wikibase:grammaticalFeature wd:Q3482678 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?singularForm .
+            ?singularForm ontolex:representation ?singular ;
+                wikibase:grammaticalFeature wd:Q110786 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?dativeForm .
+            ?dativeForm ontolex:representation ?dative ;
+                wikibase:grammaticalFeature wd:Q145599 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?feminineForm .
+            ?feminineForm ontolex:representation ?feminine ;
+                wikibase:grammaticalFeature wd:Q1775415 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?superlativeForm .
+            ?superlativeForm ontolex:representation ?superlative ;
+                wikibase:grammaticalFeature wd:Q1817208 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?singularForm .
+            ?singularForm ontolex:representation ?singular ;
+                wikibase:grammaticalFeature wd:Q110786 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?comparativeForm .
+            ?comparativeForm ontolex:representation ?comparative ;
+                wikibase:grammaticalFeature wd:Q14169499 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?accusativeForm .
+            ?accusativeForm ontolex:representation ?accusative ;
+                wikibase:grammaticalFeature wd:Q146078 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?neuterForm .
+            ?neuterForm ontolex:representation ?neuter ;
+                wikibase:grammaticalFeature wd:Q1775461 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?singularForm .
+            ?singularForm ontolex:representation ?singular ;
+                wikibase:grammaticalFeature wd:Q110786 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?accusativeForm .
+            ?accusativeForm ontolex:representation ?accusative ;
+                wikibase:grammaticalFeature wd:Q146078 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?neuterForm .
+            ?neuterForm ontolex:representation ?neuter ;
+                wikibase:grammaticalFeature wd:Q1775461 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?superlativeForm .
+            ?superlativeForm ontolex:representation ?superlative ;
+                wikibase:grammaticalFeature wd:Q1817208 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?singularForm .
+            ?singularForm ontolex:representation ?singular ;
+                wikibase:grammaticalFeature wd:Q110786 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?accusativeForm .
+            ?accusativeForm ontolex:representation ?accusative ;
+                wikibase:grammaticalFeature wd:Q146078 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?positiveForm .
+            ?positiveForm ontolex:representation ?positive ;
+                wikibase:grammaticalFeature wd:Q3482678 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?masculineInanimateForm .
+            ?masculineInanimateForm ontolex:representation ?masculineInanimate ;
+                wikibase:grammaticalFeature wd:Q52943434 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?singularForm .
+            ?singularForm ontolex:representation ?singular ;
+                wikibase:grammaticalFeature wd:Q110786 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?neuterForm .
+            ?neuterForm ontolex:representation ?neuter ;
+                wikibase:grammaticalFeature wd:Q1775461 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?superlativeForm .
+            ?superlativeForm ontolex:representation ?superlative ;
+                wikibase:grammaticalFeature wd:Q1817208 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?locativeForm .
+            ?locativeForm ontolex:representation ?locative ;
+                wikibase:grammaticalFeature wd:Q202142 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?singularForm .
+            ?singularForm ontolex:representation ?singular ;
+                wikibase:grammaticalFeature wd:Q110786 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?comparativeForm .
+            ?comparativeForm ontolex:representation ?comparative ;
+                wikibase:grammaticalFeature wd:Q14169499 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?dativeForm .
+            ?dativeForm ontolex:representation ?dative ;
+                wikibase:grammaticalFeature wd:Q145599 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?neuterForm .
+            ?neuterForm ontolex:representation ?neuter ;
+                wikibase:grammaticalFeature wd:Q1775461 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?singularForm .
+            ?singularForm ontolex:representation ?singular ;
+                wikibase:grammaticalFeature wd:Q110786 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?genitiveForm .
+            ?genitiveForm ontolex:representation ?genitive ;
+                wikibase:grammaticalFeature wd:Q146233 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?feminineForm .
+            ?feminineForm ontolex:representation ?feminine ;
+                wikibase:grammaticalFeature wd:Q1775415 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?positiveForm .
+            ?positiveForm ontolex:representation ?positive ;
+                wikibase:grammaticalFeature wd:Q3482678 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?singularForm .
+            ?singularForm ontolex:representation ?singular ;
+                wikibase:grammaticalFeature wd:Q110786 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?instrumentalForm .
+            ?instrumentalForm ontolex:representation ?instrumental ;
+                wikibase:grammaticalFeature wd:Q192997 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?positiveForm .
+            ?positiveForm ontolex:representation ?positive ;
+                wikibase:grammaticalFeature wd:Q3482678 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?masculineForm .
+            ?masculineForm ontolex:representation ?masculine ;
+                wikibase:grammaticalFeature wd:Q499327 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?nominativeForm .
+            ?nominativeForm ontolex:representation ?nominative ;
+                wikibase:grammaticalFeature wd:Q131105 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?pluralForm .
+            ?pluralForm ontolex:representation ?plural ;
+                wikibase:grammaticalFeature wd:Q146786 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?superlativeForm .
+            ?superlativeForm ontolex:representation ?superlative ;
+                wikibase:grammaticalFeature wd:Q1817208 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?notMasculinePersonalForm .
+            ?notMasculinePersonalForm ontolex:representation ?notMasculinePersonal ;
+                wikibase:grammaticalFeature wd:Q54152717 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?singularForm .
+            ?singularForm ontolex:representation ?singular ;
+                wikibase:grammaticalFeature wd:Q110786 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?nominativeForm .
+            ?nominativeForm ontolex:representation ?nominative ;
+                wikibase:grammaticalFeature wd:Q131105 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?superlativeForm .
+            ?superlativeForm ontolex:representation ?superlative ;
+                wikibase:grammaticalFeature wd:Q1817208 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?masculineForm .
+            ?masculineForm ontolex:representation ?masculine ;
+                wikibase:grammaticalFeature wd:Q499327 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?comparativeForm .
+            ?comparativeForm ontolex:representation ?comparative ;
+                wikibase:grammaticalFeature wd:Q14169499 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?genitiveForm .
+            ?genitiveForm ontolex:representation ?genitive ;
+                wikibase:grammaticalFeature wd:Q146233 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?pluralForm .
+            ?pluralForm ontolex:representation ?plural ;
+                wikibase:grammaticalFeature wd:Q146786 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?singularForm .
+            ?singularForm ontolex:representation ?singular ;
+                wikibase:grammaticalFeature wd:Q110786 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?nominativeForm .
+            ?nominativeForm ontolex:representation ?nominative ;
+                wikibase:grammaticalFeature wd:Q131105 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?comparativeForm .
+            ?comparativeForm ontolex:representation ?comparative ;
+                wikibase:grammaticalFeature wd:Q14169499 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?masculineForm .
+            ?masculineForm ontolex:representation ?masculine ;
+                wikibase:grammaticalFeature wd:Q499327 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?singularForm .
+            ?singularForm ontolex:representation ?singular ;
+                wikibase:grammaticalFeature wd:Q110786 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?genitiveForm .
+            ?genitiveForm ontolex:representation ?genitive ;
+                wikibase:grammaticalFeature wd:Q146233 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?neuterForm .
+            ?neuterForm ontolex:representation ?neuter ;
+                wikibase:grammaticalFeature wd:Q1775461 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?positiveForm .
+            ?positiveForm ontolex:representation ?positive ;
+                wikibase:grammaticalFeature wd:Q3482678 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?singularForm .
+            ?singularForm ontolex:representation ?singular ;
+                wikibase:grammaticalFeature wd:Q110786 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?comparativeForm .
+            ?comparativeForm ontolex:representation ?comparative ;
+                wikibase:grammaticalFeature wd:Q14169499 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?locativeForm .
+            ?locativeForm ontolex:representation ?locative ;
+                wikibase:grammaticalFeature wd:Q202142 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?masculineForm .
+            ?masculineForm ontolex:representation ?masculine ;
+                wikibase:grammaticalFeature wd:Q499327 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?singularForm .
+            ?singularForm ontolex:representation ?singular ;
+                wikibase:grammaticalFeature wd:Q110786 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?comparativeForm .
+            ?comparativeForm ontolex:representation ?comparative ;
+                wikibase:grammaticalFeature wd:Q14169499 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?genitiveForm .
+            ?genitiveForm ontolex:representation ?genitive ;
+                wikibase:grammaticalFeature wd:Q146233 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?masculineForm .
+            ?masculineForm ontolex:representation ?masculine ;
+                wikibase:grammaticalFeature wd:Q499327 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?singularForm .
+            ?singularForm ontolex:representation ?singular ;
+                wikibase:grammaticalFeature wd:Q110786 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?accusativeForm .
+            ?accusativeForm ontolex:representation ?accusative ;
+                wikibase:grammaticalFeature wd:Q146078 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?positiveForm .
+            ?positiveForm ontolex:representation ?positive ;
+                wikibase:grammaticalFeature wd:Q3482678 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?masculineAnimateForm .
+            ?masculineAnimateForm ontolex:representation ?masculineAnimate ;
+                wikibase:grammaticalFeature wd:Q54020116 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?singularForm .
+            ?singularForm ontolex:representation ?singular ;
+                wikibase:grammaticalFeature wd:Q110786 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?accusativeForm .
+            ?accusativeForm ontolex:representation ?accusative ;
+                wikibase:grammaticalFeature wd:Q146078 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?feminineForm .
+            ?feminineForm ontolex:representation ?feminine ;
+                wikibase:grammaticalFeature wd:Q1775415 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?superlativeForm .
+            ?superlativeForm ontolex:representation ?superlative ;
+                wikibase:grammaticalFeature wd:Q1817208 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?singularForm .
+            ?singularForm ontolex:representation ?singular ;
+                wikibase:grammaticalFeature wd:Q110786 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?superlativeForm .
+            ?superlativeForm ontolex:representation ?superlative ;
+                wikibase:grammaticalFeature wd:Q1817208 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?locativeForm .
+            ?locativeForm ontolex:representation ?locative ;
+                wikibase:grammaticalFeature wd:Q202142 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?masculineForm .
+            ?masculineForm ontolex:representation ?masculine ;
+                wikibase:grammaticalFeature wd:Q499327 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?singularForm .
+            ?singularForm ontolex:representation ?singular ;
+                wikibase:grammaticalFeature wd:Q110786 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?superlativeForm .
+            ?superlativeForm ontolex:representation ?superlative ;
+                wikibase:grammaticalFeature wd:Q1817208 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?instrumentalForm .
+            ?instrumentalForm ontolex:representation ?instrumental ;
+                wikibase:grammaticalFeature wd:Q192997 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?masculineForm .
+            ?masculineForm ontolex:representation ?masculine ;
+                wikibase:grammaticalFeature wd:Q499327 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?singularForm .
+            ?singularForm ontolex:representation ?singular ;
+                wikibase:grammaticalFeature wd:Q110786 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?neuterForm .
+            ?neuterForm ontolex:representation ?neuter ;
+                wikibase:grammaticalFeature wd:Q1775461 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?superlativeForm .
+            ?superlativeForm ontolex:representation ?superlative ;
+                wikibase:grammaticalFeature wd:Q1817208 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?instrumentalForm .
+            ?instrumentalForm ontolex:representation ?instrumental ;
+                wikibase:grammaticalFeature wd:Q192997 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?singularForm .
+            ?singularForm ontolex:representation ?singular ;
+                wikibase:grammaticalFeature wd:Q110786 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?genitiveForm .
+            ?genitiveForm ontolex:representation ?genitive ;
+                wikibase:grammaticalFeature wd:Q146233 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?superlativeForm .
+            ?superlativeForm ontolex:representation ?superlative ;
+                wikibase:grammaticalFeature wd:Q1817208 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?masculineForm .
+            ?masculineForm ontolex:representation ?masculine ;
+                wikibase:grammaticalFeature wd:Q499327 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?singularForm .
+            ?singularForm ontolex:representation ?singular ;
+                wikibase:grammaticalFeature wd:Q110786 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?accusativeForm .
+            ?accusativeForm ontolex:representation ?accusative ;
+                wikibase:grammaticalFeature wd:Q146078 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?superlativeForm .
+            ?superlativeForm ontolex:representation ?superlative ;
+                wikibase:grammaticalFeature wd:Q1817208 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?masculineAnimateForm .
+            ?masculineAnimateForm ontolex:representation ?masculineAnimate ;
+                wikibase:grammaticalFeature wd:Q54020116 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?comparativeForm .
+            ?comparativeForm ontolex:representation ?comparative ;
+                wikibase:grammaticalFeature wd:Q14169499 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?dativeForm .
+            ?dativeForm ontolex:representation ?dative ;
+                wikibase:grammaticalFeature wd:Q145599 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?pluralForm .
+            ?pluralForm ontolex:representation ?plural ;
+                wikibase:grammaticalFeature wd:Q146786 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?singularForm .
+            ?singularForm ontolex:representation ?singular ;
+                wikibase:grammaticalFeature wd:Q110786 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?neuterForm .
+            ?neuterForm ontolex:representation ?neuter ;
+                wikibase:grammaticalFeature wd:Q1775461 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?locativeForm .
+            ?locativeForm ontolex:representation ?locative ;
+                wikibase:grammaticalFeature wd:Q202142 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?positiveForm .
+            ?positiveForm ontolex:representation ?positive ;
+                wikibase:grammaticalFeature wd:Q3482678 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?singularForm .
+            ?singularForm ontolex:representation ?singular ;
+                wikibase:grammaticalFeature wd:Q110786 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?comparativeForm .
+            ?comparativeForm ontolex:representation ?comparative ;
+                wikibase:grammaticalFeature wd:Q14169499 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?dativeForm .
+            ?dativeForm ontolex:representation ?dative ;
+                wikibase:grammaticalFeature wd:Q145599 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?masculineForm .
+            ?masculineForm ontolex:representation ?masculine ;
+                wikibase:grammaticalFeature wd:Q499327 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?singularForm .
+            ?singularForm ontolex:representation ?singular ;
+                wikibase:grammaticalFeature wd:Q110786 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?dativeForm .
+            ?dativeForm ontolex:representation ?dative ;
+                wikibase:grammaticalFeature wd:Q145599 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?positiveForm .
+            ?positiveForm ontolex:representation ?positive ;
+                wikibase:grammaticalFeature wd:Q3482678 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?masculineForm .
+            ?masculineForm ontolex:representation ?masculine ;
+                wikibase:grammaticalFeature wd:Q499327 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?singularForm .
+            ?singularForm ontolex:representation ?singular ;
+                wikibase:grammaticalFeature wd:Q110786 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?nominativeForm .
+            ?nominativeForm ontolex:representation ?nominative ;
+                wikibase:grammaticalFeature wd:Q131105 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?feminineForm .
+            ?feminineForm ontolex:representation ?feminine ;
+                wikibase:grammaticalFeature wd:Q1775415 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?positiveForm .
+            ?positiveForm ontolex:representation ?positive ;
+                wikibase:grammaticalFeature wd:Q3482678 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?accusativeForm .
+            ?accusativeForm ontolex:representation ?accusative ;
+                wikibase:grammaticalFeature wd:Q146078 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?pluralForm .
+            ?pluralForm ontolex:representation ?plural ;
+                wikibase:grammaticalFeature wd:Q146786 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?masculinePersonalForm .
+            ?masculinePersonalForm ontolex:representation ?masculinePersonal ;
+                wikibase:grammaticalFeature wd:Q27918551 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?positiveForm .
+            ?positiveForm ontolex:representation ?positive ;
+                wikibase:grammaticalFeature wd:Q3482678 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?singularForm .
+            ?singularForm ontolex:representation ?singular ;
+                wikibase:grammaticalFeature wd:Q110786 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?accusativeForm .
+            ?accusativeForm ontolex:representation ?accusative ;
+                wikibase:grammaticalFeature wd:Q146078 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?superlativeForm .
+            ?superlativeForm ontolex:representation ?superlative ;
+                wikibase:grammaticalFeature wd:Q1817208 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?masculineInanimateForm .
+            ?masculineInanimateForm ontolex:representation ?masculineInanimate ;
+                wikibase:grammaticalFeature wd:Q52943434 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?nominativeForm .
+            ?nominativeForm ontolex:representation ?nominative ;
+                wikibase:grammaticalFeature wd:Q131105 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?comparativeForm .
+            ?comparativeForm ontolex:representation ?comparative ;
+                wikibase:grammaticalFeature wd:Q14169499 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?pluralForm .
+            ?pluralForm ontolex:representation ?plural ;
+                wikibase:grammaticalFeature wd:Q146786 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?notMasculinePersonalForm .
+            ?notMasculinePersonalForm ontolex:representation ?notMasculinePersonal ;
+                wikibase:grammaticalFeature wd:Q54152717 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?comparativeForm .
+            ?comparativeForm ontolex:representation ?comparative ;
+                wikibase:grammaticalFeature wd:Q14169499 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?accusativeForm .
+            ?accusativeForm ontolex:representation ?accusative ;
+                wikibase:grammaticalFeature wd:Q146078 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?pluralForm .
+            ?pluralForm ontolex:representation ?plural ;
+                wikibase:grammaticalFeature wd:Q146786 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?masculinePersonalForm .
+            ?masculinePersonalForm ontolex:representation ?masculinePersonal ;
+                wikibase:grammaticalFeature wd:Q27918551 .
+        }
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?positiveForm .
+            ?positiveForm ontolex:representation ?positive ;
+                wikibase:grammaticalFeature wd:Q3482678 .
+        }
+}
