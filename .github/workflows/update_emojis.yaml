@@ -1,0 +1,88 @@
+name: Check and Update Emoji Data
+# on:
+#   schedule:
+#     - cron: '0 0 * * 0'  # Run weekly on Sunday at midnight
+#   workflow_dispatch:  # Allow manual triggering
+on:
+    push:
+      branches:
+        - master
+
+jobs:
+  check-and-update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests
+
+      - name: Download and check emoji data
+        id: check-updates
+        run: |
+          # Create directories if they don't exist
+          mkdir -p src/scribe_data/unicode/cldr-annotations-derived-full
+          mkdir -p src/scribe_data/unicode/cldr-annotations-full
+          
+          # Download latest data
+          curl -L https://raw.githubusercontent.com/unicode-org/cldr-json/main/cldr-json/cldr-annotations-derived-full/annotationsDerived/en.json -o new_derived.json
+          curl -L https://raw.githubusercontent.com/unicode-org/cldr-json/main/cldr-json/cldr-annotations-full/annotations/en.json -o new_full.json
+          
+          # Check if files are different
+          CHANGES_EXIST=false
+          
+          if [ -f "src/scribe_data/unicode/cldr-annotations-derived-full/en.json" ]; then
+            if ! cmp -s "new_derived.json" "src/scribe_data/unicode/cldr-annotations-derived-full/en.json"; then
+              CHANGES_EXIST=true
+            fi
+          else
+            CHANGES_EXIST=true
+          fi
+          
+          if [ -f "src/scribe_data/unicode/cldr-annotations-full/en.json" ]; then
+            if ! cmp -s "new_full.json" "src/scribe_data/unicode/cldr-annotations-full/en.json"; then
+              CHANGES_EXIST=true
+            fi
+          else
+            CHANGES_EXIST=true
+          fi
+          
+          echo "changes_exist=${CHANGES_EXIST}" >> $GITHUB_OUTPUT
+
+      - name: Update files if changed
+        if: steps.check-updates.outputs.changes_exist == 'true'
+        run: |
+          mv new_derived.json src/scribe_data/unicode/cldr-annotations-derived-full/en.json
+          mv new_full.json src/scribe_data/unicode/cldr-annotations-full/en.json
+          
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+
+      - name: Create Pull Request
+        if: steps.check-updates.outputs.changes_exist == 'true'
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          title: 'chore: Update emoji annotations data'
+          body: |
+            This PR updates the emoji annotations data from CLDR:
+            - Updated cldr-annotations-derived-full data
+            - Updated cldr-annotations-full data
+            
+            This is an automated PR created by the emoji data update workflow.
+          branch: update-emoji-data
+          delete-branch: true
+          commit-message: 'chore: Update emoji annotations data'
+          labels: |
+            automated pr
+            emoji-data
