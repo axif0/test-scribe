@@ -35,8 +35,8 @@ jobs:
           mkdir -p src/scribe_data/unicode/cldr-annotations-full
           
           # Download latest data
-          curl -L https://raw.githubusercontent.com/unicode-org/cldr-json/main/cldr-json/cldr-annotations-derived-full/annotationsDerived/en.json -o new_derived.json
-          curl -L https://raw.githubusercontent.com/unicode-org/cldr-json/main/cldr-json/cldr-annotations-full/annotations/en.json -o new_full.json
+          curl -L https://raw.githubusercontent.com/unicode-org/cldr-json/main/cldr-json/cldr-annotations-derived-full/annotationsDerived/en/annotations.json -o new_derived.json
+          curl -L https://raw.githubusercontent.com/unicode-org/cldr-json/main/cldr-json/cldr-annotations-full/annotations/en/annotations.json -o new_full.json
           
           # Check if files are different
           CHANGES_EXIST=false
