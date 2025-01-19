@@ -40,22 +40,35 @@ def get_missing_features(result_sparql, result_dump):
     # Compare features for each language and data type
     for lang in result_sparql:
         if lang in result_dump:
-            for dt in result_sparql[lang]:
-                if dt in result_dump[lang]:
-                    # Get the unique values from result_dump excluding those in result_sparql
+            # Get all unique data types from both sources
+            all_data_types = set(result_sparql[lang].keys()) | set(result_dump[lang].keys())
+            
+            for dt in all_data_types:
+                sparql_values = set()
+                dump_values = set()
+                
+                # Get values from SPARQL if available
+                if dt in result_sparql[lang]:
                     sparql_values = set(tuple(item) for item in result_sparql[lang][dt])
+                
+                # Get values from dump if available
+                if dt in result_dump[lang]:
                     dump_values = set(tuple(item) for item in result_dump[lang][dt])
-                    unique_dump_values = dump_values - sparql_values
+                
+                # Get unique values from both sources
+                unique_dump_values = dump_values - sparql_values
+                unique_sparql_values = sparql_values - dump_values
 
-                    # Filter and store valid missing features
-                    for item in unique_dump_values:
-                        if all(qid in all_qids for qid in item):
-                            missing_by_lang_type[lang][dt].append(list(item))
- 
-    # Print results for debugging
-    # print("Missing features by language and type:")
-    # print(json.dumps(missing_by_lang_type, indent=2))
-
+                # Store valid missing features from dump
+                for item in unique_dump_values:
+                    if all(qid in all_qids for qid in item):
+                        missing_by_lang_type[lang][dt].append(list(item))
+                
+                # Store valid missing features from SPARQL
+                for item in unique_sparql_values:
+                    if all(qid in all_qids for qid in item):
+                        missing_by_lang_type[lang][dt].append(list(item))
+    
     return missing_by_lang_type if missing_by_lang_type else None
 
 def process_missing_features(missing_features, query_dir):
