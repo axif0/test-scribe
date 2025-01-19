@@ -44,9 +44,13 @@ jobs:
           mkdir -p src/scribe_data/unicode/cldr-annotations-full
           
           CHANGES_EXIST=false
+          CHANGE_SUMMARY="| Language | Derived Changes | Full Changes |\n|----------|-----------------|--------------|"
           
           # Use dynamic language list from previous step
           for lang in ${{ steps.get-langs.outputs.lang_list }}; do
+            DERIVED_CHANGED="No"
+            FULL_CHANGED="No"
+            
             # Download latest data for each language
             mkdir -p "src/scribe_data/unicode/cldr-annotations-derived-full/annotationsDerived/$lang"
             mkdir -p "src/scribe_data/unicode/cldr-annotations-full/annotations/$lang"
@@ -58,22 +62,34 @@ jobs:
             if [ -f "src/scribe_data/unicode/cldr-annotations-derived-full/annotationsDerived/$lang/annotations.json" ]; then
               if ! cmp -s "new_derived_$lang.json" "src/scribe_data/unicode/cldr-annotations-derived-full/annotationsDerived/$lang/annotations.json"; then
                 CHANGES_EXIST=true
+                DERIVED_CHANGED="Yes"
               fi
             else
               CHANGES_EXIST=true
+              DERIVED_CHANGED="New"
             fi
             
             # Check full annotations
             if [ -f "src/scribe_data/unicode/cldr-annotations-full/annotations/$lang/annotations.json" ]; then
               if ! cmp -s "new_full_$lang.json" "src/scribe_data/unicode/cldr-annotations-full/annotations/$lang/annotations.json"; then
                 CHANGES_EXIST=true
+                FULL_CHANGED="Yes"
               fi
             else
               CHANGES_EXIST=true
+              FULL_CHANGED="New"
+            fi
+            
+            # Only add to summary if there are changes
+            if [ "$DERIVED_CHANGED" != "No" ] || [ "$FULL_CHANGED" != "No" ]; then
+              CHANGE_SUMMARY="$CHANGE_SUMMARY\n| $lang | $DERIVED_CHANGED | $FULL_CHANGED |"
             fi
           done
           
           echo "changes_exist=${CHANGES_EXIST}" >> $GITHUB_OUTPUT
+          echo "change_summary<<EOF" >> $GITHUB_OUTPUT
+          echo -e "$CHANGE_SUMMARY" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
 
       - name: Update files if changed
         if: steps.check-updates.outputs.changes_exist == 'true'
@@ -97,9 +113,15 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           title: 'chore: Update emoji annotations data'
           body: |
-            This PR updates the emoji annotations data from CLDR:
-            - Updated cldr-annotations-derived-full data
-            - Updated cldr-annotations-full data
+            This PR updates the emoji annotations data from CLDR.
+            
+            ## Changes Summary
+            ${{ steps.check-updates.outputs.change_summary }}
+            
+            ### Legend:
+            - Yes: File was updated
+            - New: File was newly added
+            - No: No changes
             
             This is an automated PR created by the emoji data update workflow.
           branch: update-emoji-data
