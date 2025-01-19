@@ -44,8 +44,7 @@ def generate_query(missing_features, query_dir=None):
         forms_query.append({"label": concatenated_label, "qids": form_qids})
 
     # Generate a single query for all forms
-    main_body = f"""
-# tool: scribe-data
+    main_body = f"""# tool: scribe-data
 # All {language} ({language_qid}) {data_type} ({data_type_qid}) and their forms.
 # Enter this query at https://query.wikidata.org/.
 
@@ -71,10 +70,12 @@ SELECT
             ?lexeme ontolex:lexicalForm ?{form['label']}Form .
             ?{form['label']}Form ontolex:representation ?{form['label']} ;
                 wikibase:grammaticalFeature {qids} .
-        }}"""
+        }}
+
+"""  
 
     # Print the complete query
-    final_query = main_body + where_clause + optional_clauses + "\n}"
+    final_query = main_body + where_clause + optional_clauses + "}"
     
     def get_available_filename(base_path):
         """Helper function to find the next available filename"""
