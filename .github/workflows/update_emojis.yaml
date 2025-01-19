@@ -37,9 +37,9 @@ jobs:
           # Combine and remove duplicates
           LANG_LIST=$(echo -e "$LANG_LIST_FULL\n$LANG_LIST_DERIVED" | sort -u)
           
-          echo "Language list: $LANG_LIST"
-          
-          echo "lang_list=$LANG_LIST" >> $GITHUB_ENV
+          echo "lang_list<<EOF" >> $GITHUB_ENV
+          echo "$LANG_LIST" >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
 
       - name: Download and check emoji data
         id: check-updates
@@ -51,7 +51,7 @@ jobs:
           CHANGES_EXIST=false
           
           # Iterate over the language list
-          for lang in ${{ env.lang_list }}; do
+          echo "${{ env.lang_list }}" | while read -r lang; do
             # Download latest data for each language
             mkdir -p "src/scribe_data/unicode/cldr-annotations-derived-full/annotationsDerived/$lang"
             mkdir -p "src/scribe_data/unicode/cldr-annotations-full/annotations/$lang"
@@ -84,7 +84,7 @@ jobs:
         if: steps.check-updates.outputs.changes_exist == 'true'
         run: |
           # Iterate over the language list
-          for lang in ${{ env.lang_list }}; do
+          echo "${{ env.lang_list }}" | while read -r lang; do
             mkdir -p "src/scribe_data/unicode/cldr-annotations-derived-full/annotationsDerived/$lang"
             mkdir -p "src/scribe_data/unicode/cldr-annotations-full/annotations/$lang"
             
