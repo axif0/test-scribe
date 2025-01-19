@@ -26,6 +26,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install requests
+          sudo apt-get install jq
 
       - name: Download and check emoji data
         id: check-updates
@@ -64,9 +65,6 @@ jobs:
           done
           
           echo "changes_exist=${CHANGES_EXIST}" >> $GITHUB_OUTPUT
-
-      - name: Install jq
-        run: sudo apt-get install jq
 
       - name: Update files if changed
         if: steps.check-updates.outputs.changes_exist == 'true'
