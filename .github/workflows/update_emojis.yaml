@@ -1,12 +1,9 @@
 name: Check and Update Emoji Data
-# on:
-#   schedule:
-#     - cron: '0 0 * * 0'  # Run weekly on Sunday at midnight
-#   workflow_dispatch:  # Allow manual triggering
+
 on:
-    push:
-      branches:
-        - master
+  push:
+    branches:
+      - master
 
 jobs:
   check-and-update:
@@ -28,6 +25,22 @@ jobs:
           pip install requests
           sudo apt-get install jq
 
+      - name: Fetch language directories
+        id: fetch-languages
+        run: |
+          # Fetch language directories from annotations
+          LANG_LIST_FULL=$(curl -s https://api.github.com/repos/unicode-org/cldr-json/contents/cldr-json/cldr-annotations-full/annotations | jq -r '.[] | select(.type == "dir") | .name')
+          
+          # Fetch language directories from annotationsDerived
+          LANG_LIST_DERIVED=$(curl -s https://api.github.com/repos/unicode-org/cldr-json/contents/cldr-json/cldr-annotations-derived-full/annotationsDerived | jq -r '.[] | select(.type == "dir") | .name')
+          
+          # Combine and remove duplicates
+          LANG_LIST=$(echo -e "$LANG_LIST_FULL\n$LANG_LIST_DERIVED" | sort -u)
+          
+          echo "Language list: $LANG_LIST"
+          
+          echo "lang_list=$LANG_LIST" >> $GITHUB_ENV
+
       - name: Download and check emoji data
         id: check-updates
         run: |
@@ -35,21 +48,52 @@ jobs:
           mkdir -p src/scribe_data/unicode/cldr-annotations-derived-full
           mkdir -p src/scribe_data/unicode/cldr-annotations-full
           
-          # Get list of languages from CLDR repository
-          LANG_LIST=$(curl -s https://api.github.com/repos/unicode-org/cldr-json/contents/cldr-json/cldr-annotations-full/annotations | jq -r '.[].name')
+          CHANGES_EXIST=false
           
-          # Download and process for each language
-          for lang in $LANG_LIST; do
-            echo "Processing $lang..."
-            
-            # Create language directories
+          # Iterate over the language list
+          for lang in ${{ env.lang_list }}; do
+            # Download latest data for each language
             mkdir -p "src/scribe_data/unicode/cldr-annotations-derived-full/annotationsDerived/$lang"
             mkdir -p "src/scribe_data/unicode/cldr-annotations-full/annotations/$lang"
             
-            # Download and move files
+            curl -L "https://raw.githubusercontent.com/unicode-org/cldr-json/main/cldr-json/cldr-annotations-derived-full/annotationsDerived/$lang/annotations.json" -o "new_derived_$lang.json"
+            curl -L "https://raw.githubusercontent.com/unicode-org/cldr-json/main/cldr-json/cldr-annotations-full/annotations/$lang/annotations.json" -o "new_full_$lang.json"
+            
+            # Check derived annotations
+            if [ -f "src/scribe_data/unicode/cldr-annotations-derived-full/annotationsDerived/$lang/annotations.json" ]; then
+              if ! cmp -s "new_derived_$lang.json" "src/scribe_data/unicode/cldr-annotations-derived-full/annotationsDerived/$lang/annotations.json"; then
+                CHANGES_EXIST=true
+              fi
+            else
+              CHANGES_EXIST=true
+            fi
+            
+            # Check full annotations
+            if [ -f "src/scribe_data/unicode/cldr-annotations-full/annotations/$lang/annotations.json" ]; then
+              if ! cmp -s "new_full_$lang.json" "src/scribe_data/unicode/cldr-annotations-full/annotations/$lang/annotations.json"; then
+                CHANGES_EXIST=true
+              fi
+            else
+              CHANGES_EXIST=true
+            fi
+          done
+          
+          echo "changes_exist=${CHANGES_EXIST}" >> $GITHUB_OUTPUT
+
+      - name: Update files if changed
+        if: steps.check-updates.outputs.changes_exist == 'true'
+        run: |
+          # Iterate over the language list
+          for lang in ${{ env.lang_list }}; do
+            mkdir -p "src/scribe_data/unicode/cldr-annotations-derived-full/annotationsDerived/$lang"
+            mkdir -p "src/scribe_data/unicode/cldr-annotations-full/annotations/$lang"
+            
             mv "new_derived_$lang.json" "src/scribe_data/unicode/cldr-annotations-derived-full/annotationsDerived/$lang/annotations.json"
             mv "new_full_$lang.json" "src/scribe_data/unicode/cldr-annotations-full/annotations/$lang/annotations.json"
           done
+          
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
 
       - name: Create Pull Request
         if: steps.check-updates.outputs.changes_exist == 'true'
