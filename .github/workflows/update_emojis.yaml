@@ -1,9 +1,8 @@
 name: Check and Update Emoji Data
-
 on:
-  push:
-    branches:
-      - master
+    push:
+      branches:
+        - master
 
 jobs:
   check-and-update:
@@ -25,21 +24,17 @@ jobs:
           pip install requests
           sudo apt-get install jq
 
-      - name: Fetch language directories
-        id: fetch-languages
+      - name: Get language list
+        id: get-langs
         run: |
-          # Fetch language directories from annotations
-          LANG_LIST_FULL=$(curl -s https://api.github.com/repos/unicode-org/cldr-json/contents/cldr-json/cldr-annotations-full/annotations | jq -r '.[] | select(.type == "dir") | .name')
+          # Fetch language list from GitHub API
+          DERIVED_LANGS=$(curl -s https://api.github.com/repos/unicode-org/cldr-json/contents/cldr-json/cldr-annotations-derived-full/annotationsDerived | jq -r '.[].name')
+          FULL_LANGS=$(curl -s https://api.github.com/repos/unicode-org/cldr-json/contents/cldr-json/cldr-annotations-full/annotations | jq -r '.[].name')
           
-          # Fetch language directories from annotationsDerived
-          LANG_LIST_DERIVED=$(curl -s https://api.github.com/repos/unicode-org/cldr-json/contents/cldr-json/cldr-annotations-derived-full/annotationsDerived | jq -r '.[] | select(.type == "dir") | .name')
-          
-          # Combine and remove duplicates
-          LANG_LIST=$(echo -e "$LANG_LIST_FULL\n$LANG_LIST_DERIVED" | sort -u)
-          
-          echo "lang_list<<EOF" >> $GITHUB_ENV
-          echo "$LANG_LIST" >> $GITHUB_ENV
-          echo "EOF" >> $GITHUB_ENV
+          # Combine and deduplicate language lists
+          LANG_LIST=$(echo "$DERIVED_LANGS $FULL_LANGS" | tr ' ' '\n' | sort -u | tr '\n' ' ')
+          echo "lang_list=${LANG_LIST}" >> $GITHUB_OUTPUT
+          echo "Detected languages: ${LANG_LIST}"
 
       - name: Download and check emoji data
         id: check-updates
@@ -50,8 +45,8 @@ jobs:
           
           CHANGES_EXIST=false
           
-          # Iterate over the language list
-          echo "${{ env.lang_list }}" | while read -r lang; do
+          # Use dynamic language list from previous step
+          for lang in ${{ steps.get-langs.outputs.lang_list }}; do
             # Download latest data for each language
             mkdir -p "src/scribe_data/unicode/cldr-annotations-derived-full/annotationsDerived/$lang"
             mkdir -p "src/scribe_data/unicode/cldr-annotations-full/annotations/$lang"
@@ -83,8 +78,8 @@ jobs:
       - name: Update files if changed
         if: steps.check-updates.outputs.changes_exist == 'true'
         run: |
-          # Iterate over the language list
-          echo "${{ env.lang_list }}" | while read -r lang; do
+          # Use dynamic language list
+          for lang in ${{ steps.get-langs.outputs.lang_list }}; do
             mkdir -p "src/scribe_data/unicode/cldr-annotations-derived-full/annotationsDerived/$lang"
             mkdir -p "src/scribe_data/unicode/cldr-annotations-full/annotations/$lang"
             
