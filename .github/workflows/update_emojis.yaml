@@ -37,8 +37,14 @@ jobs:
           
           CHANGES_EXIST=false
           
+          # Debug: Check the response
+          echo "Fetching language list..."
+          curl -v https://raw.githubusercontent.com/unicode-org/cldr-json/main/cldr-json/cldr-annotations-full/annotations/index.json
+          
           # Get list of all language codes from CLDR repository
           LANG_LIST=$(curl -s https://raw.githubusercontent.com/unicode-org/cldr-json/main/cldr-json/cldr-annotations-full/annotations/index.json | jq -r '.locales[]')
+          
+          echo "Language list: $LANG_LIST"
           
           for lang in $LANG_LIST; do
             # Download latest data for each language
