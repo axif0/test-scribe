@@ -34,36 +34,50 @@ jobs:
           mkdir -p src/scribe_data/unicode/cldr-annotations-derived-full
           mkdir -p src/scribe_data/unicode/cldr-annotations-full
           
-          # Download latest data
-          curl -L https://raw.githubusercontent.com/unicode-org/cldr-json/main/cldr-json/cldr-annotations-derived-full/annotationsDerived/en/annotations.json -o new_derived.json
-          curl -L https://raw.githubusercontent.com/unicode-org/cldr-json/main/cldr-json/cldr-annotations-full/annotations/en/annotations.json -o new_full.json
-          
-          # Check if files are different
           CHANGES_EXIST=false
           
-          if [ -f "src/scribe_data/unicode/cldr-annotations-derived-full/en.json" ]; then
-            if ! cmp -s "new_derived.json" "src/scribe_data/unicode/cldr-annotations-derived-full/en.json"; then
-              CHANGES_EXIST=true
-            fi
-          else
-            CHANGES_EXIST=true
-          fi
+          # Get list of all language codes from CLDR repository
+          LANG_LIST=$(curl -s https://raw.githubusercontent.com/unicode-org/cldr-json/main/cldr-json/cldr-annotations-full/annotations/index.json | jq -r '.locales[]')
           
-          if [ -f "src/scribe_data/unicode/cldr-annotations-full/en.json" ]; then
-            if ! cmp -s "new_full.json" "src/scribe_data/unicode/cldr-annotations-full/en.json"; then
+          for lang in $LANG_LIST; do
+            # Download latest data for each language
+            curl -L "https://raw.githubusercontent.com/unicode-org/cldr-json/main/cldr-json/cldr-annotations-derived-full/annotationsDerived/$lang/annotations.json" -o "new_derived_$lang.json"
+            curl -L "https://raw.githubusercontent.com/unicode-org/cldr-json/main/cldr-json/cldr-annotations-full/annotations/$lang/annotations.json" -o "new_full_$lang.json"
+            
+            # Check derived annotations
+            if [ -f "src/scribe_data/unicode/cldr-annotations-derived-full/$lang.json" ]; then
+              if ! cmp -s "new_derived_$lang.json" "src/scribe_data/unicode/cldr-annotations-derived-full/$lang.json"; then
+                CHANGES_EXIST=true
+              fi
+            else
               CHANGES_EXIST=true
             fi
-          else
-            CHANGES_EXIST=true
-          fi
+            
+            # Check full annotations
+            if [ -f "src/scribe_data/unicode/cldr-annotations-full/$lang.json" ]; then
+              if ! cmp -s "new_full_$lang.json" "src/scribe_data/unicode/cldr-annotations-full/$lang.json"; then
+                CHANGES_EXIST=true
+              fi
+            else
+              CHANGES_EXIST=true
+            fi
+          done
           
           echo "changes_exist=${CHANGES_EXIST}" >> $GITHUB_OUTPUT
+
+      - name: Install jq
+        run: sudo apt-get install jq
 
       - name: Update files if changed
         if: steps.check-updates.outputs.changes_exist == 'true'
         run: |
-          mv new_derived.json src/scribe_data/unicode/cldr-annotations-derived-full/en.json
-          mv new_full.json src/scribe_data/unicode/cldr-annotations-full/en.json
+          # Get language list again for moving files
+          LANG_LIST=$(curl -s https://raw.githubusercontent.com/unicode-org/cldr-json/main/cldr-json/cldr-annotations-full/annotations/index.json | jq -r '.locales[]')
+          
+          for lang in $LANG_LIST; do
+            mv "new_derived_$lang.json" "src/scribe_data/unicode/cldr-annotations-derived-full/$lang.json"
+            mv "new_full_$lang.json" "src/scribe_data/unicode/cldr-annotations-full/$lang.json"
+          done
           
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global user.name "github-actions[bot]"
