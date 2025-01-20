@@ -1,0 +1,29 @@
+# tool: scribe-data
+# All latin (Q397) adjectives (Q34698) and their forms.
+# Enter this query at https://query.wikidata.org/.
+
+SELECT
+   (REPLACE(STR(?lexeme), "http://www.wikidata.org/entity/", "") AS ?lexemeID)
+    ?adjectives
+    ?nominativeSingular
+  ?genitiveSingular
+  WHERE {
+    ?lexeme dct:language wd:Q397 ;
+        wikibase:lexicalCategory wd:Q34698 ;
+        wikibase:lemma ?adjectives .
+        FILTER(lang(?adjectives) = "la")
+    
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?nominativeSingularForm .
+            ?nominativeSingularForm ontolex:representation ?nominativeSingular ;
+                wikibase:grammaticalFeature wd:Q131105, wd:Q110786 .
+        }
+
+
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?genitiveSingularForm .
+            ?genitiveSingularForm ontolex:representation ?genitiveSingular ;
+                wikibase:grammaticalFeature wd:Q146233, wd:Q110786 .
+        }
+
+}

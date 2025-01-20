@@ -1,0 +1,45 @@
+# tool: scribe-data
+# All latin (Q397) nouns (Q1084) and their forms.
+# Enter this query at https://query.wikidata.org/.
+
+SELECT
+   (REPLACE(STR(?lexeme), "http://www.wikidata.org/entity/", "") AS ?lexemeID)
+    ?nouns
+    ?nominativeSingular
+  ?ablativeSingular
+  ?ablativePlural
+  ?genitiveSingular
+  WHERE {
+    ?lexeme dct:language wd:Q397 ;
+        wikibase:lexicalCategory wd:Q1084 ;
+        wikibase:lemma ?nouns .
+        FILTER(lang(?nouns) = "la")
+    
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?nominativeSingularForm .
+            ?nominativeSingularForm ontolex:representation ?nominativeSingular ;
+                wikibase:grammaticalFeature wd:Q131105, wd:Q110786 .
+        }
+
+
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?ablativeSingularForm .
+            ?ablativeSingularForm ontolex:representation ?ablativeSingular ;
+                wikibase:grammaticalFeature wd:Q156986, wd:Q110786 .
+        }
+
+
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?ablativePluralForm .
+            ?ablativePluralForm ontolex:representation ?ablativePlural ;
+                wikibase:grammaticalFeature wd:Q156986, wd:Q146786 .
+        }
+
+
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?genitiveSingularForm .
+            ?genitiveSingularForm ontolex:representation ?genitiveSingular ;
+                wikibase:grammaticalFeature wd:Q146233, wd:Q110786 .
+        }
+
+}

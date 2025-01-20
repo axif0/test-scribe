@@ -1,0 +1,37 @@
+# tool: scribe-data
+# All czech (Q9056) adjectives (Q34698) and their forms.
+# Enter this query at https://query.wikidata.org/.
+
+SELECT
+   (REPLACE(STR(?lexeme), "http://www.wikidata.org/entity/", "") AS ?lexemeID)
+    ?adjectives
+    ?genitive
+  ?locative
+  ?nominative
+  WHERE {
+    ?lexeme dct:language wd:Q9056 ;
+        wikibase:lexicalCategory wd:Q34698 ;
+        wikibase:lemma ?adjectives .
+        FILTER(lang(?adjectives) = "cs")
+    
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?genitiveForm .
+            ?genitiveForm ontolex:representation ?genitive ;
+                wikibase:grammaticalFeature wd:Q146233 .
+        }
+
+
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?locativeForm .
+            ?locativeForm ontolex:representation ?locative ;
+                wikibase:grammaticalFeature wd:Q202142 .
+        }
+
+
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?nominativeForm .
+            ?nominativeForm ontolex:representation ?nominative ;
+                wikibase:grammaticalFeature wd:Q131105 .
+        }
+
+}

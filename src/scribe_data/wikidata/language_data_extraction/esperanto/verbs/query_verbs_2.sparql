@@ -1,0 +1,37 @@
+# tool: scribe-data
+# All esperanto (Q143) verbs (Q24905) and their forms.
+# Enter this query at https://query.wikidata.org/.
+
+SELECT
+   (REPLACE(STR(?lexeme), "http://www.wikidata.org/entity/", "") AS ?lexemeID)
+    ?verbs
+    ?indicativePast
+  ?indicativePresent
+  ?indicativeFuture
+  WHERE {
+    ?lexeme dct:language wd:Q143 ;
+        wikibase:lexicalCategory wd:Q24905 ;
+        wikibase:lemma ?verbs .
+        FILTER(lang(?verbs) = "eo")
+    
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?indicativePastForm .
+            ?indicativePastForm ontolex:representation ?indicativePast ;
+                wikibase:grammaticalFeature wd:Q682111, wd:Q1994301 .
+        }
+
+
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?indicativePresentForm .
+            ?indicativePresentForm ontolex:representation ?indicativePresent ;
+                wikibase:grammaticalFeature wd:Q682111, wd:Q192613 .
+        }
+
+
+        OPTIONAL {
+            ?lexeme ontolex:lexicalForm ?indicativeFutureForm .
+            ?indicativeFutureForm ontolex:representation ?indicativeFuture ;
+                wikibase:grammaticalFeature wd:Q682111, wd:Q501405 .
+        }
+
+}
