@@ -1,6 +1,9 @@
 {
   "annotations": {
     "identity": {
+      "version": {
+        "_cldrVersion": "45"
+      },
       "language": "qu"
     },
     "annotations": {
@@ -5900,9 +5903,10 @@
       },
       "🧔‍♂": {
         "default": [
-          "bigote",
           "kaki",
-          "qari"
+          "qari",
+          "qari: kaki",
+          "qari:kaki"
         ],
         "tts": [
           "qari: kaki"
@@ -6065,9 +6069,8 @@
           "amatasqa",
           "gesto",
           "maki",
-          "mana",
-          "MANA",
-          "runa"
+          "tat MANA gestowan",
+          "tata MANA gestowan"
         ],
         "tts": [
           "tata MANA gestowan"
@@ -6967,14 +6970,9 @@
       },
       "👷": {
         "default": [
-          "allichanapaq",
-          "allichay",
           "chuku",
           "llamkaq",
-          "llamkay",
-          "pirqaq",
-          "pirqay",
-          "runa"
+          "Pirqaq"
         ],
         "tts": [
           "Pirqaq"
@@ -7264,15 +7262,9 @@
       },
       "🧑‍🎄": {
         "default": [
-          "claus",
-          "fantasia",
-          "kusi",
-          "kusisqa",
-          "Mx",
-          "Navidad",
-          "raymi",
-          "santa",
-          "willay"
+          "Claus",
+          "mx claus",
+          "navidad"
         ],
         "tts": [
           "mx claus"
@@ -9553,15 +9545,9 @@
         "default": [
           "fantasia",
           "fenix",
-          "gloria",
-          "inmortal",
-          "kawsay",
-          "musuqchay",
           "nina pisqu",
           "paqaripay",
-          "paqariy",
-          "reencarnacion",
-          "tikray"
+          "reencarnacion"
         ],
         "tts": [
           "fenix"
@@ -9765,58 +9751,6 @@
         ],
         "tts": [
           "medusa"
-        ]
-      },
-      "🦀": {
-        "default": [
-          "Cancer",
-          "cangrejo",
-          "zodiaco"
-        ],
-        "tts": [
-          "cangrejo"
-        ]
-      },
-      "🦞": {
-        "default": [
-          "langosta",
-          "mamaquchamanta mikhuna",
-          "sillukuna",
-          "sopa de mariscos nisqa"
-        ],
-        "tts": [
-          "langosta"
-        ]
-      },
-      "🦐": {
-        "default": [
-          "camaron",
-          "huchuy",
-          "mariscos",
-          "mikhuna"
-        ],
-        "tts": [
-          "camaron"
-        ]
-      },
-      "🦑": {
-        "default": [
-          "calamar",
-          "mikhuna",
-          "molusco"
-        ],
-        "tts": [
-          "calamar"
-        ]
-      },
-      "🦪": {
-        "default": [
-          "buceo",
-          "ostra",
-          "perla"
-        ],
-        "tts": [
-          "ostra"
         ]
       },
       "🐌": {
@@ -10257,20 +10191,6 @@
           "kʼallnpa"
         ]
       },
-      "🪾": {
-        "default": [
-          "chaki",
-          "inti raymi",
-          "kala",
-          "kurku",
-          "manam rapiwan",
-          "qisa",
-          "wañuy"
-        ],
-        "tts": [
-          "sacha manam rapiwan"
-        ]
-      },
       "🍇": {
         "default": [
           "ruru",
@@ -10318,28 +10238,6 @@
         ],
         "tts": [
           "limun"
-        ]
-      },
-      "🍋‍🟩": {
-        "default": [
-          "ácido",
-          "citrico",
-          "kichana",
-          "kuktil",
-          "lima",
-          "margarita",
-          "mojito",
-          "picante",
-          "ralladura",
-          "ruru",
-          "salsa",
-          "sour",
-          "tequila",
-          "tropical",
-          "upyana"
-        ],
-        "tts": [
-          "lima"
         ]
       },
       "🍌": {
@@ -10649,38 +10547,6 @@
         ],
         "tts": [
           "arwijakuna"
-        ]
-      },
-      "🍄‍🟫": {
-        "default": [
-          "espora",
-          "hongo",
-          "mikuna",
-          "natural",
-          "pizza",
-          "portobello",
-          "shiitake",
-          "topping",
-          "vegano",
-          "vegetal",
-          "vegetariano",
-          "yura"
-        ],
-        "tts": [
-          "chumpi hongo"
-        ]
-      },
-      "🫜": {
-        "default": [
-          "ensalada",
-          "mikuna",
-          "rábano",
-          "ruru",
-          "vegetariano",
-          "yura"
-        ],
-        "tts": [
-          "rábano nisqa"
         ]
       },
       "🍞": {
@@ -11056,7 +10922,7 @@
         "default": [
           "arroz",
           "galleta",
-          "mikuna"
+          "galleta arrozmanta"
         ],
         "tts": [
           "galleta arrozmanta"
@@ -11066,8 +10932,8 @@
         "default": [
           "arroz",
           "Japones",
-          "mikuna",
-          "muyu"
+          "muyu",
+          "muyu arrozwan"
         ],
         "tts": [
           "muyu arrozwan"
@@ -11085,8 +10951,8 @@
       "🍛": {
         "default": [
           "arroz",
-          "curry nisqa",
-          "mikuna"
+          "arroz currywan",
+          "curry nisqa"
         ],
         "tts": [
           "arroz currywan"
@@ -11096,8 +10962,8 @@
         "default": [
           "fideus",
           "mati",
+          "mati fideuswan",
           "mikuna",
-          "palillos",
           "ramen"
         ],
         "tts": [
@@ -11219,6 +11085,58 @@
         ],
         "tts": [
           "tawak’uchu aparikuypaq"
+        ]
+      },
+      "🦀": {
+        "default": [
+          "Cancer",
+          "cangrejo",
+          "zodiaco"
+        ],
+        "tts": [
+          "cangrejo"
+        ]
+      },
+      "🦞": {
+        "default": [
+          "langosta",
+          "mamaquchamanta mikhuna",
+          "sillukuna",
+          "sopa de mariscos nisqa"
+        ],
+        "tts": [
+          "langosta"
+        ]
+      },
+      "🦐": {
+        "default": [
+          "camaron",
+          "huchuy",
+          "mariscos",
+          "mikhuna"
+        ],
+        "tts": [
+          "camaron"
+        ]
+      },
+      "🦑": {
+        "default": [
+          "calamar",
+          "mikhuna",
+          "molusco"
+        ],
+        "tts": [
+          "calamar"
+        ]
+      },
+      "🦪": {
+        "default": [
+          "buceo",
+          "ostra",
+          "perla"
+        ],
+        "tts": [
+          "ostra"
         ]
       },
       "🍦": {
@@ -11369,11 +11287,10 @@
       },
       "🍯": {
         "default": [
-          "barril",
           "manka",
           "misk’i",
           "miski",
-          "oso"
+          "miskʼi manka"
         ],
         "tts": [
           "miskʼi manka"
@@ -11383,10 +11300,7 @@
         "default": [
           "biberon",
           "biberón",
-          "botella",
-          "paqariy",
           "upyana",
-          "warma",
           "wawa",
           "wilali"
         ],
@@ -11408,11 +11322,9 @@
       "☕": {
         "default": [
           "cafe",
-          "chai",
           "q’uñi",
           "qʼuñi upyana",
           "te",
-          "té",
           "upyana",
           "wapsi"
         ],
@@ -12381,7 +12293,7 @@
           "ferrocarril",
           "shinkansen",
           "tren",
-          "utqay"
+          "utqhay"
         ],
         "tts": [
           "bala tren"
@@ -13310,13 +13222,7 @@
       },
       "🕣": {
         "default": [
-          "30",
-          "8",
-          "8:30",
-          "kimsa chunka",
-          "pusaq",
-          "pusaq-kimsa chunkawan",
-          "ura"
+          "pusaq chaymanta kimsa chunkawan"
         ],
         "tts": [
           "pusaq chaymanta kimsa chunkawan"
@@ -13327,10 +13233,8 @@
           "00",
           "9",
           "9:00",
-          "isquk¡n",
           "jisq’un",
-          "jisqʼun",
-          "pacha"
+          "jisqʼun"
         ],
         "tts": [
           "jisqʼun"
@@ -13338,14 +13242,7 @@
       },
       "🕤": {
         "default": [
-          "30",
-          "9",
-          "9:30",
-          "isqun",
-          "jisqʼun",
-          "jisqʼun-kimsa chunkawan",
-          "kimsa chunka",
-          "pacha"
+          "jisqʼun chaymanta kimsa chunkawan"
         ],
         "tts": [
           "jisqʼun chaymanta kimsa chunkawan"
@@ -13364,13 +13261,7 @@
       },
       "🕥": {
         "default": [
-          "10",
-          "10:30",
-          "30",
-          "chunka",
-          "chunka-kimsa chunkawan",
-          "kimsa chunka",
-          "pacha"
+          "chunka chaymanta kimsa chunkawan"
         ],
         "tts": [
           "chunka chaymanta kimsa chunkawan"
@@ -13389,13 +13280,8 @@
       },
       "🕦": {
         "default": [
-          "11",
-          "11:30",
-          "30",
-          "chunka hukniyuq",
-          "chunka hukniyuq-kimsa chunkawan",
-          "kimsa chunka",
-          "pacha"
+          "chunka hukniyuq chaymanta kimsa chunkawan",
+          "chunka hukniyuq-kimsa chunkawan"
         ],
         "tts": [
           "chunka hukniyuq-kimsa chunkawan"
@@ -13443,10 +13329,7 @@
       },
       "🌕": {
         "default": [
-          "hunta",
-          "killa",
-          "pacha",
-          "pura"
+          "pura killa"
         ],
         "tts": [
           "pura killa"
@@ -13485,10 +13368,7 @@
       },
       "🌙": {
         "default": [
-          "chawpi",
-          "killa",
-          "pacha",
-          "ramadan"
+          "chawpi killa"
         ],
         "tts": [
           "chawpi killa"
@@ -19077,6 +18957,24 @@
           "bitcoin qullqi"
         ]
       },
+      "₨": {
+        "default": [
+          "qullqi",
+          "rupia"
+        ],
+        "tts": [
+          "rupia"
+        ]
+      },
+      "﷼": {
+        "default": [
+          "qullqi",
+          "rial"
+        ],
+        "tts": [
+          "rial qullqi"
+        ]
+      },
       "¹": {
         "default": [
           "hatun qillqa",
@@ -19109,15 +19007,6 @@
           "hatun qillqa kimsa"
         ]
       },
-      "₨": {
-        "default": [
-          "qullqi",
-          "rupia"
-        ],
-        "tts": [
-          "rupia"
-        ]
-      },
       "µ": {
         "default": [
           "micro unancha",
@@ -19125,15 +19014,6 @@
         ],
         "tts": [
           "micro unancha"
-        ]
-      },
-      "﷼": {
-        "default": [
-          "qullqi",
-          "rial"
-        ],
-        "tts": [
-          "rial qullqi"
         ]
       }
     }

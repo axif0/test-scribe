@@ -1,6 +1,9 @@
 {
   "annotations": {
     "identity": {
+      "version": {
+        "_cldrVersion": "45"
+      },
       "language": "tk"
     },
     "annotations": {
@@ -858,14 +861,15 @@
         "default": [
           "barlag",
           "basym",
-          "dereje",
           "görkezgiç",
           "iksor belgisi",
-          "karet",
+          "kareta",
+          "kuwwat",
           "pahna",
+          "papak",
           "şewron",
           "sirkumfleks",
-          "şlýapa"
+          "sirkumfleks belgisi"
         ],
         "tts": [
           "sirkumfleks belgisi"
@@ -3947,19 +3951,6 @@
           "uklap ýatan ýüz"
         ]
       },
-      "🫩": {
-        "default": [
-          "gözüň aşagy halkaly ýüz",
-          "lüti süýnen",
-          "uky bar",
-          "ýadaw",
-          "ýatasy gelýär",
-          "ysgynsyz"
-        ],
-        "tts": [
-          "gözüniň aşagy halkaly ýüz"
-        ]
-      },
       "😷": {
         "default": [
           "hassa",
@@ -5947,8 +5938,8 @@
       "🧔‍♂": {
         "default": [
           "adam",
-          "sakal",
-          "sakally erkek"
+          "adam: sakal",
+          "sakal"
         ],
         "tts": [
           "adam: sakal"
@@ -5977,8 +5968,8 @@
       "🧔‍♀": {
         "default": [
           "aýal",
-          "sakal",
-          "sakally"
+          "aýal: sakal",
+          "sakal"
         ],
         "tts": [
           "aýal: sakal"
@@ -6109,9 +6100,7 @@
           "el",
           "erkek",
           "gadagan",
-          "oglan",
           "üm",
-          "ýigit",
           "ÝOK ümleýän erkek"
         ],
         "tts": [
@@ -6120,11 +6109,9 @@
       },
       "🙅‍♀": {
         "default": [
-          "aýal",
           "bolanok",
           "el",
           "gadagan",
-          "gyz",
           "üm",
           "ÝOK ümleýän zenan",
           "zenan"
@@ -6503,7 +6490,6 @@
       "👩‍⚖": {
         "default": [
           "adalat",
-          "aýal",
           "terezi",
           "zenan",
           "zenan kazy"
@@ -6614,8 +6600,7 @@
           "fabrik işçisi",
           "işçi",
           "senagat",
-          "ýygnama",
-          "zawod"
+          "ýygnama"
         ],
         "tts": [
           "fabrik işçisi"
@@ -6652,10 +6637,8 @@
           "ak ýaka",
           "binagär",
           "dolandyryjy",
-          "edara işgäri",
-          "işewürlik",
-          "ofis",
-          "resmi"
+          "edara işçisi",
+          "işewürlik"
         ],
         "tts": [
           "edara işçisi"
@@ -6716,7 +6699,6 @@
       "👩‍🔬": {
         "default": [
           "alym",
-          "aýal",
           "biolog",
           "fizik",
           "himik",
@@ -7263,8 +7245,7 @@
           "bäbek",
           "emdirýän",
           "erkek",
-          "ideg",
-          "süýt berýän"
+          "ideg"
         ],
         "tts": [
           "bäbegi emdirýän erkek"
@@ -7274,11 +7255,9 @@
         "default": [
           "adam",
           "bäbegi emdirýän adam",
-          "bäbek",
+          "bebek",
           "emdirýän",
-          "ideg",
-          "süýt",
-          "süýt berýän"
+          "ideg"
         ],
         "tts": [
           "bäbegi emdirýän adam"
@@ -7323,15 +7302,9 @@
       },
       "🧑‍🎄": {
         "default": [
-          "adam",
-          "baýramçylyk",
-          "daus",
-          "mksklaus",
-          "Roždestwo",
-          "santa",
-          "santy",
-          "şatlykly Roždestwo",
-          "şlýapa"
+          "Klaus",
+          "maks klaus",
+          "roždestwo"
         ],
         "tts": [
           "maks klaus"
@@ -7786,11 +7759,8 @@
         "default": [
           "ak hasaly kişi",
           "elýeterlilik",
-          "gözi görmeýän",
-          "hasa",
           "kör",
-          "kör hasaly adam",
-          "taýak"
+          "kör hasaly adam"
         ],
         "tts": [
           "kör hasaly adam"
@@ -7821,7 +7791,7 @@
       "🧑‍🦼": {
         "default": [
           "elýeterlilik",
-          "maýyp arabasy",
+          "motorly arabajykdaky adam",
           "tigirçekli oturgyç"
         ],
         "tts": [
@@ -7854,7 +7824,6 @@
         "default": [
           "el bilen işleýän tigirçekli oturgyçdaky adam",
           "elýeterlilik",
-          "maýyp arabasy",
           "tigirçekli oturgyç"
         ],
         "tts": [
@@ -7895,13 +7864,9 @@
       },
       "🏃‍♂": {
         "default": [
-          "çalt",
-          "derrew",
           "erkek",
-          "howlukmaç",
           "marafon",
           "ýaryş",
-          "ylga",
           "ylgap barýan erkek",
           "ylgaýan"
         ],
@@ -8729,17 +8694,6 @@
           "aýak yzlary"
         ]
       },
-      "🫆": {
-        "default": [
-          "barmak yzy",
-          "howpsuzlyk",
-          "jenaýat derňewi",
-          "şahsyýet anyklama"
-        ],
-        "tts": [
-          "barmak yzy"
-        ]
-      },
       "🦰": {
         "default": [
           "gyzyl saç",
@@ -8973,9 +8927,7 @@
       },
       "🫎": {
         "default": [
-          "deresygyr",
-          "şah",
-          "sugun"
+          "deresygyr"
         ],
         "tts": [
           "deresygyr"
@@ -8983,12 +8935,7 @@
       },
       "🫏": {
         "default": [
-          "aňňyrmak",
-          "eşek",
-          "iş",
-          "işlemek",
-          "kürre",
-          "taýhar"
+          "eşek"
         ],
         "tts": [
           "eşek"
@@ -9602,12 +9549,7 @@
       },
       "🪽": {
         "default": [
-          "ganat",
-          "guş",
-          "jennet",
-          "perişde",
-          "uç",
-          "uçmak"
+          "ganat"
         ],
         "tts": [
           "ganat"
@@ -9833,66 +9775,10 @@
       },
       "🪼": {
         "default": [
-          "awuly",
-          "awy",
-          "deňiz",
-          "jandar",
-          "meduza",
-          "ýak"
+          "meduza"
         ],
         "tts": [
           "meduza"
-        ]
-      },
-      "🦀": {
-        "default": [
-          "Leňňeç",
-          "täleýnama"
-        ],
-        "tts": [
-          "leňňeç"
-        ]
-      },
-      "🦞": {
-        "default": [
-          "bisk",
-          "deňiz önümi",
-          "omar",
-          "penjeler"
-        ],
-        "tts": [
-          "omar"
-        ]
-      },
-      "🦐": {
-        "default": [
-          "iýmit",
-          "kiçi",
-          "krewetka",
-          "mollýuska"
-        ],
-        "tts": [
-          "krewetka"
-        ]
-      },
-      "🦑": {
-        "default": [
-          "iýmit",
-          "kalmar",
-          "mollýuska"
-        ],
-        "tts": [
-          "kalmar"
-        ]
-      },
-      "🦪": {
-        "default": [
-          "çümmek",
-          "merjen",
-          "ustrisa"
-        ],
-        "tts": [
-          "ustrisa"
         ]
       },
       "🐌": {
@@ -10167,9 +10053,7 @@
       },
       "🪻": {
         "default": [
-          "benewşe",
-          "giasint",
-          "lawanda"
+          "giasint"
         ],
         "tts": [
           "giasint"
@@ -10337,19 +10221,6 @@
           "kömelek"
         ]
       },
-      "🪾": {
-        "default": [
-          "guraklyk",
-          "guran",
-          "gury",
-          "gyş",
-          "hasylsyz",
-          "ýapraksyz agaç"
-        ],
-        "tts": [
-          "ýapraksyz agaç"
-        ]
-      },
       "🍇": {
         "default": [
           "miwe",
@@ -10401,10 +10272,8 @@
         "default": [
           "laým",
           "miwe",
-          "mohito",
           "sitrus",
-          "tropiki",
-          "turşy"
+          "tropiki"
         ],
         "tts": [
           "laým"
@@ -10696,13 +10565,7 @@
       },
       "🫚": {
         "default": [
-          "hoşboý",
-          "kök",
-          "ot-çöp",
-          "piwo",
-          "saglyk",
-          "tebigy",
-          "zenjebil"
+          "zenjebil köki"
         ],
         "tts": [
           "zenjebil köki"
@@ -10710,15 +10573,7 @@
       },
       "🫛": {
         "default": [
-          "edamame",
-          "gök önüm",
-          "kösük",
-          "kösükli",
-          "nohut",
-          "noýba",
-          "noýba baldagy",
-          "soýa",
-          "wegetarian"
+          "nohudyň kösügi"
         ],
         "tts": [
           "nohudyň kösügi"
@@ -10734,19 +10589,6 @@
         ],
         "tts": [
           "mele kömelek"
-        ]
-      },
-      "🫜": {
-        "default": [
-          "gök önüm",
-          "kök",
-          "mellek",
-          "şalgam",
-          "şugundyr",
-          "turp"
-        ],
-        "tts": [
-          "köki miweli"
         ]
       },
       "🍞": {
@@ -11283,6 +11125,57 @@
           "iýmit alyp gidilýän guty"
         ]
       },
+      "🦀": {
+        "default": [
+          "Leňňeç",
+          "täleýnama"
+        ],
+        "tts": [
+          "leňňeç"
+        ]
+      },
+      "🦞": {
+        "default": [
+          "bisk",
+          "deňiz önümi",
+          "omar",
+          "penjeler"
+        ],
+        "tts": [
+          "omar"
+        ]
+      },
+      "🦐": {
+        "default": [
+          "iýmit",
+          "kiçi",
+          "krewetka",
+          "mollýuska"
+        ],
+        "tts": [
+          "krewetka"
+        ]
+      },
+      "🦑": {
+        "default": [
+          "iýmit",
+          "kalmar",
+          "mollýuska"
+        ],
+        "tts": [
+          "kalmar"
+        ]
+      },
+      "🦪": {
+        "default": [
+          "çümmek",
+          "merjen",
+          "ustrisa"
+        ],
+        "tts": [
+          "ustrisa"
+        ]
+      },
       "🍦": {
         "default": [
           "buz",
@@ -11391,8 +11284,9 @@
       "🍫": {
         "default": [
           "desert",
-          "plitka",
+          "plita",
           "şokolad",
+          "şokolad plitasy",
           "süýji"
         ],
         "tts": [
@@ -15180,17 +15074,7 @@
       },
       "🪭": {
         "default": [
-          "çapak",
-          "el çarpmak",
-          "eplenýän feýer",
-          "flirt",
-          "gyzgyn",
-          "janköýer",
-          "pasyrdamak",
-          "sowamak",
-          "sowaşmak",
-          "tans",
-          "utanjaň"
+          "eplenýän el ýelpewajy"
         ],
         "tts": [
           "eplenýän el ýelpewajy"
@@ -15356,11 +15240,7 @@
       },
       "🪮": {
         "default": [
-          "Afro",
-          "darak",
-          "gazaw",
-          "iri darak",
-          "saç"
+          "saçgysgyç"
         ],
         "tts": [
           "saçgysgyç"
@@ -15765,16 +15645,7 @@
       },
       "🪇": {
         "default": [
-          "ça ça",
-          "gural",
-          "marakas",
-          "şakyrdy",
-          "saz",
-          "şeýker",
-          "silkmek",
-          "şüweleň",
-          "tans",
-          "zarba"
+          "marakas"
         ],
         "tts": [
           "marakas"
@@ -15782,34 +15653,10 @@
       },
       "🪈": {
         "default": [
-          "fleýta",
-          "fleýtaçy",
-          "fleýtajyk",
-          "gural",
-          "magnitofon",
-          "orkestr",
-          "pikkolo",
-          "saz",
-          "surnaý",
-          "üflenýän agaç saz guraly",
-          "ýöriş orkestri"
+          "tüýdük"
         ],
         "tts": [
           "tüýdük"
-        ]
-      },
-      "🪉": {
-        "default": [
-          "arfa",
-          "aýdym",
-          "orkestr",
-          "saz",
-          "saz guraly",
-          "sazanda",
-          "söýgi"
-        ],
-        "tts": [
-          "arfa"
         ]
       },
       "📱": {
@@ -15994,10 +15841,9 @@
       },
       "📀": {
         "default": [
-          "Blu-ray",
+          "blu-ray",
           "disk",
           "DVD",
-          "kompakt disk",
           "kompýuter",
           "optiki"
         ],
@@ -17271,20 +17117,6 @@
           "merdiwan"
         ]
       },
-      "🪏": {
-        "default": [
-          "çukur",
-          "gazmak",
-          "kepje",
-          "pil",
-          "pilçe",
-          "piljagaz",
-          "susak"
-        ],
-        "tts": [
-          "pilçe"
-        ]
-      },
       "⚗": {
         "default": [
           "gural",
@@ -17766,17 +17598,13 @@
       },
       "🪬": {
         "default": [
-          "aýa",
           "el",
-          "Fatima",
-          "gollanma",
           "gorag",
-          "goramak",
+          "gözmonjuk",
           "hamsa",
           "Mariýa",
           "Merýem",
-          "täleý",
-          "tumar"
+          "Patma"
         ],
         "tts": [
           "hamsa"
@@ -18479,12 +18307,7 @@
       },
       "🪯": {
         "default": [
-          "Deg Teg Fateh",
-          "din",
-          "Halsa",
-          "Khanda",
-          "Sikh",
-          "Sikhizm"
+          "khanda"
         ],
         "tts": [
           "khanda"
@@ -18513,10 +18336,8 @@
       },
       "♊": {
         "default": [
-          "ekizler",
           "Ekizler",
-          "täleýnama",
-          "zodiak"
+          "täleýnama"
         ],
         "tts": [
           "Ekizler"
@@ -18567,9 +18388,7 @@
         "default": [
           "Akrap",
           "içýan",
-          "Içýan",
-          "täleýnama",
-          "zodiak"
+          "täleýnama"
         ],
         "tts": [
           "Akrap"
@@ -18876,18 +18695,7 @@
       },
       "🛜": {
         "default": [
-          "birikme ukyby",
-          "giň zolakly",
-          "internet",
-          "kompýuter",
-          "router",
-          "simsiz",
-          "smartfon",
-          "tor",
-          "wi-fi",
-          "wifi",
-          "wlan",
-          "ýaýlym nokady"
+          "simsiz"
         ],
         "tts": [
           "simsiz"
@@ -18997,12 +18805,9 @@
       },
       "🟰": {
         "default": [
-          "agyr deňdir belgisi",
-          "deň",
-          "deňdir",
           "deňlik",
-          "jogap",
-          "matematika"
+          "matematika",
+          "ýogyn deňdir belgisi"
         ],
         "tts": [
           "ýogyn deňdir belgisi"
@@ -19355,20 +19160,6 @@
           "söwda belgisi"
         ]
       },
-      "🫟": {
-        "default": [
-          "boýag",
-          "dökülen",
-          "reňk",
-          "syçramak",
-          "syçratgy",
-          "syýa",
-          "tegmil"
-        ],
-        "tts": [
-          "syçratgy"
-        ]
-      },
       "🔠": {
         "default": [
           "ABÇD",
@@ -19617,10 +19408,9 @@
       },
       "🈷": {
         "default": [
-          "\"aýlyk möçber\"",
-          "aýlyk möçber",
+          "“aýlyk möçber”",
           "ideograf",
-          "ÿaponça",
+          "ýaponça",
           "ýaponça \"aýlyk möçber\" düwmesi",
           "月"
         ],
@@ -19630,9 +19420,8 @@
       },
       "🈶": {
         "default": [
-          "\"mugt däl\"",
+          "“mugt däl”",
           "ideograf",
-          "mugt däl",
           "ýaponça",
           "ýaponça \"mugt däl\" düwmesi",
           "有"
@@ -19727,12 +19516,11 @@
       },
       "🈴": {
         "default": [
-          "\"kanagatlanarly baha\"",
+          "“kanagatlanarly baha”",
           "ideograf",
-          "kanagatlanarly baha",
           "ýaponça",
           "ýaponça \"kanagatlanarly baha\" düwmesi",
-          "合*"
+          "合"
         ],
         "tts": [
           "ýaponça \"kanagatlanarly baha\" düwmesi"
@@ -20393,6 +20181,24 @@
           "bitkoin"
         ]
       },
+      "₨": {
+        "default": [
+          "pul birligi",
+          "rupiýa"
+        ],
+        "tts": [
+          "rupiýa"
+        ]
+      },
+      "﷼": {
+        "default": [
+          "pul birligi",
+          "rial"
+        ],
+        "tts": [
+          "rial"
+        ]
+      },
       "¹": {
         "default": [
           "bir",
@@ -20425,15 +20231,6 @@
           "ýokary indeks üç"
         ]
       },
-      "₨": {
-        "default": [
-          "pul birligi",
-          "rupiýa"
-        ],
-        "tts": [
-          "rupiýa"
-        ]
-      },
       "µ": {
         "default": [
           "mikro belgisi",
@@ -20441,15 +20238,6 @@
         ],
         "tts": [
           "mikro belgisi"
-        ]
-      },
-      "﷼": {
-        "default": [
-          "pul birligi",
-          "rial"
-        ],
-        "tts": [
-          "rial"
         ]
       }
     }

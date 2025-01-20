@@ -1,6 +1,9 @@
 {
   "annotations": {
     "identity": {
+      "version": {
+        "_cldrVersion": "45"
+      },
       "language": "en",
       "territory": "CA"
     },
@@ -1637,6 +1640,16 @@
           "woman"
         ]
       },
+      "👭": {
+        "default": [
+          "couple",
+          "hand",
+          "holding hands",
+          "two women holding hands",
+          "women",
+          "women holding hands"
+        ]
+      },
       "👬": {
         "default": [
           "couple",
@@ -2158,6 +2171,13 @@
           "tuktuk"
         ]
       },
+      "🚏": {
+        "default": [
+          "bus",
+          "busstop",
+          "stop"
+        ]
+      },
       "🛣": {
         "tts": [
           "highway"
@@ -2647,6 +2667,14 @@
           "sterling"
         ]
       },
+      "✉": {
+        "default": [
+          "e-mail",
+          "email",
+          "envelope",
+          "letter"
+        ]
+      },
       "📮": {
         "default": [
           "mail",
@@ -2751,6 +2779,14 @@
         ],
         "tts": [
           "mousetrap"
+        ]
+      },
+      "🪒": {
+        "default": [
+          "cut-throat",
+          "razor",
+          "sharp",
+          "shave"
         ]
       },
       "🛒": {

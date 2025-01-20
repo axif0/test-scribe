@@ -1,6 +1,9 @@
 {
   "annotations": {
     "identity": {
+      "version": {
+        "_cldrVersion": "45"
+      },
       "language": "yo",
       "territory": "BJ"
     },
@@ -785,17 +788,6 @@
           "atɔ́ka ɔlɔ́pàá gígùn lórí tó kɔjú sí ìwɔ̀ oòrùn àríwá"
         ]
       },
-      "↹": {
-        "default": [
-          "apá-òsì",
-          "ìkɔ́",
-          "ɔ̀pá",
-          "ɔ̀pá oní ìkɔ́ apá-òsì lórí apá-ɔ̀tún"
-        ],
-        "tts": [
-          "ɔ̀pá oní ìkɔ́ apá-òsì lórí apá-ɔ̀tún"
-        ]
-      },
       "↺": {
         "default": [
           "atɔ́ka yíyípo lòdì sí ɔwɔ́ aago tó shísílɛ̀ lókè"
@@ -846,24 +838,6 @@
         ],
         "tts": [
           "ɔ̀kɔ̀ ɛlɛ́gùn-ún òkè tó kɔjú sí òsì"
-        ]
-      },
-      "⇀": {
-        "default": [
-          "ìkɔ́",
-          "ìkɔ́ apá-ɔ̀tún tó kɔrí sókè"
-        ],
-        "tts": [
-          "ìkɔ́ apá-ɔ̀tún tó kɔrí sókè"
-        ]
-      },
-      "⇁": {
-        "default": [
-          "ìkɔ́",
-          "ìkɔ́ apá-ɔ̀tún tó darí wà lɛ̀"
-        ],
-        "tts": [
-          "ìkɔ́ apá-ɔ̀tún tó darí wà lɛ̀"
         ]
       },
       "⇂": {
@@ -1389,15 +1363,6 @@
         ],
         "tts": [
           "síláàshì ìdá"
-        ]
-      },
-      "∗": {
-        "default": [
-          "amojú ɛ̀rɔ àmì ìràwɔ̀",
-          "ìràwɔ̀"
-        ],
-        "tts": [
-          "amojú ɛ̀rɔ àmì ìràwɔ̀"
         ]
       },
       "∘": {
@@ -3191,17 +3156,6 @@
           "oju adatɔ"
         ]
       },
-      "🫩": {
-        "default": [
-          "ojú pɛ̀lú ìsàlɛ̀ ojú tó wú",
-          "rɛ̀",
-          "rírɛ̀ tɔwɔ́ tɛsɛ̀",
-          "tòògbé"
-        ],
-        "tts": [
-          "ojú pɛ̀lú ìsàlɛ̀ ojú tó wú"
-        ]
-      },
       "😷": {
         "default": [
           "àárɛ̀",
@@ -3330,7 +3284,7 @@
           "ɔ̀mɔ̀wé tí kò jáfáfá"
         ],
         "tts": [
-          "Oju Ɔmɔwe Ti O Jafafa"
+          "Oju Ɔmɔwe Ti Ko Jafafa"
         ]
       },
       "🧐": {
@@ -3571,7 +3525,7 @@
           "yege"
         ],
         "tts": [
-          "Oju Pɛlu Ooru Nimu"
+          "Oju Pɛlu Ikun Nimu"
         ]
       },
       "🤬": {
@@ -3593,7 +3547,7 @@
           "rɛ́rìn músɛ́"
         ],
         "tts": [
-          "Oju Ɛrin Pɛlu Awɔn Iwo"
+          "Oju Ɛrin Pɛlu Awɔn Iho"
         ]
       },
       "👿": {
@@ -3607,7 +3561,7 @@
           "Oju Ibinu Pɛlu Iho"
         ],
         "tts": [
-          "Oju Ibinu Pɛlu Awɔn Iwo"
+          "Oju Ibinu Pɛlu Iho"
         ]
       },
       "💀": {
@@ -3794,7 +3748,7 @@
           "olóngbò"
         ],
         "tts": [
-          "Oju Ologbo Afɛnukonu"
+          "Oju Ologbo Afɛnukonu Pɛlu Awɔn Oju Didi"
         ]
       },
       "🙀": {
@@ -3961,7 +3915,7 @@
           "Ɔkan Ti A She Lɔshɔ"
         ],
         "tts": [
-          "Ɔshɔ Ɔkan"
+          "Ɔkan Ti A She Lɔshɔ"
         ]
       },
       "❣": {
@@ -4041,7 +3995,7 @@
           "ɔlakàn ɔsàn"
         ],
         "tts": [
-          "ɔlɔkàn omi ɔsàn"
+          "ɔlakàn ɔsàn"
         ]
       },
       "💛": {
@@ -4227,12 +4181,9 @@
       },
       "👋": {
         "default": [
-          "báwo",
-          "ìkínni",
-          "ìwɔ",
-          "ju wɔ́",
-          "ó dàbɔ̀",
-          "ó dìgbà kan",
+          "juwɔ́",
+          "N Juwɔ",
+          "ń juwɔ́",
           "ɔwɔ́"
         ],
         "tts": [
@@ -4560,7 +4511,7 @@
           "òwɔ́ ɛ̀shɛ́"
         ],
         "tts": [
-          "Ɛshɛ Ti a Na Soke"
+          "Nashɛ Soke"
         ]
       },
       "👊": {
@@ -5312,8 +5263,8 @@
       },
       "👨‍🎓": {
         "default": [
-          "akàwégboyè",
           "akɛ́kɔ̀ɔ́",
+          "kàwégboyè",
           "ɔkùnrin"
         ],
         "tts": [
@@ -5322,9 +5273,9 @@
       },
       "👩‍🎓": {
         "default": [
-          "akàwégboyè",
           "akɛ́kɔ̀ɔ́",
-          "obinrin"
+          "kàwégboyè",
+          "obìrin"
         ],
         "tts": [
           "obìrin akɛ́kɔ̀ɔ́"
@@ -5757,7 +5708,7 @@
           "rɔ́kɛ̀tì"
         ],
         "tts": [
-          "ɔkùnrin olùwádìí inú òshùpá"
+          "ɔkùnrin olùwádìí inú òshùpá ɔkùnrin"
         ]
       },
       "👩‍🚀": {
@@ -6377,7 +6328,7 @@
           "ojú"
         ],
         "tts": [
-          "ɛni N gba Ifɔwɔwɔnilara"
+          "ɛni N gba Ishɛ"
         ]
       },
       "💆‍♂": {
@@ -6388,7 +6339,7 @@
           "ɔkùnrin tí ń gba ìfiránshɛ́"
         ],
         "tts": [
-          "ɔkùnrin tí ń gba ifɔwɔwɔnilara"
+          "ɔkùnrin tí ń gba ìfiránshɛ́"
         ]
       },
       "💆‍♀": {
@@ -6399,7 +6350,7 @@
           "ojú"
         ],
         "tts": [
-          "obìnrin tí ń gba ifɔwɔwɔnilara"
+          "obìnrin tí ń gba ìfiránshɛ́"
         ]
       },
       "💇": {
@@ -6641,7 +6592,7 @@
           "oníjó"
         ],
         "tts": [
-          "awɔn eniyan eleti ehoro"
+          "awɔn eniyan eleti ehoro n sariya"
         ]
       },
       "👯‍♂": {
@@ -6653,7 +6604,7 @@
           "ɔkùnrin"
         ],
         "tts": [
-          "àwɔn ɔkùnrin elétí ehoro"
+          "àwɔn ɔkùnrin elétí ehoro n shàríyá"
         ]
       },
       "👯‍♀": {
@@ -6664,7 +6615,7 @@
           "oníjó"
         ],
         "tts": [
-          "awɔn obìnrin eleti ehoro"
+          "awɔn obìnrin eleti ehoro n sariya"
         ]
       },
       "🧖‍♂": {
@@ -6705,7 +6656,7 @@
           "yínyìn"
         ],
         "tts": [
-          "ɛni n síkì"
+          "ɛni síkì"
         ]
       },
       "🏂": {
@@ -6796,7 +6747,7 @@
           "ɔkùnrin tí ń wakɔ̀ ojú omo kékeré"
         ],
         "tts": [
-          "ɔkùnrin tí ń wakɔ̀ ojú omi kékeré"
+          "ɔkùnrin tí ń wakɔ̀ ojú omo kékeré"
         ]
       },
       "🚣‍♀": {
@@ -6807,7 +6758,7 @@
           "ɔkɔ́ ojú omi kékeré"
         ],
         "tts": [
-          "obìnrin tí ń wakɔ̀ ojú omi kékeré"
+          "obìnrin tí ń wakɔ̀ ojú omo kékeré"
         ]
       },
       "🏊": {
@@ -7018,7 +6969,7 @@
           "gídígbò"
         ],
         "tts": [
-          "àwɔn ɔkùnrin ti n ja ijakadi"
+          "àwɔn ɔkùnrin gídígbò"
         ]
       },
       "🤼‍♀": {
@@ -7028,7 +6979,7 @@
           "gídígbò"
         ],
         "tts": [
-          "àwɔn obìnrn tí ń jà ijakadi"
+          "àwɔn obìnrn tí ń jà"
         ]
       },
       "🤽": {
@@ -7336,17 +7287,6 @@
           "Ipa ɛsɛ"
         ]
       },
-      "🫆": {
-        "default": [
-          "ààbò",
-          "ìdánimɔ̀",
-          "ìtɛ̀ka",
-          "ìwádìí ɔ̀ràn pɛ̀lú ìmɔ̀ ìjìnlɛ̀"
-        ],
-        "tts": [
-          "ìtɛ̀ka"
-        ]
-      },
       "🦱": {
         "default": [
           "àwɔn ríngì",
@@ -7412,7 +7352,7 @@
           "Oju Kɔlɔkɔlɔ"
         ],
         "tts": [
-          "Kɔlɔkɔlɔ"
+          "Oju Kɔlɔkɔlɔ"
         ]
       },
       "🐈‍⬛": {
@@ -7910,7 +7850,7 @@
           "ɔpɔlɔ"
         ],
         "tts": [
-          "ɔ̀pɔ̀lɔ́"
+          "Oju Ɔpɔlɔ"
         ]
       },
       "🐊": {
@@ -8018,30 +7958,6 @@
         ],
         "tts": [
           "ɛ̀ja jɛ́lì"
-        ]
-      },
-      "🦀": {
-        "default": [
-          "Alákàn",
-          "àmi oshù ìbí",
-          "Cancer"
-        ]
-      },
-      "🦐": {
-        "default": [
-          "Ede",
-          "edé",
-          "ɛja inú ìkarahun",
-          "kékeré",
-          "ónjɛ"
-        ]
-      },
-      "🦑": {
-        "default": [
-          "mólúsì",
-          "ónjɛ",
-          "Sikidi",
-          "síkídì"
         ]
       },
       "🦋": {
@@ -8247,17 +8163,6 @@
         ],
         "tts": [
           "ibi ìyéeyin pɛ̀lú ɛyin"
-        ]
-      },
-      "🪾": {
-        "default": [
-          "ìgbà òtútù",
-          "igi tí kò léwé",
-          "ɔ̀gbɛlɛ̀",
-          "yàgàn"
-        ],
-        "tts": [
-          "igi tí kò léwɛ́"
         ]
       },
       "🍈": {
@@ -8505,18 +8410,6 @@
         ],
         "tts": [
           "olú aláwɔ̀ pupa rɛ́súrɛ́sú"
-        ]
-      },
-      "🫜": {
-        "default": [
-          "bíìtì",
-          "ɛ̀fɔ́",
-          "gbòǹgbò",
-          "ɔgbà",
-          "túníìpù"
-        ],
-        "tts": [
-          "ohun ɔ̀gbìn onígbòǹgbɔ̀"
         ]
       },
       "🍞": {
@@ -8924,6 +8817,30 @@
           "péèlìa ɔ́yɛ́stà"
         ]
       },
+      "🦀": {
+        "default": [
+          "Alákàn",
+          "àmi oshù ìbí",
+          "Cancer"
+        ]
+      },
+      "🦐": {
+        "default": [
+          "Ede",
+          "edé",
+          "ɛja inú ìkarahun",
+          "kékeré",
+          "ónjɛ"
+        ]
+      },
+      "🦑": {
+        "default": [
+          "mólúsì",
+          "ónjɛ",
+          "Sikidi",
+          "síkídì"
+        ]
+      },
       "🍦": {
         "default": [
           "àdídùn",
@@ -9188,10 +9105,14 @@
           "ibi",
           "ibi oúnjɛ́",
           "júùsì"
+        ],
+        "tts": [
+          "ibi oúnjɛ́"
         ]
       },
       "🧉": {
         "default": [
+          "egbé",
           "ɛgbɛ́",
           "mu"
         ],
@@ -9199,21 +9120,10 @@
           "ɛgbɛ́"
         ]
       },
-      "🧊": {
-        "default": [
-          "ìrísín àpótí",
-          "omi dídì",
-          "ɔ̀kìtì yìyín inún òòkun",
-          "tútù"
-        ]
-      },
       "🥢": {
         "default": [
           "áshì",
           "ìlàrí"
-        ],
-        "tts": [
-          "igi ìjɛun"
         ]
       },
       "🍽": {
@@ -11715,6 +11625,9 @@
           "ishɛ́ ɔná",
           "ìtàgé",
           "tíátà"
+        ],
+        "tts": [
+          "Ere Awokɔshe"
         ]
       },
       "🖼": {
@@ -11779,7 +11692,7 @@
       "👓": {
         "default": [
           "ashɔ",
-          "dígí",
+          "Digi",
           "ɛyinjú",
           "gíláásì ojú",
           "ìbòjú"
@@ -11787,26 +11700,12 @@
       },
       "🥽": {
         "default": [
-          "bɛ̀ sómi",
           "gɔ́gú",
-          "ìdáàbò bò",
-          "jíjɔ́ irin pɔ̀",
-          "ojú",
-          "wíwɛ́",
-          "wíwɛ́ nínú odò pɛ̀lù ohun èlò tí a fi ń mí"
+          "ibo ojú",
+          "wíwɛ́"
         ],
         "tts": [
           "gɔ́gú"
-        ]
-      },
-      "🥼": {
-        "tts": [
-          "ashɔ ilé ìshàyɛ̀wò"
-        ]
-      },
-      "🦺": {
-        "tts": [
-          "ashɔ àbò"
         ]
       },
       "👔": {
@@ -11826,7 +11725,7 @@
           "tshɛ́ɛ̀tì"
         ],
         "tts": [
-          "Shɛ́ɛ̀tì"
+          "Shɛɛti"
         ]
       },
       "👖": {
@@ -12317,16 +12216,6 @@
           "orin"
         ]
       },
-      "🪉": {
-        "default": [
-          "ɛgbɛ́ akɔrin",
-          "háàpù",
-          "ìfɛ́",
-          "ohun èlò",
-          "orin",
-          "òrìshà ìfɛ́"
-        ]
-      },
       "📱": {
         "default": [
           "alágbèéká",
@@ -12608,16 +12497,14 @@
       },
       "📔": {
         "default": [
-          "ɛ̀kɔ́",
+          "àfikɔ̀wé pɛlu ɛyin ɔlɔshɔ",
           "ɛ̀yìn ìwé",
-          "ilé-ìwé",
           "ìshelɛ́shɔ̀ó̩",
           "ìwé",
-          "ìwé àkɔsílè̩",
-          "ohun àfi shɛ̀shɔ́"
+          "ìwé àkɔsílè̩"
         ],
         "tts": [
-          "àfikɔ̀wé pɛ̀lú ɛ̀yìn ɔlɔ́ɔ̀shó"
+          "àfikɔ̀wé pɛlu ɛyin ɔlɔshɔ"
         ]
       },
       "📖": {
@@ -13432,18 +13319,6 @@
           "àkàbà",
           "gùn",
           "igbésɛ̀"
-        ]
-      },
-      "🪏": {
-        "default": [
-          "bù",
-          "gbɛ́",
-          "ihò",
-          "shɔ̀bìrì",
-          "shɔ̀bìrì ìgbɛ́lɛ̀"
-        ],
-        "tts": [
-          "shɔ́bìrì"
         ]
       },
       "⚗": {
@@ -14993,18 +14868,6 @@
           "àmì ìdánimɔ̀ iléeshɛ́"
         ]
       },
-      "🫟": {
-        "default": [
-          "àbàwɔ́n",
-          "dànù",
-          "fɔ́nká",
-          "holi",
-          "ɔ̀dà"
-        ],
-        "tts": [
-          "fɔ́nká"
-        ]
-      },
       "🔠": {
         "default": [
           "ABCD",
@@ -15875,14 +15738,6 @@
           "bítikɔ́inì"
         ]
       },
-      "³": {
-        "default": [
-          "ihamerin",
-          "iwe nla",
-          "mɛ́ta",
-          "síkuwe"
-        ]
-      },
       "₨": {
         "default": [
           "oríshi owó",
@@ -15893,6 +15748,14 @@
         "default": [
           "oríshi owó",
           "riali"
+        ]
+      },
+      "³": {
+        "default": [
+          "ihamerin",
+          "iwe nla",
+          "mɛ́ta",
+          "síkuwe"
         ]
       }
     }

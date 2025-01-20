@@ -1,6 +1,9 @@
 {
   "annotations": {
     "identity": {
+      "version": {
+        "_cldrVersion": "45"
+      },
       "language": "so"
     },
     "annotations": {
@@ -3892,21 +3895,6 @@
         ],
         "tts": [
           "waji hurdadeysan"
-        ]
-      },
-      "🫩": {
-        "default": [
-          "baagag",
-          "caajisan",
-          "daahsan",
-          "daalay",
-          "daallan",
-          "hurdeysan",
-          "indho",
-          "waji"
-        ],
-        "tts": [
-          "weji ay baagag uga hoos yaalan indhaha"
         ]
       },
       "😷": {
@@ -8755,23 +8743,6 @@
           "raadad"
         ]
       },
-      "🫆": {
-        "default": [
-          "aqoonsiga",
-          "badbaadada",
-          "daabac",
-          "dambi baadhe",
-          "dambiyada",
-          "denbi-baarista la adeegsado sawirada faraha",
-          "qarsoon",
-          "raad",
-          "sawirka faraha",
-          "tilmaan"
-        ],
-        "tts": [
-          "sawirka faraha"
-        ]
-      },
       "🦰": {
         "default": [
           "madax cas",
@@ -9894,58 +9865,6 @@
           "kaluun qolof leh"
         ]
       },
-      "🦀": {
-        "default": [
-          "carsaanyo",
-          "kansar",
-          "mactab meecaad"
-        ],
-        "tts": [
-          "carsaanyo"
-        ]
-      },
-      "🦞": {
-        "default": [
-          "argoosto",
-          "ciddiyaha",
-          "cunno badeed",
-          "maraq dufan ee kalluun"
-        ],
-        "tts": [
-          "argoosto"
-        ]
-      },
-      "🦐": {
-        "default": [
-          "cunto",
-          "kalluun qolof la shiilay",
-          "qolof kalluun",
-          "qolof kalluun la shiilay",
-          "yar"
-        ],
-        "tts": [
-          "kalluun qolof la shiilay"
-        ]
-      },
-      "🦑": {
-        "default": [
-          "cunto",
-          "xayawaan badeed"
-        ],
-        "tts": [
-          "xayawaan badeed"
-        ]
-      },
-      "🦪": {
-        "default": [
-          "lohod",
-          "luul",
-          "quusidda"
-        ],
-        "tts": [
-          "lohod"
-        ]
-      },
       "🐌": {
         "default": [
           "dixiri qolof leh"
@@ -10387,23 +10306,6 @@
           "barkin waraabe"
         ]
       },
-      "🪾": {
-        "default": [
-          "abaar",
-          "caleen la’aan",
-          "dhintay",
-          "geed",
-          "jiilaalka",
-          "jirridda",
-          "laamo",
-          "madhasho",
-          "qaawan",
-          "qoryo"
-        ],
-        "tts": [
-          "geed caleen la’aan ah"
-        ]
-      },
       "🍇": {
         "default": [
           "canab",
@@ -10415,20 +10317,20 @@
       },
       "🍈": {
         "default": [
-          "batiikh",
-          "mir"
+          "khudaar",
+          "qare"
         ],
         "tts": [
-          "batiikh"
+          "qare"
         ]
       },
       "🍉": {
         "default": [
-          "mir",
-          "qare"
+          "khudaar",
+          "xab-xab"
         ],
         "tts": [
-          "qare"
+          "xab-xab"
         ]
       },
       "🍊": {
@@ -10790,20 +10692,6 @@
         ],
         "tts": [
           "boqoshaa bunni ah"
-        ]
-      },
-      "🫜": {
-        "default": [
-          "beerta",
-          "cuntada",
-          "dabocase",
-          "khudaar",
-          "khudaar cune",
-          "salad",
-          "xidid"
-        ],
-        "tts": [
-          "khudradda xididka ah"
         ]
       },
       "🍞": {
@@ -11319,6 +11207,58 @@
         ],
         "tts": [
           "sabduuqa lohodka lagu qaato"
+        ]
+      },
+      "🦀": {
+        "default": [
+          "carsaanyo",
+          "kansar",
+          "mactab meecaad"
+        ],
+        "tts": [
+          "carsaanyo"
+        ]
+      },
+      "🦞": {
+        "default": [
+          "argoosto",
+          "ciddiyaha",
+          "cunno badeed",
+          "maraq dufan ee kalluun"
+        ],
+        "tts": [
+          "argoosto"
+        ]
+      },
+      "🦐": {
+        "default": [
+          "cunto",
+          "kalluun qolof la shiilay",
+          "qolof kalluun",
+          "qolof kalluun la shiilay",
+          "yar"
+        ],
+        "tts": [
+          "kalluun qolof la shiilay"
+        ]
+      },
+      "🦑": {
+        "default": [
+          "cunto",
+          "xayawaan badeed"
+        ],
+        "tts": [
+          "xayawaan badeed"
+        ]
+      },
+      "🦪": {
+        "default": [
+          "lohod",
+          "luul",
+          "quusidda"
+        ],
+        "tts": [
+          "lohod"
         ]
       },
       "🍦": {
@@ -15833,19 +15773,6 @@
           "biibiile"
         ]
       },
-      "🪉": {
-        "default": [
-          "cupid",
-          "gitaar",
-          "jacayl",
-          "muusig",
-          "qalab",
-          "qalab muusig wada-garaacista"
-        ],
-        "tts": [
-          "gitaar"
-        ]
-      },
       "📱": {
         "default": [
           "foon",
@@ -16105,12 +16032,8 @@
       },
       "📷": {
         "default": [
-          "isnaab",
-          "kamarad",
-          "muuqaal",
-          "sawir",
-          "socdaal",
-          "tbt"
+          "fiidiyow",
+          "kamarad"
         ],
         "tts": [
           "kamarad"
@@ -16239,7 +16162,6 @@
       "📕": {
         "default": [
           "buug",
-          "waxbarasho",
           "xidhan"
         ],
         "tts": [
@@ -17305,22 +17227,6 @@
         ],
         "tts": [
           "jaranjaro"
-        ]
-      },
-      "🪏": {
-        "default": [
-          "badiil",
-          "baraf",
-          "beer",
-          "dhir",
-          "god",
-          "majarafad",
-          "qod",
-          "soo dar",
-          "xabaal"
-        ],
-        "tts": [
-          "badeel"
         ]
       },
       "⚗": {
@@ -19370,22 +19276,6 @@
           "sumadda ganacsiga"
         ]
       },
-      "🫟": {
-        "default": [
-          "dareere",
-          "dhibic",
-          "holi",
-          "khad",
-          "qasan",
-          "rinji",
-          "wasakh",
-          "wax daadasho",
-          "wax kala firdhismo"
-        ],
-        "tts": [
-          "firdhiye"
-        ]
-      },
       "🔠": {
         "default": [
           "ABCD",
@@ -20411,6 +20301,24 @@
           "bitkoyn"
         ]
       },
+      "₨": {
+        "default": [
+          "lacag",
+          "rupee"
+        ],
+        "tts": [
+          "rupee"
+        ]
+      },
+      "﷼": {
+        "default": [
+          "lacag",
+          "rial"
+        ],
+        "tts": [
+          "rial"
+        ]
+      },
       "¹": {
         "default": [
           "calaamada koobaad",
@@ -20443,15 +20351,6 @@
           "calaamda sadexaad"
         ]
       },
-      "₨": {
-        "default": [
-          "lacag",
-          "rupee"
-        ],
-        "tts": [
-          "rupee"
-        ]
-      },
       "µ": {
         "default": [
           "astaanta micro",
@@ -20459,15 +20358,6 @@
         ],
         "tts": [
           "astaanta micro"
-        ]
-      },
-      "﷼": {
-        "default": [
-          "lacag",
-          "rial"
-        ],
-        "tts": [
-          "rial"
         ]
       }
     }

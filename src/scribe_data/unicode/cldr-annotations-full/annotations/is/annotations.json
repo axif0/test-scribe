@@ -1,6 +1,9 @@
 {
   "annotations": {
     "identity": {
+      "version": {
+        "_cldrVersion": "45"
+      },
       "language": "is"
     },
     "annotations": {
@@ -2312,6 +2315,7 @@
         "default": [
           "deiling",
           "deilingarskástrik í hring",
+          "deilingarskrástrik í hring",
           "stærðfræði"
         ],
         "tts": [
@@ -3859,18 +3863,6 @@
         ],
         "tts": [
           "sofandi"
-        ]
-      },
-      "🫩": {
-        "default": [
-          "andlit með poka undir augum",
-          "örþreyttur",
-          "syfjaður",
-          "úrvinda",
-          "þreyttur"
-        ],
-        "tts": [
-          "andlit með poka undir augum"
         ]
       },
       "😷": {
@@ -8604,17 +8596,6 @@
           "fótspor"
         ]
       },
-      "🫆": {
-        "default": [
-          "auðkenni",
-          "fingrafar",
-          "öryggi",
-          "réttarrannsókn"
-        ],
-        "tts": [
-          "fingrafar"
-        ]
-      },
       "🦰": {
         "default": [
           "rauðleitt hár",
@@ -9735,56 +9716,6 @@
           "marglytta"
         ]
       },
-      "🦀": {
-        "default": [
-          "krabbi",
-          "stjörnumerki"
-        ],
-        "tts": [
-          "krabbi"
-        ]
-      },
-      "🦞": {
-        "default": [
-          "bisque",
-          "humar",
-          "klær",
-          "matarmikil súpa",
-          "sjávarfang"
-        ],
-        "tts": [
-          "humar"
-        ]
-      },
-      "🦐": {
-        "default": [
-          "rækja",
-          "sjávardýr",
-          "skelfiskur"
-        ],
-        "tts": [
-          "rækja"
-        ]
-      },
-      "🦑": {
-        "default": [
-          "sjávardýr",
-          "smokkfiskur"
-        ],
-        "tts": [
-          "smokkfiskur"
-        ]
-      },
-      "🦪": {
-        "default": [
-          "köfun",
-          "ostra",
-          "perla"
-        ],
-        "tts": [
-          "ostra"
-        ]
-      },
       "🐌": {
         "default": [
           "snigill"
@@ -10232,18 +10163,6 @@
           "sveppur"
         ]
       },
-      "🪾": {
-        "default": [
-          "blaðlaust tré",
-          "nakið",
-          "ólaufgað",
-          "vetur",
-          "þurrkur"
-        ],
-        "tts": [
-          "blaðlaust tré"
-        ]
-      },
       "🍇": {
         "default": [
           "ávöxtur",
@@ -10618,18 +10537,6 @@
         ],
         "tts": [
           "brúnn sveppur"
-        ]
-      },
-      "🫜": {
-        "default": [
-          "garður",
-          "grænmeti",
-          "næpa",
-          "rófa",
-          "rót"
-        ],
-        "tts": [
-          "rótargrænmeti"
         ]
       },
       "🍞": {
@@ -11155,6 +11062,56 @@
         ],
         "tts": [
           "takeaway-box"
+        ]
+      },
+      "🦀": {
+        "default": [
+          "krabbi",
+          "stjörnumerki"
+        ],
+        "tts": [
+          "krabbi"
+        ]
+      },
+      "🦞": {
+        "default": [
+          "bisque",
+          "humar",
+          "klær",
+          "matarmikil súpa",
+          "sjávarfang"
+        ],
+        "tts": [
+          "humar"
+        ]
+      },
+      "🦐": {
+        "default": [
+          "rækja",
+          "sjávardýr",
+          "skelfiskur"
+        ],
+        "tts": [
+          "rækja"
+        ]
+      },
+      "🦑": {
+        "default": [
+          "sjávardýr",
+          "smokkfiskur"
+        ],
+        "tts": [
+          "smokkfiskur"
+        ]
+      },
+      "🦪": {
+        "default": [
+          "köfun",
+          "ostra",
+          "perla"
+        ],
+        "tts": [
+          "ostra"
         ]
       },
       "🍦": {
@@ -15599,19 +15556,6 @@
           "flauta"
         ]
       },
-      "🪉": {
-        "default": [
-          "amor",
-          "ást",
-          "harpa",
-          "hljóðfæri",
-          "hljómsveit",
-          "tónlist"
-        ],
-        "tts": [
-          "harpa"
-        ]
-      },
       "📱": {
         "default": [
           "farsími",
@@ -17031,18 +16975,6 @@
         ],
         "tts": [
           "stigi"
-        ]
-      },
-      "🪏": {
-        "default": [
-          "grafa",
-          "hola",
-          "malarskófla",
-          "moka",
-          "skófla"
-        ],
-        "tts": [
-          "skófla"
         ]
       },
       "⚗": {
@@ -19044,18 +18976,6 @@
           "skrásett vörumerki"
         ]
       },
-      "🫟": {
-        "default": [
-          "blettur",
-          "holi",
-          "klessa",
-          "málning",
-          "sletta"
-        ],
-        "tts": [
-          "sletta"
-        ]
-      },
       "🔠": {
         "default": [
           "hástafir",
@@ -20073,6 +19993,24 @@
           "bitcoin"
         ]
       },
+      "₨": {
+        "default": [
+          "gjaldmiðill",
+          "rúpía"
+        ],
+        "tts": [
+          "rúpía"
+        ]
+      },
+      "﷼": {
+        "default": [
+          "gjaldmiðill",
+          "ríal"
+        ],
+        "tts": [
+          "ríal"
+        ]
+      },
       "¹": {
         "default": [
           "brjóstletur",
@@ -20102,15 +20040,6 @@
           "brjóstletur þrír"
         ]
       },
-      "₨": {
-        "default": [
-          "gjaldmiðill",
-          "rúpía"
-        ],
-        "tts": [
-          "rúpía"
-        ]
-      },
       "µ": {
         "default": [
           "mál",
@@ -20118,15 +20047,6 @@
         ],
         "tts": [
           "míkró-merki"
-        ]
-      },
-      "﷼": {
-        "default": [
-          "gjaldmiðill",
-          "ríal"
-        ],
-        "tts": [
-          "ríal"
         ]
       }
     }

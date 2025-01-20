@@ -1,6 +1,9 @@
 {
   "annotations": {
     "identity": {
+      "version": {
+        "_cldrVersion": "45"
+      },
       "language": "en",
       "territory": "001"
     },
@@ -198,8 +201,9 @@
       "〈": {
         "default": [
           "angle bracket",
+          "bracket",
           "chevron",
-          "diamond bracket",
+          "diamond brackets",
           "left angle bracket",
           "open angle bracket",
           "pointy bracket",
@@ -209,9 +213,10 @@
       "〉": {
         "default": [
           "angle bracket",
+          "bracket",
           "chevron",
           "close angle bracket",
-          "diamond bracket",
+          "diamond brackets",
           "pointy bracket",
           "right angle bracket",
           "tuple"
@@ -445,6 +450,9 @@
       },
       "↢": {
         "default": [
+          "arrow",
+          "arrow with tail",
+          "left",
           "leftwards arrow with tail"
         ],
         "tts": [
@@ -525,18 +533,18 @@
       },
       "↴": {
         "default": [
-          "rightwards arrow with downwards corner"
+          "rightwards arrow with corner downwards"
         ],
         "tts": [
-          "rightwards arrow with downwards corner"
+          "rightwards arrow with corner downwards"
         ]
       },
       "↵": {
         "default": [
-          "downwards arrow with leftwards corner"
+          "downwards arrow with corner leftwards"
         ],
         "tts": [
-          "downwards arrow with leftwards corner"
+          "downwards arrow with corner leftwards"
         ]
       },
       "↶": {
@@ -1551,31 +1559,11 @@
           "double-line equal to or greater-than"
         ]
       },
-      "😘": {
-        "default": [
-          "adorbs",
-          "bae",
-          "blowing",
-          "face",
-          "flirt",
-          "heart",
-          "ily",
-          "kiss",
-          "love",
-          "lover",
-          "miss",
-          "muah",
-          "mwah",
-          "romantic",
-          "smooch",
-          "xoxo",
-          "you"
-        ]
-      },
       "😋": {
         "default": [
           "delicious",
           "face",
+          "face savoring food",
           "face savouring food",
           "savouring",
           "smile",
@@ -1588,29 +1576,17 @@
       "🤭": {
         "default": [
           "embarrassed",
-          "face",
-          "giggle",
-          "giggling",
-          "hand",
-          "mouth",
+          "face with hand over mouth",
           "oops",
-          "realisation",
-          "secret",
-          "shock",
-          "sudden",
-          "surprise",
           "whoops"
         ]
       },
       "🤐": {
         "default": [
           "face",
-          "keep",
           "mouth",
-          "quiet",
-          "secret",
-          "shut",
-          "zip"
+          "zip",
+          "zip-mouth face"
         ],
         "tts": [
           "zip-mouth face"
@@ -1618,20 +1594,9 @@
       },
       "🤨": {
         "default": [
-          "disapproval",
-          "disbelief",
           "distrust",
-          "emoji",
-          "eyebrow",
-          "face",
-          "hmm",
-          "mild",
-          "raised",
-          "sceptic",
-          "sceptical",
-          "scepticism",
-          "surprise",
-          "what"
+          "face with raised eyebrow",
+          "sceptic"
         ]
       },
       "😶‍🌫": {
@@ -1645,14 +1610,10 @@
       "😷": {
         "default": [
           "cold",
-          "dentist",
-          "dermatologist",
           "doctor",
-          "dr",
-          "face",
-          "germs",
+          "face with medical mask",
+          "ill",
           "mask",
-          "medical",
           "medicine",
           "poorly",
           "sick"
@@ -1660,18 +1621,12 @@
       },
       "😵‍💫": {
         "default": [
-          "confused",
           "dizzy",
-          "eyes",
-          "face",
+          "face with spiral eyes",
           "hypnotised",
-          "omg",
-          "smiley",
           "spiral",
           "trouble",
-          "whoa",
-          "woah",
-          "woozy"
+          "whoa"
         ]
       },
       "🫤": {
@@ -1683,79 +1638,14 @@
           "unsure"
         ]
       },
-      "😮": {
-        "default": [
-          "believe",
-          "face",
-          "forgot",
-          "mouth",
-          "omg",
-          "open",
-          "shocked",
-          "surprised",
-          "sympathy",
-          "unbelievable",
-          "unreal",
-          "whoa",
-          "woah",
-          "wow",
-          "you"
-        ]
-      },
       "😤": {
         "default": [
-          "anger",
           "angry",
           "face",
-          "feels",
+          "face with steam from nose",
           "frustration",
-          "fume",
-          "fuming",
-          "furious",
-          "fury",
-          "mad",
-          "nose",
-          "steam",
           "triumph",
-          "unhappy",
           "won"
-        ]
-      },
-      "🙈": {
-        "default": [
-          "embarrassed",
-          "evil",
-          "face",
-          "forbidden",
-          "forgot",
-          "gesture",
-          "hide",
-          "monkey",
-          "no",
-          "omg",
-          "prohibited",
-          "scared",
-          "secret",
-          "see",
-          "smh",
-          "watch"
-        ]
-      },
-      "💗": {
-        "default": [
-          "143",
-          "emotion",
-          "excited",
-          "growing",
-          "heart",
-          "heartpulse",
-          "ily",
-          "kisses",
-          "muah",
-          "mwah",
-          "nervous",
-          "pulse",
-          "xoxo"
         ]
       },
       "🩶": {
@@ -1772,12 +1662,7 @@
           "bubble",
           "comic",
           "dialogue",
-          "message",
-          "sms",
-          "speech",
-          "talk",
-          "text",
-          "typing"
+          "speech"
         ]
       },
       "🗨": {
@@ -1787,25 +1672,6 @@
           "dialogue",
           "left speech bubble",
           "speech"
-        ]
-      },
-      "💭": {
-        "default": [
-          "balloon",
-          "bubble",
-          "cartoon",
-          "cloud",
-          "comic",
-          "daydream",
-          "decisions",
-          "dream",
-          "idea",
-          "invent",
-          "invention",
-          "realise",
-          "think",
-          "thoughts",
-          "wonder"
         ]
       },
       "🙌": {
@@ -1819,79 +1685,42 @@
           "yay"
         ]
       },
-      "👃": {
+      "🙏": {
         "default": [
-          "body",
-          "nose",
-          "noses",
-          "nosey",
-          "odour",
-          "smell",
-          "smells"
+          "ask",
+          "hand",
+          "high 5",
+          "high five",
+          "please",
+          "pray",
+          "thanks"
         ]
       },
       "🫀": {
         "default": [
-          "anatomical",
-          "beat",
+          "anatomical heart",
           "cardiology",
           "heart",
-          "heartbeat",
           "organ",
-          "pulse",
-          "red"
-        ]
-      },
-      "🙇": {
-        "default": [
-          "apology",
-          "ask",
-          "beg",
-          "bow",
-          "bowing",
-          "favour",
-          "forgive",
-          "gesture",
-          "meditate",
-          "meditation",
-          "person",
-          "pity",
-          "regret",
-          "sorry"
+          "pulse"
         ]
       },
       "🙇‍♂": {
         "default": [
           "apology",
-          "ask",
-          "beg",
-          "bow",
           "bowing",
           "favour",
-          "forgive",
           "gesture",
           "man",
-          "meditate",
-          "meditation",
-          "pity",
-          "regret",
           "sorry"
         ]
       },
       "🙇‍♀": {
         "default": [
           "apology",
-          "ask",
-          "beg",
-          "bow",
           "bowing",
           "favour",
-          "forgive",
           "gesture",
-          "meditate",
-          "meditation",
-          "pity",
-          "regret",
           "sorry",
           "woman"
         ]
@@ -1918,26 +1747,6 @@
           "woman"
         ]
       },
-      "🧑‍🌾": {
-        "default": [
-          "farmer",
-          "gardener"
-        ]
-      },
-      "👨‍🌾": {
-        "default": [
-          "farmer",
-          "gardener",
-          "man"
-        ]
-      },
-      "👩‍🌾": {
-        "default": [
-          "farmer",
-          "gardener",
-          "woman"
-        ]
-      },
       "🧑‍🚒": {
         "default": [
           "fire engine",
@@ -1947,6 +1756,7 @@
       },
       "👨‍🚒": {
         "default": [
+          "fire",
           "fire truck",
           "firefighter",
           "man"
@@ -1954,56 +1764,10 @@
       },
       "👩‍🚒": {
         "default": [
+          "fire",
           "fire truck",
           "firefighter",
           "woman"
-        ]
-      },
-      "👷": {
-        "default": [
-          "build",
-          "construction",
-          "fix",
-          "hard hat",
-          "hat",
-          "man",
-          "person",
-          "rebuild",
-          "remodel",
-          "repair",
-          "work",
-          "worker"
-        ]
-      },
-      "👷‍♂": {
-        "default": [
-          "build",
-          "construction",
-          "fix",
-          "hard hat",
-          "hat",
-          "man",
-          "rebuild",
-          "remodel",
-          "repair",
-          "work",
-          "worker"
-        ]
-      },
-      "👷‍♀": {
-        "default": [
-          "build",
-          "construction",
-          "fix",
-          "hard hat",
-          "hat",
-          "man",
-          "rebuild",
-          "remodel",
-          "repair",
-          "woman",
-          "work",
-          "worker"
         ]
       },
       "🤵": {
@@ -2031,66 +1795,13 @@
           "woman in tuxedo"
         ]
       },
-      "🤶": {
-        "default": [
-          "celebration",
-          "Christmas",
-          "claus",
-          "mother",
-          "Mrs"
-        ],
-        "tts": [
-          "Mrs Claus"
-        ]
-      },
       "💇": {
         "default": [
           "barber",
           "beauty",
-          "chop",
-          "cosmetology",
-          "cut",
-          "groom",
-          "hair",
           "haircut",
           "parlour",
-          "person",
-          "shears",
-          "style"
-        ]
-      },
-      "💇‍♂": {
-        "default": [
-          "barber",
-          "beauty",
-          "chop",
-          "cosmetology",
-          "cut",
-          "groom",
-          "hair",
-          "haircut",
-          "man",
-          "parlour",
-          "person",
-          "shears",
-          "style"
-        ]
-      },
-      "💇‍♀": {
-        "default": [
-          "barber",
-          "beauty",
-          "chop",
-          "cosmetology",
-          "cut",
-          "groom",
-          "hair",
-          "haircut",
-          "parlour",
-          "person",
-          "shears",
-          "style",
-          "woman"
+          "person getting haircut"
         ]
       },
       "🧑‍🦯": {
@@ -2129,7 +1840,7 @@
       "🧑‍🦼": {
         "default": [
           "accessibility",
-          "person in motorised wheelchair",
+          "person in motorized wheelchair",
           "person in powered wheelchair",
           "wheelchair"
         ],
@@ -2159,113 +1870,6 @@
           "woman in powered wheelchair"
         ]
       },
-      "🕺": {
-        "default": [
-          "dance",
-          "dancer",
-          "dancing",
-          "disco",
-          "elegant",
-          "festive",
-          "flair",
-          "flamenco",
-          "groove",
-          "let’s",
-          "man",
-          "salsa",
-          "tango"
-        ]
-      },
-      "🧖": {
-        "default": [
-          "day",
-          "luxurious",
-          "pamper",
-          "person",
-          "relax",
-          "room",
-          "sauna",
-          "spa",
-          "steam",
-          "steam bath",
-          "unwind"
-        ]
-      },
-      "🧖‍♂": {
-        "default": [
-          "day",
-          "luxurious",
-          "man",
-          "pamper",
-          "relax",
-          "room",
-          "sauna",
-          "spa",
-          "steam",
-          "steam bath",
-          "unwind"
-        ]
-      },
-      "🧖‍♀": {
-        "default": [
-          "day",
-          "luxurious",
-          "pamper",
-          "relax",
-          "room",
-          "sauna",
-          "spa",
-          "steam",
-          "steam bath",
-          "unwind",
-          "woman"
-        ]
-      },
-      "🏌": {
-        "default": [
-          "ball",
-          "birdie",
-          "caddy",
-          "driving",
-          "golf",
-          "golfing",
-          "green",
-          "person",
-          "putt",
-          "range",
-          "tee"
-        ]
-      },
-      "🏌‍♂": {
-        "default": [
-          "ball",
-          "birdie",
-          "caddy",
-          "driving",
-          "golf",
-          "golfing",
-          "green",
-          "man",
-          "putt",
-          "range",
-          "tee"
-        ]
-      },
-      "🏌‍♀": {
-        "default": [
-          "ball",
-          "birdie",
-          "caddy",
-          "driving",
-          "golf",
-          "golfing",
-          "green",
-          "putt",
-          "range",
-          "tee",
-          "woman"
-        ]
-      },
       "👬": {
         "default": [
           "couple",
@@ -2277,92 +1881,12 @@
           "zodiac"
         ]
       },
-      "💏": {
-        "default": [
-          "anniversary",
-          "babe",
-          "bae",
-          "couple",
-          "date",
-          "dating",
-          "heart",
-          "kiss",
-          "love",
-          "muah",
-          "mwah",
-          "person",
-          "romance",
-          "together",
-          "xoxo"
-        ]
-      },
-      "🫆": {
-        "default": [
-          "clue",
-          "crime",
-          "detective",
-          "fingerprint",
-          "forensics",
-          "identity",
-          "mystery",
-          "print",
-          "safety",
-          "security",
-          "trace"
-        ]
-      },
       "🦳": {
         "default": [
           "grey",
           "hair",
           "old",
           "white"
-        ]
-      },
-      "🦣": {
-        "default": [
-          "animal",
-          "extinction",
-          "large",
-          "mammoth",
-          "tusk",
-          "woolly",
-          "wooly"
-        ]
-      },
-      "🦚": {
-        "default": [
-          "animal",
-          "bird",
-          "colourful",
-          "ornithology",
-          "ostentatious",
-          "peacock",
-          "peahen",
-          "pretty",
-          "proud"
-        ]
-      },
-      "🐦‍⬛": {
-        "tts": [
-          "blackbird"
-        ]
-      },
-      "🐦‍🔥": {
-        "default": [
-          "fantasy",
-          "firebird",
-          "phoenix",
-          "rebirth",
-          "reincarnation"
-        ]
-      },
-      "🦑": {
-        "default": [
-          "animal",
-          "food",
-          "mollusc",
-          "squid"
         ]
       },
       "🪴": {
@@ -2408,27 +1932,6 @@
           "onion"
         ]
       },
-      "🫚": {
-        "default": [
-          "beer",
-          "ginger root",
-          "root",
-          "root ginger",
-          "spice"
-        ],
-        "tts": [
-          "root ginger"
-        ]
-      },
-      "🫜": {
-        "default": [
-          "beetroot",
-          "garden",
-          "root",
-          "turnip",
-          "vegetable"
-        ]
-      },
       "🧇": {
         "default": [
           "breakfast",
@@ -2445,23 +1948,6 @@
           "lamb chop",
           "pork chop",
           "steak"
-        ]
-      },
-      "🧂": {
-        "default": [
-          "condiment",
-          "flavour",
-          "mad",
-          "salt",
-          "salty",
-          "shaker",
-          "taste",
-          "upset"
-        ]
-      },
-      "🥫": {
-        "tts": [
-          "tinned food"
         ]
       },
       "🍥": {
@@ -2499,26 +1985,6 @@
         ],
         "tts": [
           "maté"
-        ]
-      },
-      "🍴": {
-        "default": [
-          "breakfast",
-          "brekkie",
-          "cooking",
-          "cutlery",
-          "delicious",
-          "dinner",
-          "eat",
-          "feed",
-          "food",
-          "fork",
-          "hungry",
-          "knife",
-          "lunch",
-          "restaurant",
-          "yum",
-          "yummy"
         ]
       },
       "🏺": {
@@ -2576,30 +2042,6 @@
           "Kaaba"
         ]
       },
-      "🛝": {
-        "default": [
-          "amusement park",
-          "play",
-          "playground slide",
-          "theme park"
-        ]
-      },
-      "🎡": {
-        "default": [
-          "amusement park",
-          "ferris",
-          "theme park",
-          "wheel"
-        ]
-      },
-      "🎢": {
-        "default": [
-          "amusement park",
-          "coaster",
-          "roller",
-          "theme park"
-        ]
-      },
       "🚃": {
         "default": [
           "car",
@@ -2614,15 +2056,9 @@
       "🚙": {
         "default": [
           "4x4",
-          "car",
-          "drive",
-          "off-road",
-          "recreational",
-          "sport",
-          "sportutility",
-          "suv",
-          "utility",
-          "vehicle"
+          "off-road vehicle",
+          "sport utility",
+          "sport utility vehicle"
         ]
       },
       "🦼": {
@@ -2799,29 +2235,6 @@
           "streamer"
         ]
       },
-      "⚽": {
-        "tts": [
-          "football"
-        ]
-      },
-      "🏓": {
-        "tts": [
-          "table tennis"
-        ]
-      },
-      "🤿": {
-        "default": [
-          "diving",
-          "mask",
-          "scuba",
-          "snorkelling"
-        ]
-      },
-      "🛷": {
-        "tts": [
-          "sledge"
-        ]
-      },
       "🪆": {
         "default": [
           "babushka",
@@ -2833,21 +2246,6 @@
         ],
         "tts": [
           "Russian dolls"
-        ]
-      },
-      "🎨": {
-        "default": [
-          "art",
-          "artist",
-          "artsy",
-          "arty",
-          "colourful",
-          "creative",
-          "entertainment",
-          "museum",
-          "painter",
-          "painting",
-          "palette"
         ]
       },
       "🦺": {
@@ -2864,23 +2262,6 @@
       "👔": {
         "tts": [
           "tie"
-        ]
-      },
-      "👕": {
-        "default": [
-          "blue",
-          "casual",
-          "clothes",
-          "clothing",
-          "collar",
-          "dressed",
-          "green",
-          "shirt",
-          "shopping",
-          "t shirt",
-          "t-shirt",
-          "tshirt",
-          "weekend"
         ]
       },
       "🩱": {
@@ -2923,22 +2304,6 @@
           "flip-flop"
         ]
       },
-      "👟": {
-        "default": [
-          "athletic",
-          "clothes",
-          "clothing",
-          "fast",
-          "kick",
-          "running",
-          "shoe",
-          "shoes",
-          "shopping",
-          "sneaker",
-          "tennis",
-          "trainers"
-        ]
-      },
       "🥿": {
         "default": [
           "ballet flat",
@@ -2951,13 +2316,6 @@
       "📯": {
         "tts": [
           "post horn"
-        ]
-      },
-      "🎸": {
-        "default": [
-          "guitar",
-          "instrument",
-          "music"
         ]
       },
       "🪘": {
@@ -3111,17 +2469,6 @@
           "toilet roll"
         ]
       },
-      "🧼": {
-        "default": [
-          "bar",
-          "bathing",
-          "clean",
-          "cleaning",
-          "lather",
-          "soap",
-          "soap dish"
-        ]
-      },
       "🪪": {
         "default": [
           "credentials",
@@ -3130,47 +2477,6 @@
           "identification card",
           "licence",
           "security"
-        ]
-      },
-      "🏧": {
-        "default": [
-          "ATM",
-          "automated",
-          "bank",
-          "cash",
-          "cashpoint",
-          "money",
-          "sign",
-          "teller"
-        ]
-      },
-      "🚹": {
-        "default": [
-          "bathroom",
-          "lavatory",
-          "loo",
-          "man",
-          "men’s",
-          "room",
-          "toilet",
-          "WC"
-        ]
-      },
-      "🚺": {
-        "default": [
-          "bathroom",
-          "lavatory",
-          "loo",
-          "room",
-          "toilet",
-          "WC",
-          "woman",
-          "women’s"
-        ]
-      },
-      "🚻": {
-        "tts": [
-          "toilets"
         ]
       },
       "🚾": {
@@ -3193,19 +2499,12 @@
       },
       "🔄": {
         "default": [
-          "again",
           "anticlockwise",
+          "anticlockwise arrows button",
           "arrow",
-          "arrows",
-          "button",
           "counterclockwise",
-          "deja",
-          "refresh",
-          "rewind",
-          "vu"
-        ],
-        "tts": [
-          "anticlockwise arrows button"
+          "counterclockwise arrows button",
+          "withershins"
         ]
       },
       "✡": {
@@ -3249,16 +2548,6 @@
           "Muslim",
           "religion",
           "star and crescent"
-        ]
-      },
-      "🛜": {
-        "default": [
-          "computer",
-          "internet",
-          "network",
-          "wi-fi",
-          "wifi",
-          "wireless"
         ]
       },
       "⚧": {
@@ -3314,6 +2603,7 @@
           "?",
           "exclamation question mark",
           "interrobang",
+          "mark",
           "punctuation",
           "question"
         ]
@@ -3369,26 +2659,6 @@
           "surrender",
           "waving",
           "white flag"
-        ]
-      },
-      "🏳‍🌈": {
-        "default": [
-          "bisexual",
-          "flag",
-          "gay",
-          "genderqueer",
-          "glbt",
-          "glbtq",
-          "lesbian",
-          "lgbt",
-          "lgbtq",
-          "lgbtq+",
-          "lgbtqia",
-          "pride",
-          "queer",
-          "rainbow",
-          "trans",
-          "transgender"
         ]
       },
       "🏳‍⚧": {

@@ -1,6 +1,9 @@
 {
   "annotations": {
     "identity": {
+      "version": {
+        "_cldrVersion": "45"
+      },
       "language": "es"
     },
     "annotations": {
@@ -936,9 +939,7 @@
       },
       "↚": {
         "default": [
-          "flecha",
-          "izquierda",
-          "tachada"
+          "flecha hacia la izquierda tachada"
         ],
         "tts": [
           "flecha hacia la izquierda tachada"
@@ -958,9 +959,7 @@
       },
       "↛": {
         "default": [
-          "derecha",
-          "flecha",
-          "tachada"
+          "flecha hacia la derecha tachada"
         ],
         "tts": [
           "flecha hacia la derecha tachada"
@@ -992,9 +991,7 @@
       },
       "↜": {
         "default": [
-          "flecha",
-          "izquierda",
-          "onda"
+          "flecha de onda hacia la izquierda"
         ],
         "tts": [
           "flecha de onda hacia la izquierda"
@@ -1002,9 +999,7 @@
       },
       "↝": {
         "default": [
-          "derecha",
-          "flecha",
-          "onda"
+          "flecha de onda hacia la derecha"
         ],
         "tts": [
           "flecha de onda hacia la derecha"
@@ -1012,10 +1007,7 @@
       },
       "↞": {
         "default": [
-          "doble",
-          "flecha",
-          "izquierda",
-          "punta"
+          "flecha de doble punta hacia la izquierda"
         ],
         "tts": [
           "flecha de doble punta hacia la izquierda"
@@ -1023,10 +1015,7 @@
       },
       "↟": {
         "default": [
-          "arriba",
-          "doble",
-          "flecha",
-          "punta"
+          "flecha de doble punta hacia arriba"
         ],
         "tts": [
           "flecha de doble punta hacia arriba"
@@ -1034,10 +1023,7 @@
       },
       "↠": {
         "default": [
-          "derecha",
-          "doble",
-          "flecha",
-          "punta"
+          "flecha de doble punta hacia la derecha"
         ],
         "tts": [
           "flecha de doble punta hacia la derecha"
@@ -1045,10 +1031,7 @@
       },
       "↡": {
         "default": [
-          "abajo",
-          "doble",
-          "flecha",
-          "punta"
+          "flecha de doble punta hacia abajo"
         ],
         "tts": [
           "flecha de doble punta hacia abajo"
@@ -1056,9 +1039,7 @@
       },
       "↢": {
         "default": [
-          "cola",
-          "flecha",
-          "izquierda"
+          "flecha hacia la izquierda con cola"
         ],
         "tts": [
           "flecha hacia la izquierda con cola"
@@ -1066,9 +1047,7 @@
       },
       "↣": {
         "default": [
-          "cola",
-          "derecha",
-          "flecha"
+          "flecha hacia la derecha con cola"
         ],
         "tts": [
           "flecha hacia la derecha con cola"
@@ -1076,9 +1055,7 @@
       },
       "↤": {
         "default": [
-          "barra",
-          "flecha",
-          "izquierda"
+          "flecha hacia la izquierda desde barra"
         ],
         "tts": [
           "flecha hacia la izquierda desde barra"
@@ -1086,9 +1063,7 @@
       },
       "↥": {
         "default": [
-          "arriba",
-          "barra",
-          "flecha"
+          "flecha hacia arriba desde barra"
         ],
         "tts": [
           "flecha hacia arriba desde barra"
@@ -1096,9 +1071,7 @@
       },
       "↦": {
         "default": [
-          "barra",
-          "derecha",
-          "flecha"
+          "flecha hacia la derecha desde barra"
         ],
         "tts": [
           "flecha hacia la derecha desde barra"
@@ -1106,9 +1079,7 @@
       },
       "↧": {
         "default": [
-          "abajo",
-          "barra",
-          "flecha"
+          "flecha hacia abajo desde barra"
         ],
         "tts": [
           "flecha hacia abajo desde barra"
@@ -1116,10 +1087,7 @@
       },
       "↨": {
         "default": [
-          "abajo",
-          "arriba",
-          "base",
-          "flecha"
+          "flecha arriba abajo con base"
         ],
         "tts": [
           "flecha arriba abajo con base"
@@ -1127,9 +1095,7 @@
       },
       "↫": {
         "default": [
-          "bucle",
-          "flecha",
-          "izquierda"
+          "flecha hacia la izquierda con bucle"
         ],
         "tts": [
           "flecha hacia la izquierda con bucle"
@@ -1137,9 +1103,7 @@
       },
       "↬": {
         "default": [
-          "bucle",
-          "derecha",
-          "flecha"
+          "flecha hacia la derecha con bucle"
         ],
         "tts": [
           "flecha hacia la derecha con bucle"
@@ -1147,10 +1111,7 @@
       },
       "↭": {
         "default": [
-          "derecha",
-          "flecha",
-          "izquierda",
-          "onda"
+          "flecha de onda hacia la izquierda y la derecha"
         ],
         "tts": [
           "flecha de onda hacia la izquierda y la derecha"
@@ -1158,9 +1119,7 @@
       },
       "↯": {
         "default": [
-          "abajo",
-          "flecha",
-          "zigzag"
+          "flecha en zigzag hacia abajo"
         ],
         "tts": [
           "flecha en zigzag hacia abajo"
@@ -1168,10 +1127,7 @@
       },
       "↰": {
         "default": [
-          "arriba",
-          "flecha",
-          "izquierda",
-          "punta"
+          "flecha hacia arriba con punta hacia la izquierda"
         ],
         "tts": [
           "flecha hacia arriba con punta hacia la izquierda"
@@ -1179,10 +1135,7 @@
       },
       "↱": {
         "default": [
-          "arriba",
-          "derecha",
-          "flecha",
-          "punta"
+          "flecha hacia arriba con punta hacia la derecha"
         ],
         "tts": [
           "flecha hacia arriba con punta hacia la derecha"
@@ -1190,10 +1143,7 @@
       },
       "↲": {
         "default": [
-          "abajo",
-          "flecha",
-          "izquierda",
-          "punta"
+          "flecha hacia abajo con punta hacia la izquierda"
         ],
         "tts": [
           "flecha hacia abajo con punta hacia la izquierda"
@@ -1201,10 +1151,7 @@
       },
       "↳": {
         "default": [
-          "abajo",
-          "derecha",
-          "flecha",
-          "punta"
+          "flecha hacia abajo con punta hacia la derecha"
         ],
         "tts": [
           "flecha hacia abajo con punta hacia la derecha"
@@ -1212,10 +1159,7 @@
       },
       "↴": {
         "default": [
-          "abajo",
-          "ángulo",
-          "derecha",
-          "flecha"
+          "flecha hacia la derecha con ángulo hacia abajo"
         ],
         "tts": [
           "flecha hacia la derecha con ángulo hacia abajo"
@@ -1223,10 +1167,7 @@
       },
       "↵": {
         "default": [
-          "abajo",
-          "ángulo",
-          "flecha",
-          "izquierda"
+          "flecha hacia abajo con ángulo hacia la izquierda"
         ],
         "tts": [
           "flecha hacia abajo con ángulo hacia la izquierda"
@@ -1234,10 +1175,7 @@
       },
       "↶": {
         "default": [
-          "flecha",
-          "izquierda",
-          "semicírculo",
-          "superior"
+          "flecha en semicírculo superior hacia la izquierda"
         ],
         "tts": [
           "flecha en semicírculo superior hacia la izquierda"
@@ -1245,10 +1183,7 @@
       },
       "↷": {
         "default": [
-          "derecha",
-          "flecha",
-          "semicírculo",
-          "superior"
+          "flecha en semicírculo superior hacia la derecha"
         ],
         "tts": [
           "flecha en semicírculo superior hacia la derecha"
@@ -1256,10 +1191,7 @@
       },
       "↸": {
         "default": [
-          "barra",
-          "flecha",
-          "larga",
-          "noroeste"
+          "flecha hacia el noroeste con barra larga"
         ],
         "tts": [
           "flecha hacia el noroeste con barra larga"
@@ -1267,11 +1199,7 @@
       },
       "↹": {
         "default": [
-          "barra",
-          "derecha",
-          "flecha",
-          "izquierda",
-          "sobre"
+          "flecha hacia la izquierda con barra sobre flecha hacia la derecha con barra"
         ],
         "tts": [
           "flecha hacia la izquierda con barra sobre flecha hacia la derecha con barra"
@@ -1279,11 +1207,7 @@
       },
       "↺": {
         "default": [
-          "abierto",
-          "antihorario",
-          "círculo",
-          "flecha",
-          "sentido"
+          "círculo abierto con flecha en sentido antihorario"
         ],
         "tts": [
           "círculo abierto con flecha en sentido antihorario"
@@ -1291,11 +1215,7 @@
       },
       "↻": {
         "default": [
-          "abierto",
-          "círculo",
-          "flecha",
-          "horario",
-          "sentido"
+          "círculo abierto con flecha en sentido horario"
         ],
         "tts": [
           "círculo abierto con flecha en sentido horario"
@@ -1303,10 +1223,7 @@
       },
       "↼": {
         "default": [
-          "arpón",
-          "arriba",
-          "izquierda",
-          "punta"
+          "arpón hacia la izquierda con la punta hacia arriba"
         ],
         "tts": [
           "arpón hacia la izquierda con la punta hacia arriba"
@@ -1314,10 +1231,7 @@
       },
       "↽": {
         "default": [
-          "abajo",
-          "arpón",
-          "izquierda",
-          "punta"
+          "arpón hacia la izquierda con la punta hacia abajo"
         ],
         "tts": [
           "arpón hacia la izquierda con la punta hacia abajo"
@@ -1325,10 +1239,7 @@
       },
       "↾": {
         "default": [
-          "arpón",
-          "arriba",
-          "derecha",
-          "punta"
+          "arpón hacia arriba con la punta hacia la derecha"
         ],
         "tts": [
           "arpón hacia arriba con la punta hacia la derecha"
@@ -1336,10 +1247,7 @@
       },
       "↿": {
         "default": [
-          "arpón",
-          "arriba",
-          "izquierda",
-          "punta"
+          "arpón hacia arriba con la punta hacia la izquierda"
         ],
         "tts": [
           "arpón hacia arriba con la punta hacia la izquierda"
@@ -1347,10 +1255,7 @@
       },
       "⇀": {
         "default": [
-          "arpón",
-          "arriba",
-          "derecha",
-          "punta"
+          "arpón hacia la derecha con la punta hacia arriba"
         ],
         "tts": [
           "arpón hacia la derecha con la punta hacia arriba"
@@ -1358,10 +1263,7 @@
       },
       "⇁": {
         "default": [
-          "abajo",
-          "arpón",
-          "derecha",
-          "punta"
+          "arpón hacia la derecha con la punta hacia abajo"
         ],
         "tts": [
           "arpón hacia la derecha con la punta hacia abajo"
@@ -1369,10 +1271,7 @@
       },
       "⇂": {
         "default": [
-          "abajo",
-          "arpón",
-          "derecha",
-          "punta"
+          "arpón hacia abajo con la punta hacia la derecha"
         ],
         "tts": [
           "arpón hacia abajo con la punta hacia la derecha"
@@ -1380,10 +1279,7 @@
       },
       "⇃": {
         "default": [
-          "abajo",
-          "arpón",
-          "izquierda",
-          "punta"
+          "arpón hacia abajo con la punta hacia la izquierda"
         ],
         "tts": [
           "arpón hacia abajo con la punta hacia la izquierda"
@@ -1391,10 +1287,7 @@
       },
       "⇄": {
         "default": [
-          "derecha",
-          "flecha",
-          "izquierda",
-          "sobre"
+          "flecha hacia la derecha sobre flecha hacia la izquierda"
         ],
         "tts": [
           "flecha hacia la derecha sobre flecha hacia la izquierda"
@@ -1430,9 +1323,7 @@
       },
       "⇇": {
         "default": [
-          "flechas",
-          "izquierda",
-          "pareja"
+          "pareja de flechas hacia la izquierda"
         ],
         "tts": [
           "pareja de flechas hacia la izquierda"
@@ -1440,9 +1331,7 @@
       },
       "⇈": {
         "default": [
-          "arriba",
-          "flechas",
-          "pareja"
+          "pareja de flechas hacia arriba"
         ],
         "tts": [
           "pareja de flechas hacia arriba"
@@ -1450,9 +1339,7 @@
       },
       "⇉": {
         "default": [
-          "derecha",
-          "flechas",
-          "pareja"
+          "pareja de flechas hacia la derecha"
         ],
         "tts": [
           "pareja de flechas hacia la derecha"
@@ -1460,9 +1347,7 @@
       },
       "⇊": {
         "default": [
-          "abajo",
-          "flechas",
-          "pareja"
+          "pareja de flechas hacia abajo"
         ],
         "tts": [
           "pareja de flechas hacia abajo"
@@ -1470,10 +1355,7 @@
       },
       "⇋": {
         "default": [
-          "arpón",
-          "derecha",
-          "izquierda",
-          "sobre"
+          "arpón hacia la izquierda sobre arpón hacia la derecha"
         ],
         "tts": [
           "arpón hacia la izquierda sobre arpón hacia la derecha"
@@ -1481,10 +1363,7 @@
       },
       "⇌": {
         "default": [
-          "arpón",
-          "derecha",
-          "izquierda",
-          "sobre"
+          "arpón hacia la derecha sobre arpón hacia la izquierda"
         ],
         "tts": [
           "arpón hacia la derecha sobre arpón hacia la izquierda"
@@ -1492,9 +1371,7 @@
       },
       "⇐": {
         "default": [
-          "doble",
-          "flecha",
-          "izquierda"
+          "flecha doble hacia la izquierda"
         ],
         "tts": [
           "flecha doble hacia la izquierda"
@@ -1502,10 +1379,7 @@
       },
       "⇍": {
         "default": [
-          "doble",
-          "flecha",
-          "izquierda",
-          "tachada"
+          "flecha doble hacia la izquierda tachada"
         ],
         "tts": [
           "flecha doble hacia la izquierda tachada"
@@ -1513,9 +1387,7 @@
       },
       "⇑": {
         "default": [
-          "arriba",
-          "doble",
-          "flecha"
+          "flecha doble hacia arriba"
         ],
         "tts": [
           "flecha doble hacia arriba"
@@ -1523,9 +1395,7 @@
       },
       "⇒": {
         "default": [
-          "derecha",
-          "doble",
-          "flecha"
+          "flecha doble hacia la derecha"
         ],
         "tts": [
           "flecha doble hacia la derecha"
@@ -1533,10 +1403,7 @@
       },
       "⇏": {
         "default": [
-          "derecha",
-          "doble",
-          "flecha",
-          "tachada"
+          "flecha doble hacia la derecha tachada"
         ],
         "tts": [
           "flecha doble hacia la derecha tachada"
@@ -1544,9 +1411,7 @@
       },
       "⇓": {
         "default": [
-          "abajo",
-          "doble",
-          "flecha"
+          "flecha doble hacia abajo"
         ],
         "tts": [
           "flecha doble hacia abajo"
@@ -1554,10 +1419,7 @@
       },
       "⇔": {
         "default": [
-          "derecha",
-          "doble",
-          "flecha",
-          "izquierda"
+          "flecha doble hacia la izquierda y la derecha"
         ],
         "tts": [
           "flecha doble hacia la izquierda y la derecha"
@@ -1565,11 +1427,7 @@
       },
       "⇎": {
         "default": [
-          "derecha",
-          "doble",
-          "flecha",
-          "izquierda",
-          "tachada"
+          "flecha doble hacia la izquierda y la derecha tachada"
         ],
         "tts": [
           "flecha doble hacia la izquierda y la derecha tachada"
@@ -1577,9 +1435,7 @@
       },
       "⇖": {
         "default": [
-          "doble",
-          "flecha",
-          "noroeste"
+          "flecha doble hacia el noroeste"
         ],
         "tts": [
           "flecha doble hacia el noroeste"
@@ -1587,9 +1443,7 @@
       },
       "⇗": {
         "default": [
-          "doble",
-          "flecha",
-          "nordeste"
+          "flecha doble hacia el nordeste"
         ],
         "tts": [
           "flecha doble hacia el nordeste"
@@ -1597,9 +1451,7 @@
       },
       "⇘": {
         "default": [
-          "doble",
-          "flecha",
-          "sudeste"
+          "flecha doble hacia sudeste"
         ],
         "tts": [
           "flecha doble hacia sudeste"
@@ -1607,9 +1459,7 @@
       },
       "⇙": {
         "default": [
-          "doble",
-          "flecha",
-          "sudoeste"
+          "flecha doble hacia el sudoeste"
         ],
         "tts": [
           "flecha doble hacia el sudoeste"
@@ -1617,9 +1467,7 @@
       },
       "⇚": {
         "default": [
-          "flecha",
-          "izquierda",
-          "triple"
+          "flecha triple hacia la izquierda"
         ],
         "tts": [
           "flecha triple hacia la izquierda"
@@ -1627,9 +1475,7 @@
       },
       "⇛": {
         "default": [
-          "derecha",
-          "flecha",
-          "triple"
+          "flecha triple hacia la derecha"
         ],
         "tts": [
           "flecha triple hacia la derecha"
@@ -1637,9 +1483,7 @@
       },
       "⇜": {
         "default": [
-          "flecha",
-          "izquierda",
-          "ondulada"
+          "flecha ondulada hacia la izquierda"
         ],
         "tts": [
           "flecha ondulada hacia la izquierda"
@@ -1647,9 +1491,7 @@
       },
       "⇝": {
         "default": [
-          "derecha",
-          "flecha",
-          "ondulada"
+          "flecha ondulada hacia la derecha"
         ],
         "tts": [
           "flecha ondulada hacia la derecha"
@@ -1657,10 +1499,7 @@
       },
       "⇞": {
         "default": [
-          "arriba",
-          "doble",
-          "flecha",
-          "tachado"
+          "flecha hacia arriba con doble tachado"
         ],
         "tts": [
           "flecha hacia arriba con doble tachado"
@@ -1668,10 +1507,7 @@
       },
       "⇟": {
         "default": [
-          "abajo",
-          "doble",
-          "flecha",
-          "tachado"
+          "flecha hacia abajo con doble tachado"
         ],
         "tts": [
           "flecha hacia abajo con doble tachado"
@@ -1679,9 +1515,7 @@
       },
       "⇠": {
         "default": [
-          "discontinua",
-          "flecha",
-          "izquierda"
+          "flecha discontinua hacia la izquierda"
         ],
         "tts": [
           "flecha discontinua hacia la izquierda"
@@ -1689,9 +1523,7 @@
       },
       "⇡": {
         "default": [
-          "arriba",
-          "discontinua",
-          "flecha"
+          "flecha discontinua hacia arriba"
         ],
         "tts": [
           "flecha discontinua hacia arriba"
@@ -1699,9 +1531,7 @@
       },
       "⇢": {
         "default": [
-          "derecha",
-          "discontinua",
-          "flecha"
+          "flecha discontinua hacia la derecha"
         ],
         "tts": [
           "flecha discontinua hacia la derecha"
@@ -1709,9 +1539,7 @@
       },
       "⇣": {
         "default": [
-          "abajo",
-          "discontinua",
-          "flecha"
+          "flecha discontinua hacia abajo"
         ],
         "tts": [
           "flecha discontinua hacia abajo"
@@ -1719,9 +1547,7 @@
       },
       "⇤": {
         "default": [
-          "barra",
-          "flecha",
-          "izquierda"
+          "flecha hacia la izquierda con barra"
         ],
         "tts": [
           "flecha hacia la izquierda con barra"
@@ -1729,9 +1555,7 @@
       },
       "⇥": {
         "default": [
-          "barra",
-          "derecha",
-          "flecha"
+          "flecha hacia la derecha con barra"
         ],
         "tts": [
           "flecha hacia la derecha con barra"
@@ -1739,9 +1563,7 @@
       },
       "⇦": {
         "default": [
-          "flecha",
-          "hueca",
-          "izquierda"
+          "flecha hueca hacia la izquierda"
         ],
         "tts": [
           "flecha hueca hacia la izquierda"
@@ -1749,9 +1571,7 @@
       },
       "⇧": {
         "default": [
-          "arriba",
-          "flecha",
-          "hueca"
+          "flecha hueca hacia arriba"
         ],
         "tts": [
           "flecha hueca hacia arriba"
@@ -1759,9 +1579,7 @@
       },
       "⇨": {
         "default": [
-          "derecha",
-          "flecha",
-          "hueca"
+          "flecha hueca hacia la derecha"
         ],
         "tts": [
           "flecha hueca hacia la derecha"
@@ -1769,9 +1587,7 @@
       },
       "⇩": {
         "default": [
-          "abajo",
-          "flecha",
-          "hueca"
+          "flecha hueca hacia abajo"
         ],
         "tts": [
           "flecha hueca hacia abajo"
@@ -1779,10 +1595,7 @@
       },
       "⇪": {
         "default": [
-          "arriba",
-          "barra",
-          "flecha",
-          "hueca"
+          "flecha hueca hacia arriba desde barra"
         ],
         "tts": [
           "flecha hueca hacia arriba desde barra"
@@ -1790,10 +1603,7 @@
       },
       "⇵": {
         "default": [
-          "abajo",
-          "arriba",
-          "flecha",
-          "izquierda"
+          "flecha hacia abajo a la izquierda de flecha hacia arriba"
         ],
         "tts": [
           "flecha hacia abajo a la izquierda de flecha hacia arriba"
@@ -2359,9 +2169,7 @@
       },
       "≒": {
         "default": [
-          "aproximadamente",
-          "igual",
-          "imagen"
+          "aproximadamente igual o la imagen de"
         ],
         "tts": [
           "aproximadamente igual o la imagen de"
@@ -2458,8 +2266,8 @@
         "default": [
           "desigualdad",
           "matemáticas",
-          "mayor que",
-          "mucho"
+          "mucho mayor que",
+          "mucho menor que"
         ],
         "tts": [
           "mucho mayor que"
@@ -2531,8 +2339,7 @@
       },
       "⊆": {
         "default": [
-          "igual",
-          "subconjunto"
+          "subconjunto igual a"
         ],
         "tts": [
           "subconjunto igual a"
@@ -2540,10 +2347,9 @@
       },
       "⊇": {
         "default": [
-          "igual",
           "igualdad",
           "matemáticas",
-          "superconjunto"
+          "superconjunto igual a"
         ],
         "tts": [
           "superconjunto igual a"
@@ -2599,9 +2405,7 @@
       },
       "⊚": {
         "default": [
-          "anillo",
-          "círculo",
-          "operador"
+          "operador de anillo dentro de círculo"
         ],
         "tts": [
           "operador de anillo dentro de círculo"
@@ -2647,8 +2451,7 @@
       },
       "⊮": {
         "default": [
-          "fuerza",
-          "no"
+          "no fuerza"
         ],
         "tts": [
           "no fuerza"
@@ -2841,8 +2644,7 @@
       },
       "■": {
         "default": [
-          "cuadrado",
-          "relleno"
+          "cuadrado relleno"
         ],
         "tts": [
           "cuadrado relleno"
@@ -2850,8 +2652,7 @@
       },
       "□": {
         "default": [
-          "cuadrado",
-          "hueco"
+          "cuadrado hueco"
         ],
         "tts": [
           "cuadrado hueco"
@@ -2859,10 +2660,7 @@
       },
       "▢": {
         "default": [
-          "cuadrado",
-          "esquinas",
-          "hueco",
-          "redondeadas"
+          "cuadrado hueco con esquinas redondeadas"
         ],
         "tts": [
           "cuadrado hueco con esquinas redondeadas"
@@ -2870,10 +2668,7 @@
       },
       "▣": {
         "default": [
-          "cuadrado",
-          "dentro",
-          "hueco",
-          "relleno"
+          "cuadrado hueco con cuadrado relleno dentro"
         ],
         "tts": [
           "cuadrado hueco con cuadrado relleno dentro"
@@ -2881,10 +2676,7 @@
       },
       "▤": {
         "default": [
-          "cuadrado",
-          "horizontales",
-          "rayas",
-          "relleno"
+          "cuadrado con relleno de rayas horizontales"
         ],
         "tts": [
           "cuadrado con relleno de rayas horizontales"
@@ -2892,10 +2684,7 @@
       },
       "▥": {
         "default": [
-          "cuadrado",
-          "rayas",
-          "relleno",
-          "verticales"
+          "cuadrado con relleno de rayas verticales"
         ],
         "tts": [
           "cuadrado con relleno de rayas verticales"
@@ -2903,10 +2692,7 @@
       },
       "▦": {
         "default": [
-          "cuadrado",
-          "cuadrícula",
-          "ortogonal",
-          "relleno"
+          "cuadrado con relleno de cuadrícula ortogonal"
         ],
         "tts": [
           "cuadrado con relleno de cuadrícula ortogonal"
@@ -2914,13 +2700,7 @@
       },
       "▧": {
         "default": [
-          "abajo",
-          "arriba",
-          "cuadrado",
-          "derecha",
-          "izquierda",
-          "rayas",
-          "relleno"
+          "cuadrado con relleno de rayas desde arriba a la izquierda hasta abajo a la derecha"
         ],
         "tts": [
           "cuadrado con relleno de rayas desde arriba a la izquierda hasta abajo a la derecha"
@@ -2928,13 +2708,8 @@
       },
       "▨": {
         "default": [
-          "abajo",
-          "arriba",
-          "cuadrado",
-          "derecha",
-          "izquierda",
-          "rayas",
-          "relleno"
+          "cuadrado con relleno de rayas desde arriba a la derecha hasta abajo a la izquierda",
+          "cuadrado con relleno de rayas desde arriba a la izquierda hasta abajo a la derecha"
         ],
         "tts": [
           "cuadrado con relleno de rayas desde arriba a la derecha hasta abajo a la izquierda"
@@ -2942,10 +2717,7 @@
       },
       "▩": {
         "default": [
-          "cuadrado",
-          "cuadrícula",
-          "diagonal",
-          "relleno"
+          "cuadrado con relleno de cuadrícula en diagonal"
         ],
         "tts": [
           "cuadrado con relleno de cuadrícula en diagonal"
@@ -2953,8 +2725,7 @@
       },
       "▬": {
         "default": [
-          "rectángulo",
-          "relleno"
+          "rectángulo relleno"
         ],
         "tts": [
           "rectángulo relleno"
@@ -2962,8 +2733,7 @@
       },
       "▭": {
         "default": [
-          "hueco",
-          "rectángulo"
+          "rectángulo hueco"
         ],
         "tts": [
           "rectángulo hueco"
@@ -2971,9 +2741,7 @@
       },
       "▮": {
         "default": [
-          "rectángulo",
-          "relleno",
-          "vertical"
+          "rectángulo vertical relleno"
         ],
         "tts": [
           "rectángulo vertical relleno"
@@ -2981,8 +2749,7 @@
       },
       "▰": {
         "default": [
-          "paralelogramo",
-          "relleno"
+          "paralelogramo relleno"
         ],
         "tts": [
           "paralelogramo relleno"
@@ -3003,10 +2770,7 @@
       },
       "△": {
         "default": [
-          "apunta",
-          "arriba",
-          "hueco",
-          "triángulo"
+          "triángulo hueco que apunta hacia arriba"
         ],
         "tts": [
           "triángulo hueco que apunta hacia arriba"
@@ -3014,11 +2778,7 @@
       },
       "▴": {
         "default": [
-          "apunta",
-          "arriba",
-          "pequeño",
-          "relleno",
-          "triángulo"
+          "triángulo pequeño relleno que apunta hacia arriba"
         ],
         "tts": [
           "triángulo pequeño relleno que apunta hacia arriba"
@@ -3026,11 +2786,7 @@
       },
       "▵": {
         "default": [
-          "apunta",
-          "arriba",
-          "hueco",
-          "pequeño",
-          "triángulo"
+          "triángulo pequeño hueco que apunta hacia arriba"
         ],
         "tts": [
           "triángulo pequeño hueco que apunta hacia arriba"
@@ -3038,10 +2794,7 @@
       },
       "▷": {
         "default": [
-          "apunta",
-          "derecha",
-          "hueco",
-          "triángulo"
+          "triángulo hueco que apunta hacia la derecha"
         ],
         "tts": [
           "triángulo hueco que apunta hacia la derecha"
@@ -3049,11 +2802,7 @@
       },
       "▸": {
         "default": [
-          "apunta",
-          "derecha",
-          "pequeño",
-          "relleno",
-          "triángulo"
+          "triángulo pequeño relleno que apunta hacia la derecha"
         ],
         "tts": [
           "triángulo pequeño relleno que apunta hacia la derecha"
@@ -3061,11 +2810,7 @@
       },
       "▹": {
         "default": [
-          "apunta",
-          "derecha",
-          "hueco",
-          "pequeño",
-          "triángulo"
+          "triángulo pequeño hueco que apunta hacia la derecha"
         ],
         "tts": [
           "triángulo pequeño hueco que apunta hacia la derecha"
@@ -3073,10 +2818,7 @@
       },
       "►": {
         "default": [
-          "apunta",
-          "derecha",
-          "puntero",
-          "relleno"
+          "puntero relleno que apunta hacia la derecha"
         ],
         "tts": [
           "puntero relleno que apunta hacia la derecha"
@@ -3084,10 +2826,7 @@
       },
       "▻": {
         "default": [
-          "apunta",
-          "derecha",
-          "hueco",
-          "puntero"
+          "puntero hueco que apunta hacia la derecha"
         ],
         "tts": [
           "puntero hueco que apunta hacia la derecha"
@@ -3108,10 +2847,7 @@
       },
       "▽": {
         "default": [
-          "abajo",
-          "apunta",
-          "hueco",
-          "triángulo"
+          "triángulo hueco que apunta hacia abajo"
         ],
         "tts": [
           "triángulo hueco que apunta hacia abajo"
@@ -3119,11 +2855,7 @@
       },
       "▾": {
         "default": [
-          "abajo",
-          "apunta",
-          "pequeño",
-          "relleno",
-          "triángulo"
+          "triángulo relleno pequeño que apunta hacia abajo"
         ],
         "tts": [
           "triángulo relleno pequeño que apunta hacia abajo"
@@ -3131,11 +2863,7 @@
       },
       "▿": {
         "default": [
-          "abajo",
-          "apunta",
-          "hueco",
-          "pequeño",
-          "triángulo"
+          "triángulo hueco pequeño que apunta hacia abajo"
         ],
         "tts": [
           "triángulo hueco pequeño que apunta hacia abajo"
@@ -3143,10 +2871,7 @@
       },
       "◁": {
         "default": [
-          "apunta",
-          "hueco",
-          "izquierda",
-          "triángulo"
+          "triángulo hueco que apunta hacia la izquierda"
         ],
         "tts": [
           "triángulo hueco que apunta hacia la izquierda"
@@ -3154,11 +2879,7 @@
       },
       "◂": {
         "default": [
-          "apunta",
-          "izquierda",
-          "pequeño",
-          "relleno",
-          "triángulo"
+          "triángulo relleno pequeño que apunta hacia la izquierda"
         ],
         "tts": [
           "triángulo relleno pequeño que apunta hacia la izquierda"
@@ -3166,11 +2887,7 @@
       },
       "◃": {
         "default": [
-          "apunta",
-          "hueco",
-          "izquierda",
-          "pequeño",
-          "triángulo"
+          "triángulo hueco pequeño que apunta hacia la izquierda"
         ],
         "tts": [
           "triángulo hueco pequeño que apunta hacia la izquierda"
@@ -3178,10 +2895,7 @@
       },
       "◄": {
         "default": [
-          "apunta",
-          "izquierda",
-          "puntero",
-          "relleno"
+          "puntero relleno que apunta hacia la izquierda"
         ],
         "tts": [
           "puntero relleno que apunta hacia la izquierda"
@@ -3189,10 +2903,7 @@
       },
       "◅": {
         "default": [
-          "apunta",
-          "hueco",
-          "izquierda",
-          "puntero"
+          "puntero hueco que apunta hacia la izquierda"
         ],
         "tts": [
           "puntero hueco que apunta hacia la izquierda"
@@ -3200,8 +2911,7 @@
       },
       "◆": {
         "default": [
-          "relleno",
-          "rombo"
+          "rombo relleno"
         ],
         "tts": [
           "rombo relleno"
@@ -3209,8 +2919,7 @@
       },
       "◇": {
         "default": [
-          "hueco",
-          "rombo"
+          "rombo hueco"
         ],
         "tts": [
           "rombo hueco"
@@ -3218,10 +2927,7 @@
       },
       "◈": {
         "default": [
-          "dentro",
-          "hueco",
-          "relleno",
-          "rombo"
+          "rombo hueco con rombo relleno dentro"
         ],
         "tts": [
           "rombo hueco con rombo relleno dentro"
@@ -3229,14 +2935,10 @@
       },
       "◉": {
         "default": [
-          "círculo",
-          "círculos",
-          "concéntricos",
-          "dentro",
-          "hueco",
+          "círculo hueco con círculo relleno dentro",
+          "círculos concéntricos con relleno",
           "ojo de pez",
-          "punto",
-          "relleno"
+          "punto dentro de círculo"
         ],
         "tts": [
           "círculo hueco con círculo relleno dentro"
@@ -3263,8 +2965,7 @@
       },
       "◌": {
         "default": [
-          "círculo",
-          "punteado"
+          "círculo punteado"
         ],
         "tts": [
           "círculo punteado"
@@ -3272,9 +2973,7 @@
       },
       "◍": {
         "default": [
-          "círculo",
-          "relleno",
-          "vertical"
+          "círculo con relleno vertical"
         ],
         "tts": [
           "círculo con relleno vertical"
@@ -3282,11 +2981,9 @@
       },
       "◎": {
         "default": [
-          "círculo",
-          "círculos",
-          "concéntricos",
-          "diana",
-          "doble"
+          "círculo doble",
+          "círculos concéntricos",
+          "diana"
         ],
         "tts": [
           "círculos concéntricos"
@@ -3303,10 +3000,7 @@
       },
       "◐": {
         "default": [
-          "círculo",
-          "izquierda",
-          "mitad",
-          "rellena"
+          "círculo con la mitad izquierda rellena"
         ],
         "tts": [
           "círculo con la mitad izquierda rellena"
@@ -3314,10 +3008,7 @@
       },
       "◑": {
         "default": [
-          "círculo",
-          "derecha",
-          "mitad",
-          "rellena"
+          "círculo con la mitad derecha rellena"
         ],
         "tts": [
           "círculo con la mitad derecha rellena"
@@ -3325,10 +3016,7 @@
       },
       "◒": {
         "default": [
-          "círculo",
-          "inferior",
-          "mitad",
-          "rellena"
+          "círculo con la mitad inferior rellena"
         ],
         "tts": [
           "círculo con la mitad inferior rellena"
@@ -3336,10 +3024,7 @@
       },
       "◓": {
         "default": [
-          "círculo",
-          "mitad",
-          "rellena",
-          "superior"
+          "círculo con la mitad superior rellena"
         ],
         "tts": [
           "círculo con la mitad superior rellena"
@@ -3347,11 +3032,7 @@
       },
       "◔": {
         "default": [
-          "círculo",
-          "cuadrante",
-          "derecho",
-          "relleno",
-          "superior"
+          "círculo con el cuadrante superior derecho relleno"
         ],
         "tts": [
           "círculo con el cuadrante superior derecho relleno"
@@ -3359,12 +3040,7 @@
       },
       "◕": {
         "default": [
-          "círculo",
-          "cuadrante",
-          "excepto",
-          "izquierdo",
-          "relleno",
-          "superior"
+          "círculo relleno excepto el cuadrante superior izquierdo"
         ],
         "tts": [
           "círculo relleno excepto el cuadrante superior izquierdo"
@@ -3372,9 +3048,7 @@
       },
       "◖": {
         "default": [
-          "izquierdo",
-          "relleno",
-          "semicírculo"
+          "semicírculo izquierdo relleno"
         ],
         "tts": [
           "semicírculo izquierdo relleno"
@@ -3382,9 +3056,7 @@
       },
       "◗": {
         "default": [
-          "derecho",
-          "relleno",
-          "semicírculo"
+          "semicírculo derecho relleno"
         ],
         "tts": [
           "semicírculo derecho relleno"
@@ -3392,8 +3064,7 @@
       },
       "◘": {
         "default": [
-          "bolo",
-          "inverso"
+          "bolo inverso"
         ],
         "tts": [
           "bolo inverso"
@@ -3401,12 +3072,8 @@
       },
       "◙": {
         "default": [
-          "círculo",
-          "cuadrado",
-          "dentro",
-          "hueco",
-          "inverso",
-          "relleno"
+          "círculo hueco inverso",
+          "cuadrado relleno con círculo hueco dentro"
         ],
         "tts": [
           "cuadrado relleno con círculo hueco dentro"
@@ -3414,11 +3081,7 @@
       },
       "◜": {
         "default": [
-          "arco",
-          "círculo",
-          "cuadrante",
-          "izquierdo",
-          "superior"
+          "arco de cuadrante superior izquierdo de círculo"
         ],
         "tts": [
           "arco de cuadrante superior izquierdo de círculo"
@@ -3426,11 +3089,7 @@
       },
       "◝": {
         "default": [
-          "arco",
-          "círculo",
-          "cuadrante",
-          "derecho",
-          "superior"
+          "arco de cuadrante superior derecho de círculo"
         ],
         "tts": [
           "arco de cuadrante superior derecho de círculo"
@@ -3438,11 +3097,7 @@
       },
       "◞": {
         "default": [
-          "arco",
-          "círculo",
-          "cuadrante",
-          "derecho",
-          "inferior"
+          "arco de cuadrante inferior derecho de círculo"
         ],
         "tts": [
           "arco de cuadrante inferior derecho de círculo"
@@ -3450,11 +3105,7 @@
       },
       "◟": {
         "default": [
-          "arco",
-          "círculo",
-          "cuadrante",
-          "inferior",
-          "izquierdo"
+          "arco de cuadrante inferior izquierdo de círculo"
         ],
         "tts": [
           "arco de cuadrante inferior izquierdo de círculo"
@@ -3462,8 +3113,7 @@
       },
       "◠": {
         "default": [
-          "semicírculo",
-          "superior"
+          "semicírculo superior"
         ],
         "tts": [
           "semicírculo superior"
@@ -3471,8 +3121,7 @@
       },
       "◡": {
         "default": [
-          "inferior",
-          "semicírculo"
+          "semicírculo inferior"
         ],
         "tts": [
           "semicírculo inferior"
@@ -3480,10 +3129,7 @@
       },
       "◢": {
         "default": [
-          "derecho",
-          "inferior",
-          "relleno",
-          "triángulo"
+          "triángulo inferior derecho relleno"
         ],
         "tts": [
           "triángulo inferior derecho relleno"
@@ -3491,10 +3137,7 @@
       },
       "◣": {
         "default": [
-          "inferior",
-          "izquierdo",
-          "relleno",
-          "triángulo"
+          "triángulo inferior izquierdo relleno"
         ],
         "tts": [
           "triángulo inferior izquierdo relleno"
@@ -3502,10 +3145,7 @@
       },
       "◤": {
         "default": [
-          "izquierdo",
-          "relleno",
-          "superior",
-          "triángulo"
+          "triángulo superior izquierdo relleno"
         ],
         "tts": [
           "triángulo superior izquierdo relleno"
@@ -3513,10 +3153,8 @@
       },
       "◥": {
         "default": [
-          "derecho",
-          "relleno",
-          "superior",
-          "triángulo"
+          "triángulo superior derecho relleno",
+          "triángulo superior izquierdo relleno"
         ],
         "tts": [
           "triángulo superior derecho relleno"
@@ -3524,8 +3162,7 @@
       },
       "◦": {
         "default": [
-          "bolo",
-          "hueco"
+          "bolo hueco"
         ],
         "tts": [
           "bolo hueco"
@@ -3544,11 +3181,7 @@
       },
       "◳": {
         "default": [
-          "cuadrado",
-          "cuadrante",
-          "derecho",
-          "hueco",
-          "superior"
+          "cuadrante superior derecho en cuadrado hueco"
         ],
         "tts": [
           "cuadrante superior derecho en cuadrado hueco"
@@ -3556,11 +3189,7 @@
       },
       "◷": {
         "default": [
-          "círculo",
-          "cuadrante",
-          "derecho",
-          "hueco",
-          "superior"
+          "cuadrante superior derecho en círculo hueco"
         ],
         "tts": [
           "cuadrante superior derecho en círculo hueco"
@@ -3568,9 +3197,7 @@
       },
       "◿": {
         "default": [
-          "derecho",
-          "inferior",
-          "triángulo"
+          "triángulo inferior derecho"
         ],
         "tts": [
           "triángulo inferior derecho"
@@ -3588,9 +3215,7 @@
       },
       "⨧": {
         "default": [
-          "dos",
-          "más",
-          "subíndice"
+          "más subíndice dos"
         ],
         "tts": [
           "más subíndice dos"
@@ -3598,9 +3223,7 @@
       },
       "⨯": {
         "default": [
-          "cruzado",
-          "producto",
-          "vector"
+          "vector o producto cruzado"
         ],
         "tts": [
           "vector o producto cruzado"
@@ -3608,8 +3231,7 @@
       },
       "⨼": {
         "default": [
-          "interior",
-          "producto"
+          "producto interior"
         ],
         "tts": [
           "producto interior"
@@ -3617,11 +3239,7 @@
       },
       "⩣": {
         "default": [
-          "barra",
-          "doble",
-          "inferior",
-          "lógica",
-          "o"
+          "lógica o doble barra inferior"
         ],
         "tts": [
           "lógica o doble barra inferior"
@@ -3629,10 +3247,7 @@
       },
       "⩽": {
         "default": [
-          "barra",
-          "igual",
-          "inclinada",
-          "menor que"
+          "menor que o igual con barra inclinada"
         ],
         "tts": [
           "menor que o igual con barra inclinada"
@@ -3640,10 +3255,7 @@
       },
       "⪍": {
         "default": [
-          "igual",
-          "menor que",
-          "similar",
-          "sobre"
+          "menor que sobre igual o similar"
         ],
         "tts": [
           "menor que sobre igual o similar"
@@ -3661,12 +3273,7 @@
       },
       "⪺": {
         "default": [
-          "casi",
-          "igual",
-          "no",
-          "signo",
-          "sobre",
-          "sucede"
+          "sucede sobre signo de no casi igual"
         ],
         "tts": [
           "sucede sobre signo de no casi igual"
@@ -4351,23 +3958,6 @@
         ],
         "tts": [
           "cara durmiendo"
-        ]
-      },
-      "🫩": {
-        "default": [
-          "agotado",
-          "agotamiento",
-          "cansado",
-          "cansancio",
-          "cara",
-          "extenuación",
-          "extenuado",
-          "ojeras",
-          "ojos",
-          "sueño"
-        ],
-        "tts": [
-          "cara con ojeras"
         ]
       },
       "😷": {
@@ -7845,12 +7435,7 @@
         "default": [
           "celebración",
           "claus",
-          "cuento",
-          "fantasía",
-          "feliz",
-          "fiestas",
           "Navidad",
-          "padre",
           "Papá Noel",
           "santa"
         ],
@@ -7860,16 +7445,10 @@
       },
       "🤶": {
         "default": [
-          "celebración",
-          "claus",
-          "cuento",
-          "fantasía",
-          "feliz",
-          "fiestas",
-          "madre",
-          "Mamá Noel",
+          "abuela",
+          "mamá",
           "Navidad",
-          "santa"
+          "noel"
         ],
         "tts": [
           "Mamá Noel"
@@ -7877,15 +7456,8 @@
       },
       "🧑‍🎄": {
         "default": [
-          "celebración",
-          "claus",
-          "cuento",
-          "fantasía",
-          "feliz",
-          "fiestas",
           "Navidad",
-          "Noel",
-          "santa"
+          "Noel"
         ],
         "tts": [
           "Noel"
@@ -9312,7 +8884,8 @@
       "🧑‍🧑‍🧒": {
         "default": [
           "adulto",
-          "familia",
+          "familia: adulto",
+          "familia: adulto, adulto, niño",
           "niño"
         ],
         "tts": [
@@ -9322,7 +8895,8 @@
       "🧑‍🧑‍🧒‍🧒": {
         "default": [
           "adulto",
-          "familia",
+          "familia: adulto",
+          "familia: adulto, adulto, niño, niño",
           "niño"
         ],
         "tts": [
@@ -9331,8 +8905,8 @@
       },
       "🧑‍🧒": {
         "default": [
-          "adulto",
-          "familia",
+          "familia: adulto",
+          "familia: adulto, niño",
           "niño"
         ],
         "tts": [
@@ -9341,8 +8915,8 @@
       },
       "🧑‍🧒‍🧒": {
         "default": [
-          "adulto",
-          "familia",
+          "familia: adulto",
+          "familia: adulto, niño, niño",
           "niño"
         ],
         "tts": [
@@ -9357,23 +8931,6 @@
         ],
         "tts": [
           "huellas de pies"
-        ]
-      },
-      "🫆": {
-        "default": [
-          "delito",
-          "detective",
-          "forense",
-          "huella",
-          "huella dactilar",
-          "huella digital",
-          "identidad",
-          "misterio",
-          "rastro",
-          "seguridad"
-        ],
-        "tts": [
-          "huella dactilar"
         ]
       },
       "🦰": {
@@ -10569,60 +10126,6 @@
           "medusa"
         ]
       },
-      "🦀": {
-        "default": [
-          "animal",
-          "cáncer",
-          "cangrejo",
-          "zodiaco"
-        ],
-        "tts": [
-          "cangrejo"
-        ]
-      },
-      "🦞": {
-        "default": [
-          "bogavante",
-          "langosta",
-          "marisco",
-          "pinzas"
-        ],
-        "tts": [
-          "bogavante"
-        ]
-      },
-      "🦐": {
-        "default": [
-          "camarón",
-          "comida",
-          "gamba",
-          "langostino",
-          "marisco"
-        ],
-        "tts": [
-          "gamba"
-        ]
-      },
-      "🦑": {
-        "default": [
-          "calamar",
-          "comida",
-          "molusco"
-        ],
-        "tts": [
-          "calamar"
-        ]
-      },
-      "🦪": {
-        "default": [
-          "buceo",
-          "ostra",
-          "perla"
-        ],
-        "tts": [
-          "ostra"
-        ]
-      },
       "🐌": {
         "default": [
           "caracol",
@@ -11080,23 +10583,6 @@
           "champiñón"
         ]
       },
-      "🪾": {
-        "default": [
-          "árbol",
-          "deshojado",
-          "estéril",
-          "invierno",
-          "madera",
-          "muerto",
-          "ramas",
-          "sequía",
-          "sin hojas",
-          "tronco"
-        ],
-        "tts": [
-          "árbol sin hojas"
-        ]
-      },
       "🍇": {
         "default": [
           "agracejo",
@@ -11510,23 +10996,6 @@
         ],
         "tts": [
           "champiñón marrón"
-        ]
-      },
-      "🫜": {
-        "default": [
-          "chirivía",
-          "comida",
-          "ensalada",
-          "huerto",
-          "nabo",
-          "rábano",
-          "raíz",
-          "remolacha",
-          "vegetariano",
-          "verdura"
-        ],
-        "tts": [
-          "túberculo comestible"
         ]
       },
       "🍞": {
@@ -12083,6 +11552,60 @@
           "caja para llevar"
         ]
       },
+      "🦀": {
+        "default": [
+          "animal",
+          "cáncer",
+          "cangrejo",
+          "zodiaco"
+        ],
+        "tts": [
+          "cangrejo"
+        ]
+      },
+      "🦞": {
+        "default": [
+          "bogavante",
+          "langosta",
+          "marisco",
+          "pinzas"
+        ],
+        "tts": [
+          "bogavante"
+        ]
+      },
+      "🦐": {
+        "default": [
+          "camarón",
+          "comida",
+          "gamba",
+          "langostino",
+          "marisco"
+        ],
+        "tts": [
+          "gamba"
+        ]
+      },
+      "🦑": {
+        "default": [
+          "calamar",
+          "comida",
+          "molusco"
+        ],
+        "tts": [
+          "calamar"
+        ]
+      },
+      "🦪": {
+        "default": [
+          "buceo",
+          "ostra",
+          "perla"
+        ],
+        "tts": [
+          "ostra"
+        ]
+      },
       "🍦": {
         "default": [
           "cucurucho",
@@ -12625,7 +12148,8 @@
       "🗾": {
         "default": [
           "Japón",
-          "mapa"
+          "mapa",
+          "mapa de Japón"
         ],
         "tts": [
           "mapa de Japón"
@@ -12675,10 +12199,8 @@
       },
       "🗻": {
         "default": [
-          "Fuji",
           "montaña",
-          "monte",
-          "naturaleza"
+          "monte Fuji"
         ],
         "tts": [
           "monte Fuji"
@@ -13013,11 +12535,7 @@
         "default": [
           "estatua",
           "Estatua de la Libertad",
-          "libertad",
-          "nueva",
-          "ny",
-          "nyc",
-          "york"
+          "libertad"
         ],
         "tts": [
           "Estatua de la Libertad"
@@ -13078,12 +12596,9 @@
       },
       "🕋": {
         "default": [
-          "hach",
           "islam",
           "Kaaba",
-          "musulmán",
-          "religión",
-          "umrah"
+          "religión"
         ],
         "tts": [
           "Kaaba"
@@ -14597,8 +14112,7 @@
         "default": [
           "espacio",
           "galaxia",
-          "láctea",
-          "vía"
+          "Vía Láctea"
         ],
         "tts": [
           "Vía Láctea"
@@ -16663,20 +16177,6 @@
           "flauta"
         ]
       },
-      "🪉": {
-        "default": [
-          "amor",
-          "arpa",
-          "cupido",
-          "harpa",
-          "instrumento",
-          "música",
-          "orquesta"
-        ],
-        "tts": [
-          "arpa"
-        ]
-      },
       "📱": {
         "default": [
           "celular",
@@ -18128,22 +17628,6 @@
           "escalera"
         ]
       },
-      "🪏": {
-        "default": [
-          "agujero",
-          "cavar",
-          "enterrar",
-          "excavar",
-          "hoyo",
-          "huerto",
-          "nieve",
-          "pala",
-          "planta"
-        ],
-        "tts": [
-          "pala"
-        ]
-      },
       "⚗": {
         "default": [
           "alambique",
@@ -19110,10 +18594,7 @@
       },
       "↮": {
         "default": [
-          "derecha",
-          "flecha",
-          "izquierda",
-          "tachada"
+          "flecha hacia la izquierda y la derecha tachada"
         ],
         "tts": [
           "flecha hacia la izquierda y la derecha tachada"
@@ -19281,10 +18762,10 @@
       },
       "✡": {
         "default": [
-          "David",
+          "david",
           "estrella",
+          "estrella de David",
           "judaísmo",
-          "judío",
           "religión"
         ],
         "tts": [
@@ -19394,7 +18875,6 @@
         "default": [
           "Aries",
           "carnero",
-          "horóscopo",
           "zodiaco"
         ],
         "tts": [
@@ -19404,7 +18884,6 @@
       "♉": {
         "default": [
           "buey",
-          "horóscopo",
           "Tauro",
           "toro",
           "zodiaco"
@@ -19417,7 +18896,6 @@
         "default": [
           "gemelos",
           "Géminis",
-          "horóscopo",
           "zodiaco"
         ],
         "tts": [
@@ -19428,7 +18906,6 @@
         "default": [
           "Cáncer",
           "cangrejo",
-          "horóscopo",
           "zodiaco"
         ],
         "tts": [
@@ -19437,7 +18914,6 @@
       },
       "♌": {
         "default": [
-          "horóscopo",
           "Leo",
           "león",
           "zodiaco"
@@ -19448,7 +18924,6 @@
       },
       "♍": {
         "default": [
-          "horóscopo",
           "Virgo",
           "zodiaco"
         ],
@@ -19460,7 +18935,6 @@
         "default": [
           "balanza",
           "escala",
-          "horóscopo",
           "justicia",
           "Libra",
           "zodiaco"
@@ -19473,7 +18947,6 @@
         "default": [
           "Escorpio",
           "escorpión",
-          "horóscopo",
           "zodiaco"
         ],
         "tts": [
@@ -19483,7 +18956,6 @@
       "♐": {
         "default": [
           "arquero",
-          "horóscopo",
           "Sagitario",
           "zodiaco"
         ],
@@ -19495,7 +18967,6 @@
         "default": [
           "cabra",
           "Capricornio",
-          "horóscopo",
           "zodiaco"
         ],
         "tts": [
@@ -19506,7 +18977,6 @@
         "default": [
           "Acuario",
           "agua",
-          "horóscopo",
           "zodiaco"
         ],
         "tts": [
@@ -19515,7 +18985,6 @@
       },
       "♓": {
         "default": [
-          "horóscopo",
           "pescado",
           "pez",
           "Piscis",
@@ -19527,9 +18996,7 @@
       },
       "⛎": {
         "default": [
-          "horóscopo",
           "Ofiuco",
-          "portador",
           "serpiente",
           "zodiaco"
         ],
@@ -20251,21 +19718,6 @@
         ],
         "tts": [
           "símbolo de marca comercial"
-        ]
-      },
-      "🫟": {
-        "default": [
-          "gotear",
-          "líquido",
-          "mancha",
-          "manchar",
-          "pintura",
-          "salpicadura",
-          "salpicar",
-          "tinta"
-        ],
-        "tts": [
-          "salpicadura"
         ]
       },
       "🔠": {
@@ -21322,10 +20774,29 @@
           "bitcóin"
         ]
       },
+      "₨": {
+        "default": [
+          "moneda",
+          "rupia"
+        ],
+        "tts": [
+          "rupia"
+        ]
+      },
+      "﷼": {
+        "default": [
+          "moneda",
+          "rial"
+        ],
+        "tts": [
+          "rial"
+        ]
+      },
       "¹": {
         "default": [
           "superíndice",
-          "uno"
+          "uno",
+          "uno en superíndice"
         ],
         "tts": [
           "uno en superíndice"
@@ -21335,6 +20806,7 @@
         "default": [
           "al cuadrado",
           "dos",
+          "dos en superíndice",
           "superíndice"
         ],
         "tts": [
@@ -21345,19 +20817,11 @@
         "default": [
           "al cubo",
           "superíndice",
-          "tres"
+          "tres",
+          "tres en superíndice"
         ],
         "tts": [
           "tres en superíndice"
-        ]
-      },
-      "₨": {
-        "default": [
-          "moneda",
-          "rupia"
-        ],
-        "tts": [
-          "rupia"
         ]
       },
       "µ": {
@@ -21370,15 +20834,6 @@
         ],
         "tts": [
           "símbolo de micro"
-        ]
-      },
-      "﷼": {
-        "default": [
-          "moneda",
-          "rial"
-        ],
-        "tts": [
-          "rial"
         ]
       }
     }
