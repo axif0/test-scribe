@@ -102,6 +102,17 @@ class LexemeProcessor:
         """
         iso_mapping = {}
         for lang_name, data in language_metadata.items():
+            # Handle sub-languages if they exist
+            if "sub_languages" in data:
+                for sub_lang, sub_data in data["sub_languages"].items():
+                    if self.target_iso and sub_lang not in self.target_iso:
+                        continue
+
+                    if iso_code := sub_data.get("iso"):
+                        iso_mapping[iso_code] = sub_lang
+                continue  # Skip main language if it only has sub-languages
+
+            # Handle main languages
             if self.target_iso and lang_name not in self.target_iso:
                 continue
 
@@ -194,7 +205,7 @@ class LexemeProcessor:
         """
         lexeme_id = lexeme["id"]
         forms_data = {}
-        
+
         # Pre-compute form data structure.
         forms_dict = forms_data.setdefault(lexeme_id, {})
         lang_dict = forms_dict.setdefault(lang_code, {})
@@ -248,6 +259,32 @@ class LexemeProcessor:
                     form_parts.append(label)
 
         return "".join(form_parts)
+
+    def _process_totals(self, lexeme, lang_code, category_name):
+        """
+        Process totals for statistical counting.
+        """
+        # Skip if we have specific data types and this category isn't in them
+        if self.data_types and category_name.lower() not in [
+            dt.lower() for dt in self.data_types
+        ]:
+            return
+
+        # Increment lexeme count for this language and category
+        self.lexical_category_counts[lang_code][category_name] += 1
+
+        # Count translations if they exist
+        if lexeme.get("senses"):
+            translation_count = sum(
+                1
+                for sense in lexeme["senses"]
+                if sense.get("glosses")
+                and any(
+                    lang in self.valid_iso_codes for lang in sense["glosses"].keys()
+                )
+            )
+            if translation_count > 0:
+                self.translation_counts[lang_code][category_name] += translation_count
 
     # MARK: process file
     def process_file(self, file_path: str, batch_size: int = 50000):
@@ -399,7 +436,23 @@ class LexemeProcessor:
                 return
 
             # Create the output directory structure
-            output_path = Path(filepath).parent / lang_name
+            # Check if this is a sub-language and get its main language
+            main_lang = None
+            for lang, data in language_metadata.items():
+                if "sub_languages" in data:
+                    for sub_lang, sub_data in data["sub_languages"].items():
+                        if sub_lang == lang_name:
+                            main_lang = lang
+                            break
+                    if main_lang:
+                        break
+
+            # If it's a sub-language, create path like: parent/chinese/mandarin/
+            if main_lang:
+                output_path = Path(filepath).parent / main_lang / lang_name
+            else:
+                output_path = Path(filepath).parent / lang_name
+
             output_path.mkdir(parents=True, exist_ok=True)
 
             # Create the full output filepath
@@ -531,15 +584,42 @@ def parse_dump(
 
             for lang in languages:
                 needs_processing = False
+                # Check if this is a sub-language
+                main_lang = None
+                for lang_name, data in language_metadata.items():
+                    if "sub_languages" in data:
+                        for sub_lang in data["sub_languages"]:
+                            if sub_lang == lang:
+                                main_lang = lang_name
+                                break
+                    if main_lang:
+                        break
+
                 for data_type in data_types:
-                    index_path = Path(output_dir) / lang / f"lexeme_{data_type}.json"
+                    # Create appropriate path based on whether it's a sub-language
+                    if main_lang:
+                        index_path = (
+                            Path(output_dir)
+                            / main_lang
+                            / lang
+                            / f"lexeme_{data_type}.json"
+                        )
+                    else:
+                        index_path = (
+                            Path(output_dir) / lang / f"lexeme_{data_type}.json"
+                        )
 
                     if not check_index_exists(index_path, overwrite_all):
                         needs_processing = True
                         data_types_to_process.add(data_type)
-
                     else:
-                        print(f"Skipping {lang}/{data_type}.json - already exists")
+                        # Update path display in skip message
+                        skip_path = (
+                            f"{main_lang}/{lang}/{data_type}.json"
+                            if main_lang
+                            else f"{lang}/{data_type}.json"
+                        )
+                        print(f"Skipping {skip_path} - already exists")
 
                 if needs_processing:
                     languages_to_process.append(lang)
@@ -610,4 +690,5 @@ def parse_dump(
     #                 readable_features = [f"Q{qid}" for qid in feature_set]
     #                 print(f"    {i}. {readable_features}")
 
-    # print(dict(processor.unique_forms) 
+    # print_unique_forms(processor.unique_forms)
+    # print(processor.unique_forms)
