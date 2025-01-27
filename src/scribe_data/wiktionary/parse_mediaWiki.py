@@ -1,34 +1,21 @@
+# SPDX-License-Identifier: GPL-3.0-or-later
 """
 Functions to parse the translations of a word from MediaWiki API.
-
-.. raw:: html
-    <!--
-    * Copyright (C) 2024 Scribe
-    *
-    * This program is free software: you can redistribute it and/or modify
-    * it under the terms of the GNU General Public License as published by
-    * the Free Software Foundation, either version 3 of the License, or
-    * (at your option) any later version.
-    *
-    * This program is distributed in the hope that it will be useful,
-    * but WITHOUT ANY WARRANTY; without even the implied warranty of
-    * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    * GNU General Public License for more details.
-    *
-    * You should have received a copy of the GNU General Public License
-    * along with this program.  If not, see <https://www.gnu.org/licenses/>.
-    -->
 """
 
 import json
 import re
 from pathlib import Path
-from scribe_data.utils import get_language_from_iso, DEFAULT_MEDIAWIKI_EXPORT_DIR
-from scribe_data.wikidata.wikidata_utils import mediaWiki_query
+
+from scribe_data.utils import DEFAULT_MEDIAWIKI_EXPORT_DIR, get_language_from_iso
+from scribe_data.wikidata.wikidata_utils import mediawiki_query
 
 
-def fetch_translation_page(word):
-    data = mediaWiki_query(word)
+def fetch_translation_page(word: str):
+    """
+    Fetches the translation for a given word via the Wiktionary MediaWiki API.
+    """
+    data = mediawiki_query(word=word)
 
     pages = data.get("query", {}).get("pages", {})
     # Extract page object from dictionary.
@@ -132,6 +119,7 @@ def parse_wiktionary_translations(word, output_dir=DEFAULT_MEDIAWIKI_EXPORT_DIR)
     ----------
     word : str
         The word to fetch translations for.
+
     output_dir : str or Path, optional
         Directory to save JSON output (default is DEFAULT_MEDIAWIKI_EXPORT_DIR).
         Will be created if it doesn't exist.

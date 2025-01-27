@@ -1,23 +1,6 @@
+# SPDX-License-Identifier: GPL-3.0-or-later
 """
 Setup and commands for the Scribe-Data command line interface.
-
-.. raw:: html
-    <!--
-    * Copyright (C) 2024 Scribe
-    *
-    * This program is free software: you can redistribute it and/or modify
-    * it under the terms of the GNU General Public License as published by
-    * the Free Software Foundation, either version 3 of the License, or
-    * (at your option) any later version.
-    *
-    * This program is distributed in the hope that it will be useful,
-    * but WITHOUT ANY WARRANTY; without even the implied warranty of
-    * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    * GNU General Public License for more details.
-    *
-    * You should have received a copy of the GNU General Public License
-    * along with this program.  If not, see <https://www.gnu.org/licenses/>.
-    -->
 """
 
 #!/usr/bin/env python3
@@ -36,12 +19,12 @@ from scribe_data.cli.list import list_wrapper
 from scribe_data.cli.total import total_wrapper
 from scribe_data.cli.upgrade import upgrade_cli
 from scribe_data.cli.version import get_version_message
-from scribe_data.wiktionary.parse_mediaWiki import parse_wiktionary_translations
 from scribe_data.utils import (
-    DEFAULT_JSON_EXPORT_DIR,
     DEFAULT_CSV_EXPORT_DIR,
     DEFAULT_DUMP_EXPORT_DIR,
+    DEFAULT_JSON_EXPORT_DIR,
 )
+from scribe_data.wiktionary.parse_mediaWiki import parse_wiktionary_translations
 
 LIST_DESCRIPTION = "List languages, data types and combinations of each that Scribe-Data can be used for."
 GET_DESCRIPTION = (
@@ -372,12 +355,11 @@ def main() -> None:
         elif args.command in ["get", "g"]:
             if args.interactive:
                 start_interactive_mode(operation="get")
+
             if args.translation:
                 parse_wiktionary_translations(args.translation, args.output_dir)
+
             else:
-                print(
-                    f"Parsing Wikidata lexeme dump for {args.language} and {args.data_type}"
-                )
                 get_data(
                     language=args.language.lower()
                     if args.language is not None

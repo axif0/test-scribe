@@ -1,24 +1,6 @@
+# SPDX-License-Identifier: GPL-3.0-or-later
 """
 Utility functions for data extraction, formatting and loading.
-
-.. raw:: html
-
-    <!--
-    * Copyright (C) 2024 Scribe
-    *
-    * This program is free software: you can redistribute it and/or modify
-    * it under the terms of the GNU General Public License as published by
-    * the Free Software Foundation, either version 3 of the License, or
-    * (at your option) any later version.
-    *
-    * This program is distributed in the hope that it will be useful,
-    * but WITHOUT ANY WARRANTY; without even the implied warranty of
-    * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    * GNU General Public License for more details.
-    *
-    * You should have received a copy of the GNU General Public License
-    * along with this program.  If not, see <https://www.gnu.org/licenses/>.
-    -->
 """
 
 import ast
@@ -121,7 +103,7 @@ for lang, lang_data in language_metadata.items():
 
 def _load_json(package_path: str, file_name: str) -> Any:
     """
-    Loads a JSON resource from a package into a python entity.
+    Load a JSON resource from a package into a python entity.
 
     Parameters
     ----------
@@ -715,7 +697,7 @@ def check_lexeme_dump_prompt_download(output_dir: str):
                 return None
 
         elif user_input == "Download new version":
-            # Rename existing latest dump if it exists
+            # Rename existing latest dump if it exists.
             latest_dump = Path(output_dir) / "latest-lexemes.json.bz2"
             if latest_dump.exists():
                 timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -724,6 +706,7 @@ def check_lexeme_dump_prompt_download(output_dir: str):
                 rprint(
                     f"[bold green]Renamed existing dump to {backup_name}[/bold green]"
                 )
+
             return False
 
         else:
@@ -813,6 +796,7 @@ def get_language_iso_code(qid: str):
     ------
     ValueError
         An invalid QID that's not a language has been passed.
+
     KeyError
         The ISO code for the language is not available.
     """
