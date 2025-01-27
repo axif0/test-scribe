@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 """
-Check for missing forms in Wikidata.
+Check for missing forms in Wikidata and download Wikidata lexeme dump.
 """
 
 import argparse
@@ -12,6 +12,7 @@ from pathlib import Path
 from generate_query import generate_query
 from get_forms import extract_dump_forms, parse_sparql_files
 
+from scribe_data.cli.download import wd_lexeme_dump_download_wrapper
 from scribe_data.utils import (
     data_type_metadata,
     language_metadata,
@@ -153,6 +154,39 @@ def process_missing_features(missing_features, query_dir):
             generate_query(language_entry, query_dir)
 
 
+def wd_lexeme_dump_download(wikidata_dump=None, output_dir=None, default=True):
+    """
+    Download Wikidata lexeme dumps automatically.
+
+    Parameters
+    ----------
+    wikidata_dump : str, optional
+        Date string in YYYYMMDD format for specific dumps.
+        If None, downloads the latest dump.
+
+    output_dir : str, optional
+        Directory path for the downloaded file.
+        If None, uses DEFAULT_DUMP_EXPORT_DIR.
+
+    default : bool, optional
+        If True, skips the user confirmation prompt.
+        Defaults to True.
+
+    Returns
+    -------
+    str or False
+        Path to downloaded file if successful, False otherwise.
+
+    Notes
+    -----
+    - Downloads are skipped if the file already exists in the output directory.
+    - Progress is displayed every 50MB during download.
+    - Creates output directory if it doesn't exist.
+    """
+    # Directly call wd_lexeme_dump_download_wrapper with default=True to skip questionary prompt
+    return wd_lexeme_dump_download_wrapper(wikidata_dump, output_dir, default)
+
+
 def main():
     """
     Main function to check for missing forms in Wikidata.
@@ -164,24 +198,43 @@ def main():
     Notes
     -----
     Required command line arguments:
-    - dump_path: Path to the Wikidata dump file
+    - dump_path: Path to the Wikidata dump file or None to download
     - query_dir: Directory for storing generated queries
 
     Optional arguments:
     - --process-all-keys: Flag to process all nested keys in missing features
+    - --download-dump: Flag to download the dump if dump_path is not provided
     """
     parser = argparse.ArgumentParser(description="Check missing forms in Wikidata")
-    parser.add_argument("dump_path", type=str, help="Path to the dump file")
+    parser.add_argument("dump_path", type=str, nargs='?', default=None, 
+                        help="Path to the dump file (optional if --download-dump is used)")
     parser.add_argument("query_dir", type=str, help="Path to the query directory")
     parser.add_argument(
         "--process-all-keys",
         action="store_true",
         help="Process all nested keys in the missing features",
     )
+    parser.add_argument(
+        "--download-dump",
+        action="store_true",
+        help="Download Wikidata lexeme dump if dump_path is not provided",
+    )
 
     args = parser.parse_args()
 
-    dump_path = Path(args.dump_path)
+    # If no dump path is provided and download flag is set, download the dump
+    if not args.dump_path and args.download_dump:
+        dump_path = wd_lexeme_dump_download()
+        if not dump_path:
+            print("Failed to download Wikidata dump.")
+            sys.exit(1)
+    elif not args.dump_path:
+        print("Error: Either provide a dump path or use --download-dump flag")
+        sys.exit(1)
+    else:
+        dump_path = args.dump_path
+
+    dump_path = Path(dump_path)
     query_dir = Path(args.query_dir)
 
     if not dump_path.exists():
