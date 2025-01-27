@@ -141,16 +141,16 @@ def extract_dump_forms(
 
     unique_features = dict(processor.unique_forms)
 
-    # Convert ISO codes to QIDs and data types to QIDs.
-    converted_features = {}
-    for iso_code, data_types_dict in unique_features.items():
-        if iso_code in iso_to_qid:
-            lang_qid = iso_to_qid[iso_code]
-            converted_features[lang_qid] = {}
+    # # Convert ISO codes to QIDs and data types to QIDs.
+    # converted_features = {}
+    # for iso_code, data_types_dict in unique_features.items():
+    #     if iso_code in iso_to_qid:
+    #         lang_qid = iso_to_qid[iso_code]
+    #         converted_features[lang_qid] = {}
 
-            for data_type, features in data_types_dict.items():
-                # Get QID from data_type_metadata.
-                if data_type_qid := data_type_metadata.get(data_type):
-                    converted_features[lang_qid][data_type_qid] = features
+    #         for data_type, features in data_types_dict.items():
+    #             # Get QID from data_type_metadata.
+    #             if data_type_qid := data_type_metadata.get(data_type):
+    #                 converted_features[lang_qid][data_type_qid] = features
 
-    return converted_features
+    return unique_features
