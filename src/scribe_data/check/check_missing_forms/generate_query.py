@@ -78,13 +78,13 @@ def generate_query(missing_features, query_dir=None):
 
     # Generate a single query for all forms.
     main_body = f"""# tool: scribe-data
-# All {language} ({language_qid}) {data_type} ({data_type_qid}) and their forms.
+# All {language.capitalize()} ({language_qid}) {data_type} ({data_type_qid}) and their forms.
 # Enter this query at https://query.wikidata.org/.
 
 SELECT
   (REPLACE(STR(?lexeme), "http://www.wikidata.org/entity/", "") AS ?lexemeID)
   ?{data_type}
-    """ + "\n  ".join(f'?{form["label"]}' for form in forms_query)
+  """ + "\n  ".join(f'?{form["label"]}' for form in forms_query)
 
     where_clause = f"""
 
