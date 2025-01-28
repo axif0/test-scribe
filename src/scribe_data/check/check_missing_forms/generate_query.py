@@ -16,7 +16,15 @@ from scribe_data.utils import (
 )
 import json
 
-import scribe_data.check.check_missing_forms as sub_languages
+sub_languages = {}
+for lang_name, lang_data in language_metadata.items():
+    if "sub_languages" in lang_data:
+        sub_languages[lang_name] = {}
+        for sub_lang_name, sub_lang_data in lang_data["sub_languages"].items():
+            sub_languages[lang_name][sub_lang_data["iso"]] = {
+                "name": sub_lang_name,
+                "qid": sub_lang_data["qid"]
+            }
 
 # print(sub_languages)
 
@@ -110,10 +118,14 @@ WHERE {{
   wikibase:lemma ?{data_type} .
     """
     if sub_lang_iso_code:
-        for data_type_qid in sub_languages[language]:
-            if data_type_qid == sub_lang_iso_code:
-                sub_lang_name=sub_languages[language][sub_lang_iso_code]["name"]
-                break
+        try:
+            for data_type_qid in sub_languages[language]:
+                if data_type_qid == sub_lang_iso_code:
+                    sub_lang_name = sub_languages[language][sub_lang_iso_code]["name"]
+                    break
+        except (KeyError, TypeError) as e:
+            print(f"Warning: Could not find sub-language data for {language} - {sub_lang_iso_code}")
+            return None
 
         where_clause += f"""
   # Note: We need to filter for {sub_lang_iso_code} to remove {sub_lang_name} ({sub_lang_iso_code}) words.
