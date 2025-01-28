@@ -5,7 +5,7 @@ Get forms from Wikidata.
 
 import re
 from collections import defaultdict
-
+import json
 from scribe_data.utils import (
     LANGUAGE_DATA_EXTRACTION_DIR as language_data_extraction,
 )
@@ -103,6 +103,11 @@ def parse_sparql_query(query_text):
 
     return result
 
+# result_sparql = parse_sparql_files()
+
+# # Save the missing features to a JSON file.
+# with open("result_sparql.json", "w") as f:
+#     json.dump(result_sparql, f, indent=4)
 
 def extract_dump_forms(
     languages=None, data_types=None, file_path="latest-lexemes.json.bz2"

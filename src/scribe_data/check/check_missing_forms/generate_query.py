@@ -14,9 +14,13 @@ from scribe_data.utils import (
     language_metadata,
     lexeme_form_metadata,
 )
+import json
 
+import scribe_data.check.check_missing_forms as sub_languages
 
-def generate_query(missing_features, query_dir=None):
+# print(sub_languages)
+
+def generate_query(missing_features, query_dir=None, sub_lang_iso_code=None):
     """
     Generate SPARQL queries for missing lexeme forms.
 
@@ -45,18 +49,30 @@ def generate_query(missing_features, query_dir=None):
     data_type_qid = next(iter(missing_features[language_qid].keys()))
 
     # Find the language entry by QID.
-    language_entry = next(
-        (name, data)
-        for name, data in language_metadata.items()
-        if data.get("qid") == language_qid
-    )
+    language_entry = None
+    for name, data in language_metadata.items():
+        if data.get("qid") == language_qid:
+            language_entry = (name, data)
+            break
+        # Check sub-languages if main language not found
+        if "sub_languages" in data:
+            for sub_name, sub_data in data["sub_languages"].items():
+                if sub_data.get("qid") == language_qid:
+                    language_entry = (name, sub_data)  # Use main language name instead of sub_name
+                    break
+
+    print(language_entry)
+
+
+    if language_entry is None:
+        raise ValueError(f"Language with QID {language_qid} not found in metadata")
+
     language = language_entry[0]  # the language name
+    # iso_code = language_entry[1]["iso"]
 
     data_type = next(
         name for name, qid in data_type_metadata.items() if qid == data_type_qid
     )
-
-    iso_code = language_metadata[language]["iso"]
 
     # Create a QID to label mapping from the metadata.
     qid_to_label = {}
@@ -92,8 +108,17 @@ WHERE {{
   ?lexeme dct:language wd:{language_qid} ;
   wikibase:lexicalCategory wd:{data_type_qid} ;
   wikibase:lemma ?{data_type} .
-  FILTER(lang(?{data_type}) = "{iso_code}")
     """
+    if sub_lang_iso_code:
+        for data_type_qid in sub_languages[language]:
+            if data_type_qid == sub_lang_iso_code:
+                sub_lang_name=sub_languages[language][sub_lang_iso_code]["name"]
+                break
+
+        where_clause += f"""
+  # Note: We need to filter for {sub_lang_iso_code} to remove {sub_lang_name} ({sub_lang_iso_code}) words.
+  FILTER(lang(?{data_type}) = "{sub_lang_iso_code}")
+    """ 
 
     # Generate OPTIONAL clauses for all forms in one query.
     optional_clauses = ""
@@ -131,8 +156,12 @@ WHERE {{
                 return new_path
             counter += 1
 
+    if sub_lang_iso_code:
+        base_file_name = f"{query_dir}/{language}/{sub_lang_name}/{data_type}/{data_type}.sparql"
+        print(base_file_name)
+ 
     # Create base filename using the provided query_dir or default.
-    if query_dir:
+    elif query_dir:
         base_file_name = (
             Path(query_dir) / language / data_type / f"query_{data_type}.sparql"
         )
@@ -153,3 +182,38 @@ WHERE {{
     print(f"Query file created: {file_name}")
 
     return file_name
+
+
+with open("missing_features.json", "r") as f:
+    missing_features = json.load(f)
+
+
+# sub_languages_iso_codes = {}
+# for language, sub_langs in sub_languages.items():
+#     # Get all unique QIDs and their ISO codes for this language
+#     qid_to_isos = {}
+#     for iso_code, sub_lang_data in sub_langs.items():
+#         qid = sub_lang_data['qid']
+#         if qid not in qid_to_isos:
+#             qid_to_isos[qid] = set()
+#         qid_to_isos[qid].add(iso_code)
+    
+#     # Add to main dictionary
+#     sub_languages_iso_codes.update(qid_to_isos)
+
+# print(sub_languages_iso_codes)
+
+# for language_qid, data_types_qid in missing_features.items():
+#     print(f"Processing language: {language_qid}")
+#     print(f"Data types: {list(data_types_qid.keys())}")
+
+#     # Create a separate entry for each data type.
+#     for data_type_qid, features in data_types_qid.items():
+#         language_entry = {language_qid: {data_type_qid: features}}
+#         if language_qid in sub_languages_iso_codes:
+#             for sub_lang_iso_code in sub_languages_iso_codes[language_qid]:
+#                 print(f"Generating query for {language_qid} - {data_type_qid} - {sub_lang_iso_code}")
+#                 generate_query(language_entry, "mama", sub_lang_iso_code)
+#         else:
+#             print(f"Generating query for {language_qid} - {data_type_qid}")
+#             generate_query(language_entry, "mama")

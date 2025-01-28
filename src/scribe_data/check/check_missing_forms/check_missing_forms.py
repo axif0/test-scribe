@@ -19,6 +19,16 @@ from scribe_data.utils import (
     lexeme_form_metadata,
 )
 
+sub_languages = {}
+for lang_name, lang_data in language_metadata.items():
+    if "sub_languages" in lang_data:
+        sub_languages[lang_name] = {}
+        for sub_lang_name, sub_lang_data in lang_data["sub_languages"].items():
+            sub_languages[lang_name][sub_lang_data["iso"]] = {
+                "name": sub_lang_name,
+                "qid": sub_lang_data["qid"]
+            }
+
 
 def get_all_languages():
     """
@@ -122,6 +132,17 @@ def get_missing_features(result_sparql, result_dump):
 
     return missing_by_lang_type or None
 
+# with open("result_dump.json", "r") as f:
+#     result_dump = json.load(f)
+
+# with open("result_sparql.json", "r") as f:
+#     result_sparql = json.load(f)
+
+# missing_features = get_missing_features(result_sparql, result_dump)
+
+# with open("missing_features.json", "w") as f:
+#     json.dump(missing_features, f, indent=4)
+
 
 def process_missing_features(missing_features, query_dir):
     """
@@ -142,16 +163,34 @@ def process_missing_features(missing_features, query_dir):
     """
     if not missing_features:
         return
+    sub_languages_iso_codes = {}
+    for language, sub_langs in sub_languages.items():
+        # Get all unique QIDs and their ISO codes for this language
+        qid_to_isos = {}
+        for iso_code, sub_lang_data in sub_langs.items():
+            qid = sub_lang_data['qid']
+            if qid not in qid_to_isos:
+                qid_to_isos[qid] = set()
+            qid_to_isos[qid].add(iso_code)
+        
+        # Add to main dictionary
+        sub_languages_iso_codes.update(qid_to_isos)
 
-    for language, data_types in missing_features.items():
-        print(f"Processing language: {language}")
-        print(f"Data types: {list(data_types.keys())}")
+    for language_qid, data_types_qid in missing_features.items():
+        print(f"Processing language: {language_qid}")
+        print(f"Data types: {list(data_types_qid.keys())}")
 
         # Create a separate entry for each data type.
-        for data_type, features in data_types.items():
-            language_entry = {language: {data_type: features}}
-            print(f"Generating query for {language} - {data_type}")
-            generate_query(language_entry, query_dir)
+        for data_type_qid, features in data_types_qid.items():
+            language_entry = {language_qid: {data_type_qid: features}}
+            if language_qid in sub_languages_iso_codes:
+                for sub_lang_iso_code in sub_languages_iso_codes[language_qid]:
+                    print(f"Generating query for {language_qid} - {data_type_qid} - {sub_lang_iso_code}")
+                    generate_query(language_entry, "mama", sub_lang_iso_code)
+            else:
+                print(f"Generating query for {language_qid} - {data_type_qid}")
+                generate_query(language_entry, "mama")
+
 
 
 def wd_lexeme_dump_download(wikidata_dump=None, output_dir=None, default=True):
@@ -258,7 +297,16 @@ def main():
         file_path=dump_path,
     )
 
+    # with open("result_sparql.json", "r") as f:
+    #     result_sparql = json.load(f)
+
+    # with open("result_dump.json", "r") as f:
+    #     result_dump = json.load(f)
+
     missing_features = get_missing_features(result_sparql, result_dump)
+
+    # with open("missing_features.json", "w") as f:
+    #     json.dump(missing_features, f, indent=4)
 
     try:
         print("Generated missing features:", missing_features)
