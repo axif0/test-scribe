@@ -13,18 +13,10 @@ from scribe_data.utils import (
     data_type_metadata,
     language_metadata,
     lexeme_form_metadata,
+    sub_languages
 )
 import json
 
-sub_languages = {}
-for lang_name, lang_data in language_metadata.items():
-    if "sub_languages" in lang_data:
-        sub_languages[lang_name] = {}
-        for sub_lang_name, sub_lang_data in lang_data["sub_languages"].items():
-            sub_languages[lang_name][sub_lang_data["iso"]] = {
-                "name": sub_lang_name,
-                "qid": sub_lang_data["qid"]
-            }
 
 # print(sub_languages)
 
