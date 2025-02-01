@@ -18,7 +18,7 @@ from scribe_data.utils import (
     language_metadata,
     lexeme_form_metadata,
     sub_languages,
-    DEFAULT_DUMP_EXPORT_DIR
+    LANGUAGE_DATA_EXTRACTION_DIR
 )
 
 def get_all_languages():
@@ -177,10 +177,10 @@ def process_missing_features(missing_features, query_dir):
             if language_qid in sub_languages_iso_codes:
                 for sub_lang_iso_code in sub_languages_iso_codes[language_qid]:
                     print(f"Generating query for {language_qid} - {data_type_qid} - {sub_lang_iso_code}")
-                    generate_query(language_entry, DEFAULT_DUMP_EXPORT_DIR, sub_lang_iso_code)
+                    generate_query(language_entry, LANGUAGE_DATA_EXTRACTION_DIR, sub_lang_iso_code)
             else:
                 print(f"Generating query for {language_qid} - {data_type_qid}")
-                generate_query(language_entry, DEFAULT_DUMP_EXPORT_DIR)
+                generate_query(language_entry, LANGUAGE_DATA_EXTRACTION_DIR)
 
 
 
