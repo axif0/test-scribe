@@ -1,0 +1,408 @@
+# tool: scribe-data
+# All Punjabi (Q58635) adjectives (Q34698) and their forms.
+# Enter this query at https://query.wikidata.org/.
+
+SELECT
+  (REPLACE(STR(?lexeme), "http://www.wikidata.org/entity/", "") AS ?lexemeID)
+  ?adjectives
+  ?dualInstrumentalPositiveMasculine
+  ?singularVocativeMasculine
+  ?pluralFeminineLocative
+  ?comparativePluralFeminineVocative
+  ?pluralDirectFemininePositive
+  ?obliquePluralPositiveMasculine
+  ?comparativePluralDirectFeminine
+  ?singularComparativeVocativeMasculine
+  ?singularVocativePositiveMasculine
+  ?singularObliquePositiveMasculine
+  ?singularDirectMasculine
+  ?singularAblativeFemininePositive
+  ?singularDirectFeminine
+  ?singularObliqueMasculine
+  ?obliquePlural
+  ?comparativePluralVocativeMasculine
+  ?singularObliqueComparativeMasculine
+  ?singularComparativeFeminineVocative
+  ?obliqueComparativePluralMasculine
+  ?singularObliqueComparativeFeminine
+  ?obliqueComparativePluralFeminine
+  ?obliquePluralFemininePositive
+  ?obliquePluralMasculine
+  ?pluralLocativePositiveMasculine
+  ?singularComparativeDirectFeminine
+  ?pluralDirect
+  ?obliquePluralFeminine
+  ?pluralAblative
+  ?singularDirect
+  ?pluralVocative
+  ?singularLocativeMasculine
+  ?singularVocative
+  ?singularAblativeMasculine
+  ?singularDirectPositiveMasculine
+  ?superlative
+  ?pluralDirectMasculine
+  ?singularObliqueFemininePositive
+  ?pluralLocative
+  ?comparativePluralDirectMasculine
+  ?positive
+  ?pluralFeminineVocativePositive
+  ?singularFeminineVocativePositive
+  ?pluralFeminineLocativePositive
+  ?pluralVocativeMasculine
+  ?pluralDirectPositiveMasculine
+  ?singularOblique
+  ?singularObliqueFeminine
+  ?singularFeminineVocative
+  ?singularAblativePositiveMasculine
+  ?comparative
+  ?singularDirectFemininePositive
+  ?singularComparativeDirectMasculine
+  ?pluralFeminineVocative
+  ?singularFeminineLocative
+  ?pluralVocativePositiveMasculine
+  ?pluralDirectFeminine
+
+WHERE {
+  ?lexeme dct:language wd:Q58635 ;
+  wikibase:lexicalCategory wd:Q34698 ;
+  wikibase:lemma ?adjectives .
+    
+  # Note: We need to filter for pa to remove gurmukhi (pa) words.
+  FILTER(lang(?adjectives) = "pa")
+    
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?dualInstrumentalPositiveMasculineForm .
+    ?dualInstrumentalPositiveMasculineForm ontolex:representation ?dualInstrumentalPositiveMasculine ;
+      wikibase:grammaticalFeature wd:Q110022, wd:Q192997, wd:Q3482678, wd:Q499327 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularVocativeMasculineForm .
+    ?singularVocativeMasculineForm ontolex:representation ?singularVocativeMasculine ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q185077, wd:Q499327 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?pluralFeminineLocativeForm .
+    ?pluralFeminineLocativeForm ontolex:representation ?pluralFeminineLocative ;
+      wikibase:grammaticalFeature wd:Q146786, wd:Q1775415, wd:Q202142 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?comparativePluralFeminineVocativeForm .
+    ?comparativePluralFeminineVocativeForm ontolex:representation ?comparativePluralFeminineVocative ;
+      wikibase:grammaticalFeature wd:Q14169499, wd:Q146786, wd:Q1775415, wd:Q185077 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?pluralDirectFemininePositiveForm .
+    ?pluralDirectFemininePositiveForm ontolex:representation ?pluralDirectFemininePositive ;
+      wikibase:grammaticalFeature wd:Q146786, wd:Q1751855, wd:Q1775415, wd:Q3482678 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?obliquePluralPositiveMasculineForm .
+    ?obliquePluralPositiveMasculineForm ontolex:representation ?obliquePluralPositiveMasculine ;
+      wikibase:grammaticalFeature wd:Q1233197, wd:Q146786, wd:Q3482678, wd:Q499327 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?comparativePluralDirectFeminineForm .
+    ?comparativePluralDirectFeminineForm ontolex:representation ?comparativePluralDirectFeminine ;
+      wikibase:grammaticalFeature wd:Q14169499, wd:Q146786, wd:Q1751855, wd:Q1775415 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularComparativeVocativeMasculineForm .
+    ?singularComparativeVocativeMasculineForm ontolex:representation ?singularComparativeVocativeMasculine ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q14169499, wd:Q185077, wd:Q499327 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularVocativePositiveMasculineForm .
+    ?singularVocativePositiveMasculineForm ontolex:representation ?singularVocativePositiveMasculine ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q185077, wd:Q3482678, wd:Q499327 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularObliquePositiveMasculineForm .
+    ?singularObliquePositiveMasculineForm ontolex:representation ?singularObliquePositiveMasculine ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q1233197, wd:Q3482678, wd:Q499327 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularDirectMasculineForm .
+    ?singularDirectMasculineForm ontolex:representation ?singularDirectMasculine ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q1751855, wd:Q499327 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularAblativeFemininePositiveForm .
+    ?singularAblativeFemininePositiveForm ontolex:representation ?singularAblativeFemininePositive ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q156986, wd:Q1775415, wd:Q3482678 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularDirectFeminineForm .
+    ?singularDirectFeminineForm ontolex:representation ?singularDirectFeminine ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q1751855, wd:Q1775415 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularObliqueMasculineForm .
+    ?singularObliqueMasculineForm ontolex:representation ?singularObliqueMasculine ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q1233197, wd:Q499327 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?obliquePluralForm .
+    ?obliquePluralForm ontolex:representation ?obliquePlural ;
+      wikibase:grammaticalFeature wd:Q1233197, wd:Q146786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?comparativePluralVocativeMasculineForm .
+    ?comparativePluralVocativeMasculineForm ontolex:representation ?comparativePluralVocativeMasculine ;
+      wikibase:grammaticalFeature wd:Q14169499, wd:Q146786, wd:Q185077, wd:Q499327 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularObliqueComparativeMasculineForm .
+    ?singularObliqueComparativeMasculineForm ontolex:representation ?singularObliqueComparativeMasculine ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q1233197, wd:Q14169499, wd:Q499327 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularComparativeFeminineVocativeForm .
+    ?singularComparativeFeminineVocativeForm ontolex:representation ?singularComparativeFeminineVocative ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q14169499, wd:Q1775415, wd:Q185077 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?obliqueComparativePluralMasculineForm .
+    ?obliqueComparativePluralMasculineForm ontolex:representation ?obliqueComparativePluralMasculine ;
+      wikibase:grammaticalFeature wd:Q1233197, wd:Q14169499, wd:Q146786, wd:Q499327 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularObliqueComparativeFeminineForm .
+    ?singularObliqueComparativeFeminineForm ontolex:representation ?singularObliqueComparativeFeminine ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q1233197, wd:Q14169499, wd:Q1775415 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?obliqueComparativePluralFeminineForm .
+    ?obliqueComparativePluralFeminineForm ontolex:representation ?obliqueComparativePluralFeminine ;
+      wikibase:grammaticalFeature wd:Q1233197, wd:Q14169499, wd:Q146786, wd:Q1775415 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?obliquePluralFemininePositiveForm .
+    ?obliquePluralFemininePositiveForm ontolex:representation ?obliquePluralFemininePositive ;
+      wikibase:grammaticalFeature wd:Q1233197, wd:Q146786, wd:Q1775415, wd:Q3482678 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?obliquePluralMasculineForm .
+    ?obliquePluralMasculineForm ontolex:representation ?obliquePluralMasculine ;
+      wikibase:grammaticalFeature wd:Q1233197, wd:Q146786, wd:Q499327 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?pluralLocativePositiveMasculineForm .
+    ?pluralLocativePositiveMasculineForm ontolex:representation ?pluralLocativePositiveMasculine ;
+      wikibase:grammaticalFeature wd:Q146786, wd:Q202142, wd:Q3482678, wd:Q499327 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularComparativeDirectFeminineForm .
+    ?singularComparativeDirectFeminineForm ontolex:representation ?singularComparativeDirectFeminine ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q14169499, wd:Q1751855, wd:Q1775415 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?pluralDirectForm .
+    ?pluralDirectForm ontolex:representation ?pluralDirect ;
+      wikibase:grammaticalFeature wd:Q146786, wd:Q1751855 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?obliquePluralFeminineForm .
+    ?obliquePluralFeminineForm ontolex:representation ?obliquePluralFeminine ;
+      wikibase:grammaticalFeature wd:Q1233197, wd:Q146786, wd:Q1775415 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?pluralAblativeForm .
+    ?pluralAblativeForm ontolex:representation ?pluralAblative ;
+      wikibase:grammaticalFeature wd:Q146786, wd:Q156986 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularDirectForm .
+    ?singularDirectForm ontolex:representation ?singularDirect ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q1751855 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?pluralVocativeForm .
+    ?pluralVocativeForm ontolex:representation ?pluralVocative ;
+      wikibase:grammaticalFeature wd:Q146786, wd:Q185077 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularLocativeMasculineForm .
+    ?singularLocativeMasculineForm ontolex:representation ?singularLocativeMasculine ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q202142, wd:Q499327 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularVocativeForm .
+    ?singularVocativeForm ontolex:representation ?singularVocative ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q185077 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularAblativeMasculineForm .
+    ?singularAblativeMasculineForm ontolex:representation ?singularAblativeMasculine ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q156986, wd:Q499327 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularDirectPositiveMasculineForm .
+    ?singularDirectPositiveMasculineForm ontolex:representation ?singularDirectPositiveMasculine ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q1751855, wd:Q3482678, wd:Q499327 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?superlativeForm .
+    ?superlativeForm ontolex:representation ?superlative ;
+      wikibase:grammaticalFeature wd:Q1817208 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?pluralDirectMasculineForm .
+    ?pluralDirectMasculineForm ontolex:representation ?pluralDirectMasculine ;
+      wikibase:grammaticalFeature wd:Q146786, wd:Q1751855, wd:Q499327 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularObliqueFemininePositiveForm .
+    ?singularObliqueFemininePositiveForm ontolex:representation ?singularObliqueFemininePositive ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q1233197, wd:Q1775415, wd:Q3482678 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?pluralLocativeForm .
+    ?pluralLocativeForm ontolex:representation ?pluralLocative ;
+      wikibase:grammaticalFeature wd:Q146786, wd:Q202142 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?comparativePluralDirectMasculineForm .
+    ?comparativePluralDirectMasculineForm ontolex:representation ?comparativePluralDirectMasculine ;
+      wikibase:grammaticalFeature wd:Q14169499, wd:Q146786, wd:Q1751855, wd:Q499327 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?positiveForm .
+    ?positiveForm ontolex:representation ?positive ;
+      wikibase:grammaticalFeature wd:Q3482678 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?pluralFeminineVocativePositiveForm .
+    ?pluralFeminineVocativePositiveForm ontolex:representation ?pluralFeminineVocativePositive ;
+      wikibase:grammaticalFeature wd:Q146786, wd:Q1775415, wd:Q185077, wd:Q3482678 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularFeminineVocativePositiveForm .
+    ?singularFeminineVocativePositiveForm ontolex:representation ?singularFeminineVocativePositive ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q1775415, wd:Q185077, wd:Q3482678 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?pluralFeminineLocativePositiveForm .
+    ?pluralFeminineLocativePositiveForm ontolex:representation ?pluralFeminineLocativePositive ;
+      wikibase:grammaticalFeature wd:Q146786, wd:Q1775415, wd:Q202142, wd:Q3482678 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?pluralVocativeMasculineForm .
+    ?pluralVocativeMasculineForm ontolex:representation ?pluralVocativeMasculine ;
+      wikibase:grammaticalFeature wd:Q146786, wd:Q185077, wd:Q499327 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?pluralDirectPositiveMasculineForm .
+    ?pluralDirectPositiveMasculineForm ontolex:representation ?pluralDirectPositiveMasculine ;
+      wikibase:grammaticalFeature wd:Q146786, wd:Q1751855, wd:Q3482678, wd:Q499327 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularObliqueForm .
+    ?singularObliqueForm ontolex:representation ?singularOblique ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q1233197 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularObliqueFeminineForm .
+    ?singularObliqueFeminineForm ontolex:representation ?singularObliqueFeminine ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q1233197, wd:Q1775415 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularFeminineVocativeForm .
+    ?singularFeminineVocativeForm ontolex:representation ?singularFeminineVocative ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q1775415, wd:Q185077 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularAblativePositiveMasculineForm .
+    ?singularAblativePositiveMasculineForm ontolex:representation ?singularAblativePositiveMasculine ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q156986, wd:Q3482678, wd:Q499327 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?comparativeForm .
+    ?comparativeForm ontolex:representation ?comparative ;
+      wikibase:grammaticalFeature wd:Q14169499 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularDirectFemininePositiveForm .
+    ?singularDirectFemininePositiveForm ontolex:representation ?singularDirectFemininePositive ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q1751855, wd:Q1775415, wd:Q3482678 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularComparativeDirectMasculineForm .
+    ?singularComparativeDirectMasculineForm ontolex:representation ?singularComparativeDirectMasculine ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q14169499, wd:Q1751855, wd:Q499327 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?pluralFeminineVocativeForm .
+    ?pluralFeminineVocativeForm ontolex:representation ?pluralFeminineVocative ;
+      wikibase:grammaticalFeature wd:Q146786, wd:Q1775415, wd:Q185077 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularFeminineLocativeForm .
+    ?singularFeminineLocativeForm ontolex:representation ?singularFeminineLocative ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q1775415, wd:Q202142 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?pluralVocativePositiveMasculineForm .
+    ?pluralVocativePositiveMasculineForm ontolex:representation ?pluralVocativePositiveMasculine ;
+      wikibase:grammaticalFeature wd:Q146786, wd:Q185077, wd:Q3482678, wd:Q499327 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?pluralDirectFeminineForm .
+    ?pluralDirectFeminineForm ontolex:representation ?pluralDirectFeminine ;
+      wikibase:grammaticalFeature wd:Q146786, wd:Q1751855, wd:Q1775415 .
+  }
+}
