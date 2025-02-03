@@ -1,0 +1,22 @@
+# tool: scribe-data
+# All Arabic (Q13955) adverbs (Q380057) and their forms.
+# Enter this query at https://query.wikidata.org/.
+
+SELECT
+  (REPLACE(STR(?lexeme), "http://www.wikidata.org/entity/", "") AS ?lexemeID)
+  ?adverbs
+  ?indefiniteMasculineAccusativeSingular
+  ?lastModified
+
+WHERE {
+  ?lexeme dct:language wd:Q13955 ;
+      wikibase:lexicalCategory wd:Q380057 ;
+      wikibase:lemma ?adverbs ;
+      schema:dateModified ?lastModified .
+    
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?indefiniteMasculineAccusativeSingularForm .
+    ?indefiniteMasculineAccusativeSingularForm ontolex:representation ?indefiniteMasculineAccusativeSingular ;
+      wikibase:grammaticalFeature wd:Q53997857, wd:Q499327, wd:Q146078, wd:Q110786 .
+  }
+}
