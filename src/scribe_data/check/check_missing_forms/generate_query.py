@@ -82,6 +82,9 @@ def generate_query(missing_features, query_dir=None, sub_lang_iso_code=None):
     for form_qids in all_form_combinations:
         # Convert QIDs to labels and join them together.
         labels = [qid_to_label.get(qid, qid) for qid in form_qids]
+        # Reverse both labels and QIDs
+        labels.reverse()
+        form_qids = form_qids[::-1]
         concatenated_label = "".join(labels)
 
         # Make first letter lowercase.
