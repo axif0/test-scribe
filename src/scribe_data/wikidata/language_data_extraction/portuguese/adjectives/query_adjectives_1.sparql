@@ -1,0 +1,169 @@
+# tool: scribe-data
+# All Portuguese (Q5146) adjectives (Q34698) and their forms.
+# Enter this query at https://query.wikidata.org/.
+
+SELECT
+  (REPLACE(STR(?lexeme), "http://www.wikidata.org/entity/", "") AS ?lexemeID)
+  ?adjectives
+  ?positiveSingular
+  ?singular
+  ?masculineSingular
+  ?superlativeSingular
+  ?feminineSingular
+  ?positivePlural
+  ?plural
+  ?masculinePlural
+  ?superlativePlural
+  ?masculineSuperlativeSingular
+  ?positiveFeminineSingular
+  ?femininePlural
+  ?superlativeFeminineSingular
+  ?masculineSuperlativePlural
+  ?masculinePositiveSingular
+  ?positiveFemininePlural
+  ?superlativeFemininePlural
+  ?masculinePositivePlural
+  ?pluralMasculine
+  ?singularFeminine
+  ?pluralFeminine
+  ?singularMasculine
+   ?lastModified
+
+WHERE {
+  ?lexeme dct:language wd:Q5146 ;
+      wikibase:lexicalCategory wd:Q34698 ;
+      wikibase:lemma ?adjectives ;
+      schema:dateModified ?lastModified .
+    
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?positiveSingularForm .
+    ?positiveSingularForm ontolex:representation ?positiveSingular ;
+      wikibase:grammaticalFeature wd:Q3482678, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularForm .
+    ?singularForm ontolex:representation ?singular ;
+      wikibase:grammaticalFeature wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?masculineSingularForm .
+    ?masculineSingularForm ontolex:representation ?masculineSingular ;
+      wikibase:grammaticalFeature wd:Q499327, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?superlativeSingularForm .
+    ?superlativeSingularForm ontolex:representation ?superlativeSingular ;
+      wikibase:grammaticalFeature wd:Q1817208, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?feminineSingularForm .
+    ?feminineSingularForm ontolex:representation ?feminineSingular ;
+      wikibase:grammaticalFeature wd:Q1775415, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?positivePluralForm .
+    ?positivePluralForm ontolex:representation ?positivePlural ;
+      wikibase:grammaticalFeature wd:Q3482678, wd:Q146786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?pluralForm .
+    ?pluralForm ontolex:representation ?plural ;
+      wikibase:grammaticalFeature wd:Q146786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?masculinePluralForm .
+    ?masculinePluralForm ontolex:representation ?masculinePlural ;
+      wikibase:grammaticalFeature wd:Q499327, wd:Q146786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?superlativePluralForm .
+    ?superlativePluralForm ontolex:representation ?superlativePlural ;
+      wikibase:grammaticalFeature wd:Q1817208, wd:Q146786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?masculineSuperlativeSingularForm .
+    ?masculineSuperlativeSingularForm ontolex:representation ?masculineSuperlativeSingular ;
+      wikibase:grammaticalFeature wd:Q499327, wd:Q1817208, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?positiveFeminineSingularForm .
+    ?positiveFeminineSingularForm ontolex:representation ?positiveFeminineSingular ;
+      wikibase:grammaticalFeature wd:Q3482678, wd:Q1775415, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?femininePluralForm .
+    ?femininePluralForm ontolex:representation ?femininePlural ;
+      wikibase:grammaticalFeature wd:Q1775415, wd:Q146786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?superlativeFeminineSingularForm .
+    ?superlativeFeminineSingularForm ontolex:representation ?superlativeFeminineSingular ;
+      wikibase:grammaticalFeature wd:Q1817208, wd:Q1775415, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?masculineSuperlativePluralForm .
+    ?masculineSuperlativePluralForm ontolex:representation ?masculineSuperlativePlural ;
+      wikibase:grammaticalFeature wd:Q499327, wd:Q1817208, wd:Q146786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?masculinePositiveSingularForm .
+    ?masculinePositiveSingularForm ontolex:representation ?masculinePositiveSingular ;
+      wikibase:grammaticalFeature wd:Q499327, wd:Q3482678, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?positiveFemininePluralForm .
+    ?positiveFemininePluralForm ontolex:representation ?positiveFemininePlural ;
+      wikibase:grammaticalFeature wd:Q3482678, wd:Q1775415, wd:Q146786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?superlativeFemininePluralForm .
+    ?superlativeFemininePluralForm ontolex:representation ?superlativeFemininePlural ;
+      wikibase:grammaticalFeature wd:Q1817208, wd:Q1775415, wd:Q146786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?masculinePositivePluralForm .
+    ?masculinePositivePluralForm ontolex:representation ?masculinePositivePlural ;
+      wikibase:grammaticalFeature wd:Q499327, wd:Q3482678, wd:Q146786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?pluralMasculineForm .
+    ?pluralMasculineForm ontolex:representation ?pluralMasculine ;
+      wikibase:grammaticalFeature wd:Q146786, wd:Q499327 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularFeminineForm .
+    ?singularFeminineForm ontolex:representation ?singularFeminine ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q1775415 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?pluralFeminineForm .
+    ?pluralFeminineForm ontolex:representation ?pluralFeminine ;
+      wikibase:grammaticalFeature wd:Q146786, wd:Q1775415 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularMasculineForm .
+    ?singularMasculineForm ontolex:representation ?singularMasculine ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q499327 .
+  }
+}

@@ -1,0 +1,141 @@
+# tool: scribe-data
+# All Danish (Q9035) proper_nouns (Q147276) and their forms.
+# Enter this query at https://query.wikidata.org/.
+
+SELECT
+  (REPLACE(STR(?lexeme), "http://www.wikidata.org/entity/", "") AS ?lexemeID)
+  ?proper_nouns
+  ?pluralGenitive
+  ?nonGenitivePlural
+  ?nonGenitiveDefinite
+  ?indefiniteSingular
+  ?definiteGenitiveSingular
+  ?nonGenitiveIndefinite
+  ?nonGenitiveDefiniteSingular
+  ?definiteGenitive
+  ?genitive
+  ?nominativeSingular
+  ?genitiveSingular
+  ?nonGenitiveDefinitePlural
+  ?nonGenitiveIndefinitePlural
+  ?nonGenitive
+  ?indefiniteGenitiveSingular
+  ?nonGenitiveIndefiniteSingular
+  ?indefiniteGenitive
+  ?definiteSingular
+   ?lastModified
+
+WHERE {
+  ?lexeme dct:language wd:Q9035 ;
+      wikibase:lexicalCategory wd:Q147276 ;
+      wikibase:lemma ?proper_nouns ;
+      schema:dateModified ?lastModified .
+    
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?pluralGenitiveForm .
+    ?pluralGenitiveForm ontolex:representation ?pluralGenitive ;
+      wikibase:grammaticalFeature wd:Q146786, wd:Q146233 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?nonGenitivePluralForm .
+    ?nonGenitivePluralForm ontolex:representation ?nonGenitivePlural ;
+      wikibase:grammaticalFeature wd:Q98946930, wd:Q146786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?nonGenitiveDefiniteForm .
+    ?nonGenitiveDefiniteForm ontolex:representation ?nonGenitiveDefinite ;
+      wikibase:grammaticalFeature wd:Q98946930, wd:Q53997851 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?indefiniteSingularForm .
+    ?indefiniteSingularForm ontolex:representation ?indefiniteSingular ;
+      wikibase:grammaticalFeature wd:Q53997857, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?definiteGenitiveSingularForm .
+    ?definiteGenitiveSingularForm ontolex:representation ?definiteGenitiveSingular ;
+      wikibase:grammaticalFeature wd:Q53997851, wd:Q146233, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?nonGenitiveIndefiniteForm .
+    ?nonGenitiveIndefiniteForm ontolex:representation ?nonGenitiveIndefinite ;
+      wikibase:grammaticalFeature wd:Q98946930, wd:Q53997857 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?nonGenitiveDefiniteSingularForm .
+    ?nonGenitiveDefiniteSingularForm ontolex:representation ?nonGenitiveDefiniteSingular ;
+      wikibase:grammaticalFeature wd:Q98946930, wd:Q53997851, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?definiteGenitiveForm .
+    ?definiteGenitiveForm ontolex:representation ?definiteGenitive ;
+      wikibase:grammaticalFeature wd:Q53997851, wd:Q146233 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?genitiveForm .
+    ?genitiveForm ontolex:representation ?genitive ;
+      wikibase:grammaticalFeature wd:Q146233 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?nominativeSingularForm .
+    ?nominativeSingularForm ontolex:representation ?nominativeSingular ;
+      wikibase:grammaticalFeature wd:Q131105, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?genitiveSingularForm .
+    ?genitiveSingularForm ontolex:representation ?genitiveSingular ;
+      wikibase:grammaticalFeature wd:Q146233, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?nonGenitiveDefinitePluralForm .
+    ?nonGenitiveDefinitePluralForm ontolex:representation ?nonGenitiveDefinitePlural ;
+      wikibase:grammaticalFeature wd:Q98946930, wd:Q53997851, wd:Q146786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?nonGenitiveIndefinitePluralForm .
+    ?nonGenitiveIndefinitePluralForm ontolex:representation ?nonGenitiveIndefinitePlural ;
+      wikibase:grammaticalFeature wd:Q98946930, wd:Q53997857, wd:Q146786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?nonGenitiveForm .
+    ?nonGenitiveForm ontolex:representation ?nonGenitive ;
+      wikibase:grammaticalFeature wd:Q98946930 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?indefiniteGenitiveSingularForm .
+    ?indefiniteGenitiveSingularForm ontolex:representation ?indefiniteGenitiveSingular ;
+      wikibase:grammaticalFeature wd:Q53997857, wd:Q146233, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?nonGenitiveIndefiniteSingularForm .
+    ?nonGenitiveIndefiniteSingularForm ontolex:representation ?nonGenitiveIndefiniteSingular ;
+      wikibase:grammaticalFeature wd:Q98946930, wd:Q53997857, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?indefiniteGenitiveForm .
+    ?indefiniteGenitiveForm ontolex:representation ?indefiniteGenitive ;
+      wikibase:grammaticalFeature wd:Q53997857, wd:Q146233 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?definiteSingularForm .
+    ?definiteSingularForm ontolex:representation ?definiteSingular ;
+      wikibase:grammaticalFeature wd:Q53997851, wd:Q110786 .
+  }
+}
