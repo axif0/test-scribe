@@ -14,12 +14,13 @@ from get_forms import extract_dump_forms, parse_sparql_files
 
 from scribe_data.cli.download import wd_lexeme_dump_download_wrapper
 from scribe_data.utils import (
+    LANGUAGE_DATA_EXTRACTION_DIR,
     data_type_metadata,
     language_metadata,
     lexeme_form_metadata,
     sub_languages,
-    LANGUAGE_DATA_EXTRACTION_DIR
 )
+
 
 def get_all_languages():
     """
@@ -123,17 +124,6 @@ def get_missing_features(result_sparql, result_dump):
 
     return missing_by_lang_type or None
 
-# with open("result_dump.json", "r") as f:
-#     result_dump = json.load(f)
-
-# with open("result_sparql.json", "r") as f:
-#     result_sparql = json.load(f)
-
-# missing_features = get_missing_features(result_sparql, result_dump)
-
-# with open("missing_features.json", "w") as f:
-#     json.dump(missing_features, f, indent=4)
-
 
 def process_missing_features(missing_features, query_dir):
     """
@@ -156,16 +146,16 @@ def process_missing_features(missing_features, query_dir):
         return
     sub_languages_iso_codes = {}
     for language, sub_langs in sub_languages.items():
-        # Get all unique QIDs and their ISO codes for this language
+        # Get all unique QIDs and their ISO codes for this language.
         qid_to_isos = {}
         for iso_code, sub_lang_data in sub_langs.items():
-            qid = sub_lang_data['qid']
+            qid = sub_lang_data["qid"]
             if qid not in qid_to_isos:
                 qid_to_isos[qid] = set()
             qid_to_isos[qid].add(iso_code)
-        
-        # Add to main dictionary
-        sub_languages_iso_codes.update(qid_to_isos)
+
+        # Add to main dictionary.
+        sub_languages_iso_codes |= qid_to_isos
 
     for language_qid, data_types_qid in missing_features.items():
         print(f"Processing language: {language_qid}")
@@ -176,45 +166,16 @@ def process_missing_features(missing_features, query_dir):
             language_entry = {language_qid: {data_type_qid: features}}
             if language_qid in sub_languages_iso_codes:
                 for sub_lang_iso_code in sub_languages_iso_codes[language_qid]:
-                    print(f"Generating query for {language_qid} - {data_type_qid} - {sub_lang_iso_code}")
-                    generate_query(language_entry, LANGUAGE_DATA_EXTRACTION_DIR, sub_lang_iso_code)
+                    print(
+                        f"Generating query for {language_qid} - {data_type_qid} - {sub_lang_iso_code}"
+                    )
+                    generate_query(
+                        language_entry, LANGUAGE_DATA_EXTRACTION_DIR, sub_lang_iso_code
+                    )
+
             else:
                 print(f"Generating query for {language_qid} - {data_type_qid}")
                 generate_query(language_entry, LANGUAGE_DATA_EXTRACTION_DIR)
-
-
-
-def wd_lexeme_dump_download(wikidata_dump=None, output_dir=None, default=True):
-    """
-    Download Wikidata lexeme dumps automatically.
-
-    Parameters
-    ----------
-    wikidata_dump : str, optional
-        Date string in YYYYMMDD format for specific dumps.
-        If None, downloads the latest dump.
-
-    output_dir : str, optional
-        Directory path for the downloaded file.
-        If None, uses DEFAULT_DUMP_EXPORT_DIR.
-
-    default : bool, optional
-        If True, skips the user confirmation prompt.
-        Defaults to True.
-
-    Returns
-    -------
-    str or False
-        Path to downloaded file if successful, False otherwise.
-
-    Notes
-    -----
-    - Downloads are skipped if the file already exists in the output directory.
-    - Progress is displayed every 50MB during download.
-    - Creates output directory if it doesn't exist.
-    """
-    # Directly call wd_lexeme_dump_download_wrapper with default=True to skip questionary prompt
-    return wd_lexeme_dump_download_wrapper(wikidata_dump, output_dir, default)
 
 
 def main():
@@ -236,8 +197,13 @@ def main():
     - --download-dump: Flag to download the dump if dump_path is not provided
     """
     parser = argparse.ArgumentParser(description="Check missing forms in Wikidata")
-    parser.add_argument("dump_path", type=str, nargs='?', default=None, 
-                        help="Path to the dump file (optional if --download-dump is used)")
+    parser.add_argument(
+        "dump_path",
+        type=str,
+        nargs="?",
+        default=None,
+        help="Path to the dump file (optional if --download-dump is used)",
+    )
     parser.add_argument("query_dir", type=str, help="Path to the query directory")
     parser.add_argument(
         "--process-all-keys",
@@ -252,15 +218,21 @@ def main():
 
     args = parser.parse_args()
 
-    # If no dump path is provided and download flag is set, download the dump
+    # If no dump path is provided and download flag is set, download the dump.
     if not args.dump_path and args.download_dump:
-        dump_path = wd_lexeme_dump_download()
+        # MARK: Download Dump
+
+        dump_path = wd_lexeme_dump_download_wrapper(
+            wikidata_dump=None, output_dir=None, default=True
+        )
         if not dump_path:
             print("Failed to download Wikidata dump.")
             sys.exit(1)
+
     elif not args.dump_path:
         print("Error: Either provide a dump path or use --download-dump flag")
         sys.exit(1)
+
     else:
         dump_path = args.dump_path
 
@@ -278,8 +250,12 @@ def main():
     # Get all languages including sub languages.
     languages = get_all_languages()
 
+    # MARK: Parse SPARQL
+
     print("Parsing SPARQL files...")
     result_sparql = parse_sparql_files()
+
+    # MARK: Extract Forms
 
     print("Extracting Wiki lexeme dump...")
     result_dump = extract_dump_forms(
@@ -288,23 +264,18 @@ def main():
         file_path=dump_path,
     )
 
-    # with open("result_sparql.json", "r") as f:
-    #     result_sparql = json.load(f)
-
-    # with open("result_dump.json", "r") as f:
-    #     result_dump = json.load(f)
+    # MARK: Get Features
 
     missing_features = get_missing_features(result_sparql, result_dump)
 
-    # with open("missing_features.json", "w") as f:
-    #     json.dump(missing_features, f, indent=4)
-
     try:
+        # MARK: Save Features
+
         print("Generated missing features:", missing_features)
 
-        # Save the missing features to a JSON file.
         with open("missing_features.json", "w") as f:
             json.dump(missing_features, f, indent=4)
+
         print("Missing features data has been saved to missing_features.json")
 
         if missing_features:
@@ -314,6 +285,7 @@ def main():
     except Exception as e:
         print(f"An error occurred: {e}")
         sys.exit(1)
+
 
 if __name__ == "__main__":
     main()

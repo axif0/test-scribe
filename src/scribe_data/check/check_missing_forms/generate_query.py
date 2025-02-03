@@ -82,9 +82,6 @@ def generate_query(missing_features, query_dir=None, sub_lang_iso_code=None):
     for form_qids in all_form_combinations:
         # Convert QIDs to labels and join them together.
         labels = [qid_to_label.get(qid, qid) for qid in form_qids]
-        # Reverse both labels and QIDs
-        labels.reverse()
-        form_qids = form_qids[::-1]
         concatenated_label = "".join(labels)
 
         # Make first letter lowercase.
@@ -92,15 +89,18 @@ def generate_query(missing_features, query_dir=None, sub_lang_iso_code=None):
         forms_query.append({"label": concatenated_label, "qids": form_qids})
 
     # Generate a single query for all forms.
-    main_body = f"""# tool: scribe-data
+    main_body = (
+        f"""# tool: scribe-data
 # All {language.capitalize()} ({language_qid}) {data_type} ({data_type_qid}) and their forms.
 # Enter this query at https://query.wikidata.org/.
 
 SELECT
   (REPLACE(STR(?lexeme), "http://www.wikidata.org/entity/", "") AS ?lexemeID)
   ?{data_type}
-  """ + "\n  ".join(f'?{form["label"]}' for form in forms_query) + "\n  ?lastModified"
-  
+  """
+        + "\n  ".join(f'?{form["label"]}' for form in forms_query)
+        + "\n   ?lastModified"
+    )
 
     where_clause = f"""
 

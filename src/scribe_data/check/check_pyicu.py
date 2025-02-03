@@ -22,7 +22,7 @@ def check_if_pyicu_installed():
 
 def get_python_version_and_architecture():
     """
-    Get the current Python version a nd architecture.
+    Get the current Python version and architecture.
 
     Returns
     -------

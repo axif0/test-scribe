@@ -5,12 +5,9 @@ Get forms from Wikidata.
 
 import re
 from collections import defaultdict
-import json
+
 from scribe_data.utils import (
     LANGUAGE_DATA_EXTRACTION_DIR as language_data_extraction,
-)
-from scribe_data.utils import (
-    data_type_metadata,
     language_metadata,
 )
 from scribe_data.wikidata.parse_dump import LexemeProcessor
@@ -103,11 +100,6 @@ def parse_sparql_query(query_text):
 
     return result
 
-# result_sparql = parse_sparql_files()
-
-# # Save the missing features to a JSON file.
-# with open("result_sparql.json", "w") as f:
-#     json.dump(result_sparql, f, indent=4)
 
 def extract_dump_forms(
     languages=None, data_types=None, file_path="latest-lexemes.json.bz2"
@@ -131,12 +123,6 @@ def extract_dump_forms(
     dict
         Dictionary of unique grammatical features per language and lexical category.
         Format: {language_qid: {data_type_qid: features}}
-
-    Notes
-    -----
-    - Converts ISO codes to QIDs in the output
-    - Converts data type names to their corresponding QIDs
-    - Only includes languages and data types that have valid QID mappings
     """
     processor = LexemeProcessor(
         target_lang=languages, parse_type=["form"], data_types=data_types
@@ -144,18 +130,4 @@ def extract_dump_forms(
 
     processor.process_file(file_path)
 
-    unique_features = dict(processor.unique_forms)
-
-    # # Convert ISO codes to QIDs and data types to QIDs.
-    # converted_features = {}
-    # for iso_code, data_types_dict in unique_features.items():
-    #     if iso_code in iso_to_qid:
-    #         lang_qid = iso_to_qid[iso_code]
-    #         converted_features[lang_qid] = {}
-
-    #         for data_type, features in data_types_dict.items():
-    #             # Get QID from data_type_metadata.
-    #             if data_type_qid := data_type_metadata.get(data_type):
-    #                 converted_features[lang_qid][data_type_qid] = features
-
-    return unique_features
+    return dict(processor.unique_forms)
