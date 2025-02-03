@@ -1,0 +1,71 @@
+# tool: scribe-data
+# All Swedish (Q9027) proper_nouns (Q147276) and their forms.
+# Enter this query at https://query.wikidata.org/.
+
+SELECT
+  (REPLACE(STR(?lexeme), "http://www.wikidata.org/entity/", "") AS ?lexemeID)
+  ?proper_nouns
+  ?nominativeSingular
+  ?indefiniteNominativeSingular
+  ?indefiniteGenitiveSingular
+  ?genitiveSingular
+  ?singularNominativeIndefinite
+  ?singularGenitiveIndefinite
+  ?singularGenitive
+  ?singularNominative
+   ?lastModified
+
+WHERE {
+  ?lexeme dct:language wd:Q9027 ;
+      wikibase:lexicalCategory wd:Q147276 ;
+      wikibase:lemma ?proper_nouns ;
+      schema:dateModified ?lastModified .
+    
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?nominativeSingularForm .
+    ?nominativeSingularForm ontolex:representation ?nominativeSingular ;
+      wikibase:grammaticalFeature wd:Q131105, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?indefiniteNominativeSingularForm .
+    ?indefiniteNominativeSingularForm ontolex:representation ?indefiniteNominativeSingular ;
+      wikibase:grammaticalFeature wd:Q53997857, wd:Q131105, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?indefiniteGenitiveSingularForm .
+    ?indefiniteGenitiveSingularForm ontolex:representation ?indefiniteGenitiveSingular ;
+      wikibase:grammaticalFeature wd:Q53997857, wd:Q146233, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?genitiveSingularForm .
+    ?genitiveSingularForm ontolex:representation ?genitiveSingular ;
+      wikibase:grammaticalFeature wd:Q146233, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularNominativeIndefiniteForm .
+    ?singularNominativeIndefiniteForm ontolex:representation ?singularNominativeIndefinite ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q131105, wd:Q53997857 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularGenitiveIndefiniteForm .
+    ?singularGenitiveIndefiniteForm ontolex:representation ?singularGenitiveIndefinite ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q146233, wd:Q53997857 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularGenitiveForm .
+    ?singularGenitiveForm ontolex:representation ?singularGenitive ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q146233 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularNominativeForm .
+    ?singularNominativeForm ontolex:representation ?singularNominative ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q131105 .
+  }
+}

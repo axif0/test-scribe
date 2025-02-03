@@ -1,0 +1,155 @@
+# tool: scribe-data
+# All Danish (Q9035) pronouns (Q36224) and their forms.
+# Enter this query at https://query.wikidata.org/.
+
+SELECT
+  (REPLACE(STR(?lexeme), "http://www.wikidata.org/entity/", "") AS ?lexemeID)
+  ?pronouns
+  ?nonGenitivePlural
+  ?pluralGenitive
+  ?masculineGenitive
+  ?neuterGenitiveSingular
+  ?commonSingular
+  ?genitiveCommonSingular
+  ?neuterSingular
+  ?nonGenitiveCommonSingular
+  ?feminineGenitive
+  ?nonGenitiveNeuterSingular
+  ?genitiveMasculine
+  ?singularNeuterNonGenitive
+  ?genitiveFeminine
+  ?singularCommon
+  ?singularCommonGenitive
+  ?singularGenitiveNeuter
+  ?pluralNonGenitive
+  ?singularNeuter
+  ?genitivePlural
+  ?singularCommonNonGenitive
+   ?lastModified
+
+WHERE {
+  ?lexeme dct:language wd:Q9035 ;
+      wikibase:lexicalCategory wd:Q36224 ;
+      wikibase:lemma ?pronouns ;
+      schema:dateModified ?lastModified .
+    
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?nonGenitivePluralForm .
+    ?nonGenitivePluralForm ontolex:representation ?nonGenitivePlural ;
+      wikibase:grammaticalFeature wd:Q98946930, wd:Q146786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?pluralGenitiveForm .
+    ?pluralGenitiveForm ontolex:representation ?pluralGenitive ;
+      wikibase:grammaticalFeature wd:Q146786, wd:Q146233 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?masculineGenitiveForm .
+    ?masculineGenitiveForm ontolex:representation ?masculineGenitive ;
+      wikibase:grammaticalFeature wd:Q499327, wd:Q146233 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?neuterGenitiveSingularForm .
+    ?neuterGenitiveSingularForm ontolex:representation ?neuterGenitiveSingular ;
+      wikibase:grammaticalFeature wd:Q1775461, wd:Q146233, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?commonSingularForm .
+    ?commonSingularForm ontolex:representation ?commonSingular ;
+      wikibase:grammaticalFeature wd:Q1305037, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?genitiveCommonSingularForm .
+    ?genitiveCommonSingularForm ontolex:representation ?genitiveCommonSingular ;
+      wikibase:grammaticalFeature wd:Q146233, wd:Q1305037, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?neuterSingularForm .
+    ?neuterSingularForm ontolex:representation ?neuterSingular ;
+      wikibase:grammaticalFeature wd:Q1775461, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?nonGenitiveCommonSingularForm .
+    ?nonGenitiveCommonSingularForm ontolex:representation ?nonGenitiveCommonSingular ;
+      wikibase:grammaticalFeature wd:Q98946930, wd:Q1305037, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?feminineGenitiveForm .
+    ?feminineGenitiveForm ontolex:representation ?feminineGenitive ;
+      wikibase:grammaticalFeature wd:Q1775415, wd:Q146233 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?nonGenitiveNeuterSingularForm .
+    ?nonGenitiveNeuterSingularForm ontolex:representation ?nonGenitiveNeuterSingular ;
+      wikibase:grammaticalFeature wd:Q98946930, wd:Q1775461, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?genitiveMasculineForm .
+    ?genitiveMasculineForm ontolex:representation ?genitiveMasculine ;
+      wikibase:grammaticalFeature wd:Q146233, wd:Q499327 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularNeuterNonGenitiveForm .
+    ?singularNeuterNonGenitiveForm ontolex:representation ?singularNeuterNonGenitive ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q1775461, wd:Q98946930 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?genitiveFeminineForm .
+    ?genitiveFeminineForm ontolex:representation ?genitiveFeminine ;
+      wikibase:grammaticalFeature wd:Q146233, wd:Q1775415 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularCommonForm .
+    ?singularCommonForm ontolex:representation ?singularCommon ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q1305037 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularCommonGenitiveForm .
+    ?singularCommonGenitiveForm ontolex:representation ?singularCommonGenitive ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q1305037, wd:Q146233 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularGenitiveNeuterForm .
+    ?singularGenitiveNeuterForm ontolex:representation ?singularGenitiveNeuter ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q146233, wd:Q1775461 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?pluralNonGenitiveForm .
+    ?pluralNonGenitiveForm ontolex:representation ?pluralNonGenitive ;
+      wikibase:grammaticalFeature wd:Q146786, wd:Q98946930 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularNeuterForm .
+    ?singularNeuterForm ontolex:representation ?singularNeuter ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q1775461 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?genitivePluralForm .
+    ?genitivePluralForm ontolex:representation ?genitivePlural ;
+      wikibase:grammaticalFeature wd:Q146233, wd:Q146786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularCommonNonGenitiveForm .
+    ?singularCommonNonGenitiveForm ontolex:representation ?singularCommonNonGenitive ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q1305037, wd:Q98946930 .
+  }
+}

@@ -1,0 +1,127 @@
+# tool: scribe-data
+# All Swedish (Q9027) pronouns (Q36224) and their forms.
+# Enter this query at https://query.wikidata.org/.
+
+SELECT
+  (REPLACE(STR(?lexeme), "http://www.wikidata.org/entity/", "") AS ?lexemeID)
+  ?pronouns
+  ?masculineObliqueSingular
+  ?masculineNominativeSingular
+  ?commonSingular
+  ?masculineGenitiveSingular
+  ?neuterSingular
+  ?masculineSingular
+  ?masculineFeminineCommonSingular
+  ?definiteNeuterSingular
+  ?singularGenitiveMasculine
+  ?singularMasculine
+  ?singularNeuterDefinite
+  ?singularCommonFeminineMasculine
+  ?singularCommon
+  ?singularNeuter
+  ?singularObliqueMasculine
+  ?singularNominativeMasculine
+   ?lastModified
+
+WHERE {
+  ?lexeme dct:language wd:Q9027 ;
+      wikibase:lexicalCategory wd:Q36224 ;
+      wikibase:lemma ?pronouns ;
+      schema:dateModified ?lastModified .
+    
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?masculineObliqueSingularForm .
+    ?masculineObliqueSingularForm ontolex:representation ?masculineObliqueSingular ;
+      wikibase:grammaticalFeature wd:Q499327, wd:Q1233197, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?masculineNominativeSingularForm .
+    ?masculineNominativeSingularForm ontolex:representation ?masculineNominativeSingular ;
+      wikibase:grammaticalFeature wd:Q499327, wd:Q131105, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?commonSingularForm .
+    ?commonSingularForm ontolex:representation ?commonSingular ;
+      wikibase:grammaticalFeature wd:Q1305037, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?masculineGenitiveSingularForm .
+    ?masculineGenitiveSingularForm ontolex:representation ?masculineGenitiveSingular ;
+      wikibase:grammaticalFeature wd:Q499327, wd:Q146233, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?neuterSingularForm .
+    ?neuterSingularForm ontolex:representation ?neuterSingular ;
+      wikibase:grammaticalFeature wd:Q1775461, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?masculineSingularForm .
+    ?masculineSingularForm ontolex:representation ?masculineSingular ;
+      wikibase:grammaticalFeature wd:Q499327, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?masculineFeminineCommonSingularForm .
+    ?masculineFeminineCommonSingularForm ontolex:representation ?masculineFeminineCommonSingular ;
+      wikibase:grammaticalFeature wd:Q499327, wd:Q1775415, wd:Q1305037, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?definiteNeuterSingularForm .
+    ?definiteNeuterSingularForm ontolex:representation ?definiteNeuterSingular ;
+      wikibase:grammaticalFeature wd:Q53997851, wd:Q1775461, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularGenitiveMasculineForm .
+    ?singularGenitiveMasculineForm ontolex:representation ?singularGenitiveMasculine ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q146233, wd:Q499327 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularMasculineForm .
+    ?singularMasculineForm ontolex:representation ?singularMasculine ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q499327 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularNeuterDefiniteForm .
+    ?singularNeuterDefiniteForm ontolex:representation ?singularNeuterDefinite ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q1775461, wd:Q53997851 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularCommonFeminineMasculineForm .
+    ?singularCommonFeminineMasculineForm ontolex:representation ?singularCommonFeminineMasculine ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q1305037, wd:Q1775415, wd:Q499327 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularCommonForm .
+    ?singularCommonForm ontolex:representation ?singularCommon ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q1305037 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularNeuterForm .
+    ?singularNeuterForm ontolex:representation ?singularNeuter ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q1775461 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularObliqueMasculineForm .
+    ?singularObliqueMasculineForm ontolex:representation ?singularObliqueMasculine ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q1233197, wd:Q499327 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularNominativeMasculineForm .
+    ?singularNominativeMasculineForm ontolex:representation ?singularNominativeMasculine ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q131105, wd:Q499327 .
+  }
+}

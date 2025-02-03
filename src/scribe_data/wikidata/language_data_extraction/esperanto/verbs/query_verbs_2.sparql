@@ -1,0 +1,64 @@
+# tool: scribe-data
+# All Esperanto (Q143) verbs (Q24905) and their forms.
+# Enter this query at https://query.wikidata.org/.
+
+SELECT
+  (REPLACE(STR(?lexeme), "http://www.wikidata.org/entity/", "") AS ?lexemeID)
+  ?verbs
+  ?indicativePresentIndicativePresent
+  ?futurePresentParticiple
+  ?presentIndicative
+  ?presentPresentIndicativeIndicative
+  ?pastIndicative
+  ?futureIndicative
+  ?presentParticipleFuture
+   ?lastModified
+
+WHERE {
+  ?lexeme dct:language wd:Q143 ;
+      wikibase:lexicalCategory wd:Q24905 ;
+      wikibase:lemma ?verbs ;
+      schema:dateModified ?lastModified .
+    
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?indicativePresentIndicativePresentForm .
+    ?indicativePresentIndicativePresentForm ontolex:representation ?indicativePresentIndicativePresent ;
+      wikibase:grammaticalFeature wd:Q682111, wd:Q56682909, wd:Q192613 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?futurePresentParticipleForm .
+    ?futurePresentParticipleForm ontolex:representation ?futurePresentParticiple ;
+      wikibase:grammaticalFeature wd:Q501405, wd:Q10345583 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?presentIndicativeForm .
+    ?presentIndicativeForm ontolex:representation ?presentIndicative ;
+      wikibase:grammaticalFeature wd:Q192613, wd:Q682111 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?presentPresentIndicativeIndicativeForm .
+    ?presentPresentIndicativeIndicativeForm ontolex:representation ?presentPresentIndicativeIndicative ;
+      wikibase:grammaticalFeature wd:Q192613, wd:Q56682909, wd:Q682111 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?pastIndicativeForm .
+    ?pastIndicativeForm ontolex:representation ?pastIndicative ;
+      wikibase:grammaticalFeature wd:Q1994301, wd:Q682111 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?futureIndicativeForm .
+    ?futureIndicativeForm ontolex:representation ?futureIndicative ;
+      wikibase:grammaticalFeature wd:Q501405, wd:Q682111 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?presentParticipleFutureForm .
+    ?presentParticipleFutureForm ontolex:representation ?presentParticipleFuture ;
+      wikibase:grammaticalFeature wd:Q10345583, wd:Q501405 .
+  }
+}
