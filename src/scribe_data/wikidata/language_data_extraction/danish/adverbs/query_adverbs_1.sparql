@@ -1,0 +1,57 @@
+# tool: scribe-data
+# All Danish (Q9035) adverbs (Q380057) and their forms.
+# Enter this query at https://query.wikidata.org/.
+
+SELECT
+  (REPLACE(STR(?lexeme), "http://www.wikidata.org/entity/", "") AS ?lexemeID)
+  ?adverbs
+  ?superlative
+  ?positive
+  ?indefinitePositiveNeuterSingular
+  ?definitePositiveSingular
+  ?comparative
+  ?positivePlural
+  ?lastModified
+
+WHERE {
+  ?lexeme dct:language wd:Q9035 ;
+      wikibase:lexicalCategory wd:Q380057 ;
+      wikibase:lemma ?adverbs ;
+      schema:dateModified ?lastModified .
+    
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?superlativeForm .
+    ?superlativeForm ontolex:representation ?superlative ;
+      wikibase:grammaticalFeature wd:Q1817208 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?positiveForm .
+    ?positiveForm ontolex:representation ?positive ;
+      wikibase:grammaticalFeature wd:Q3482678 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?indefinitePositiveNeuterSingularForm .
+    ?indefinitePositiveNeuterSingularForm ontolex:representation ?indefinitePositiveNeuterSingular ;
+      wikibase:grammaticalFeature wd:Q53997857, wd:Q3482678, wd:Q1775461, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?definitePositiveSingularForm .
+    ?definitePositiveSingularForm ontolex:representation ?definitePositiveSingular ;
+      wikibase:grammaticalFeature wd:Q53997851, wd:Q3482678, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?comparativeForm .
+    ?comparativeForm ontolex:representation ?comparative ;
+      wikibase:grammaticalFeature wd:Q14169499 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?positivePluralForm .
+    ?positivePluralForm ontolex:representation ?positivePlural ;
+      wikibase:grammaticalFeature wd:Q3482678, wd:Q146786 .
+  }
+}

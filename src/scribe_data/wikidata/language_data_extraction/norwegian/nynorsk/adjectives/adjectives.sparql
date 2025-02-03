@@ -1,0 +1,102 @@
+# tool: scribe-data
+# All Norwegian (Q25164) adjectives (Q34698) and their forms.
+# Enter this query at https://query.wikidata.org/.
+
+SELECT
+  (REPLACE(STR(?lexeme), "http://www.wikidata.org/entity/", "") AS ?lexemeID)
+  ?adjectives
+  ?superlative
+  ?definiteSuperlative
+  ?indefiniteFeminineSingular
+  ?indefiniteNeuterSingular
+  ?neuterSingular
+  ?indefiniteMasculineFeminineSingular
+  ?definiteSingular
+  ?indefiniteMasculineSingular
+  ?comparative
+  ?singularIndefiniteMasculineFeminine
+  ?singularIndefiniteNeuter
+  ?singularDefinite
+  ?lastModified
+
+WHERE {
+  ?lexeme dct:language wd:Q25164 ;
+      wikibase:lexicalCategory wd:Q34698 ;
+      wikibase:lemma ?adjectives ;
+      schema:dateModified ?lastModified .
+    
+  # Note: We need to filter for nn to remove nynorsk (nn) words.
+  FILTER(lang(?adjectives) = "nn")
+    
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?superlativeForm .
+    ?superlativeForm ontolex:representation ?superlative ;
+      wikibase:grammaticalFeature wd:Q1817208 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?definiteSuperlativeForm .
+    ?definiteSuperlativeForm ontolex:representation ?definiteSuperlative ;
+      wikibase:grammaticalFeature wd:Q53997851, wd:Q1817208 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?indefiniteFeminineSingularForm .
+    ?indefiniteFeminineSingularForm ontolex:representation ?indefiniteFeminineSingular ;
+      wikibase:grammaticalFeature wd:Q53997857, wd:Q1775415, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?indefiniteNeuterSingularForm .
+    ?indefiniteNeuterSingularForm ontolex:representation ?indefiniteNeuterSingular ;
+      wikibase:grammaticalFeature wd:Q53997857, wd:Q1775461, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?neuterSingularForm .
+    ?neuterSingularForm ontolex:representation ?neuterSingular ;
+      wikibase:grammaticalFeature wd:Q1775461, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?indefiniteMasculineFeminineSingularForm .
+    ?indefiniteMasculineFeminineSingularForm ontolex:representation ?indefiniteMasculineFeminineSingular ;
+      wikibase:grammaticalFeature wd:Q53997857, wd:Q499327, wd:Q1775415, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?definiteSingularForm .
+    ?definiteSingularForm ontolex:representation ?definiteSingular ;
+      wikibase:grammaticalFeature wd:Q53997851, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?indefiniteMasculineSingularForm .
+    ?indefiniteMasculineSingularForm ontolex:representation ?indefiniteMasculineSingular ;
+      wikibase:grammaticalFeature wd:Q53997857, wd:Q499327, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?comparativeForm .
+    ?comparativeForm ontolex:representation ?comparative ;
+      wikibase:grammaticalFeature wd:Q14169499 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularIndefiniteMasculineFeminineForm .
+    ?singularIndefiniteMasculineFeminineForm ontolex:representation ?singularIndefiniteMasculineFeminine ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q53997857, wd:Q499327, wd:Q1775415 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularIndefiniteNeuterForm .
+    ?singularIndefiniteNeuterForm ontolex:representation ?singularIndefiniteNeuter ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q53997857, wd:Q1775461 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularDefiniteForm .
+    ?singularDefiniteForm ontolex:representation ?singularDefinite ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q53997851 .
+  }
+}

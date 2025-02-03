@@ -1,0 +1,151 @@
+# tool: scribe-data
+# All Punjabi (Q58635) proper_nouns (Q147276) and their forms.
+# Enter this query at https://query.wikidata.org/.
+
+SELECT
+  (REPLACE(STR(?lexeme), "http://www.wikidata.org/entity/", "") AS ?lexemeID)
+  ?proper_nouns
+  ?femininePluralOblique
+  ?masculineAblativeSingular
+  ?vocativeFemininePlural
+  ?masculineLocativeSingular
+  ?masculinePluralOblique
+  ?feminineDirectPlural
+  ?locativeFeminineSingular
+  ?masculineSingular
+  ?feminineAblativeSingular
+  ?masculineDirectPlural
+  ?vocativeFeminineSingular
+  ?feminineDirectSingular
+  ?feminineObliqueSingular
+  ?masculineDirectSingular
+  ?masculineVocativeSingular
+  ?masculineObliqueSingular
+  ?directSingular
+  ?masculineVocativePlural
+  ?plural
+  ?lastModified
+
+WHERE {
+  ?lexeme dct:language wd:Q58635 ;
+      wikibase:lexicalCategory wd:Q147276 ;
+      wikibase:lemma ?proper_nouns ;
+      schema:dateModified ?lastModified .
+    
+  # Note: We need to filter for pnb to remove shahmukhi (pnb) words.
+  FILTER(lang(?proper_nouns) = "pnb")
+    
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?femininePluralObliqueForm .
+    ?femininePluralObliqueForm ontolex:representation ?femininePluralOblique ;
+      wikibase:grammaticalFeature wd:Q1775415, wd:Q146786, wd:Q1233197 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?masculineAblativeSingularForm .
+    ?masculineAblativeSingularForm ontolex:representation ?masculineAblativeSingular ;
+      wikibase:grammaticalFeature wd:Q499327, wd:Q156986, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?vocativeFemininePluralForm .
+    ?vocativeFemininePluralForm ontolex:representation ?vocativeFemininePlural ;
+      wikibase:grammaticalFeature wd:Q185077, wd:Q1775415, wd:Q146786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?masculineLocativeSingularForm .
+    ?masculineLocativeSingularForm ontolex:representation ?masculineLocativeSingular ;
+      wikibase:grammaticalFeature wd:Q499327, wd:Q202142, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?masculinePluralObliqueForm .
+    ?masculinePluralObliqueForm ontolex:representation ?masculinePluralOblique ;
+      wikibase:grammaticalFeature wd:Q499327, wd:Q146786, wd:Q1233197 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?feminineDirectPluralForm .
+    ?feminineDirectPluralForm ontolex:representation ?feminineDirectPlural ;
+      wikibase:grammaticalFeature wd:Q1775415, wd:Q1751855, wd:Q146786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?locativeFeminineSingularForm .
+    ?locativeFeminineSingularForm ontolex:representation ?locativeFeminineSingular ;
+      wikibase:grammaticalFeature wd:Q202142, wd:Q1775415, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?masculineSingularForm .
+    ?masculineSingularForm ontolex:representation ?masculineSingular ;
+      wikibase:grammaticalFeature wd:Q499327, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?feminineAblativeSingularForm .
+    ?feminineAblativeSingularForm ontolex:representation ?feminineAblativeSingular ;
+      wikibase:grammaticalFeature wd:Q1775415, wd:Q156986, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?masculineDirectPluralForm .
+    ?masculineDirectPluralForm ontolex:representation ?masculineDirectPlural ;
+      wikibase:grammaticalFeature wd:Q499327, wd:Q1751855, wd:Q146786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?vocativeFeminineSingularForm .
+    ?vocativeFeminineSingularForm ontolex:representation ?vocativeFeminineSingular ;
+      wikibase:grammaticalFeature wd:Q185077, wd:Q1775415, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?feminineDirectSingularForm .
+    ?feminineDirectSingularForm ontolex:representation ?feminineDirectSingular ;
+      wikibase:grammaticalFeature wd:Q1775415, wd:Q1751855, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?feminineObliqueSingularForm .
+    ?feminineObliqueSingularForm ontolex:representation ?feminineObliqueSingular ;
+      wikibase:grammaticalFeature wd:Q1775415, wd:Q1233197, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?masculineDirectSingularForm .
+    ?masculineDirectSingularForm ontolex:representation ?masculineDirectSingular ;
+      wikibase:grammaticalFeature wd:Q499327, wd:Q1751855, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?masculineVocativeSingularForm .
+    ?masculineVocativeSingularForm ontolex:representation ?masculineVocativeSingular ;
+      wikibase:grammaticalFeature wd:Q499327, wd:Q185077, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?masculineObliqueSingularForm .
+    ?masculineObliqueSingularForm ontolex:representation ?masculineObliqueSingular ;
+      wikibase:grammaticalFeature wd:Q499327, wd:Q1233197, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?directSingularForm .
+    ?directSingularForm ontolex:representation ?directSingular ;
+      wikibase:grammaticalFeature wd:Q1751855, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?masculineVocativePluralForm .
+    ?masculineVocativePluralForm ontolex:representation ?masculineVocativePlural ;
+      wikibase:grammaticalFeature wd:Q499327, wd:Q185077, wd:Q146786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?pluralForm .
+    ?pluralForm ontolex:representation ?plural ;
+      wikibase:grammaticalFeature wd:Q146786 .
+  }
+}

@@ -1,0 +1,99 @@
+# tool: scribe-data
+# All Portuguese (Q5146) personal_pronouns (Q468801) and their forms.
+# Enter this query at https://query.wikidata.org/.
+
+SELECT
+  (REPLACE(STR(?lexeme), "http://www.wikidata.org/entity/", "") AS ?lexemeID)
+  ?personal_pronouns
+  ?femininePluralOblique
+  ?nominativeSingular
+  ?femininePluralNominative
+  ?obliqueSingular
+  ?pluralNominative
+  ?singular
+  ?plural
+  ?pluralOblique
+  ?feminineObliqueSingular
+  ?feminineNominativeSingular
+  ?masculineObliqueSingular
+  ?masculineNominativeSingular
+  ?lastModified
+
+WHERE {
+  ?lexeme dct:language wd:Q5146 ;
+      wikibase:lexicalCategory wd:Q468801 ;
+      wikibase:lemma ?personal_pronouns ;
+      schema:dateModified ?lastModified .
+    
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?femininePluralObliqueForm .
+    ?femininePluralObliqueForm ontolex:representation ?femininePluralOblique ;
+      wikibase:grammaticalFeature wd:Q1775415, wd:Q146786, wd:Q1233197 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?nominativeSingularForm .
+    ?nominativeSingularForm ontolex:representation ?nominativeSingular ;
+      wikibase:grammaticalFeature wd:Q131105, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?femininePluralNominativeForm .
+    ?femininePluralNominativeForm ontolex:representation ?femininePluralNominative ;
+      wikibase:grammaticalFeature wd:Q1775415, wd:Q146786, wd:Q131105 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?obliqueSingularForm .
+    ?obliqueSingularForm ontolex:representation ?obliqueSingular ;
+      wikibase:grammaticalFeature wd:Q1233197, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?pluralNominativeForm .
+    ?pluralNominativeForm ontolex:representation ?pluralNominative ;
+      wikibase:grammaticalFeature wd:Q146786, wd:Q131105 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularForm .
+    ?singularForm ontolex:representation ?singular ;
+      wikibase:grammaticalFeature wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?pluralForm .
+    ?pluralForm ontolex:representation ?plural ;
+      wikibase:grammaticalFeature wd:Q146786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?pluralObliqueForm .
+    ?pluralObliqueForm ontolex:representation ?pluralOblique ;
+      wikibase:grammaticalFeature wd:Q146786, wd:Q1233197 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?feminineObliqueSingularForm .
+    ?feminineObliqueSingularForm ontolex:representation ?feminineObliqueSingular ;
+      wikibase:grammaticalFeature wd:Q1775415, wd:Q1233197, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?feminineNominativeSingularForm .
+    ?feminineNominativeSingularForm ontolex:representation ?feminineNominativeSingular ;
+      wikibase:grammaticalFeature wd:Q1775415, wd:Q131105, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?masculineObliqueSingularForm .
+    ?masculineObliqueSingularForm ontolex:representation ?masculineObliqueSingular ;
+      wikibase:grammaticalFeature wd:Q499327, wd:Q1233197, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?masculineNominativeSingularForm .
+    ?masculineNominativeSingularForm ontolex:representation ?masculineNominativeSingular ;
+      wikibase:grammaticalFeature wd:Q499327, wd:Q131105, wd:Q110786 .
+  }
+}
