@@ -1,0 +1,421 @@
+# tool: scribe-data
+# All Malayalam (Q36236) pronouns (Q36224) and their forms.
+# Enter this query at https://query.wikidata.org/.
+
+SELECT
+  (REPLACE(STR(?lexeme), "http://www.wikidata.org/entity/", "") AS ?lexemeID)
+  ?pronouns
+  ?thirdPersonPluralNominative
+  ?thirdPersonAccusativeSingular
+  ?pluralAccusative
+  ?thirdPersonInstrumentalPlural
+  ?pluralGenitive
+  ?instrumentalPlural
+  ?thirdPersonVocativeSingular
+  ?locativeSingular
+  ?genitiveSingular
+  ?vocativeSingular
+  ?accusativeSingular
+  ?nominativeSingular
+  ?thirdPersonGenitiveSingular
+  ?vocativePlural
+  ?thirdPersonLocativePlural
+  ?thirdPersonInstrumentalSingular
+  ?thirdPersonDativeSingular
+  ?vocativeNominative
+  ?pluralDative
+  ?instrumentalSingular
+  ?pluralNominative
+  ?locativePlural
+  ?thirdPersonPluralDative
+  ?thirdPersonPluralGenitive
+  ?dativeSingular
+  ?thirdPersonPluralAccusative
+  ?thirdPersonVocativePlural
+  ?thirdPersonLocativeSingular
+  ?thirdPersonNominativeSingular
+  ?pluralVocative
+  ?singularDative
+  ?dativePluralThirdPerson
+  ?singularNominativeThirdPerson
+  ?singularNominative
+  ?singularLocativeThirdPerson
+  ?pluralInstrumentalThirdPerson
+  ?dativePlural
+  ?singularLocative
+  ?pluralInstrumental
+  ?singularVocativeThirdPerson
+  ?singularAccusativeThirdPerson
+  ?singularGenitiveThirdPerson
+  ?nominativeVocative
+  ?singularAccusative
+  ?singularVocative
+  ?singularGenitive
+  ?genitivePluralThirdPerson
+  ?accusativePluralThirdPerson
+  ?pluralLocativeThirdPerson
+  ?singularInstrumentalThirdPerson
+  ?genitivePlural
+  ?nominativePluralThirdPerson
+  ?accusativePlural
+  ?pluralLocative
+  ?singularInstrumental
+  ?nominativePlural
+  ?pluralVocativeThirdPerson
+  ?singularDativeThirdPerson
+  ?lastModified
+
+WHERE {
+  ?lexeme dct:language wd:Q36236 ;
+      wikibase:lexicalCategory wd:Q36224 ;
+      wikibase:lemma ?pronouns ;
+      schema:dateModified ?lastModified .
+    
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?thirdPersonPluralNominativeForm .
+    ?thirdPersonPluralNominativeForm ontolex:representation ?thirdPersonPluralNominative ;
+      wikibase:grammaticalFeature wd:Q51929074, wd:Q146786, wd:Q131105 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?thirdPersonAccusativeSingularForm .
+    ?thirdPersonAccusativeSingularForm ontolex:representation ?thirdPersonAccusativeSingular ;
+      wikibase:grammaticalFeature wd:Q51929074, wd:Q146078, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?pluralAccusativeForm .
+    ?pluralAccusativeForm ontolex:representation ?pluralAccusative ;
+      wikibase:grammaticalFeature wd:Q146786, wd:Q146078 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?thirdPersonInstrumentalPluralForm .
+    ?thirdPersonInstrumentalPluralForm ontolex:representation ?thirdPersonInstrumentalPlural ;
+      wikibase:grammaticalFeature wd:Q51929074, wd:Q192997, wd:Q146786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?pluralGenitiveForm .
+    ?pluralGenitiveForm ontolex:representation ?pluralGenitive ;
+      wikibase:grammaticalFeature wd:Q146786, wd:Q146233 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?instrumentalPluralForm .
+    ?instrumentalPluralForm ontolex:representation ?instrumentalPlural ;
+      wikibase:grammaticalFeature wd:Q192997, wd:Q146786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?thirdPersonVocativeSingularForm .
+    ?thirdPersonVocativeSingularForm ontolex:representation ?thirdPersonVocativeSingular ;
+      wikibase:grammaticalFeature wd:Q51929074, wd:Q185077, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?locativeSingularForm .
+    ?locativeSingularForm ontolex:representation ?locativeSingular ;
+      wikibase:grammaticalFeature wd:Q202142, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?genitiveSingularForm .
+    ?genitiveSingularForm ontolex:representation ?genitiveSingular ;
+      wikibase:grammaticalFeature wd:Q146233, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?vocativeSingularForm .
+    ?vocativeSingularForm ontolex:representation ?vocativeSingular ;
+      wikibase:grammaticalFeature wd:Q185077, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?accusativeSingularForm .
+    ?accusativeSingularForm ontolex:representation ?accusativeSingular ;
+      wikibase:grammaticalFeature wd:Q146078, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?nominativeSingularForm .
+    ?nominativeSingularForm ontolex:representation ?nominativeSingular ;
+      wikibase:grammaticalFeature wd:Q131105, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?thirdPersonGenitiveSingularForm .
+    ?thirdPersonGenitiveSingularForm ontolex:representation ?thirdPersonGenitiveSingular ;
+      wikibase:grammaticalFeature wd:Q51929074, wd:Q146233, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?vocativePluralForm .
+    ?vocativePluralForm ontolex:representation ?vocativePlural ;
+      wikibase:grammaticalFeature wd:Q185077, wd:Q146786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?thirdPersonLocativePluralForm .
+    ?thirdPersonLocativePluralForm ontolex:representation ?thirdPersonLocativePlural ;
+      wikibase:grammaticalFeature wd:Q51929074, wd:Q202142, wd:Q146786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?thirdPersonInstrumentalSingularForm .
+    ?thirdPersonInstrumentalSingularForm ontolex:representation ?thirdPersonInstrumentalSingular ;
+      wikibase:grammaticalFeature wd:Q51929074, wd:Q192997, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?thirdPersonDativeSingularForm .
+    ?thirdPersonDativeSingularForm ontolex:representation ?thirdPersonDativeSingular ;
+      wikibase:grammaticalFeature wd:Q51929074, wd:Q145599, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?vocativeNominativeForm .
+    ?vocativeNominativeForm ontolex:representation ?vocativeNominative ;
+      wikibase:grammaticalFeature wd:Q185077, wd:Q131105 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?pluralDativeForm .
+    ?pluralDativeForm ontolex:representation ?pluralDative ;
+      wikibase:grammaticalFeature wd:Q146786, wd:Q145599 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?instrumentalSingularForm .
+    ?instrumentalSingularForm ontolex:representation ?instrumentalSingular ;
+      wikibase:grammaticalFeature wd:Q192997, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?pluralNominativeForm .
+    ?pluralNominativeForm ontolex:representation ?pluralNominative ;
+      wikibase:grammaticalFeature wd:Q146786, wd:Q131105 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?locativePluralForm .
+    ?locativePluralForm ontolex:representation ?locativePlural ;
+      wikibase:grammaticalFeature wd:Q202142, wd:Q146786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?thirdPersonPluralDativeForm .
+    ?thirdPersonPluralDativeForm ontolex:representation ?thirdPersonPluralDative ;
+      wikibase:grammaticalFeature wd:Q51929074, wd:Q146786, wd:Q145599 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?thirdPersonPluralGenitiveForm .
+    ?thirdPersonPluralGenitiveForm ontolex:representation ?thirdPersonPluralGenitive ;
+      wikibase:grammaticalFeature wd:Q51929074, wd:Q146786, wd:Q146233 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?dativeSingularForm .
+    ?dativeSingularForm ontolex:representation ?dativeSingular ;
+      wikibase:grammaticalFeature wd:Q145599, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?thirdPersonPluralAccusativeForm .
+    ?thirdPersonPluralAccusativeForm ontolex:representation ?thirdPersonPluralAccusative ;
+      wikibase:grammaticalFeature wd:Q51929074, wd:Q146786, wd:Q146078 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?thirdPersonVocativePluralForm .
+    ?thirdPersonVocativePluralForm ontolex:representation ?thirdPersonVocativePlural ;
+      wikibase:grammaticalFeature wd:Q51929074, wd:Q185077, wd:Q146786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?thirdPersonLocativeSingularForm .
+    ?thirdPersonLocativeSingularForm ontolex:representation ?thirdPersonLocativeSingular ;
+      wikibase:grammaticalFeature wd:Q51929074, wd:Q202142, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?thirdPersonNominativeSingularForm .
+    ?thirdPersonNominativeSingularForm ontolex:representation ?thirdPersonNominativeSingular ;
+      wikibase:grammaticalFeature wd:Q51929074, wd:Q131105, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?pluralVocativeForm .
+    ?pluralVocativeForm ontolex:representation ?pluralVocative ;
+      wikibase:grammaticalFeature wd:Q146786, wd:Q185077 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularDativeForm .
+    ?singularDativeForm ontolex:representation ?singularDative ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q145599 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?dativePluralThirdPersonForm .
+    ?dativePluralThirdPersonForm ontolex:representation ?dativePluralThirdPerson ;
+      wikibase:grammaticalFeature wd:Q145599, wd:Q146786, wd:Q51929074 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularNominativeThirdPersonForm .
+    ?singularNominativeThirdPersonForm ontolex:representation ?singularNominativeThirdPerson ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q131105, wd:Q51929074 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularNominativeForm .
+    ?singularNominativeForm ontolex:representation ?singularNominative ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q131105 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularLocativeThirdPersonForm .
+    ?singularLocativeThirdPersonForm ontolex:representation ?singularLocativeThirdPerson ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q202142, wd:Q51929074 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?pluralInstrumentalThirdPersonForm .
+    ?pluralInstrumentalThirdPersonForm ontolex:representation ?pluralInstrumentalThirdPerson ;
+      wikibase:grammaticalFeature wd:Q146786, wd:Q192997, wd:Q51929074 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?dativePluralForm .
+    ?dativePluralForm ontolex:representation ?dativePlural ;
+      wikibase:grammaticalFeature wd:Q145599, wd:Q146786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularLocativeForm .
+    ?singularLocativeForm ontolex:representation ?singularLocative ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q202142 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?pluralInstrumentalForm .
+    ?pluralInstrumentalForm ontolex:representation ?pluralInstrumental ;
+      wikibase:grammaticalFeature wd:Q146786, wd:Q192997 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularVocativeThirdPersonForm .
+    ?singularVocativeThirdPersonForm ontolex:representation ?singularVocativeThirdPerson ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q185077, wd:Q51929074 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularAccusativeThirdPersonForm .
+    ?singularAccusativeThirdPersonForm ontolex:representation ?singularAccusativeThirdPerson ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q146078, wd:Q51929074 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularGenitiveThirdPersonForm .
+    ?singularGenitiveThirdPersonForm ontolex:representation ?singularGenitiveThirdPerson ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q146233, wd:Q51929074 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?nominativeVocativeForm .
+    ?nominativeVocativeForm ontolex:representation ?nominativeVocative ;
+      wikibase:grammaticalFeature wd:Q131105, wd:Q185077 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularAccusativeForm .
+    ?singularAccusativeForm ontolex:representation ?singularAccusative ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q146078 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularVocativeForm .
+    ?singularVocativeForm ontolex:representation ?singularVocative ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q185077 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularGenitiveForm .
+    ?singularGenitiveForm ontolex:representation ?singularGenitive ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q146233 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?genitivePluralThirdPersonForm .
+    ?genitivePluralThirdPersonForm ontolex:representation ?genitivePluralThirdPerson ;
+      wikibase:grammaticalFeature wd:Q146233, wd:Q146786, wd:Q51929074 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?accusativePluralThirdPersonForm .
+    ?accusativePluralThirdPersonForm ontolex:representation ?accusativePluralThirdPerson ;
+      wikibase:grammaticalFeature wd:Q146078, wd:Q146786, wd:Q51929074 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?pluralLocativeThirdPersonForm .
+    ?pluralLocativeThirdPersonForm ontolex:representation ?pluralLocativeThirdPerson ;
+      wikibase:grammaticalFeature wd:Q146786, wd:Q202142, wd:Q51929074 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularInstrumentalThirdPersonForm .
+    ?singularInstrumentalThirdPersonForm ontolex:representation ?singularInstrumentalThirdPerson ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q192997, wd:Q51929074 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?genitivePluralForm .
+    ?genitivePluralForm ontolex:representation ?genitivePlural ;
+      wikibase:grammaticalFeature wd:Q146233, wd:Q146786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?nominativePluralThirdPersonForm .
+    ?nominativePluralThirdPersonForm ontolex:representation ?nominativePluralThirdPerson ;
+      wikibase:grammaticalFeature wd:Q131105, wd:Q146786, wd:Q51929074 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?accusativePluralForm .
+    ?accusativePluralForm ontolex:representation ?accusativePlural ;
+      wikibase:grammaticalFeature wd:Q146078, wd:Q146786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?pluralLocativeForm .
+    ?pluralLocativeForm ontolex:representation ?pluralLocative ;
+      wikibase:grammaticalFeature wd:Q146786, wd:Q202142 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularInstrumentalForm .
+    ?singularInstrumentalForm ontolex:representation ?singularInstrumental ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q192997 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?nominativePluralForm .
+    ?nominativePluralForm ontolex:representation ?nominativePlural ;
+      wikibase:grammaticalFeature wd:Q131105, wd:Q146786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?pluralVocativeThirdPersonForm .
+    ?pluralVocativeThirdPersonForm ontolex:representation ?pluralVocativeThirdPerson ;
+      wikibase:grammaticalFeature wd:Q146786, wd:Q185077, wd:Q51929074 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularDativeThirdPersonForm .
+    ?singularDativeThirdPersonForm ontolex:representation ?singularDativeThirdPerson ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q145599, wd:Q51929074 .
+  }
+}

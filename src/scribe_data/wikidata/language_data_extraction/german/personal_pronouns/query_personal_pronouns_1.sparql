@@ -1,0 +1,113 @@
+# tool: scribe-data
+# All German (Q188) personal_pronouns (Q468801) and their forms.
+# Enter this query at https://query.wikidata.org/.
+
+SELECT
+  (REPLACE(STR(?lexeme), "http://www.wikidata.org/entity/", "") AS ?lexemeID)
+  ?personal_pronouns
+  ?feminineDative
+  ?neuterAccusative
+  ?feminineAccusative
+  ?feminineGenitive
+  ?neuterNominative
+  ?neuterDative
+  ?feminineNominative
+  ?genitiveFeminine
+  ?dativeNeuter
+  ?dativeFeminine
+  ?accusativeNeuter
+  ?accusativeFeminine
+  ?nominativeNeuter
+  ?nominativeFeminine
+  ?lastModified
+
+WHERE {
+  ?lexeme dct:language wd:Q188 ;
+      wikibase:lexicalCategory wd:Q468801 ;
+      wikibase:lemma ?personal_pronouns ;
+      schema:dateModified ?lastModified .
+    
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?feminineDativeForm .
+    ?feminineDativeForm ontolex:representation ?feminineDative ;
+      wikibase:grammaticalFeature wd:Q1775415, wd:Q145599 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?neuterAccusativeForm .
+    ?neuterAccusativeForm ontolex:representation ?neuterAccusative ;
+      wikibase:grammaticalFeature wd:Q1775461, wd:Q146078 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?feminineAccusativeForm .
+    ?feminineAccusativeForm ontolex:representation ?feminineAccusative ;
+      wikibase:grammaticalFeature wd:Q1775415, wd:Q146078 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?feminineGenitiveForm .
+    ?feminineGenitiveForm ontolex:representation ?feminineGenitive ;
+      wikibase:grammaticalFeature wd:Q1775415, wd:Q146233 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?neuterNominativeForm .
+    ?neuterNominativeForm ontolex:representation ?neuterNominative ;
+      wikibase:grammaticalFeature wd:Q1775461, wd:Q131105 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?neuterDativeForm .
+    ?neuterDativeForm ontolex:representation ?neuterDative ;
+      wikibase:grammaticalFeature wd:Q1775461, wd:Q145599 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?feminineNominativeForm .
+    ?feminineNominativeForm ontolex:representation ?feminineNominative ;
+      wikibase:grammaticalFeature wd:Q1775415, wd:Q131105 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?genitiveFeminineForm .
+    ?genitiveFeminineForm ontolex:representation ?genitiveFeminine ;
+      wikibase:grammaticalFeature wd:Q146233, wd:Q1775415 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?dativeNeuterForm .
+    ?dativeNeuterForm ontolex:representation ?dativeNeuter ;
+      wikibase:grammaticalFeature wd:Q145599, wd:Q1775461 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?dativeFeminineForm .
+    ?dativeFeminineForm ontolex:representation ?dativeFeminine ;
+      wikibase:grammaticalFeature wd:Q145599, wd:Q1775415 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?accusativeNeuterForm .
+    ?accusativeNeuterForm ontolex:representation ?accusativeNeuter ;
+      wikibase:grammaticalFeature wd:Q146078, wd:Q1775461 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?accusativeFeminineForm .
+    ?accusativeFeminineForm ontolex:representation ?accusativeFeminine ;
+      wikibase:grammaticalFeature wd:Q146078, wd:Q1775415 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?nominativeNeuterForm .
+    ?nominativeNeuterForm ontolex:representation ?nominativeNeuter ;
+      wikibase:grammaticalFeature wd:Q131105, wd:Q1775461 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?nominativeFeminineForm .
+    ?nominativeFeminineForm ontolex:representation ?nominativeFeminine ;
+      wikibase:grammaticalFeature wd:Q131105, wd:Q1775415 .
+  }
+}

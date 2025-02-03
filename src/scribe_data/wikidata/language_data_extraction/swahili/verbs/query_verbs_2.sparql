@@ -1,0 +1,71 @@
+# tool: scribe-data
+# All Swahili (Q7838) verbs (Q24905) and their forms.
+# Enter this query at https://query.wikidata.org/.
+
+SELECT
+  (REPLACE(STR(?lexeme), "http://www.wikidata.org/entity/", "") AS ?lexemeID)
+  ?verbs
+  ?secondPersonImperativePlural
+  ?secondPersonImperativeSingular
+  ?indicativePresentIndicative
+  ?imperativeFirstPersonSingular
+  ?singularFirstPersonImperative
+  ?pluralImperativeSecondPerson
+  ?singularImperativeSecondPerson
+  ?presentIndicativeIndicative
+  ?lastModified
+
+WHERE {
+  ?lexeme dct:language wd:Q7838 ;
+      wikibase:lexicalCategory wd:Q24905 ;
+      wikibase:lemma ?verbs ;
+      schema:dateModified ?lastModified .
+    
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?secondPersonImperativePluralForm .
+    ?secondPersonImperativePluralForm ontolex:representation ?secondPersonImperativePlural ;
+      wikibase:grammaticalFeature wd:Q51929049, wd:Q22716, wd:Q146786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?secondPersonImperativeSingularForm .
+    ?secondPersonImperativeSingularForm ontolex:representation ?secondPersonImperativeSingular ;
+      wikibase:grammaticalFeature wd:Q51929049, wd:Q22716, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?indicativePresentIndicativeForm .
+    ?indicativePresentIndicativeForm ontolex:representation ?indicativePresentIndicative ;
+      wikibase:grammaticalFeature wd:Q682111, wd:Q56682909 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?imperativeFirstPersonSingularForm .
+    ?imperativeFirstPersonSingularForm ontolex:representation ?imperativeFirstPersonSingular ;
+      wikibase:grammaticalFeature wd:Q22716, wd:Q21714344, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularFirstPersonImperativeForm .
+    ?singularFirstPersonImperativeForm ontolex:representation ?singularFirstPersonImperative ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q21714344, wd:Q22716 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?pluralImperativeSecondPersonForm .
+    ?pluralImperativeSecondPersonForm ontolex:representation ?pluralImperativeSecondPerson ;
+      wikibase:grammaticalFeature wd:Q146786, wd:Q22716, wd:Q51929049 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularImperativeSecondPersonForm .
+    ?singularImperativeSecondPersonForm ontolex:representation ?singularImperativeSecondPerson ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q22716, wd:Q51929049 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?presentIndicativeIndicativeForm .
+    ?presentIndicativeIndicativeForm ontolex:representation ?presentIndicativeIndicative ;
+      wikibase:grammaticalFeature wd:Q56682909, wd:Q682111 .
+  }
+}

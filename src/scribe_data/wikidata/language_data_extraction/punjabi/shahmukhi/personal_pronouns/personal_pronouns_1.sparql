@@ -1,0 +1,158 @@
+# tool: scribe-data
+# All Punjabi (Q58635) personal_pronouns (Q468801) and their forms.
+# Enter this query at https://query.wikidata.org/.
+
+SELECT
+  (REPLACE(STR(?lexeme), "http://www.wikidata.org/entity/", "") AS ?lexemeID)
+  ?personal_pronouns
+  ?secondPersonDirectPlural
+  ?firstPersonDirectSingular
+  ?firstPersonDativeSingular
+  ?secondPersonPluralDative
+  ?secondPersonAblativePlural
+  ?firstPersonNominativeSingular
+  ?firstPersonObliqueSingular
+  ?firstPersonInstrumentalSingular
+  ?firstPersonAblativeSingular
+  ?secondPersonPluralOblique
+  ?singularInstrumentalFirstPerson
+  ?singularDirectFirstPerson
+  ?singularNominativeFirstPerson
+  ?dativePluralSecondPerson
+  ?pluralAblativeSecondPerson
+  ?obliquePluralSecondPerson
+  ?singularDativeFirstPerson
+  ?singularObliqueFirstPerson
+  ?pluralDirectSecondPerson
+  ?singularAblativeFirstPerson
+  ?lastModified
+
+WHERE {
+  ?lexeme dct:language wd:Q58635 ;
+      wikibase:lexicalCategory wd:Q468801 ;
+      wikibase:lemma ?personal_pronouns ;
+      schema:dateModified ?lastModified .
+    
+  # Note: We need to filter for pnb to remove shahmukhi (pnb) words.
+  FILTER(lang(?personal_pronouns) = "pnb")
+    
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?secondPersonDirectPluralForm .
+    ?secondPersonDirectPluralForm ontolex:representation ?secondPersonDirectPlural ;
+      wikibase:grammaticalFeature wd:Q51929049, wd:Q1751855, wd:Q146786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?firstPersonDirectSingularForm .
+    ?firstPersonDirectSingularForm ontolex:representation ?firstPersonDirectSingular ;
+      wikibase:grammaticalFeature wd:Q21714344, wd:Q1751855, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?firstPersonDativeSingularForm .
+    ?firstPersonDativeSingularForm ontolex:representation ?firstPersonDativeSingular ;
+      wikibase:grammaticalFeature wd:Q21714344, wd:Q145599, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?secondPersonPluralDativeForm .
+    ?secondPersonPluralDativeForm ontolex:representation ?secondPersonPluralDative ;
+      wikibase:grammaticalFeature wd:Q51929049, wd:Q146786, wd:Q145599 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?secondPersonAblativePluralForm .
+    ?secondPersonAblativePluralForm ontolex:representation ?secondPersonAblativePlural ;
+      wikibase:grammaticalFeature wd:Q51929049, wd:Q156986, wd:Q146786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?firstPersonNominativeSingularForm .
+    ?firstPersonNominativeSingularForm ontolex:representation ?firstPersonNominativeSingular ;
+      wikibase:grammaticalFeature wd:Q21714344, wd:Q131105, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?firstPersonObliqueSingularForm .
+    ?firstPersonObliqueSingularForm ontolex:representation ?firstPersonObliqueSingular ;
+      wikibase:grammaticalFeature wd:Q21714344, wd:Q1233197, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?firstPersonInstrumentalSingularForm .
+    ?firstPersonInstrumentalSingularForm ontolex:representation ?firstPersonInstrumentalSingular ;
+      wikibase:grammaticalFeature wd:Q21714344, wd:Q192997, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?firstPersonAblativeSingularForm .
+    ?firstPersonAblativeSingularForm ontolex:representation ?firstPersonAblativeSingular ;
+      wikibase:grammaticalFeature wd:Q21714344, wd:Q156986, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?secondPersonPluralObliqueForm .
+    ?secondPersonPluralObliqueForm ontolex:representation ?secondPersonPluralOblique ;
+      wikibase:grammaticalFeature wd:Q51929049, wd:Q146786, wd:Q1233197 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularInstrumentalFirstPersonForm .
+    ?singularInstrumentalFirstPersonForm ontolex:representation ?singularInstrumentalFirstPerson ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q192997, wd:Q21714344 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularDirectFirstPersonForm .
+    ?singularDirectFirstPersonForm ontolex:representation ?singularDirectFirstPerson ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q1751855, wd:Q21714344 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularNominativeFirstPersonForm .
+    ?singularNominativeFirstPersonForm ontolex:representation ?singularNominativeFirstPerson ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q131105, wd:Q21714344 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?dativePluralSecondPersonForm .
+    ?dativePluralSecondPersonForm ontolex:representation ?dativePluralSecondPerson ;
+      wikibase:grammaticalFeature wd:Q145599, wd:Q146786, wd:Q51929049 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?pluralAblativeSecondPersonForm .
+    ?pluralAblativeSecondPersonForm ontolex:representation ?pluralAblativeSecondPerson ;
+      wikibase:grammaticalFeature wd:Q146786, wd:Q156986, wd:Q51929049 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?obliquePluralSecondPersonForm .
+    ?obliquePluralSecondPersonForm ontolex:representation ?obliquePluralSecondPerson ;
+      wikibase:grammaticalFeature wd:Q1233197, wd:Q146786, wd:Q51929049 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularDativeFirstPersonForm .
+    ?singularDativeFirstPersonForm ontolex:representation ?singularDativeFirstPerson ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q145599, wd:Q21714344 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularObliqueFirstPersonForm .
+    ?singularObliqueFirstPersonForm ontolex:representation ?singularObliqueFirstPerson ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q1233197, wd:Q21714344 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?pluralDirectSecondPersonForm .
+    ?pluralDirectSecondPersonForm ontolex:representation ?pluralDirectSecondPerson ;
+      wikibase:grammaticalFeature wd:Q146786, wd:Q1751855, wd:Q51929049 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularAblativeFirstPersonForm .
+    ?singularAblativeFirstPersonForm ontolex:representation ?singularAblativeFirstPerson ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q156986, wd:Q21714344 .
+  }
+}

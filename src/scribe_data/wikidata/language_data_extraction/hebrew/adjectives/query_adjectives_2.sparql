@@ -1,0 +1,183 @@
+# tool: scribe-data
+# All Hebrew (Q9288) adjectives (Q34698) and their forms.
+# Enter this query at https://query.wikidata.org/.
+
+SELECT
+  (REPLACE(STR(?lexeme), "http://www.wikidata.org/entity/", "") AS ?lexemeID)
+  ?adjectives
+  ?masculineConstructPlural
+  ?feminineSingular
+  ?masculinePlural
+  ?masculineConstructSingular
+  ?feminineConstructPlural
+  ?femininePlural
+  ?masculineSingular
+  ?feminineConstructSingular
+  ?singularConstructMasculine
+  ?pluralMasculine
+  ?pluralConstructFeminine
+  ?constructSingularFeminine
+  ?pluralConstructMasculine
+  ?constructSingularMasculine
+  ?femininePluralConstruct
+  ?feminineSingularConstruct
+  ?masculinePluralConstruct
+  ?constructPluralFeminine
+  ?constructPluralMasculine
+  ?masculineSingularConstruct
+  ?pluralFeminine
+  ?singularFeminine
+  ?singularMasculine
+  ?singularConstructFeminine
+  ?lastModified
+
+WHERE {
+  ?lexeme dct:language wd:Q9288 ;
+      wikibase:lexicalCategory wd:Q34698 ;
+      wikibase:lemma ?adjectives ;
+      schema:dateModified ?lastModified .
+    
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?masculineConstructPluralForm .
+    ?masculineConstructPluralForm ontolex:representation ?masculineConstructPlural ;
+      wikibase:grammaticalFeature wd:Q499327, wd:Q1641446, wd:Q146786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?feminineSingularForm .
+    ?feminineSingularForm ontolex:representation ?feminineSingular ;
+      wikibase:grammaticalFeature wd:Q1775415, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?masculinePluralForm .
+    ?masculinePluralForm ontolex:representation ?masculinePlural ;
+      wikibase:grammaticalFeature wd:Q499327, wd:Q146786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?masculineConstructSingularForm .
+    ?masculineConstructSingularForm ontolex:representation ?masculineConstructSingular ;
+      wikibase:grammaticalFeature wd:Q499327, wd:Q1641446, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?feminineConstructPluralForm .
+    ?feminineConstructPluralForm ontolex:representation ?feminineConstructPlural ;
+      wikibase:grammaticalFeature wd:Q1775415, wd:Q1641446, wd:Q146786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?femininePluralForm .
+    ?femininePluralForm ontolex:representation ?femininePlural ;
+      wikibase:grammaticalFeature wd:Q1775415, wd:Q146786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?masculineSingularForm .
+    ?masculineSingularForm ontolex:representation ?masculineSingular ;
+      wikibase:grammaticalFeature wd:Q499327, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?feminineConstructSingularForm .
+    ?feminineConstructSingularForm ontolex:representation ?feminineConstructSingular ;
+      wikibase:grammaticalFeature wd:Q1775415, wd:Q1641446, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularConstructMasculineForm .
+    ?singularConstructMasculineForm ontolex:representation ?singularConstructMasculine ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q1641446, wd:Q499327 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?pluralMasculineForm .
+    ?pluralMasculineForm ontolex:representation ?pluralMasculine ;
+      wikibase:grammaticalFeature wd:Q146786, wd:Q499327 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?pluralConstructFeminineForm .
+    ?pluralConstructFeminineForm ontolex:representation ?pluralConstructFeminine ;
+      wikibase:grammaticalFeature wd:Q146786, wd:Q1641446, wd:Q1775415 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?constructSingularFeminineForm .
+    ?constructSingularFeminineForm ontolex:representation ?constructSingularFeminine ;
+      wikibase:grammaticalFeature wd:Q1641446, wd:Q110786, wd:Q1775415 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?pluralConstructMasculineForm .
+    ?pluralConstructMasculineForm ontolex:representation ?pluralConstructMasculine ;
+      wikibase:grammaticalFeature wd:Q146786, wd:Q1641446, wd:Q499327 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?constructSingularMasculineForm .
+    ?constructSingularMasculineForm ontolex:representation ?constructSingularMasculine ;
+      wikibase:grammaticalFeature wd:Q1641446, wd:Q110786, wd:Q499327 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?femininePluralConstructForm .
+    ?femininePluralConstructForm ontolex:representation ?femininePluralConstruct ;
+      wikibase:grammaticalFeature wd:Q1775415, wd:Q146786, wd:Q1641446 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?feminineSingularConstructForm .
+    ?feminineSingularConstructForm ontolex:representation ?feminineSingularConstruct ;
+      wikibase:grammaticalFeature wd:Q1775415, wd:Q110786, wd:Q1641446 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?masculinePluralConstructForm .
+    ?masculinePluralConstructForm ontolex:representation ?masculinePluralConstruct ;
+      wikibase:grammaticalFeature wd:Q499327, wd:Q146786, wd:Q1641446 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?constructPluralFeminineForm .
+    ?constructPluralFeminineForm ontolex:representation ?constructPluralFeminine ;
+      wikibase:grammaticalFeature wd:Q1641446, wd:Q146786, wd:Q1775415 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?constructPluralMasculineForm .
+    ?constructPluralMasculineForm ontolex:representation ?constructPluralMasculine ;
+      wikibase:grammaticalFeature wd:Q1641446, wd:Q146786, wd:Q499327 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?masculineSingularConstructForm .
+    ?masculineSingularConstructForm ontolex:representation ?masculineSingularConstruct ;
+      wikibase:grammaticalFeature wd:Q499327, wd:Q110786, wd:Q1641446 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?pluralFeminineForm .
+    ?pluralFeminineForm ontolex:representation ?pluralFeminine ;
+      wikibase:grammaticalFeature wd:Q146786, wd:Q1775415 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularFeminineForm .
+    ?singularFeminineForm ontolex:representation ?singularFeminine ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q1775415 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularMasculineForm .
+    ?singularMasculineForm ontolex:representation ?singularMasculine ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q499327 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularConstructFeminineForm .
+    ?singularConstructFeminineForm ontolex:representation ?singularConstructFeminine ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q1641446, wd:Q1775415 .
+  }
+}

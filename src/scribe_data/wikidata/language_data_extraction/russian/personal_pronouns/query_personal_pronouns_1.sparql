@@ -1,0 +1,421 @@
+# tool: scribe-data
+# All Russian (Q7737) personal_pronouns (Q468801) and their forms.
+# Enter this query at https://query.wikidata.org/.
+
+SELECT
+  (REPLACE(STR(?lexeme), "http://www.wikidata.org/entity/", "") AS ?lexemeID)
+  ?personal_pronouns
+  ?firstPersonPluralNominative
+  ?firstPersonAccusativeSingular
+  ?prepositionalSingular
+  ?firstPersonInstrumentalPlural
+  ?secondPersonGenitiveSingular
+  ?secondPersonInstrumentalSingular
+  ?secondPersonPrepositionalPlural
+  ?genitiveSingular
+  ?accusativeSingular
+  ?secondPersonDativeSingular
+  ?nominativeSingular
+  ?firstPersonGenitiveSingular
+  ?secondPersonPluralDative
+  ?firstPersonPrepositionalPlural
+  ?firstPersonInstrumentalSingular
+  ?secondPersonPluralAccusative
+  ?secondPersonPrepositionalSingular
+  ?secondPersonNominativeSingular
+  ?firstPersonDativeSingular
+  ?firstPersonPluralDative
+  ?instrumentalSingular
+  ?secondPersonAccusativeSingular
+  ?firstPersonPrepositionalSingular
+  ?firstPersonPluralGenitive
+  ?firstPersonPluralAccusative
+  ?dativeSingular
+  ?secondPersonPluralNominative
+  ?secondPersonInstrumentalPlural
+  ?firstPersonNominativeSingular
+  ?accusativePluralSecondPerson
+  ?singularInstrumentalSecondPerson
+  ?singularPrepositionalFirstPerson
+  ?nominativePluralSecondPerson
+  ?singularNominativeFirstPerson
+  ?singularPrepositional
+  ?singularDative
+  ?singularNominative
+  ?dativePluralFirstPerson
+  ?pluralInstrumentalFirstPerson
+  ?singularDativeSecondPerson
+  ?singularPrepositionalSecondPerson
+  ?singularNominativeSecondPerson
+  ?singularAccusativeFirstPerson
+  ?singularGenitiveFirstPerson
+  ?dativePluralSecondPerson
+  ?singularAccusative
+  ?singularGenitive
+  ?pluralInstrumentalSecondPerson
+  ?pluralPrepositionalFirstPerson
+  ?genitivePluralFirstPerson
+  ?accusativePluralFirstPerson
+  ?singularInstrumentalFirstPerson
+  ?singularAccusativeSecondPerson
+  ?singularGenitiveSecondPerson
+  ?singularInstrumental
+  ?nominativePluralFirstPerson
+  ?pluralPrepositionalSecondPerson
+  ?singularDativeFirstPerson
+  ?lastModified
+
+WHERE {
+  ?lexeme dct:language wd:Q7737 ;
+      wikibase:lexicalCategory wd:Q468801 ;
+      wikibase:lemma ?personal_pronouns ;
+      schema:dateModified ?lastModified .
+    
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?firstPersonPluralNominativeForm .
+    ?firstPersonPluralNominativeForm ontolex:representation ?firstPersonPluralNominative ;
+      wikibase:grammaticalFeature wd:Q21714344, wd:Q146786, wd:Q131105 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?firstPersonAccusativeSingularForm .
+    ?firstPersonAccusativeSingularForm ontolex:representation ?firstPersonAccusativeSingular ;
+      wikibase:grammaticalFeature wd:Q21714344, wd:Q146078, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?prepositionalSingularForm .
+    ?prepositionalSingularForm ontolex:representation ?prepositionalSingular ;
+      wikibase:grammaticalFeature wd:Q2114906, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?firstPersonInstrumentalPluralForm .
+    ?firstPersonInstrumentalPluralForm ontolex:representation ?firstPersonInstrumentalPlural ;
+      wikibase:grammaticalFeature wd:Q21714344, wd:Q192997, wd:Q146786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?secondPersonGenitiveSingularForm .
+    ?secondPersonGenitiveSingularForm ontolex:representation ?secondPersonGenitiveSingular ;
+      wikibase:grammaticalFeature wd:Q51929049, wd:Q146233, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?secondPersonInstrumentalSingularForm .
+    ?secondPersonInstrumentalSingularForm ontolex:representation ?secondPersonInstrumentalSingular ;
+      wikibase:grammaticalFeature wd:Q51929049, wd:Q192997, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?secondPersonPrepositionalPluralForm .
+    ?secondPersonPrepositionalPluralForm ontolex:representation ?secondPersonPrepositionalPlural ;
+      wikibase:grammaticalFeature wd:Q51929049, wd:Q2114906, wd:Q146786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?genitiveSingularForm .
+    ?genitiveSingularForm ontolex:representation ?genitiveSingular ;
+      wikibase:grammaticalFeature wd:Q146233, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?accusativeSingularForm .
+    ?accusativeSingularForm ontolex:representation ?accusativeSingular ;
+      wikibase:grammaticalFeature wd:Q146078, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?secondPersonDativeSingularForm .
+    ?secondPersonDativeSingularForm ontolex:representation ?secondPersonDativeSingular ;
+      wikibase:grammaticalFeature wd:Q51929049, wd:Q145599, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?nominativeSingularForm .
+    ?nominativeSingularForm ontolex:representation ?nominativeSingular ;
+      wikibase:grammaticalFeature wd:Q131105, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?firstPersonGenitiveSingularForm .
+    ?firstPersonGenitiveSingularForm ontolex:representation ?firstPersonGenitiveSingular ;
+      wikibase:grammaticalFeature wd:Q21714344, wd:Q146233, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?secondPersonPluralDativeForm .
+    ?secondPersonPluralDativeForm ontolex:representation ?secondPersonPluralDative ;
+      wikibase:grammaticalFeature wd:Q51929049, wd:Q146786, wd:Q145599 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?firstPersonPrepositionalPluralForm .
+    ?firstPersonPrepositionalPluralForm ontolex:representation ?firstPersonPrepositionalPlural ;
+      wikibase:grammaticalFeature wd:Q21714344, wd:Q2114906, wd:Q146786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?firstPersonInstrumentalSingularForm .
+    ?firstPersonInstrumentalSingularForm ontolex:representation ?firstPersonInstrumentalSingular ;
+      wikibase:grammaticalFeature wd:Q21714344, wd:Q192997, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?secondPersonPluralAccusativeForm .
+    ?secondPersonPluralAccusativeForm ontolex:representation ?secondPersonPluralAccusative ;
+      wikibase:grammaticalFeature wd:Q51929049, wd:Q146786, wd:Q146078 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?secondPersonPrepositionalSingularForm .
+    ?secondPersonPrepositionalSingularForm ontolex:representation ?secondPersonPrepositionalSingular ;
+      wikibase:grammaticalFeature wd:Q51929049, wd:Q2114906, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?secondPersonNominativeSingularForm .
+    ?secondPersonNominativeSingularForm ontolex:representation ?secondPersonNominativeSingular ;
+      wikibase:grammaticalFeature wd:Q51929049, wd:Q131105, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?firstPersonDativeSingularForm .
+    ?firstPersonDativeSingularForm ontolex:representation ?firstPersonDativeSingular ;
+      wikibase:grammaticalFeature wd:Q21714344, wd:Q145599, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?firstPersonPluralDativeForm .
+    ?firstPersonPluralDativeForm ontolex:representation ?firstPersonPluralDative ;
+      wikibase:grammaticalFeature wd:Q21714344, wd:Q146786, wd:Q145599 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?instrumentalSingularForm .
+    ?instrumentalSingularForm ontolex:representation ?instrumentalSingular ;
+      wikibase:grammaticalFeature wd:Q192997, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?secondPersonAccusativeSingularForm .
+    ?secondPersonAccusativeSingularForm ontolex:representation ?secondPersonAccusativeSingular ;
+      wikibase:grammaticalFeature wd:Q51929049, wd:Q146078, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?firstPersonPrepositionalSingularForm .
+    ?firstPersonPrepositionalSingularForm ontolex:representation ?firstPersonPrepositionalSingular ;
+      wikibase:grammaticalFeature wd:Q21714344, wd:Q2114906, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?firstPersonPluralGenitiveForm .
+    ?firstPersonPluralGenitiveForm ontolex:representation ?firstPersonPluralGenitive ;
+      wikibase:grammaticalFeature wd:Q21714344, wd:Q146786, wd:Q146233 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?firstPersonPluralAccusativeForm .
+    ?firstPersonPluralAccusativeForm ontolex:representation ?firstPersonPluralAccusative ;
+      wikibase:grammaticalFeature wd:Q21714344, wd:Q146786, wd:Q146078 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?dativeSingularForm .
+    ?dativeSingularForm ontolex:representation ?dativeSingular ;
+      wikibase:grammaticalFeature wd:Q145599, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?secondPersonPluralNominativeForm .
+    ?secondPersonPluralNominativeForm ontolex:representation ?secondPersonPluralNominative ;
+      wikibase:grammaticalFeature wd:Q51929049, wd:Q146786, wd:Q131105 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?secondPersonInstrumentalPluralForm .
+    ?secondPersonInstrumentalPluralForm ontolex:representation ?secondPersonInstrumentalPlural ;
+      wikibase:grammaticalFeature wd:Q51929049, wd:Q192997, wd:Q146786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?firstPersonNominativeSingularForm .
+    ?firstPersonNominativeSingularForm ontolex:representation ?firstPersonNominativeSingular ;
+      wikibase:grammaticalFeature wd:Q21714344, wd:Q131105, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?accusativePluralSecondPersonForm .
+    ?accusativePluralSecondPersonForm ontolex:representation ?accusativePluralSecondPerson ;
+      wikibase:grammaticalFeature wd:Q146078, wd:Q146786, wd:Q51929049 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularInstrumentalSecondPersonForm .
+    ?singularInstrumentalSecondPersonForm ontolex:representation ?singularInstrumentalSecondPerson ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q192997, wd:Q51929049 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularPrepositionalFirstPersonForm .
+    ?singularPrepositionalFirstPersonForm ontolex:representation ?singularPrepositionalFirstPerson ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q2114906, wd:Q21714344 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?nominativePluralSecondPersonForm .
+    ?nominativePluralSecondPersonForm ontolex:representation ?nominativePluralSecondPerson ;
+      wikibase:grammaticalFeature wd:Q131105, wd:Q146786, wd:Q51929049 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularNominativeFirstPersonForm .
+    ?singularNominativeFirstPersonForm ontolex:representation ?singularNominativeFirstPerson ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q131105, wd:Q21714344 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularPrepositionalForm .
+    ?singularPrepositionalForm ontolex:representation ?singularPrepositional ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q2114906 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularDativeForm .
+    ?singularDativeForm ontolex:representation ?singularDative ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q145599 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularNominativeForm .
+    ?singularNominativeForm ontolex:representation ?singularNominative ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q131105 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?dativePluralFirstPersonForm .
+    ?dativePluralFirstPersonForm ontolex:representation ?dativePluralFirstPerson ;
+      wikibase:grammaticalFeature wd:Q145599, wd:Q146786, wd:Q21714344 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?pluralInstrumentalFirstPersonForm .
+    ?pluralInstrumentalFirstPersonForm ontolex:representation ?pluralInstrumentalFirstPerson ;
+      wikibase:grammaticalFeature wd:Q146786, wd:Q192997, wd:Q21714344 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularDativeSecondPersonForm .
+    ?singularDativeSecondPersonForm ontolex:representation ?singularDativeSecondPerson ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q145599, wd:Q51929049 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularPrepositionalSecondPersonForm .
+    ?singularPrepositionalSecondPersonForm ontolex:representation ?singularPrepositionalSecondPerson ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q2114906, wd:Q51929049 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularNominativeSecondPersonForm .
+    ?singularNominativeSecondPersonForm ontolex:representation ?singularNominativeSecondPerson ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q131105, wd:Q51929049 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularAccusativeFirstPersonForm .
+    ?singularAccusativeFirstPersonForm ontolex:representation ?singularAccusativeFirstPerson ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q146078, wd:Q21714344 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularGenitiveFirstPersonForm .
+    ?singularGenitiveFirstPersonForm ontolex:representation ?singularGenitiveFirstPerson ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q146233, wd:Q21714344 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?dativePluralSecondPersonForm .
+    ?dativePluralSecondPersonForm ontolex:representation ?dativePluralSecondPerson ;
+      wikibase:grammaticalFeature wd:Q145599, wd:Q146786, wd:Q51929049 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularAccusativeForm .
+    ?singularAccusativeForm ontolex:representation ?singularAccusative ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q146078 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularGenitiveForm .
+    ?singularGenitiveForm ontolex:representation ?singularGenitive ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q146233 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?pluralInstrumentalSecondPersonForm .
+    ?pluralInstrumentalSecondPersonForm ontolex:representation ?pluralInstrumentalSecondPerson ;
+      wikibase:grammaticalFeature wd:Q146786, wd:Q192997, wd:Q51929049 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?pluralPrepositionalFirstPersonForm .
+    ?pluralPrepositionalFirstPersonForm ontolex:representation ?pluralPrepositionalFirstPerson ;
+      wikibase:grammaticalFeature wd:Q146786, wd:Q2114906, wd:Q21714344 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?genitivePluralFirstPersonForm .
+    ?genitivePluralFirstPersonForm ontolex:representation ?genitivePluralFirstPerson ;
+      wikibase:grammaticalFeature wd:Q146233, wd:Q146786, wd:Q21714344 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?accusativePluralFirstPersonForm .
+    ?accusativePluralFirstPersonForm ontolex:representation ?accusativePluralFirstPerson ;
+      wikibase:grammaticalFeature wd:Q146078, wd:Q146786, wd:Q21714344 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularInstrumentalFirstPersonForm .
+    ?singularInstrumentalFirstPersonForm ontolex:representation ?singularInstrumentalFirstPerson ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q192997, wd:Q21714344 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularAccusativeSecondPersonForm .
+    ?singularAccusativeSecondPersonForm ontolex:representation ?singularAccusativeSecondPerson ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q146078, wd:Q51929049 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularGenitiveSecondPersonForm .
+    ?singularGenitiveSecondPersonForm ontolex:representation ?singularGenitiveSecondPerson ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q146233, wd:Q51929049 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularInstrumentalForm .
+    ?singularInstrumentalForm ontolex:representation ?singularInstrumental ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q192997 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?nominativePluralFirstPersonForm .
+    ?nominativePluralFirstPersonForm ontolex:representation ?nominativePluralFirstPerson ;
+      wikibase:grammaticalFeature wd:Q131105, wd:Q146786, wd:Q21714344 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?pluralPrepositionalSecondPersonForm .
+    ?pluralPrepositionalSecondPersonForm ontolex:representation ?pluralPrepositionalSecondPerson ;
+      wikibase:grammaticalFeature wd:Q146786, wd:Q2114906, wd:Q51929049 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularDativeFirstPersonForm .
+    ?singularDativeFirstPersonForm ontolex:representation ?singularDativeFirstPerson ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q145599, wd:Q21714344 .
+  }
+}

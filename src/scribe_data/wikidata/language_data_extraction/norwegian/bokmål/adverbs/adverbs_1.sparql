@@ -1,0 +1,60 @@
+# tool: scribe-data
+# All Norwegian (Q25167) adverbs (Q380057) and their forms.
+# Enter this query at https://query.wikidata.org/.
+
+SELECT
+  (REPLACE(STR(?lexeme), "http://www.wikidata.org/entity/", "") AS ?lexemeID)
+  ?adverbs
+  ?definiteSingular
+  ?indefiniteMasculineFeminineSingular
+  ?indefiniteNeuterSingular
+  ?singularDefinite
+  ?singularFeminineMasculineIndefinite
+  ?singularNeuterIndefinite
+  ?lastModified
+
+WHERE {
+  ?lexeme dct:language wd:Q25167 ;
+      wikibase:lexicalCategory wd:Q380057 ;
+      wikibase:lemma ?adverbs ;
+      schema:dateModified ?lastModified .
+    
+  # Note: We need to filter for nb to remove bokmål (nb) words.
+  FILTER(lang(?adverbs) = "nb")
+    
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?definiteSingularForm .
+    ?definiteSingularForm ontolex:representation ?definiteSingular ;
+      wikibase:grammaticalFeature wd:Q53997851, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?indefiniteMasculineFeminineSingularForm .
+    ?indefiniteMasculineFeminineSingularForm ontolex:representation ?indefiniteMasculineFeminineSingular ;
+      wikibase:grammaticalFeature wd:Q53997857, wd:Q499327, wd:Q1775415, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?indefiniteNeuterSingularForm .
+    ?indefiniteNeuterSingularForm ontolex:representation ?indefiniteNeuterSingular ;
+      wikibase:grammaticalFeature wd:Q53997857, wd:Q1775461, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularDefiniteForm .
+    ?singularDefiniteForm ontolex:representation ?singularDefinite ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q53997851 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularFeminineMasculineIndefiniteForm .
+    ?singularFeminineMasculineIndefiniteForm ontolex:representation ?singularFeminineMasculineIndefinite ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q1775415, wd:Q499327, wd:Q53997857 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularNeuterIndefiniteForm .
+    ?singularNeuterIndefiniteForm ontolex:representation ?singularNeuterIndefinite ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q1775461, wd:Q53997857 .
+  }
+}
