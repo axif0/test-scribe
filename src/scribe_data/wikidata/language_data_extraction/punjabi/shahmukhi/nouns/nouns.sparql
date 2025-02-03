@@ -1,0 +1,291 @@
+# tool: scribe-data
+# All Punjabi (Q58635) nouns (Q1084) and their forms.
+# Enter this query at https://query.wikidata.org/.
+
+SELECT
+  (REPLACE(STR(?lexeme), "http://www.wikidata.org/entity/", "") AS ?lexemeID)
+  ?nouns
+  ?singularLocativeMasculine
+  ?singularVocativeMasculine
+  ?pluralDirectFeminine
+  ?singularInstrumentalMasculine
+  ?pluralDirect
+  ?singularFeminineVocative
+  ?singularObliqueDirect
+  ?singularObliqueFeminine
+  ?singularAblativeMasculine
+  ?pluralElativeMasculine
+  ?singularDirectMasculine
+  ?singularFeminineInstrumental
+  ?singularDirect
+  ?dativePluralFeminineFirstPerson
+  ?obliquePluralMasculine
+  ?singularFeminineLocative
+  ?singularLocative
+  ?singularFeminine
+  ?dativePluralFeminineThirdPerson
+  ?pluralLocativeMasculine
+  ?pluralVocativeMasculine
+  ?singularNominativeMasculine
+  ?pluralInstrumentalMasculine
+  ?dualInstrumentalMasculine
+  ?singularAblativeFeminine
+  ?dativePluralFeminineSecondPerson
+  ?pluralFeminineVocative
+  ?singularDirectFeminine
+  ?pluralAblativeMasculine
+  ?obliquePluralFeminine
+  ?pluralDirectMasculine
+  ?singularDativeSecondPerson
+  ?singularDativeFeminineFirstPerson
+  ?pluralFeminineLocative
+  ?ablativeDirectMasculine
+  ?dualFeminineInstrumental
+  ?singularObliqueMasculine
+  ?singularDativeFeminineThirdPerson
+  ?plural
+  ?lastModified
+
+WHERE {
+  ?lexeme dct:language wd:Q58635 ;
+      wikibase:lexicalCategory wd:Q1084 ;
+      wikibase:lemma ?nouns ;
+      schema:dateModified ?lastModified .
+    
+  # Note: We need to filter for pnb to remove shahmukhi (pnb) words.
+  FILTER(lang(?nouns) = "pnb")
+    
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularLocativeMasculineForm .
+    ?singularLocativeMasculineForm ontolex:representation ?singularLocativeMasculine ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q202142, wd:Q499327 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularVocativeMasculineForm .
+    ?singularVocativeMasculineForm ontolex:representation ?singularVocativeMasculine ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q185077, wd:Q499327 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?pluralDirectFeminineForm .
+    ?pluralDirectFeminineForm ontolex:representation ?pluralDirectFeminine ;
+      wikibase:grammaticalFeature wd:Q146786, wd:Q1751855, wd:Q1775415 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularInstrumentalMasculineForm .
+    ?singularInstrumentalMasculineForm ontolex:representation ?singularInstrumentalMasculine ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q192997, wd:Q499327 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?pluralDirectForm .
+    ?pluralDirectForm ontolex:representation ?pluralDirect ;
+      wikibase:grammaticalFeature wd:Q146786, wd:Q1751855 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularFeminineVocativeForm .
+    ?singularFeminineVocativeForm ontolex:representation ?singularFeminineVocative ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q1775415, wd:Q185077 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularObliqueDirectForm .
+    ?singularObliqueDirectForm ontolex:representation ?singularObliqueDirect ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q1233197, wd:Q1751855 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularObliqueFeminineForm .
+    ?singularObliqueFeminineForm ontolex:representation ?singularObliqueFeminine ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q1233197, wd:Q1775415 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularAblativeMasculineForm .
+    ?singularAblativeMasculineForm ontolex:representation ?singularAblativeMasculine ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q156986, wd:Q499327 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?pluralElativeMasculineForm .
+    ?pluralElativeMasculineForm ontolex:representation ?pluralElativeMasculine ;
+      wikibase:grammaticalFeature wd:Q146786, wd:Q394253, wd:Q499327 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularDirectMasculineForm .
+    ?singularDirectMasculineForm ontolex:representation ?singularDirectMasculine ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q1751855, wd:Q499327 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularFeminineInstrumentalForm .
+    ?singularFeminineInstrumentalForm ontolex:representation ?singularFeminineInstrumental ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q1775415, wd:Q192997 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularDirectForm .
+    ?singularDirectForm ontolex:representation ?singularDirect ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q1751855 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?dativePluralFeminineFirstPersonForm .
+    ?dativePluralFeminineFirstPersonForm ontolex:representation ?dativePluralFeminineFirstPerson ;
+      wikibase:grammaticalFeature wd:Q145599, wd:Q146786, wd:Q1775415, wd:Q21714344 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?obliquePluralMasculineForm .
+    ?obliquePluralMasculineForm ontolex:representation ?obliquePluralMasculine ;
+      wikibase:grammaticalFeature wd:Q1233197, wd:Q146786, wd:Q499327 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularFeminineLocativeForm .
+    ?singularFeminineLocativeForm ontolex:representation ?singularFeminineLocative ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q1775415, wd:Q202142 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularLocativeForm .
+    ?singularLocativeForm ontolex:representation ?singularLocative ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q202142 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularFeminineForm .
+    ?singularFeminineForm ontolex:representation ?singularFeminine ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q1775415 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?dativePluralFeminineThirdPersonForm .
+    ?dativePluralFeminineThirdPersonForm ontolex:representation ?dativePluralFeminineThirdPerson ;
+      wikibase:grammaticalFeature wd:Q145599, wd:Q146786, wd:Q1775415, wd:Q51929074 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?pluralLocativeMasculineForm .
+    ?pluralLocativeMasculineForm ontolex:representation ?pluralLocativeMasculine ;
+      wikibase:grammaticalFeature wd:Q146786, wd:Q202142, wd:Q499327 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?pluralVocativeMasculineForm .
+    ?pluralVocativeMasculineForm ontolex:representation ?pluralVocativeMasculine ;
+      wikibase:grammaticalFeature wd:Q146786, wd:Q185077, wd:Q499327 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularNominativeMasculineForm .
+    ?singularNominativeMasculineForm ontolex:representation ?singularNominativeMasculine ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q131105, wd:Q499327 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?pluralInstrumentalMasculineForm .
+    ?pluralInstrumentalMasculineForm ontolex:representation ?pluralInstrumentalMasculine ;
+      wikibase:grammaticalFeature wd:Q146786, wd:Q192997, wd:Q499327 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?dualInstrumentalMasculineForm .
+    ?dualInstrumentalMasculineForm ontolex:representation ?dualInstrumentalMasculine ;
+      wikibase:grammaticalFeature wd:Q110022, wd:Q192997, wd:Q499327 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularAblativeFeminineForm .
+    ?singularAblativeFeminineForm ontolex:representation ?singularAblativeFeminine ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q156986, wd:Q1775415 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?dativePluralFeminineSecondPersonForm .
+    ?dativePluralFeminineSecondPersonForm ontolex:representation ?dativePluralFeminineSecondPerson ;
+      wikibase:grammaticalFeature wd:Q145599, wd:Q146786, wd:Q1775415, wd:Q51929049 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?pluralFeminineVocativeForm .
+    ?pluralFeminineVocativeForm ontolex:representation ?pluralFeminineVocative ;
+      wikibase:grammaticalFeature wd:Q146786, wd:Q1775415, wd:Q185077 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularDirectFeminineForm .
+    ?singularDirectFeminineForm ontolex:representation ?singularDirectFeminine ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q1751855, wd:Q1775415 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?pluralAblativeMasculineForm .
+    ?pluralAblativeMasculineForm ontolex:representation ?pluralAblativeMasculine ;
+      wikibase:grammaticalFeature wd:Q146786, wd:Q156986, wd:Q499327 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?obliquePluralFeminineForm .
+    ?obliquePluralFeminineForm ontolex:representation ?obliquePluralFeminine ;
+      wikibase:grammaticalFeature wd:Q1233197, wd:Q146786, wd:Q1775415 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?pluralDirectMasculineForm .
+    ?pluralDirectMasculineForm ontolex:representation ?pluralDirectMasculine ;
+      wikibase:grammaticalFeature wd:Q146786, wd:Q1751855, wd:Q499327 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularDativeSecondPersonForm .
+    ?singularDativeSecondPersonForm ontolex:representation ?singularDativeSecondPerson ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q145599, wd:Q51929049 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularDativeFeminineFirstPersonForm .
+    ?singularDativeFeminineFirstPersonForm ontolex:representation ?singularDativeFeminineFirstPerson ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q145599, wd:Q1775415, wd:Q21714344 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?pluralFeminineLocativeForm .
+    ?pluralFeminineLocativeForm ontolex:representation ?pluralFeminineLocative ;
+      wikibase:grammaticalFeature wd:Q146786, wd:Q1775415, wd:Q202142 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?ablativeDirectMasculineForm .
+    ?ablativeDirectMasculineForm ontolex:representation ?ablativeDirectMasculine ;
+      wikibase:grammaticalFeature wd:Q156986, wd:Q1751855, wd:Q499327 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?dualFeminineInstrumentalForm .
+    ?dualFeminineInstrumentalForm ontolex:representation ?dualFeminineInstrumental ;
+      wikibase:grammaticalFeature wd:Q110022, wd:Q1775415, wd:Q192997 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularObliqueMasculineForm .
+    ?singularObliqueMasculineForm ontolex:representation ?singularObliqueMasculine ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q1233197, wd:Q499327 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularDativeFeminineThirdPersonForm .
+    ?singularDativeFeminineThirdPersonForm ontolex:representation ?singularDativeFeminineThirdPerson ;
+      wikibase:grammaticalFeature wd:Q110786, wd:Q145599, wd:Q1775415, wd:Q51929074 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?pluralForm .
+    ?pluralForm ontolex:representation ?plural ;
+      wikibase:grammaticalFeature wd:Q146786 .
+  }
+}
