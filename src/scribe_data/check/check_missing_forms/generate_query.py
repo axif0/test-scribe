@@ -96,7 +96,7 @@ def generate_query(missing_features, query_dir=None, sub_lang_iso_code=None):
 SELECT
   (REPLACE(STR(?lexeme), "http://www.wikidata.org/entity/", "") AS ?lexemeID)
   ?{data_type}
-  """ + "\n  ".join(f'?{form["label"]}' for form in forms_query) + "\n ?lastModified"
+  """ + "\n  ".join(f'?{form["label"]}' for form in forms_query) + "\n  ?lastModified"
   
 
     where_clause = f"""
@@ -104,7 +104,7 @@ SELECT
 WHERE {{
   ?lexeme dct:language wd:{language_qid} ;
       wikibase:lexicalCategory wd:{data_type_qid} ;
-      wikibase:lemma ?{data_type} .
+      wikibase:lemma ?{data_type} ;
       schema:dateModified ?lastModified .
     """
     if sub_lang_iso_code:
