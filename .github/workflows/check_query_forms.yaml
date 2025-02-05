@@ -2,7 +2,7 @@ name: Check Query Forms
 
 on:
   push:
-    branches: [main]
+    branches: [master]
     paths:
       - 'src/scribe_data/wikidata/language_data_extraction/**/*.sparql'
   pull_request:
