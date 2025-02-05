@@ -1,0 +1,256 @@
+# tool: scribe-data
+# All Punjabi (Q58635) verbs (Q24905) and the given forms.
+# Enter this query at https://query.wikidata.org/.
+
+SELECT
+  (REPLACE(STR(?lexeme), "http://www.wikidata.org/entity/", "") AS ?lexemeID)
+  ?verb
+  ?masculineFirstPersonPlural
+  ?passiveFutureIntransitivePhaseBasicPhaseThirdPersonPlural
+  ?passiveFutureIntransitivePhaseBasicPhaseSecondPersonSingular
+  ?obliquePassiveIntransitivePhaseBasicPhaseGerund
+  ?intransitivePhaseBasicPhaseConjunctiveParticipleAdverbial
+  ?futureIntransitivePhaseBasicPhaseSecondPersonSingular
+  ?futureIntransitivePhaseBasicPhaseThirdPersonSingular
+  ?passiveFutureIntransitivePhaseBasicPhaseThirdPersonSingular
+  ?masculineFirstPersonSingular
+  ?futureIntransitivePhaseBasicPhaseSingular
+  ?masculineIntransitivePhaseBasicPhaseThirdPersonDefiniteSingularSubjunctive
+  ?masculineIntransitivePhaseBasicPhaseSecondPersonDefiniteSingularSubjunctive
+  ?masculineIntransitivePhaseBasicPhaseSecondPersonPlural
+  ?masculinePlural
+  ?masculineIntransitivePhaseBasicPhaseFirstPersonDefiniteSingularSubjunctive
+  ?passiveFutureIntransitivePhaseBasicPhaseFirstPersonPlural
+  ?passiveFutureFirstPersonSingular
+  ?futureIntransitivePhaseBasicPhaseFirstPersonPlural
+  ?futureFirstPersonSingular
+  ?masculineFutureIntransitivePhaseBasicPhaseFirstPersonSingular
+  ?directPassiveGerund
+  ?passiveFutureIntransitivePhaseBasicPhaseFirstPersonSingular
+  ?directPassiveIntransitivePhaseBasicPhaseGerund
+  ?futureIntransitivePhaseBasicPhaseFirstPersonSingular
+  ?masculineIntransitivePhaseBasicPhaseSecondPersonDefinitePluralSubjunctive
+  ?passiveFutureIntransitivePhaseBasicPhaseSecondPersonPlural
+  ?masculineIntransitivePhaseBasicPhaseThirdPersonDefinitePluralSubjunctive
+  ?masculineThirdPersonSingular
+  ?masculineIntransitivePhaseBasicPhaseFirstPersonDefinitePluralSubjunctive
+  ?directObliqueIntransitivePhaseBasicPhaseGerund
+  ?intransitivePhaseBasicPhaseConjunctiveParticiple
+  ?futureIntransitivePhaseBasicPhaseSecondPersonPlural
+  ?futureIntransitivePhaseBasicPhaseThirdPersonPlural
+  ?futureIntransitivePhaseBasicPhasePlural
+   ?lastModified
+
+WHERE {
+  ?lexeme dct:language wd:Q58635 ;
+      wikibase:lexicalCategory wd:Q24905 ;
+      wikibase:lemma ?verb ;
+      schema:dateModified ?lastModified .
+    
+  # Note: We need to filter for pa to remove gurmukhi (pa) words.
+  FILTER(lang(?verbs) = "pa")
+    
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?masculineFirstPersonPluralForm .
+    ?masculineFirstPersonPluralForm ontolex:representation ?masculineFirstPersonPlural ;
+      wikibase:grammaticalFeature wd:Q499327, wd:Q21714344, wd:Q146786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?passiveFutureIntransitivePhaseBasicPhaseThirdPersonPluralForm .
+    ?passiveFutureIntransitivePhaseBasicPhaseThirdPersonPluralForm ontolex:representation ?passiveFutureIntransitivePhaseBasicPhaseThirdPersonPlural ;
+      wikibase:grammaticalFeature wd:Q1194697, wd:Q501405, wd:Q113330736, wd:Q113330960, wd:Q51929074, wd:Q146786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?passiveFutureIntransitivePhaseBasicPhaseSecondPersonSingularForm .
+    ?passiveFutureIntransitivePhaseBasicPhaseSecondPersonSingularForm ontolex:representation ?passiveFutureIntransitivePhaseBasicPhaseSecondPersonSingular ;
+      wikibase:grammaticalFeature wd:Q1194697, wd:Q501405, wd:Q113330736, wd:Q113330960, wd:Q51929049, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?obliquePassiveIntransitivePhaseBasicPhaseGerundForm .
+    ?obliquePassiveIntransitivePhaseBasicPhaseGerundForm ontolex:representation ?obliquePassiveIntransitivePhaseBasicPhaseGerund ;
+      wikibase:grammaticalFeature wd:Q1233197, wd:Q1194697, wd:Q113330736, wd:Q113330960, wd:Q1923028 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?intransitivePhaseBasicPhaseConjunctiveParticipleAdverbialForm .
+    ?intransitivePhaseBasicPhaseConjunctiveParticipleAdverbialForm ontolex:representation ?intransitivePhaseBasicPhaseConjunctiveParticipleAdverbial ;
+      wikibase:grammaticalFeature wd:Q113330736, wd:Q113330960, wd:Q113133303, wd:Q380012 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?futureIntransitivePhaseBasicPhaseSecondPersonSingularForm .
+    ?futureIntransitivePhaseBasicPhaseSecondPersonSingularForm ontolex:representation ?futureIntransitivePhaseBasicPhaseSecondPersonSingular ;
+      wikibase:grammaticalFeature wd:Q501405, wd:Q113330736, wd:Q113330960, wd:Q51929049, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?futureIntransitivePhaseBasicPhaseThirdPersonSingularForm .
+    ?futureIntransitivePhaseBasicPhaseThirdPersonSingularForm ontolex:representation ?futureIntransitivePhaseBasicPhaseThirdPersonSingular ;
+      wikibase:grammaticalFeature wd:Q501405, wd:Q113330736, wd:Q113330960, wd:Q51929074, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?passiveFutureIntransitivePhaseBasicPhaseThirdPersonSingularForm .
+    ?passiveFutureIntransitivePhaseBasicPhaseThirdPersonSingularForm ontolex:representation ?passiveFutureIntransitivePhaseBasicPhaseThirdPersonSingular ;
+      wikibase:grammaticalFeature wd:Q1194697, wd:Q501405, wd:Q113330736, wd:Q113330960, wd:Q51929074, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?masculineFirstPersonSingularForm .
+    ?masculineFirstPersonSingularForm ontolex:representation ?masculineFirstPersonSingular ;
+      wikibase:grammaticalFeature wd:Q499327, wd:Q21714344, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?futureIntransitivePhaseBasicPhaseSingularForm .
+    ?futureIntransitivePhaseBasicPhaseSingularForm ontolex:representation ?futureIntransitivePhaseBasicPhaseSingular ;
+      wikibase:grammaticalFeature wd:Q501405, wd:Q113330736, wd:Q113330960, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?masculineIntransitivePhaseBasicPhaseThirdPersonDefiniteSingularSubjunctiveForm .
+    ?masculineIntransitivePhaseBasicPhaseThirdPersonDefiniteSingularSubjunctiveForm ontolex:representation ?masculineIntransitivePhaseBasicPhaseThirdPersonDefiniteSingularSubjunctive ;
+      wikibase:grammaticalFeature wd:Q499327, wd:Q113330736, wd:Q113330960, wd:Q51929074, wd:Q53997851, wd:Q110786, wd:Q473746 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?masculineIntransitivePhaseBasicPhaseSecondPersonDefiniteSingularSubjunctiveForm .
+    ?masculineIntransitivePhaseBasicPhaseSecondPersonDefiniteSingularSubjunctiveForm ontolex:representation ?masculineIntransitivePhaseBasicPhaseSecondPersonDefiniteSingularSubjunctive ;
+      wikibase:grammaticalFeature wd:Q499327, wd:Q113330736, wd:Q113330960, wd:Q51929049, wd:Q53997851, wd:Q110786, wd:Q473746 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?masculineIntransitivePhaseBasicPhaseSecondPersonPluralForm .
+    ?masculineIntransitivePhaseBasicPhaseSecondPersonPluralForm ontolex:representation ?masculineIntransitivePhaseBasicPhaseSecondPersonPlural ;
+      wikibase:grammaticalFeature wd:Q499327, wd:Q113330736, wd:Q113330960, wd:Q51929049, wd:Q146786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?masculinePluralForm .
+    ?masculinePluralForm ontolex:representation ?masculinePlural ;
+      wikibase:grammaticalFeature wd:Q499327, wd:Q146786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?masculineIntransitivePhaseBasicPhaseFirstPersonDefiniteSingularSubjunctiveForm .
+    ?masculineIntransitivePhaseBasicPhaseFirstPersonDefiniteSingularSubjunctiveForm ontolex:representation ?masculineIntransitivePhaseBasicPhaseFirstPersonDefiniteSingularSubjunctive ;
+      wikibase:grammaticalFeature wd:Q499327, wd:Q113330736, wd:Q113330960, wd:Q21714344, wd:Q53997851, wd:Q110786, wd:Q473746 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?passiveFutureIntransitivePhaseBasicPhaseFirstPersonPluralForm .
+    ?passiveFutureIntransitivePhaseBasicPhaseFirstPersonPluralForm ontolex:representation ?passiveFutureIntransitivePhaseBasicPhaseFirstPersonPlural ;
+      wikibase:grammaticalFeature wd:Q1194697, wd:Q501405, wd:Q113330736, wd:Q113330960, wd:Q21714344, wd:Q146786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?passiveFutureFirstPersonSingularForm .
+    ?passiveFutureFirstPersonSingularForm ontolex:representation ?passiveFutureFirstPersonSingular ;
+      wikibase:grammaticalFeature wd:Q1194697, wd:Q501405, wd:Q21714344, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?futureIntransitivePhaseBasicPhaseFirstPersonPluralForm .
+    ?futureIntransitivePhaseBasicPhaseFirstPersonPluralForm ontolex:representation ?futureIntransitivePhaseBasicPhaseFirstPersonPlural ;
+      wikibase:grammaticalFeature wd:Q501405, wd:Q113330736, wd:Q113330960, wd:Q21714344, wd:Q146786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?futureFirstPersonSingularForm .
+    ?futureFirstPersonSingularForm ontolex:representation ?futureFirstPersonSingular ;
+      wikibase:grammaticalFeature wd:Q501405, wd:Q21714344, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?masculineFutureIntransitivePhaseBasicPhaseFirstPersonSingularForm .
+    ?masculineFutureIntransitivePhaseBasicPhaseFirstPersonSingularForm ontolex:representation ?masculineFutureIntransitivePhaseBasicPhaseFirstPersonSingular ;
+      wikibase:grammaticalFeature wd:Q499327, wd:Q501405, wd:Q113330736, wd:Q113330960, wd:Q21714344, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?directPassiveGerundForm .
+    ?directPassiveGerundForm ontolex:representation ?directPassiveGerund ;
+      wikibase:grammaticalFeature wd:Q1751855, wd:Q1194697, wd:Q1923028 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?passiveFutureIntransitivePhaseBasicPhaseFirstPersonSingularForm .
+    ?passiveFutureIntransitivePhaseBasicPhaseFirstPersonSingularForm ontolex:representation ?passiveFutureIntransitivePhaseBasicPhaseFirstPersonSingular ;
+      wikibase:grammaticalFeature wd:Q1194697, wd:Q501405, wd:Q113330736, wd:Q113330960, wd:Q21714344, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?directPassiveIntransitivePhaseBasicPhaseGerundForm .
+    ?directPassiveIntransitivePhaseBasicPhaseGerundForm ontolex:representation ?directPassiveIntransitivePhaseBasicPhaseGerund ;
+      wikibase:grammaticalFeature wd:Q1751855, wd:Q1194697, wd:Q113330736, wd:Q113330960, wd:Q1923028 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?futureIntransitivePhaseBasicPhaseFirstPersonSingularForm .
+    ?futureIntransitivePhaseBasicPhaseFirstPersonSingularForm ontolex:representation ?futureIntransitivePhaseBasicPhaseFirstPersonSingular ;
+      wikibase:grammaticalFeature wd:Q501405, wd:Q113330736, wd:Q113330960, wd:Q21714344, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?masculineIntransitivePhaseBasicPhaseSecondPersonDefinitePluralSubjunctiveForm .
+    ?masculineIntransitivePhaseBasicPhaseSecondPersonDefinitePluralSubjunctiveForm ontolex:representation ?masculineIntransitivePhaseBasicPhaseSecondPersonDefinitePluralSubjunctive ;
+      wikibase:grammaticalFeature wd:Q499327, wd:Q113330736, wd:Q113330960, wd:Q51929049, wd:Q53997851, wd:Q146786, wd:Q473746 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?passiveFutureIntransitivePhaseBasicPhaseSecondPersonPluralForm .
+    ?passiveFutureIntransitivePhaseBasicPhaseSecondPersonPluralForm ontolex:representation ?passiveFutureIntransitivePhaseBasicPhaseSecondPersonPlural ;
+      wikibase:grammaticalFeature wd:Q1194697, wd:Q501405, wd:Q113330736, wd:Q113330960, wd:Q51929049, wd:Q146786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?masculineIntransitivePhaseBasicPhaseThirdPersonDefinitePluralSubjunctiveForm .
+    ?masculineIntransitivePhaseBasicPhaseThirdPersonDefinitePluralSubjunctiveForm ontolex:representation ?masculineIntransitivePhaseBasicPhaseThirdPersonDefinitePluralSubjunctive ;
+      wikibase:grammaticalFeature wd:Q499327, wd:Q113330736, wd:Q113330960, wd:Q51929074, wd:Q53997851, wd:Q146786, wd:Q473746 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?masculineThirdPersonSingularForm .
+    ?masculineThirdPersonSingularForm ontolex:representation ?masculineThirdPersonSingular ;
+      wikibase:grammaticalFeature wd:Q499327, wd:Q51929074, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?masculineIntransitivePhaseBasicPhaseFirstPersonDefinitePluralSubjunctiveForm .
+    ?masculineIntransitivePhaseBasicPhaseFirstPersonDefinitePluralSubjunctiveForm ontolex:representation ?masculineIntransitivePhaseBasicPhaseFirstPersonDefinitePluralSubjunctive ;
+      wikibase:grammaticalFeature wd:Q499327, wd:Q113330736, wd:Q113330960, wd:Q21714344, wd:Q53997851, wd:Q146786, wd:Q473746 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?directObliqueIntransitivePhaseBasicPhaseGerundForm .
+    ?directObliqueIntransitivePhaseBasicPhaseGerundForm ontolex:representation ?directObliqueIntransitivePhaseBasicPhaseGerund ;
+      wikibase:grammaticalFeature wd:Q1751855, wd:Q1233197, wd:Q113330736, wd:Q113330960, wd:Q1923028 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?intransitivePhaseBasicPhaseConjunctiveParticipleForm .
+    ?intransitivePhaseBasicPhaseConjunctiveParticipleForm ontolex:representation ?intransitivePhaseBasicPhaseConjunctiveParticiple ;
+      wikibase:grammaticalFeature wd:Q113330736, wd:Q113330960, wd:Q113133303 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?futureIntransitivePhaseBasicPhaseSecondPersonPluralForm .
+    ?futureIntransitivePhaseBasicPhaseSecondPersonPluralForm ontolex:representation ?futureIntransitivePhaseBasicPhaseSecondPersonPlural ;
+      wikibase:grammaticalFeature wd:Q501405, wd:Q113330736, wd:Q113330960, wd:Q51929049, wd:Q146786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?futureIntransitivePhaseBasicPhaseThirdPersonPluralForm .
+    ?futureIntransitivePhaseBasicPhaseThirdPersonPluralForm ontolex:representation ?futureIntransitivePhaseBasicPhaseThirdPersonPlural ;
+      wikibase:grammaticalFeature wd:Q501405, wd:Q113330736, wd:Q113330960, wd:Q51929074, wd:Q146786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?futureIntransitivePhaseBasicPhasePluralForm .
+    ?futureIntransitivePhaseBasicPhasePluralForm ontolex:representation ?futureIntransitivePhaseBasicPhasePlural ;
+      wikibase:grammaticalFeature wd:Q501405, wd:Q113330736, wd:Q113330960, wd:Q146786 .
+  }
+}
