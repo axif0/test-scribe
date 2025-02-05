@@ -1,0 +1,109 @@
+# tool: scribe-data
+# All Norwegian (Q25164) verbs (Q24905) and the given forms.
+# Enter this query at https://query.wikidata.org/.
+
+SELECT
+  (REPLACE(STR(?lexeme), "http://www.wikidata.org/entity/", "") AS ?lexemeID)
+  ?verb
+  ?activeInfinitiveEInfinitive
+  ?activeAInfinitive
+  ?passivePreterite
+  ?feminineMasculineIndefiniteSingularPastParticiple
+  ?activeEInfinitive
+  ?neuterIndefiniteSingularPastParticiple
+  ?passivePresent
+  ?passiveInfinitive
+  ?presentPreteritePerfect
+  ?activePresent
+  ?activeInfinitive
+  ?activeInfinitiveAInfinitive
+  ?definiteSingularPastParticiple
+   ?lastModified
+
+WHERE {
+  ?lexeme dct:language wd:Q25164 ;
+      wikibase:lexicalCategory wd:Q24905 ;
+      wikibase:lemma ?verb ;
+      schema:dateModified ?lastModified .
+    
+  # Note: We need to filter for nn to remove nynorsk (nn) words.
+  FILTER(lang(?verbs) = "nn")
+    
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?activeInfinitiveEInfinitiveForm .
+    ?activeInfinitiveEInfinitiveForm ontolex:representation ?activeInfinitiveEInfinitive ;
+      wikibase:grammaticalFeature wd:Q1317831, wd:Q179230, wd:Q115223951 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?activeAInfinitiveForm .
+    ?activeAInfinitiveForm ontolex:representation ?activeAInfinitive ;
+      wikibase:grammaticalFeature wd:Q1317831, wd:Q115223950 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?passivePreteriteForm .
+    ?passivePreteriteForm ontolex:representation ?passivePreterite ;
+      wikibase:grammaticalFeature wd:Q1194697, wd:Q442485 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?feminineMasculineIndefiniteSingularPastParticipleForm .
+    ?feminineMasculineIndefiniteSingularPastParticipleForm ontolex:representation ?feminineMasculineIndefiniteSingularPastParticiple ;
+      wikibase:grammaticalFeature wd:Q1775415, wd:Q499327, wd:Q53997857, wd:Q110786, wd:Q12717679 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?activeEInfinitiveForm .
+    ?activeEInfinitiveForm ontolex:representation ?activeEInfinitive ;
+      wikibase:grammaticalFeature wd:Q1317831, wd:Q115223951 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?neuterIndefiniteSingularPastParticipleForm .
+    ?neuterIndefiniteSingularPastParticipleForm ontolex:representation ?neuterIndefiniteSingularPastParticiple ;
+      wikibase:grammaticalFeature wd:Q1775461, wd:Q53997857, wd:Q110786, wd:Q12717679 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?passivePresentForm .
+    ?passivePresentForm ontolex:representation ?passivePresent ;
+      wikibase:grammaticalFeature wd:Q1194697, wd:Q192613 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?passiveInfinitiveForm .
+    ?passiveInfinitiveForm ontolex:representation ?passiveInfinitive ;
+      wikibase:grammaticalFeature wd:Q1194697, wd:Q179230 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?presentPreteritePerfectForm .
+    ?presentPreteritePerfectForm ontolex:representation ?presentPreteritePerfect ;
+      wikibase:grammaticalFeature wd:Q192613, wd:Q442485, wd:Q625420 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?activePresentForm .
+    ?activePresentForm ontolex:representation ?activePresent ;
+      wikibase:grammaticalFeature wd:Q1317831, wd:Q192613 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?activeInfinitiveForm .
+    ?activeInfinitiveForm ontolex:representation ?activeInfinitive ;
+      wikibase:grammaticalFeature wd:Q1317831, wd:Q179230 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?activeInfinitiveAInfinitiveForm .
+    ?activeInfinitiveAInfinitiveForm ontolex:representation ?activeInfinitiveAInfinitive ;
+      wikibase:grammaticalFeature wd:Q1317831, wd:Q179230, wd:Q115223950 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?definiteSingularPastParticipleForm .
+    ?definiteSingularPastParticipleForm ontolex:representation ?definiteSingularPastParticiple ;
+      wikibase:grammaticalFeature wd:Q53997851, wd:Q110786, wd:Q12717679 .
+  }
+}

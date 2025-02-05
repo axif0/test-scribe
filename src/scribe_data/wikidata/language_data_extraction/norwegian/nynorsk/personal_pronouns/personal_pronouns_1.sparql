@@ -1,0 +1,25 @@
+# tool: scribe-data
+# All Norwegian (Q25164) personal_pronouns (Q468801) and the given forms.
+# Enter this query at https://query.wikidata.org/.
+
+SELECT
+  (REPLACE(STR(?lexeme), "http://www.wikidata.org/entity/", "") AS ?lexemeID)
+  ?personalpronoun
+  ?obliqueMasculine
+   ?lastModified
+
+WHERE {
+  ?lexeme dct:language wd:Q25164 ;
+      wikibase:lexicalCategory wd:Q468801 ;
+      wikibase:lemma ?personalpronoun ;
+      schema:dateModified ?lastModified .
+    
+  # Note: We need to filter for nn to remove nynorsk (nn) words.
+  FILTER(lang(?personal_pronouns) = "nn")
+    
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?obliqueMasculineForm .
+    ?obliqueMasculineForm ontolex:representation ?obliqueMasculine ;
+      wikibase:grammaticalFeature wd:Q1233197, wd:Q499327 .
+  }
+}
