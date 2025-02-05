@@ -288,8 +288,8 @@ def main():
 
         print("Generated missing features:", missing_features)
 
-        with open("missing_features.json", "r") as f:
-            missing_features = json.load(f)
+        with open("missing_features.json", "w") as f:
+            json.dump(missing_features, f, indent=4)
 
         print("Missing features data has been saved to missing_features.json")
 
