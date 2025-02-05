@@ -108,26 +108,17 @@ def get_missing_features(result_sparql, result_dump):
 
                 # Get values from SPARQL if available.
                 if dt in result_sparql[lang]:
-                    sparql_values = {tuple(sort_qids_by_position(item))for item in result_sparql[lang][dt]}
+                    sparql_values = {tuple(sort_qids_by_position(item)) for item in result_sparql[lang][dt]}
 
                 # Get values from dump if available.
                 if dt in result_dump[lang]:
-                   dump_values = {tuple(sort_qids_by_position(item)) for item in result_dump[lang][dt]}
+                    dump_values = {tuple(sort_qids_by_position(item)) for item in result_dump[lang][dt]}
 
+                # Find all unique forms (symmetric difference between sets)
+                unique_forms = dump_values ^ sparql_values
 
-                # Get unique values from both sources.
-                unique_dump_values = dump_values - sparql_values
-                unique_sparql_values = sparql_values - dump_values
-
-                # Store valid missing features from dump.
-                for item in unique_dump_values:
-                    if all(qid in all_qids for qid in item):
-                        item_list = list(item)
-                        if item_list not in missing_by_lang_type[lang][dt]:
-                            missing_by_lang_type[lang][dt].append(item_list)
-
-                # Store valid missing features from SPARQL.
-                for item in unique_sparql_values:
+                # Store valid missing features
+                for item in unique_forms:
                     if all(qid in all_qids for qid in item):
                         item_list = list(item)
                         if item_list not in missing_by_lang_type[lang][dt]:
