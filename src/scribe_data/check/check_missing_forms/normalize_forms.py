@@ -31,7 +31,7 @@ def sort_qids_by_position(nested_qids):
         sorted_positions = sorted(qid_positions.get(qid, float('inf')) for qid in sublist)
         
         # Pad with infinity for consistent comparison
-        while len(sorted_positions) < 3:  # Assuming max length of 3
+        while len(sorted_positions) < 5:  # Assuming max length of 3
             sorted_positions.append(float('inf'))
             
         return [length_priority] + sorted_positions

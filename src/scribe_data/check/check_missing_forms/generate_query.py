@@ -12,7 +12,7 @@ from scribe_data.utils import (
 from scribe_data.check.check_missing_forms.normalize_forms import (
     sort_qids_by_position,
     sort_qids_in_list,
-   
+   remove_duplicate_form
     )
 
 
@@ -87,11 +87,13 @@ def generate_query(missing_features, query_dir=None, sub_lang_iso_code=None):
     
     missing_forms = missing_features[language_qid][data_type_qid]
  
-    all_form_combinations = sort_qids_in_list(
+    all_form_combinations = remove_duplicate_form(sort_qids_in_list(
        
-        sort_qids_by_position(missing_forms)
+        missing_forms)
        
         ) 
+    print(all_form_combinations)
+    
      
     for form_qids in all_form_combinations:
         # Convert QIDs to labels and join them together.
