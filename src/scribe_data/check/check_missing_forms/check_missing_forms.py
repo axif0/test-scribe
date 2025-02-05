@@ -108,7 +108,7 @@ def get_missing_features(result_sparql, result_dump):
 
                 # Get values from SPARQL if available.
                 if dt in result_sparql[lang]:
-                    sparql_values = {tuple(item) for item in result_sparql[lang][dt]}
+                    sparql_values = {tuple(sort_qids_by_position(item))for item in result_sparql[lang][dt]}
 
                 # Get values from dump if available.
                 if dt in result_dump[lang]:
