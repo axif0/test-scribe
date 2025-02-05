@@ -1,0 +1,53 @@
+# tool: scribe-data
+# All Norwegian (Q25167) verbs (Q24905) and the given forms.
+# Enter this query at https://query.wikidata.org/.
+
+SELECT
+  (REPLACE(STR(?lexeme), "http://www.wikidata.org/entity/", "") AS ?lexemeID)
+  ?verb
+  ?activePresentPerfect
+  ?pluralPastParticiple
+  ?definiteSingularPastParticiple
+  ?neuterIndefiniteSingularPastParticiple
+  ?feminineMasculineIndefiniteSingularPastParticiple
+   ?lastModified
+
+WHERE {
+  ?lexeme dct:language wd:Q25167 ;
+      wikibase:lexicalCategory wd:Q24905 ;
+      wikibase:lemma ?verb ;
+      schema:dateModified ?lastModified .
+    
+  # Note: We need to filter for nb to remove bokmål (nb) words.
+  FILTER(lang(?verbs) = "nb")
+    
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?activePresentPerfectForm .
+    ?activePresentPerfectForm ontolex:representation ?activePresentPerfect ;
+      wikibase:grammaticalFeature wd:Q1317831, wd:Q1240211 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?pluralPastParticipleForm .
+    ?pluralPastParticipleForm ontolex:representation ?pluralPastParticiple ;
+      wikibase:grammaticalFeature wd:Q146786, wd:Q12717679 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?definiteSingularPastParticipleForm .
+    ?definiteSingularPastParticipleForm ontolex:representation ?definiteSingularPastParticiple ;
+      wikibase:grammaticalFeature wd:Q53997851, wd:Q110786, wd:Q12717679 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?neuterIndefiniteSingularPastParticipleForm .
+    ?neuterIndefiniteSingularPastParticipleForm ontolex:representation ?neuterIndefiniteSingularPastParticiple ;
+      wikibase:grammaticalFeature wd:Q1775461, wd:Q53997857, wd:Q110786, wd:Q12717679 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?feminineMasculineIndefiniteSingularPastParticipleForm .
+    ?feminineMasculineIndefiniteSingularPastParticipleForm ontolex:representation ?feminineMasculineIndefiniteSingularPastParticiple ;
+      wikibase:grammaticalFeature wd:Q1775415, wd:Q499327, wd:Q53997857, wd:Q110786, wd:Q12717679 .
+  }
+}
