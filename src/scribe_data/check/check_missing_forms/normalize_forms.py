@@ -1,5 +1,5 @@
 from scribe_data.utils import lexeme_form_metadata
-
+# from scribe_data.check.check_query_forms import lexeme_form_labels_order
 
 def sort_qids_in_list(qids_lists):
     # Create a mapping of QID to its position
@@ -40,13 +40,15 @@ def sort_qids_by_position(nested_qids):
 
 
 
-def remove_duplicate_form(input_qids):
-    # Convert each sublist to tuple for hashability
-    unique_tuples = {tuple(form) for form in input_qids}
-    # Convert back to list of lists
-    return [list(t) for t in unique_tuples]
+# def remove_duplicate_form(input_qids):
+#     # Sort each sublist before converting to tuple
+#     unique_tuples = {tuple(sorted(form)) for form in input_qids}
+#     return [list(t) for t in unique_tuples]
 
+ 
+# input_qids=[['Q146233', 'Q1775415', 'Q110786'], ['Q1775415', 'Q110786', 'Q4239848'], ['Q145599', 'Q499327', 'Q110786'], ['Q145599', 'Q1775461', 'Q110786'], ['Q192997', 'Q1775461', 'Q110786'], ['Q146078', 'Q51927507', 'Q1775461', 'Q110786'], ['Q499327', 'Q110786', 'Q4239848'], ['Q131105', 'Q499327', 'Q110786'], ['Q146233', 'Q1775461', 'Q110786'], ['Q2114906', 'Q499327', 'Q110786'], ['Q146078', 'Q51927539', 'Q146786'], ['Q131105', 'Q499327'], ['Q2114906', 'Q1775461', 'Q110786'], ['Q131105', 'Q1775415', 'Q110786'], ['Q146078', 'Q51927507', 'Q146786'], ['Q1817208'], ['Q192997', 'Q1775415', 'Q110786'], ['Q146078', 'Q1775415', 'Q110786'], ['Q2114906', 'Q146786'], ['Q499327', 'Q110786'], ['Q14169499'], ['Q131105', 'Q1775461', 'Q110786'], ['Q1775461', 'Q110786', 'Q4239848'], ['Q2114906', 'Q1775415', 'Q110786'], ['Q146078', 'Q51927539', 'Q1775461', 'Q110786'], ['Q146078', 'Q51927539', 'Q110786'], ['Q146078', 'Q1775461', 'Q110786'], ['Q146233', 'Q499327', 'Q110786'], ['Q146786'], ['Q192997', 'Q146786'], ['Q146078', 'Q1775415', 'Q51927539', 'Q110786'], ['Q131105', 'Q499327', 'Q146786'], ['Q146078', 'Q499327', 'Q110786'], ['Q146078', 'Q499327', 'Q51927507', 'Q110786'], ['Q192997', 'Q499327', 'Q110786'], ['Q131105', 'Q110786'], ['Q146078', 'Q1775415', 'Q51927507', 'Q110786'], ['Q145599', 'Q1775415', 'Q110786'], ['Q146078', 'Q54020116', 'Q110786'], ['Q146078', 'Q499327', 'Q51927539', 'Q110786'], ['Q1775415', 'Q110786'], ['Q1775461', 'Q110786']]
 
+# print(remove_duplicate_form(input_qids))
 
 # # Test cases
 # input_qids = [['Q499327'], ['Q1817208'], ['Q110786'], ['Q499327', 'Q110786'], 

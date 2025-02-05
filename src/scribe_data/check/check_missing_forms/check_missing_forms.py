@@ -24,7 +24,7 @@ from scribe_data.utils import (
 from scribe_data.check.check_missing_forms.normalize_forms import (
     sort_qids_by_position,
     sort_qids_in_list,
-   remove_duplicate_form
+ 
     )
 
 
@@ -108,14 +108,15 @@ def get_missing_features(result_sparql, result_dump):
 
                 # Get values from SPARQL if available.
                 if dt in result_sparql[lang]:
-                    sparql_values = {tuple(sort_qids_by_position(item)) for item in result_sparql[lang][dt]}
+                    sparql_values = {tuple(item) for item in result_sparql[lang][dt]}
 
                 # Get values from dump if available.
                 if dt in result_dump[lang]:
-                    dump_values = {tuple(sort_qids_by_position(item)) for item in result_dump[lang][dt]}
+                    dump_values = {tuple(item) for item in result_dump[lang][dt]}
 
                 # Find all unique forms (symmetric difference between sets)
-                unique_forms = dump_values ^ sparql_values
+                unique_forms = sort_qids_in_list(dump_values ^ sparql_values)
+                unique_forms = [list(item) for item in unique_forms]
 
                 # Store valid missing features
                 for item in unique_forms:
@@ -126,9 +127,6 @@ def get_missing_features(result_sparql, result_dump):
 
     return missing_by_lang_type or None
 
-# sort_qids_in_list(
-       
-#         sort_qids_by_position(missing_forms)
 
 def process_missing_features(missing_features, query_dir):
     """
@@ -258,7 +256,7 @@ def main():
 
     # MARK: Parse SPARQL
 
-    print("Parsing SPARQL files...")
+    # print("Parsing SPARQL files...")
     result_sparql = parse_sparql_files()
 
     # MARK: Extract Forms
@@ -269,10 +267,30 @@ def main():
         data_types=list(data_type_metadata.keys()),
         file_path=dump_path,
     )
+    # with open("result_dump.json", "w") as f:
+    #     json.dump(result_dump, f, indent=4)
 
-    # MARK: Get Features
+    # with open("result_sparql.json", "w") as f:
+    #     json.dump(result_sparql, f, indent=4)
+
+  
+    # with open("result_sparql.json", "r") as f:
+    #     result_sparql = json.load(f)
+
+    # with open("result_dump.json", "r") as f:
+    #     result_dump = json.load(f)
 
     missing_features = get_missing_features(result_sparql, result_dump)
+
+    with open("missing_features.json", "w") as f:
+        json.dump(missing_features, f, indent=4)
+
+    # with open("missing_features.json", "r") as f:
+    #         missing_features = json.load(f)
+
+    # process_missing_features(missing_features, query_dir=None)
+    # # # MARK: Get Features
+
 
     try:
         # MARK: Save Features
