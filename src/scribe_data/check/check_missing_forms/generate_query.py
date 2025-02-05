@@ -9,14 +9,20 @@ from pathlib import Path
 from scribe_data.utils import (
     LANGUAGE_DATA_EXTRACTION_DIR as language_data_extraction,
 )
+from scribe_data.check.check_missing_forms.normalize_forms import (
+    sort_qids_by_position,
+    sort_qids_in_list,
+   
+    )
+
+
 from scribe_data.utils import (
     data_type_metadata,
     language_metadata,
     lexeme_form_metadata,
     sub_languages,
 )
-
-
+ 
 def generate_query(missing_features, query_dir=None, sub_lang_iso_code=None):
     """
     Generate SPARQL queries for missing lexeme forms.
@@ -78,26 +84,36 @@ def generate_query(missing_features, query_dir=None, sub_lang_iso_code=None):
 
     # Process all forms at once.
     forms_query = []
-    all_form_combinations = missing_features[language_qid][data_type_qid]
+    
+    missing_forms = missing_features[language_qid][data_type_qid]
+ 
+    all_form_combinations = sort_qids_in_list(
+       
+        sort_qids_by_position(missing_forms)
+       
+        ) 
+     
     for form_qids in all_form_combinations:
         # Convert QIDs to labels and join them together.
         labels = [qid_to_label.get(qid, qid) for qid in form_qids]
-        # Reverse the labels before joining
-        concatenated_label = "".join(labels[::-1])
+           
+        concatenated_label = "".join(labels)
 
         # Make first letter lowercase.
         concatenated_label = concatenated_label[0].lower() + concatenated_label[1:]
-        forms_query.append({"label": concatenated_label, "qids": form_qids[::-1]})
+        forms_query.append({"label": concatenated_label, "qids": form_qids})
+ 
+    body_data_type = data_type.replace("_", "")[:-1]
 
     # Generate a single query for all forms.
     main_body = (
         f"""# tool: scribe-data
-# All {language.capitalize()} ({language_qid}) {data_type} ({data_type_qid}) and their forms.
+# All {language.capitalize()} ({language_qid}) {data_type} ({data_type_qid}) and the given forms.
 # Enter this query at https://query.wikidata.org/.
 
 SELECT
   (REPLACE(STR(?lexeme), "http://www.wikidata.org/entity/", "") AS ?lexemeID)
-  ?{data_type}
+  ?{body_data_type}
   """
         + "\n  ".join(f'?{form["label"]}' for form in forms_query)
         + "\n   ?lastModified"
@@ -108,7 +124,7 @@ SELECT
 WHERE {{
   ?lexeme dct:language wd:{language_qid} ;
       wikibase:lexicalCategory wd:{data_type_qid} ;
-      wikibase:lemma ?{data_type} ;
+      wikibase:lemma ?{body_data_type} ;
       schema:dateModified ?lastModified .
     """
     if sub_lang_iso_code:
@@ -192,3 +208,6 @@ WHERE {{
     print(f"Query file created: {file_name}")
 
     return file_name
+
+
+

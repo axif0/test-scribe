@@ -472,7 +472,7 @@ def check_forms_order(query_text):
         sorted_lower.append("lastmodified")
 
     if select_lower != sorted_lower:
-        # print(select_lower,"ager",sorted_lower)
+        print(select_lower,"\n\n",sorted_lower)
         return ", ".join([i[0].lower() + i[1:] for i in sorted_columns])
 
     return sorted_lower == select_lower
