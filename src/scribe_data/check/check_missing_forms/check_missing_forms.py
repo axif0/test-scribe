@@ -115,12 +115,16 @@ def get_missing_features(result_sparql, result_dump):
                 # Store valid missing features from dump.
                 for item in unique_dump_values:
                     if all(qid in all_qids for qid in item):
-                        missing_by_lang_type[lang][dt].append(list(item))
+                        item_list = list(item)
+                        if item_list not in missing_by_lang_type[lang][dt]:
+                            missing_by_lang_type[lang][dt].append(item_list)
 
                 # Store valid missing features from SPARQL.
                 for item in unique_sparql_values:
                     if all(qid in all_qids for qid in item):
-                        missing_by_lang_type[lang][dt].append(list(item))
+                        item_list = list(item)
+                        if item_list not in missing_by_lang_type[lang][dt]:
+                            missing_by_lang_type[lang][dt].append(item_list)
 
     return missing_by_lang_type or None
 
