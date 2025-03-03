@@ -23,6 +23,7 @@ from scribe_data.utils import (
 
 from scribe_data.check.check_missing_forms.normalize_forms import (
     sort_qids_in_list,
+    sort_qids_by_position,
 )
 
 
@@ -274,6 +275,7 @@ def split_group_by_identifier(language_entry, output_dir, sub_lang_iso_code=None
             # Generate queries for each optimized group
             for i, group in enumerate(optimized_groups):
                 # Create a new language entry for this group
+                group = sort_qids_by_position(group)
                 group_entry = {lang: {data_type: group}}
 
                 print(
