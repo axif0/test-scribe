@@ -1,0 +1,43 @@
+# tool: scribe-data
+# All Estonian (Q9072) postpositions (Q161873) and the given forms.
+# Enter this query at https://query.wikidata.org/.
+
+SELECT
+  (REPLACE(STR(?lexeme), "http://www.wikidata.org/entity/", "") AS ?lexemeID)
+  ?lastModified
+  ?postposition
+  ?adessiveSingular
+  ?adessivePlural
+  ?abessiveSingular
+  ?abessivePlural
+
+WHERE {
+  ?lexeme dct:language wd:Q9072 ;
+      wikibase:lexicalCategory wd:Q161873 ;
+      wikibase:lemma ?postposition ;
+      schema:dateModified ?lastModified .
+    
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?adessiveSingularForm .
+    ?adessiveSingularForm ontolex:representation ?adessiveSingular ;
+      wikibase:grammaticalFeature wd:Q281954, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?adessivePluralForm .
+    ?adessivePluralForm ontolex:representation ?adessivePlural ;
+      wikibase:grammaticalFeature wd:Q281954, wd:Q146786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?abessiveSingularForm .
+    ?abessiveSingularForm ontolex:representation ?abessiveSingular ;
+      wikibase:grammaticalFeature wd:Q319822, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?abessivePluralForm .
+    ?abessivePluralForm ontolex:representation ?abessivePlural ;
+      wikibase:grammaticalFeature wd:Q319822, wd:Q146786 .
+  }
+}
