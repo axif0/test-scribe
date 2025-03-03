@@ -51,6 +51,7 @@ def format_data(
 
     for data_vals in data_list:
         lexeme_id = data_vals["lexemeID"]
+        modified_date = data_vals["lastModified"]
 
         if lexeme_id not in data_formatted:
             data_formatted[lexeme_id] = {}
@@ -58,9 +59,11 @@ def format_data(
         # Reverse to make sure that we're getting the same order as the query.
         query_identifiers = list(reversed(data_vals.keys()))
         query_identifiers.remove("lexemeID")
+        query_identifiers.remove("lastModified")
 
         for k in query_identifiers:
             data_formatted[lexeme_id][k] = data_vals[k]
+        data_formatted[lexeme_id]["lastModified"] = modified_date
 
     data_formatted = collections.OrderedDict(sorted(data_formatted.items()))
 

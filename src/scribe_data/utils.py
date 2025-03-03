@@ -100,16 +100,17 @@ for lang, lang_data in language_metadata.items():
         else:
             language_map[lang] = lang_data
             language_to_qid[lang] = qid
-            
-#Extracts sub-languages from the given language metadata.
+
+# Extracts all sub-languages from language metadata.
 for lang_name, lang_data in language_metadata.items():
     if "sub_languages" in lang_data:
         sub_languages[lang_name] = {}
         for sub_lang_name, sub_lang_data in lang_data["sub_languages"].items():
             sub_languages[lang_name][sub_lang_data["iso"]] = {
                 "name": sub_lang_name,
-                "qid": sub_lang_data["qid"]
+                "qid": sub_lang_data["qid"],
             }
+
 
 def _load_json(package_path: str, file_name: str) -> Any:
     """
