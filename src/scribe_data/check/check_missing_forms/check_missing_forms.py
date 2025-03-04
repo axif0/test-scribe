@@ -3,19 +3,13 @@
 Check for missing forms in Wikidata and download Wikidata lexeme dump.
 """
 
-import argparse
 import json
-import sys
 from collections import defaultdict
-from pathlib import Path
 
 from generate_query import generate_query
-from get_forms import extract_dump_forms, parse_sparql_files
 
-from scribe_data.cli.download import wd_lexeme_dump_download_wrapper
 from scribe_data.utils import (
     LANGUAGE_DATA_EXTRACTION_DIR,
-    data_type_metadata,
     language_metadata,
     lexeme_form_metadata,
     sub_languages,
@@ -217,7 +211,9 @@ def split_group_by_identifier(language_entry, output_dir, sub_lang_iso_code=None
                 if feature_list:  # Skip empty lists
                     # Use the first identifier as the grouping key
                     key = feature_list[0]
-                    identifier_groups[key].append(feature_list)
+                    identifier_groups[key].append(
+                        feature_list
+                    )  # =>{Q1234:[Q2345,Q4567],[Q567]}
 
             # Now check if any groups have more than 6 features
             final_groups = []
@@ -290,119 +286,6 @@ def split_group_by_identifier(language_entry, output_dir, sub_lang_iso_code=None
                 )
 
 
-def main():
-    """
-    Main function to check for missing forms in Wikidata.
-
-    Processes command line arguments, downloads and compares Wikidata dump data
-    with SPARQL query results to identify missing features, and generates
-    appropriate SPARQL queries.
-
-    Notes
-    -----
-    Required command line arguments:
-    - dump_path: Path to the Wikidata dump file or None to download
-    - query_dir: Directory for storing generated queries
-
-    Optional arguments:
-    - --process-all-keys: Flag to process all nested keys in missing features
-    - --download-dump: Flag to download the dump if dump_path is not provided
-    """
-    parser = argparse.ArgumentParser(description="Check missing forms in Wikidata")
-    parser.add_argument(
-        "dump_path",
-        type=str,
-        nargs="?",
-        default=None,
-        help="Path to the dump file (optional if --download-dump is used)",
-    )
-    parser.add_argument("query_dir", type=str, help="Path to the query directory")
-    parser.add_argument(
-        "--process-all-keys",
-        action="store_true",
-        help="Process all nested keys in the missing features",
-    )
-    parser.add_argument(
-        "--download-dump",
-        action="store_true",
-        help="Download Wikidata lexeme dump if dump_path is not provided",
-    )
-
-    args = parser.parse_args()
-
-    # If no dump path is provided and download flag is set, download the dump.
-    if not args.dump_path and args.download_dump:
-        # MARK: Download Dump
-
-        dump_path = wd_lexeme_dump_download_wrapper(
-            wikidata_dump=None, output_dir=None, default=True
-        )
-        if not dump_path:
-            print("Failed to download Wikidata dump.")
-            sys.exit(1)
-
-    elif not args.dump_path:
-        print("Error: Either provide a dump path or use --download-dump flag")
-        sys.exit(1)
-
-    else:
-        dump_path = args.dump_path
-
-    dump_path = Path(dump_path)
-    query_dir = Path(args.query_dir)
-
-    if not dump_path.exists():
-        print(f"Error: Dump path does not exist: {dump_path}")
-        sys.exit(1)
-
-    if not query_dir.exists():
-        print(f"Error: Query directory does not exist: {query_dir}")
-        sys.exit(1)
-
-    # Get all languages including sub languages.
-    languages = get_all_languages()
-
-    # MARK: Parse SPARQL
-
-    print("Parsing SPARQL files...")
-    result_sparql = parse_sparql_files()
-
-    # MARK: Extract Forms
-
-    print("Extracting Wiki lexeme dump...")
-    result_dump = extract_dump_forms(
-        languages=languages,
-        data_types=list(data_type_metadata.keys()),
-        file_path=dump_path,
-    )
-
-    # MARK: Get Features
-
-    missing_features = get_missing_features(result_sparql, result_dump)
-
-    try:
-        # MARK: Save Features
-
-        print("Generated missing features:", missing_features)
-
-        with open("missing_features.json", "w") as f:
-            json.dump(missing_features, f, indent=4)
-
-        print("Missing features data has been saved to missing_features.json")
-
-        if missing_features:
-            # Process all data types for each language.
-            process_missing_features(missing_features, query_dir)
-
-    except Exception as e:
-        print(f"An error occurred: {e}")
-        sys.exit(1)
-
-
-if __name__ == "__main__":
-    main()
-
-
 # def main():
 #     """
 #     Main function to check for missing forms in Wikidata.
@@ -421,95 +304,209 @@ if __name__ == "__main__":
 #     - --process-all-keys: Flag to process all nested keys in missing features
 #     - --download-dump: Flag to download the dump if dump_path is not provided
 #     """
-# parser = argparse.ArgumentParser(description="Check missing forms in Wikidata")
-# parser.add_argument(
-#     "dump_path",
-#     type=str,
-#     nargs="?",
-#     default=None,
-#     help="Path to the dump file (optional if --download-dump is used)",
-# )
-# parser.add_argument("query_dir", type=str, help="Path to the query directory")
-# parser.add_argument(
-#     "--process-all-keys",
-#     action="store_true",
-#     help="Process all nested keys in the missing features",
-# )
-# parser.add_argument(
-#     "--download-dump",
-#     action="store_true",
-#     help="Download Wikidata lexeme dump if dump_path is not provided",
-# )
-
-# args = parser.parse_args()
-
-# # If no dump path is provided and download flag is set, download the dump.
-# if not args.dump_path and args.download_dump:
-#     # MARK: Download Dump
-
-#     dump_path = wd_lexeme_dump_download_wrapper(
-#         wikidata_dump=None, output_dir=None, default=True
+#     parser = argparse.ArgumentParser(description="Check missing forms in Wikidata")
+#     parser.add_argument(
+#         "dump_path",
+#         type=str,
+#         nargs="?",
+#         default=None,
+#         help="Path to the dump file (optional if --download-dump is used)",
 #     )
-#     if not dump_path:
-#         print("Failed to download Wikidata dump.")
+#     parser.add_argument("query_dir", type=str, help="Path to the query directory")
+#     parser.add_argument(
+#         "--process-all-keys",
+#         action="store_true",
+#         help="Process all nested keys in the missing features",
+#     )
+#     parser.add_argument(
+#         "--download-dump",
+#         action="store_true",
+#         help="Download Wikidata lexeme dump if dump_path is not provided",
+#     )
+
+#     args = parser.parse_args()
+
+#     # If no dump path is provided and download flag is set, download the dump.
+#     if not args.dump_path and args.download_dump:
+#         # MARK: Download Dump
+
+#         dump_path = wd_lexeme_dump_download_wrapper(
+#             wikidata_dump=None, output_dir=None, default=True
+#         )
+#         if not dump_path:
+#             print("Failed to download Wikidata dump.")
+#             sys.exit(1)
+
+#     elif not args.dump_path:
+#         print("Error: Either provide a dump path or use --download-dump flag")
 #         sys.exit(1)
 
-# elif not args.dump_path:
-#     print("Error: Either provide a dump path or use --download-dump flag")
-#     sys.exit(1)
+#     else:
+#         dump_path = args.dump_path
 
-# else:
-#     dump_path = args.dump_path
+#     dump_path = Path(dump_path)
+#     query_dir = Path(args.query_dir)
 
-# dump_path = Path(dump_path)
-# query_dir = Path(args.query_dir)
+#     if not dump_path.exists():
+#         print(f"Error: Dump path does not exist: {dump_path}")
+#         sys.exit(1)
 
-# if not dump_path.exists():
-#     print(f"Error: Dump path does not exist: {dump_path}")
-#     sys.exit(1)
+#     if not query_dir.exists():
+#         print(f"Error: Query directory does not exist: {query_dir}")
+#         sys.exit(1)
 
-# if not query_dir.exists():
-#     print(f"Error: Query directory does not exist: {query_dir}")
-#     sys.exit(1)
+#     # Get all languages including sub languages.
+#     languages = get_all_languages()
 
-# Get all languages including sub languages.
-# languages = get_all_languages()
+#     # MARK: Parse SPARQL
 
-# # MARK: Parse SPARQL
+#     print("Parsing SPARQL files...")
+#     result_sparql = parse_sparql_files()
 
-# # print("Parsing SPARQL files...")
-# result_sparql = parse_sparql_files()
+#     # MARK: Extract Forms
 
-# # MARK: Extract Forms
+#     print("Extracting Wiki lexeme dump...")
+#     result_dump = extract_dump_forms(
+#         languages=languages,
+#         data_types=list(data_type_metadata.keys()),
+#         file_path=dump_path,
+#     )
 
-# print("Extracting Wiki lexeme dump...")
-# result_dump = extract_dump_forms(
-#     languages=languages,
-#     data_types=list(data_type_metadata.keys()),
-#     file_path="/media/asif/Mahbub1/test-scribe/src/scribe_data/check/scribe_data_wikidata_dumps_export/latest-lexemes.json.bz2",
-# )
-# with open("result_dump.json", "w") as f:
-#     json.dump(result_dump, f, indent=4)
+#     # MARK: Get Features
 
-# with open("result_sparql.json", "w") as f:
-#     json.dump(result_sparql, f, indent=4)
+#     missing_features = get_missing_features(result_sparql, result_dump)
+
+#     try:
+#         # MARK: Save Features
+
+#         print("Generated missing features:", missing_features)
+
+#         with open("missing_features.json", "w") as f:
+#             json.dump(missing_features, f, indent=4)
+
+#         print("Missing features data has been saved to missing_features.json")
+
+#         if missing_features:
+#             # Process all data types for each language.
+#             process_missing_features(missing_features, query_dir)
+
+#     except Exception as e:
+#         print(f"An error occurred: {e}")
+#         sys.exit(1)
 
 
-# with open("result_sparql.json", "r") as f:
-#     result_sparql = json.load(f)
+# if __name__ == "__main__":
+#     main()
 
-# with open("result_dump.json", "r") as f:
-#     result_dump = json.load(f)
 
-# missing_features = get_missing_features(result_sparql, result_dump)
+def main():
+    #     """
+    #     Main function to check for missing forms in Wikidata.
 
-# with open("missing_features.json", "w") as f:
-#     json.dump(missing_features, f, indent=4)
+    #     Processes command line arguments, downloads and compares Wikidata dump data
+    #     with SPARQL query results to identify missing features, and generates
+    #     appropriate SPARQL queries.
 
-# with open("missing_features.json", "r") as f:
-#         missing_features = json.load(f)
+    #     Notes
+    #     -----
+    #     Required command line arguments:
+    #     - dump_path: Path to the Wikidata dump file or None to download
+    #     - query_dir: Directory for storing generated queries
 
-# process_missing_features(missing_features, query_dir=None)
+    #     Optional arguments:
+    #     - --process-all-keys: Flag to process all nested keys in missing features
+    #     - --download-dump: Flag to download the dump if dump_path is not provided
+    #     """
+    # parser = argparse.ArgumentParser(description="Check missing forms in Wikidata")
+    # parser.add_argument(
+    #     "dump_path",
+    #     type=str,
+    #     nargs="?",
+    #     default=None,
+    #     help="Path to the dump file (optional if --download-dump is used)",
+    # )
+    # parser.add_argument("query_dir", type=str, help="Path to the query directory")
+    # parser.add_argument(
+    #     "--process-all-keys",
+    #     action="store_true",
+    #     help="Process all nested keys in the missing features",
+    # )
+    # parser.add_argument(
+    #     "--download-dump",
+    #     action="store_true",
+    #     help="Download Wikidata lexeme dump if dump_path is not provided",
+    # )
+
+    # args = parser.parse_args()
+
+    # # If no dump path is provided and download flag is set, download the dump.
+    # if not args.dump_path and args.download_dump:
+    #     # MARK: Download Dump
+
+    #     dump_path = wd_lexeme_dump_download_wrapper(
+    #         wikidata_dump=None, output_dir=None, default=True
+    #     )
+    #     if not dump_path:
+    #         print("Failed to download Wikidata dump.")
+    #         sys.exit(1)
+
+    # elif not args.dump_path:
+    #     print("Error: Either provide a dump path or use --download-dump flag")
+    #     sys.exit(1)
+
+    # else:
+    #     dump_path = args.dump_path
+
+    # dump_path = Path(dump_path)
+    # query_dir = Path(args.query_dir)
+
+    # if not dump_path.exists():
+    #     print(f"Error: Dump path does not exist: {dump_path}")
+    #     sys.exit(1)
+
+    # if not query_dir.exists():
+    #     print(f"Error: Query directory does not exist: {query_dir}")
+    #     sys.exit(1)
+
+    # Get all languages including sub languages.
+    # languages = get_all_languages()
+
+    # # MARK: Parse SPARQL
+
+    # # print("Parsing SPARQL files...")
+    # result_sparql = parse_sparql_files()
+
+    # # MARK: Extract Forms
+
+    # print("Extracting Wiki lexeme dump...")
+    # result_dump = extract_dump_forms(
+    #     languages=languages,
+    #     data_types=list(data_type_metadata.keys()),
+    #     file_path="/media/asif/Mahbub1/test-scribe/src/scribe_data/check/scribe_data_wikidata_dumps_export/latest-lexemes.json.bz2",
+    # )
+    # with open("result_dump.json", "w") as f:
+    #     json.dump(result_dump, f, indent=4)
+
+    # with open("result_sparql.json", "w") as f:
+    #     json.dump(result_sparql, f, indent=4)
+
+    # with open("result_sparql.json", "r") as f:
+    #     result_sparql = json.load(f)
+
+    # with open("result_dump.json", "r") as f:
+    #     result_dump = json.load(f)
+
+    # missing_features = get_missing_features(result_sparql, result_dump)
+
+    # with open("missing_features.json", "w") as f:
+    #     json.dump(missing_features, f, indent=4)
+
+    with open("missing_features.json", "r") as f:
+        missing_features = json.load(f)
+
+    process_missing_features(missing_features, query_dir=None)
+
+
 # # # MARK: Get Features
 
 
@@ -532,5 +529,5 @@ if __name__ == "__main__":
 #     sys.exit(1)
 
 
-# if __name__ == "__main__":
-#     main()
+if __name__ == "__main__":
+    main()
