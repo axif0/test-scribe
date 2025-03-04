@@ -1,0 +1,57 @@
+# tool: scribe-data
+# All Czech (Q9056) adjectives (Q34698) and the given forms.
+# Enter this query at https://query.wikidata.org/.
+
+SELECT
+  (REPLACE(STR(?lexeme), "http://www.wikidata.org/entity/", "") AS ?lexemeID)
+  ?lastModified
+  ?adjective
+  ?vocativeMasculineInanimateSingular
+  ?vocativeNeuterSingular
+  ?vocativeFeminineSingularComparative
+  ?vocativeFemininePluralComparative
+  ?vocativeMasculineInanimateSingularPositive
+  ?vocativeNeuterPluralSuperlative
+
+WHERE {
+  ?lexeme dct:language wd:Q9056 ;
+      wikibase:lexicalCategory wd:Q34698 ;
+      wikibase:lemma ?adjective ;
+      schema:dateModified ?lastModified .
+    
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?vocativeMasculineInanimateSingularForm .
+    ?vocativeMasculineInanimateSingularForm ontolex:representation ?vocativeMasculineInanimateSingular ;
+      wikibase:grammaticalFeature wd:Q185077, wd:Q52943434, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?vocativeNeuterSingularForm .
+    ?vocativeNeuterSingularForm ontolex:representation ?vocativeNeuterSingular ;
+      wikibase:grammaticalFeature wd:Q185077, wd:Q1775461, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?vocativeFeminineSingularComparativeForm .
+    ?vocativeFeminineSingularComparativeForm ontolex:representation ?vocativeFeminineSingularComparative ;
+      wikibase:grammaticalFeature wd:Q185077, wd:Q1775415, wd:Q110786, wd:Q14169499 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?vocativeFemininePluralComparativeForm .
+    ?vocativeFemininePluralComparativeForm ontolex:representation ?vocativeFemininePluralComparative ;
+      wikibase:grammaticalFeature wd:Q185077, wd:Q1775415, wd:Q146786, wd:Q14169499 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?vocativeMasculineInanimateSingularPositiveForm .
+    ?vocativeMasculineInanimateSingularPositiveForm ontolex:representation ?vocativeMasculineInanimateSingularPositive ;
+      wikibase:grammaticalFeature wd:Q185077, wd:Q52943434, wd:Q110786, wd:Q3482678 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?vocativeNeuterPluralSuperlativeForm .
+    ?vocativeNeuterPluralSuperlativeForm ontolex:representation ?vocativeNeuterPluralSuperlative ;
+      wikibase:grammaticalFeature wd:Q185077, wd:Q1775461, wd:Q146786, wd:Q1817208 .
+  }
+}
