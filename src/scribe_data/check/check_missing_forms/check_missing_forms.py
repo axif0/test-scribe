@@ -9,9 +9,10 @@ import sys
 from collections import defaultdict
 from pathlib import Path
 
-from generate_query import generate_query
 from get_forms import extract_dump_forms, parse_sparql_files
-from scribe_data.check.check_missing_forms.normalize_forms import sort_qids_in_list
+from normalize_forms import sort_qids_in_list
+from split_query import split_group_by_identifier
+
 from scribe_data.cli.download import wd_lexeme_dump_download_wrapper
 from scribe_data.utils import (
     LANGUAGE_DATA_EXTRACTION_DIR,
@@ -108,9 +109,7 @@ def get_missing_features(result_sparql, result_dump):
                 if dt in result_dump[lang]:
                     dump_values = {tuple(item) for item in result_dump[lang][dt]}
 
-                print(dump_values)
-
-                # Get unique values from both sources.
+                # Get missing Forms from lexeme Dump.
                 unique_dump_values = (
                     set(map(tuple, sort_qids_in_list(dump_values))) - sparql_values
                 )
@@ -162,7 +161,6 @@ def process_missing_features(missing_features, query_dir):
         # Create a separate entry for each data type.
         for data_type_qid, features in data_types_qid.items():
             language_entry = {language_qid: {data_type_qid: features}}
-            #
             if language_qid in sub_languages_iso_codes:
                 for sub_lang_iso_code in sub_languages_iso_codes[language_qid]:
                     print(
@@ -171,119 +169,12 @@ def process_missing_features(missing_features, query_dir):
                     split_group_by_identifier(
                         language_entry, LANGUAGE_DATA_EXTRACTION_DIR, sub_lang_iso_code
                     )
-                    # generate_query(
-                    #     language_entry, LANGUAGE_DATA_EXTRACTION_DIR, sub_lang_iso_code
-                    # )
 
             else:
                 print(f"Generating query for {language_qid} - {data_type_qid}")
                 # generate_query(language_entry, LANGUAGE_DATA_EXTRACTION_DIR)
                 split_group_by_identifier(
                     language_entry, LANGUAGE_DATA_EXTRACTION_DIR, sub_lang_iso_code=None
-                )
-
-
-def split_group_by_identifier(language_entry, output_dir, sub_lang_iso_code=None):
-    """
-    Split forms into groups of up to six forms per query based on identifiers.
-
-    Parameters
-    ----------
-    language_entry : dict
-        Dictionary containing language data with missing features.
-        Format: {language_qid: {data_type_qid: [features]}}
-    output_dir : str or Path
-        Directory where generated query files should be saved.
-    sub_lang_iso_code : str, optional
-        ISO code for sub-language if applicable.
-
-    Notes
-    -----
-    Groups forms based on their identifiers to avoid generating too many queries.
-    Combines small groups when possible to reduce the number of query files.
-    """
-    for lang, data in language_entry.items():
-        for data_type, missing_features_list in data.items():
-            # Group features by their first identifier
-            identifier_groups = defaultdict(list)
-
-            # First try to group by the first identifier in each feature list
-            for feature_list in missing_features_list:
-                if feature_list:  # Skip empty lists
-                    # Use the first identifier as the grouping key
-                    key = feature_list[0]
-                    identifier_groups[key].append(
-                        feature_list
-                    )  # =>{Q1234:[Q2345,Q4567],[Q567]}
-
-            # Now check if any groups have more than 6 features
-            final_groups = []
-
-            for identifier, features in identifier_groups.items():
-                if len(features) <= 6:
-                    # This group is small enough, keep it as is
-                    final_groups.append(features)
-                else:
-                    # This group is too large, need to split further by second identifier
-                    second_level_groups = defaultdict(list)
-
-                    for feature_list in features:
-                        if len(feature_list) > 1:
-                            # Use the second identifier for further grouping
-                            second_key = feature_list[1]
-                            second_level_groups[second_key].append(feature_list)
-                        else:
-                            # If there's only one identifier, make it its own group
-                            second_level_groups["single_identifier"].append(
-                                feature_list
-                            )
-
-                    # Further split if necessary and add to final groups
-                    for (
-                        second_identifier,
-                        second_features,
-                    ) in second_level_groups.items():
-                        # Split into chunks of 6
-                        for i in range(0, len(second_features), 6):
-                            chunk = second_features[i : i + 6]
-                            final_groups.append(chunk)
-
-            # Now combine small groups if possible to reduce query files
-            optimized_groups = []
-            current_group = []
-
-            # Sort groups by size to try combining smaller ones first
-            final_groups.sort(key=len)
-
-            for group in final_groups:
-                if len(current_group) + len(group) <= 6:
-                    # Can add this group to the current one
-                    current_group.extend(group)
-                else:
-                    # Current group is full, start a new one
-                    if current_group:
-                        optimized_groups.append(current_group)
-                    current_group = group
-
-            # Add the last group if not empty
-            if current_group:
-                optimized_groups.append(current_group)
-
-            # Generate queries for each optimized group
-            for i, group in enumerate(optimized_groups):
-                # Create a new language entry for this group
-                group = group
-                group_entry = {lang: {data_type: group}}
-
-                print(
-                    f"Generating query {i+1}/{len(optimized_groups)} for {lang} - {data_type} with {len(group)} features"
-                )
-
-                # Call generate_query with the grouped features
-                generate_query(
-                    group_entry,
-                    output_dir,
-                    sub_lang_iso_code=sub_lang_iso_code,
                 )
 
 
@@ -400,74 +291,11 @@ if __name__ == "__main__":
     main()
 
 
+#  MARK: Testing
+
 # def main():
-#     #     """
-#     Main function to check for missing forms in Wikidata.
 
-#     Processes command line arguments, downloads and compares Wikidata dump data
-#     with SPARQL query results to identify missing features, and generates
-#     appropriate SPARQL queries.
-
-#     Notes
-#     -----
-#     Required command line arguments:
-#     - dump_path: Path to the Wikidata dump file or None to download
-#     - query_dir: Directory for storing generated queries
-
-#     Optional arguments:
-#     - --process-all-keys: Flag to process all nested keys in missing features
-#     - --download-dump: Flag to download the dump if dump_path is not provided
-#     """
-# parser = argparse.ArgumentParser(description="Check missing forms in Wikidata")
-# parser.add_argument(
-#     "dump_path",
-#     type=str,
-#     nargs="?",
-#     default=None,
-#     help="Path to the dump file (optional if --download-dump is used)",
-# )
-# parser.add_argument("query_dir", type=str, help="Path to the query directory")
-# parser.add_argument(
-#     "--process-all-keys",
-#     action="store_true",
-#     help="Process all nested keys in the missing features",
-# )
-# parser.add_argument(
-#     "--download-dump",
-#     action="store_true",
-#     help="Download Wikidata lexeme dump if dump_path is not provided",
-# )
-
-# args = parser.parse_args()
-
-# # If no dump path is provided and download flag is set, download the dump.
-# if not args.dump_path and args.download_dump:
-#     # MARK: Download Dump
-
-#     dump_path = wd_lexeme_dump_download_wrapper(
-#         wikidata_dump=None, output_dir=None, default=True
-#     )
-#     if not dump_path:
-#         print("Failed to download Wikidata dump.")
-#         sys.exit(1)
-
-# elif not args.dump_path:
-#     print("Error: Either provide a dump path or use --download-dump flag")
-#     sys.exit(1)
-
-# else:
-#     dump_path = args.dump_path
-
-# dump_path = Path(dump_path)
-# query_dir = Path(args.query_dir)
-
-# if not dump_path.exists():
-#     print(f"Error: Dump path does not exist: {dump_path}")
-#     sys.exit(1)
-
-# if not query_dir.exists():
-#     print(f"Error: Query directory does not exist: {query_dir}")
-#     sys.exit(1)
+# MARK: Part 1 (Get forms from all languages including sub languages.)
 
 # Get all languages including sub languages.
 # languages = get_all_languages()
@@ -483,13 +311,15 @@ if __name__ == "__main__":
 # result_dump = extract_dump_forms(
 #     languages=languages,
 #     data_types=list(data_type_metadata.keys()),
-#     file_path="/media/asif/Mahbub1/test-scribe/src/scribe_data/check/scribe_data_wikidata_dumps_export/latest-lexemes.json.bz2",
+#     file_path="{dump_path}", ##need to give the path of the dump file.
 # )
 # with open("result_dump.json", "w") as f:
 #     json.dump(result_dump, f, indent=4)
 
 # with open("result_sparql.json", "w") as f:
 #     json.dump(result_sparql, f, indent=4)
+
+# MARK: Part 2 (Get missing features from SPARQL and dump.)
 
 # with open("result_sparql.json", "r") as f:
 #     result_sparql = json.load(f)
@@ -499,6 +329,8 @@ if __name__ == "__main__":
 
 # missing_features = get_missing_features(result_sparql, result_dump)
 
+# MARK: Part 3 (Process missing features.)
+
 # with open("missing_features.json", "w") as f:
 #     json.dump(missing_features, f, indent=4)
 
@@ -506,28 +338,6 @@ if __name__ == "__main__":
 #     missing_features = json.load(f)
 
 # process_missing_features(missing_features, query_dir=None)
-
-
-# # # MARK: Get Features
-
-
-# try:
-#     # MARK: Save Features
-
-#     print("Generated missing features:", missing_features)
-
-#     with open("missing_features.json", "w") as f:
-#         json.dump(missing_features, f, indent=4)
-
-#     print("Missing features data has been saved to missing_features.json")
-
-#     if missing_features:
-#         # Process all data types for each language.
-#         process_missing_features(missing_features, query_dir=None)
-
-# except Exception as e:
-#     print(f"An error occurred: {e}")
-#     sys.exit(1)
 
 
 # if __name__ == "__main__":
