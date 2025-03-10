@@ -1,0 +1,57 @@
+# tool: scribe-data
+# All Latin (Q397) nouns (Q1084) and the given forms.
+# Enter this query at https://query.wikidata.org/.
+
+SELECT
+  (REPLACE(STR(?lexeme), "http://www.wikidata.org/entity/", "") AS ?lexemeID)
+  ?lastModified
+  ?noun
+  ?activePresentInfinitive
+  ?activePresentIndicativeFirstPersonSingular
+  ?activePresentIndicativeThirdPersonSingular
+  ?dativeActivePresentSingularParticiple
+  ?dativeActivePresentPluralParticiple
+  ?dativeActiveFuturePluralParticiple
+
+WHERE {
+  ?lexeme dct:language wd:Q397 ;
+      wikibase:lexicalCategory wd:Q1084 ;
+      wikibase:lemma ?noun ;
+      schema:dateModified ?lastModified .
+    
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?activePresentInfinitiveForm .
+    ?activePresentInfinitiveForm ontolex:representation ?activePresentInfinitive ;
+      wikibase:grammaticalFeature wd:Q1317831, wd:Q52434245 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?activePresentIndicativeFirstPersonSingularForm .
+    ?activePresentIndicativeFirstPersonSingularForm ontolex:representation ?activePresentIndicativeFirstPersonSingular ;
+      wikibase:grammaticalFeature wd:Q1317831, wd:Q56682909, wd:Q21714344, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?activePresentIndicativeThirdPersonSingularForm .
+    ?activePresentIndicativeThirdPersonSingularForm ontolex:representation ?activePresentIndicativeThirdPersonSingular ;
+      wikibase:grammaticalFeature wd:Q1317831, wd:Q56682909, wd:Q51929074, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?dativeActivePresentSingularParticipleForm .
+    ?dativeActivePresentSingularParticipleForm ontolex:representation ?dativeActivePresentSingularParticiple ;
+      wikibase:grammaticalFeature wd:Q145599, wd:Q1317831, wd:Q192613, wd:Q110786, wd:Q814722 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?dativeActivePresentPluralParticipleForm .
+    ?dativeActivePresentPluralParticipleForm ontolex:representation ?dativeActivePresentPluralParticiple ;
+      wikibase:grammaticalFeature wd:Q145599, wd:Q1317831, wd:Q192613, wd:Q146786, wd:Q814722 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?dativeActiveFuturePluralParticipleForm .
+    ?dativeActiveFuturePluralParticipleForm ontolex:representation ?dativeActiveFuturePluralParticiple ;
+      wikibase:grammaticalFeature wd:Q145599, wd:Q1317831, wd:Q501405, wd:Q146786, wd:Q814722 .
+  }
+}

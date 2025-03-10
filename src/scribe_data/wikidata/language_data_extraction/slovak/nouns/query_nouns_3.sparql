@@ -1,0 +1,50 @@
+# tool: scribe-data
+# All Slovak (Q9058) nouns (Q1084) and the given forms.
+# Enter this query at https://query.wikidata.org/.
+
+SELECT
+  (REPLACE(STR(?lexeme), "http://www.wikidata.org/entity/", "") AS ?lexemeID)
+  ?lastModified
+  ?noun
+  ?neuter
+  ?singular
+  ?vocativeSingular
+  ?dativeMasculineSingular
+  ?dativeMasculinePlural
+
+WHERE {
+  ?lexeme dct:language wd:Q9058 ;
+      wikibase:lexicalCategory wd:Q1084 ;
+      wikibase:lemma ?noun ;
+      schema:dateModified ?lastModified .
+    
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?neuterForm .
+    ?neuterForm ontolex:representation ?neuter ;
+      wikibase:grammaticalFeature wd:Q1775461 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?singularForm .
+    ?singularForm ontolex:representation ?singular ;
+      wikibase:grammaticalFeature wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?vocativeSingularForm .
+    ?vocativeSingularForm ontolex:representation ?vocativeSingular ;
+      wikibase:grammaticalFeature wd:Q185077, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?dativeMasculineSingularForm .
+    ?dativeMasculineSingularForm ontolex:representation ?dativeMasculineSingular ;
+      wikibase:grammaticalFeature wd:Q145599, wd:Q499327, wd:Q110786 .
+  }
+
+  OPTIONAL {
+    ?lexeme ontolex:lexicalForm ?dativeMasculinePluralForm .
+    ?dativeMasculinePluralForm ontolex:representation ?dativeMasculinePlural ;
+      wikibase:grammaticalFeature wd:Q145599, wd:Q499327, wd:Q146786 .
+  }
+}
