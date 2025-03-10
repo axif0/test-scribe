@@ -4,13 +4,13 @@ on:
     # Runs at 00:00 UTC on the first day of every month.
     - cron: "0 0 1 * *"
   workflow_dispatch: # allow manual trigger
- 
+
   push:
     branches: [master]
     paths:
       - 'src/scribe_data/wikidata/language_data_extraction/**/*.sparql'
   pull_request:
-    branches: [main]
+    branches: [master]
     types: [opened, reopened, synchronize]
     paths:
       - 'src/scribe_data/wikidata/language_data_extraction/**/*.sparqll'

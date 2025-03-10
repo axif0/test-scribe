@@ -2,11 +2,11 @@ name: Check Query Identifiers
 
 on:
   push:
-    branches: [main]
+    branches: [master]
     paths:
       - 'src/scribe_data/wikidata/language_data_extraction/**/*.sparql'
   pull_request:
-    branches: [main]
+    branches: [master]
     types: [opened, reopened, synchronize]
     paths:
       - 'src/scribe_data/wikidata/language_data_extraction/**/*.sparql'
