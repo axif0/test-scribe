@@ -20,10 +20,7 @@ jobs:
             echo "is_correct_repo=false" >> "$GITHUB_OUTPUT"
             echo "::warning::This workflow should only run in scribe-org/Scribe-Data repository."
           fi
-
   create-pull-request:
-    needs: check-repository
-    if: needs.check-repository.outputs.is_correct_repo == 'true'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -34,14 +31,14 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: "3.x"
+          python-version: '3.x'
 
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
+          pip install rich requests tqdm
           pip install -e .
-
       - name: Generate Missing Features Data
         run: |
           # Set up paths
@@ -49,40 +46,29 @@ jobs:
 
           echo "Query directory: ${QUERY_DIR}"
 
-          # Generate the missing features data with all keys processing and automatic dump download.
-          PYTHONPATH=$PYTHONPATH:$(pwd)/src
-          python src/scribe_data/check/check_missing_forms/check_missing_forms.py "${QUERY_DIR}" --download-dump --process-all-keys
-
-      # Add query form checker
-      - name: Check Query Forms
+          # Generate the missing features data with all keys processing and automatic dump download
+          PYTHONPATH=$PYTHONPATH:$(pwd)/src python src/scribe_data/check/check_missing_forms/check_missing_forms.py "${QUERY_DIR}" --download-dump --process-all-keys
+      # Debug steps to understand the state
+      - name: Debug Info
         run: |
-          PYTHONPATH=$PYTHONPATH:$(pwd)/src
-          python src/scribe_data/check/check_query_forms.py
-
-      # Debug steps to understand the state.
-      # - name: Debug Info
-      #   run: |
-      #     echo "Current branch: $(git branch --show-current)"
-      #     echo "List of changes:"
-      #     git status
-
+          echo "Current branch: $(git branch --show-current)"
+          echo "List of changes:"
+          git status
       - name: Make changes
         run: |
           git add src/scribe_data/wikidata/language_data_extraction/**/*.sparql
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git config --global user.name "github-actions[bot]"
-
-      # - name: Debug Missing Features Data
-      #   if: always()
-      #   run: |
-      #     # Print the contents of the missing features JSON file if it exists.
-      #     if [ -f query_check_missing_features.json ]; then
-      #       echo "Contents of query_check_missing_features.json:"
-      #       cat query_check_missing_features.json
-      #     else
-      #       echo "query_check_missing_features.json not found"
-      #     fi
-
+          git config --global user.email "muhamadasif570@gmail.com"
+          git config --global user.name "axif0"
+      - name: Debug Missing Features Data
+        if: always()
+        run: |
+          # Print the contents of the missing features JSON file if it exists
+          if [ -f missing_features.json ]; then
+            echo "Contents of missing_features.json:"
+            cat missing_features.json
+          else
+            echo "missing_features.json not found"
+          fi
       - name: Generate PR Body
         id: pr-body
         run: |
@@ -99,32 +85,29 @@ jobs:
             echo "$PR_BODY_CONTENT"
             echo "EOF"
           } >> $GITHUB_OUTPUT
-
-
-      # - name: Debug PR Body Output
-      #   run: |
-      #     # Print the PR body content from the output.
-      #     echo "PR Body from GITHUB_OUTPUT:"
-      #     cat $GITHUB_OUTPUT
-
+      - name: Debug PR Body Output
+        run: |
+          # Print the PR body content from the output
+          echo "PR Body from GITHUB_OUTPUT:"
+          cat $GITHUB_OUTPUT
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          title: "Chore: Update missing Wikidata query forms"
+          title: 'Automated PR: Updated Language Data Files'
           body: ${{ steps.pr-body.outputs.body }}
           base: master
-          branch: update-missing-query-forms
+          branch: automated-missing-forms-pr
           delete-branch: true
           draft: false
-          commit-message: "Chore: Update missing Wikidata query forms"
+          commit-message: '[create-pull-request] automated change'
           committer: GitHub <noreply@github.com>
-          author: github-actions[bot] <github-actions[bot]@users.noreply.github.com>
+          author: axif0 <axif0@users.noreply.github.com>
 
-      # # Debug step to verify PR creation attempt.
-      # - name: Check PR Creation
-      #   run: |
-      #     echo "Checking if PR was created..."
-      #     gh pr list
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # Debug step to verify PR creation attempt
+      - name: Check PR Creation
+        run: |
+          echo "Checking if PR was created..."
+          gh pr list
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
