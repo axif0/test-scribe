@@ -113,7 +113,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           title: "Chore: Update missing Wikidata query forms"
           body: ${{ steps.pr-body.outputs.body }}
-          base: main
+          base: master
           branch: update-missing-query-forms
           delete-branch: true
           draft: false
