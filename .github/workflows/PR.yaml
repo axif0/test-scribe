@@ -55,13 +55,21 @@ jobs:
 
           # Generate the missing features data with all keys processing and automatic dump download
           PYTHONPATH=$PYTHONPATH:$(pwd)/src python src/scribe_data/check/check_missing_forms/check_missing_forms.py "${QUERY_DIR}" --download-dump --process-all-keys
-      # Debug steps to understand the state
+
+      - name: Check Query Forms
+        id: query-forms
+        run: |
+          PYTHONPATH=$PYTHONPATH:$(pwd)/src
+          python src/scribe_data/check/check_query_forms.py
+        continue-on-error: true
+
       - name: Debug Info
         run: |
           echo "Current branch: $(git branch --show-current)"
           echo "List of changes:"
           git status
       - name: Make changes
+        if: steps.query-forms.outcome == 'success'
         run: |
           git add src/scribe_data/wikidata/language_data_extraction/**/*.sparql
           git config --global user.email "muhamadasif570@gmail.com"
@@ -120,3 +128,9 @@ jobs:
           gh pr list
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Fail if query forms check failed
+        if: steps.query-forms.outcome == 'failure'
+        run: |
+          echo "Query forms check failed. Please fix the issues before creating a PR."
+          exit 1
