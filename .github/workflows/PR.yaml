@@ -86,13 +86,12 @@ jobs:
       - name: Generate PR Body
         id: pr-body
         run: |
-          # Check if the missing features file exists and has content
-          if [ ! -f query_check_missing_features.json ] || [ ! -s query_check_missing_features.json ]; then
-            PR_BODY_CONTENT="No new forms found. No updates needed."
-          else
-            # Run the pr_body.py script with the missing features data
-            PR_BODY_CONTENT=$(python src/scribe_data/check/check_missing_forms/pr_body.py query_check_missing_features.json)
-          fi
+          # Run the pr_body.py script with the missing features data
+          PR_BODY_CONTENT=$(python src/scribe_data/check/check_missing_forms/pr_body.py missing_features.json)
+
+          # Debug output
+          echo "PR Body Content:"
+          echo "$PR_BODY_CONTENT"
 
           # Initialize PR body with delimiter
           {
@@ -100,6 +99,7 @@ jobs:
             echo "$PR_BODY_CONTENT"
             echo "EOF"
           } >> $GITHUB_OUTPUT
+
 
       # - name: Debug PR Body Output
       #   run: |
