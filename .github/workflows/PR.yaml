@@ -105,6 +105,11 @@ jobs:
           commit-message: '[create-pull-request] automated change'
           committer: GitHub <noreply@github.com>
           author: axif0 <axif0@users.noreply.github.com>
+          labels: |
+            automated pr
+            data-update
+          team-reviewers: |
+            maintainers
 
       # Debug step to verify PR creation attempt
       - name: Check PR Creation
