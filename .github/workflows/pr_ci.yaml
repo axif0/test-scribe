@@ -1,10 +1,10 @@
 name: CI
 on:
   push:
-    branches: [master]
+    branches: [main]
   pull_request:
     branches:
-      - master
+      - main
     types: [opened, reopened, synchronize]
 
 jobs:

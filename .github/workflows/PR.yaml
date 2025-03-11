@@ -4,13 +4,6 @@ on:
     # Runs at 00:00 UTC on the first day of every month.
     - cron: "0 0 1 * *"
   workflow_dispatch: # allow manual trigger
-  pull_request:  # Add this section
-    branches: [master]
-    types: [opened, reopened, synchronize]
-  push:  # Add this section
-    branches: [master]
-    paths:
-      - 'src/scribe_data/wikidata/language_data_extraction/**/*.sparql'
 
 jobs:
   check-repository:
@@ -56,44 +49,28 @@ jobs:
           # Generate the missing features data with all keys processing and automatic dump download
           PYTHONPATH=$PYTHONPATH:$(pwd)/src python src/scribe_data/check/check_missing_forms/check_missing_forms.py "${QUERY_DIR}" --download-dump --process-all-keys
 
-      - name: Check Query Forms
-        id: query-forms
-        run: |
-          PYTHONPATH=$PYTHONPATH:$(pwd)/src
-          python src/scribe_data/check/check_query_forms.py
-        continue-on-error: true
-
-      - name: Debug Info
-        run: |
-          echo "Current branch: $(git branch --show-current)"
-          echo "List of changes:"
-          git status
       - name: Make changes
-        if: steps.query-forms.outcome == 'success'
         run: |
           git add src/scribe_data/wikidata/language_data_extraction/**/*.sparql
           git config --global user.email "muhamadasif570@gmail.com"
           git config --global user.name "axif0"
-      - name: Debug Missing Features Data
-        if: always()
+
+      - name: check generated query forms
+        working-directory: ./src/scribe_data/check
         run: |
-          # Print the contents of the missing features JSON file if it exists
-          if [ -f missing_features.json ]; then
-            echo "Contents of missing_features.json:"
-            cat missing_features.json
-          else
-            echo "missing_features.json not found"
-          fi
+          python check_query_forms.py
+
+      - name: Post-run status
+        if: failure()
+        run: echo "Project SPARQL query forms check failed. Please fix the reported errors."
+
       - name: Generate PR Body
         id: pr-body
         run: |
           # Run the pr_body.py script with the missing features data
-          PR_BODY_CONTENT=$(python src/scribe_data/check/check_missing_forms/pr_body.py check_missing_features.json) || echo "No missing features/forms found."
+          PR_BODY_CONTENT=$(python src/scribe_data/check/check_missing_forms/pr_body.py missing_features.json)  || echo "No missing features/forms found.
 
 
-          # Debug output
-          echo "PR Body Content:"
-          echo "$PR_BODY_CONTENT"
 
           # Initialize PR body with delimiter
           {
@@ -101,11 +78,9 @@ jobs:
             echo "$PR_BODY_CONTENT"
             echo "EOF"
           } >> $GITHUB_OUTPUT
-      - name: Debug PR Body Output
-        run: |
-          # Print the PR body content from the output
-          echo "PR Body from GITHUB_OUTPUT:"
-          cat $GITHUB_OUTPUT
+
+
+
       - name: Create Pull Request
         if: steps.pr-body.outputs.body != 'No missing features/forms found.'
         uses: peter-evans/create-pull-request@v5
@@ -120,17 +95,3 @@ jobs:
           commit-message: '[create-pull-request] automated change'
           committer: GitHub <noreply@github.com>
           author: axif0 <axif0@users.noreply.github.com>
-
-      # Debug step to verify PR creation attempt
-      - name: Check PR Creation
-        run: |
-          echo "Checking if PR was created..."
-          gh pr list
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Fail if query forms check failed
-        if: steps.query-forms.outcome == 'failure'
-        run: |
-          echo "Query forms check failed. Please fix the issues before creating a PR."
-          exit 1
