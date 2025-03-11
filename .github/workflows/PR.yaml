@@ -68,9 +68,7 @@ jobs:
         id: pr-body
         run: |
           # Run the pr_body.py script with the missing features data
-          PR_BODY_CONTENT=$(python src/scribe_data/check/check_missing_forms/pr_body.py missing_features.json)  || echo "No missing features/forms found.
-
-
+          PR_BODY_CONTENT=$(python src/scribe_data/check/check_missing_forms/pr_body.py missing_features.json) || echo "No missing features/forms found."
 
           # Initialize PR body with delimiter
           {
@@ -78,8 +76,6 @@ jobs:
             echo "$PR_BODY_CONTENT"
             echo "EOF"
           } >> $GITHUB_OUTPUT
-
-
 
       - name: Create Pull Request
         if: steps.pr-body.outputs.body != 'No missing features/forms found.'
